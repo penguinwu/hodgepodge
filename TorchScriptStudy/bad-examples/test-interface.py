@@ -2,6 +2,8 @@ import torch
 
 @torch.jit.interface
 class TestInterface(torch.nn.Module):
+    # annotating w/ unused still yield the same compile-time error
+    # @torch.jit.unused
     def __init__(self):
         pass
 
