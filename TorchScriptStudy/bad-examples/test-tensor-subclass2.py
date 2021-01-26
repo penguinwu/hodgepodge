@@ -10,7 +10,7 @@ class TensorSubClass(torch.Tensor):
 
 
 def fn(x: TensorSubClass):
-    return myNumber(x)
+    return x.myNumber()
 
 x = TensorSubClass(torch.rand((2, 3, 4)))
 print("Eager: ", fn(x))
