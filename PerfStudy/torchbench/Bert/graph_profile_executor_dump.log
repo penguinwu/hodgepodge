@@ -1,0 +1,626 @@
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (int) = prim::Constant[value=(2,)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (None, None, None, None) = prim::Constant[value=(None, None, None, None)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph(%self : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.bert.BERT,
+[DUMP profiling_graph_executor_impl.cpp:551]       %x.2 : Tensor,
+[DUMP profiling_graph_executor_impl.cpp:551]       %segment_info.1 : Tensor):
+[DUMP profiling_graph_executor_impl.cpp:551]   %3 : None = prim::Constant()
+[DUMP profiling_graph_executor_impl.cpp:551]   %4 : bool = prim::Constant[value=1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:34
+[DUMP profiling_graph_executor_impl.cpp:551]   %5 : int = prim::Constant[value=-1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:22
+[DUMP profiling_graph_executor_impl.cpp:551]   %6 : bool = prim::Constant[value=0]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/sparse.py:147:28
+[DUMP profiling_graph_executor_impl.cpp:551]   %7 : int = prim::Constant[value=9223372036854775807]()
+[DUMP profiling_graph_executor_impl.cpp:551]   %8 : float = prim::Constant[value=0.10000000000000001]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/dropout.py:58:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %9 : int = prim::Constant[value=1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/bert.py:39:33
+[DUMP profiling_graph_executor_impl.cpp:551]   %10 : int = prim::Constant[value=0]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/bert.py:39:20
+[DUMP profiling_graph_executor_impl.cpp:551]   %11 : Tensor = aten::gt(%x.2, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/bert.py:39:16
+[DUMP profiling_graph_executor_impl.cpp:551]   %12 : Tensor = aten::unsqueeze(%11, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/bert.py:39:16
+[DUMP profiling_graph_executor_impl.cpp:551]   %13 : int = aten::size(%x.2, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/bert.py:39:46
+[DUMP profiling_graph_executor_impl.cpp:551]   %14 : int[] = prim::ListConstruct(%9, %13, %9)
+[DUMP profiling_graph_executor_impl.cpp:551]   %15 : Tensor = aten::repeat(%12, %14) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/bert.py:39:16
+[DUMP profiling_graph_executor_impl.cpp:551]   %mask.1 : Tensor = aten::unsqueeze(%15, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/bert.py:39:16
+[DUMP profiling_graph_executor_impl.cpp:551]   %17 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.embedding.bert.BERTEmbedding = prim::GetAttr[name="embedding"](%self)
+[DUMP profiling_graph_executor_impl.cpp:551]   %18 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.embedding.token.TokenEmbedding = prim::GetAttr[name="token"](%17)
+[DUMP profiling_graph_executor_impl.cpp:551]   %19 : Tensor = prim::GetAttr[name="weight"](%18)
+[DUMP profiling_graph_executor_impl.cpp:551]   %20 : Tensor = aten::embedding(%19, %x.2, %10, %6, %6) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1913:11
+[DUMP profiling_graph_executor_impl.cpp:551]   %21 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.embedding.position.PositionalEmbedding = prim::GetAttr[name="position"](%17)
+[DUMP profiling_graph_executor_impl.cpp:551]   %22 : Tensor = prim::GetAttr[name="pe"](%21)
+[DUMP profiling_graph_executor_impl.cpp:551]   %23 : Tensor = aten::slice(%22, %10, %10, %7, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/embedding/position.py:25:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %24 : int = aten::size(%x.2, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/embedding/position.py:25:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %25 : Tensor = aten::slice(%23, %9, %10, %24, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/embedding/position.py:25:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %26 : Tensor = aten::add(%20, %25, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/embedding/bert.py:31:12
+[DUMP profiling_graph_executor_impl.cpp:551]   %27 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.embedding.segment.SegmentEmbedding = prim::GetAttr[name="segment"](%17)
+[DUMP profiling_graph_executor_impl.cpp:551]   %28 : Tensor = prim::GetAttr[name="weight"](%27)
+[DUMP profiling_graph_executor_impl.cpp:551]   %29 : Tensor = aten::embedding(%28, %segment_info.1, %10, %6, %6) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1913:11
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.1 : Tensor = aten::add(%26, %29, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/embedding/bert.py:31:12
+[DUMP profiling_graph_executor_impl.cpp:551]   %31 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%17)
+[DUMP profiling_graph_executor_impl.cpp:551]   %32 : bool = prim::GetAttr[name="training"](%31)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.6 : Tensor = aten::dropout(%x.1, %8, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %34 : __torch__.torch.nn.modules.container.___torch_mangle_2.ModuleList = prim::GetAttr[name="transformer_blocks"](%self)
+[DUMP profiling_graph_executor_impl.cpp:551]   %35 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="0"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %36 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="1"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %37 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="2"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %38 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="3"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %39 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="4"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %40 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="5"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %41 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="6"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %42 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="7"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %43 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="8"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %44 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="9"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %45 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="10"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %46 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.TransformerBlock = prim::GetAttr[name="11"](%34)
+[DUMP profiling_graph_executor_impl.cpp:551]   %47 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%35)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%47, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %48 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%35)
+[DUMP profiling_graph_executor_impl.cpp:551]   %49 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%35)
+[DUMP profiling_graph_executor_impl.cpp:551]   %50 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%48)
+[DUMP profiling_graph_executor_impl.cpp:551]   %51 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%48)
+[DUMP profiling_graph_executor_impl.cpp:551]   %52 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.3 : Tensor = aten::mean(%x.6, %52, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %54 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.3 : Tensor = aten::std(%x.6, %54, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %56 : Tensor = prim::GetAttr[name="a_2"](%51)
+[DUMP profiling_graph_executor_impl.cpp:551]   %57 : Tensor = aten::sub(%x.6, %mean.3, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %58 : Tensor = aten::mul(%56, %57) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %59 : float = prim::GetAttr[name="eps"](%51)
+[DUMP profiling_graph_executor_impl.cpp:551]   %60 : Tensor = aten::add(%std.3, %59, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %61 : Tensor = aten::div(%58, %60) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %62 : Tensor = prim::GetAttr[name="b_2"](%51)
+[DUMP profiling_graph_executor_impl.cpp:551]   %63 : Tensor = aten::add(%61, %62, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %64 : Tensor = prim::CallMethod[name="forward"](%49, %63) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %65 : bool = prim::GetAttr[name="training"](%50)
+[DUMP profiling_graph_executor_impl.cpp:551]   %66 : Tensor = aten::dropout(%64, %8, %65) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.4 : Tensor = aten::add(%x.6, %66, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %68 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%35)
+[DUMP profiling_graph_executor_impl.cpp:551]   %69 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%35)
+[DUMP profiling_graph_executor_impl.cpp:551]   %70 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%68)
+[DUMP profiling_graph_executor_impl.cpp:551]   %71 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%68)
+[DUMP profiling_graph_executor_impl.cpp:551]   %72 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.4 : Tensor = aten::mean(%x.4, %72, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %74 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.4 : Tensor = aten::std(%x.4, %74, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %76 : Tensor = prim::GetAttr[name="a_2"](%71)
+[DUMP profiling_graph_executor_impl.cpp:551]   %77 : Tensor = aten::sub(%x.4, %mean.4, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %78 : Tensor = aten::mul(%76, %77) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %79 : float = prim::GetAttr[name="eps"](%71)
+[DUMP profiling_graph_executor_impl.cpp:551]   %80 : Tensor = aten::add(%std.4, %79, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %81 : Tensor = aten::div(%78, %80) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %82 : Tensor = prim::GetAttr[name="b_2"](%71)
+[DUMP profiling_graph_executor_impl.cpp:551]   %83 : Tensor = aten::add(%81, %82, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %84 : Tensor = prim::CallMethod[name="forward"](%69, %83) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %85 : bool = prim::GetAttr[name="training"](%70)
+[DUMP profiling_graph_executor_impl.cpp:551]   %86 : Tensor = aten::dropout(%84, %8, %85) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.8 : Tensor = aten::add(%x.4, %86, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %88 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%35)
+[DUMP profiling_graph_executor_impl.cpp:551]   %89 : bool = prim::GetAttr[name="training"](%88)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.7 : Tensor = aten::dropout(%x.8, %8, %89) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %91 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%36)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%91, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %92 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%36)
+[DUMP profiling_graph_executor_impl.cpp:551]   %93 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%36)
+[DUMP profiling_graph_executor_impl.cpp:551]   %94 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%92)
+[DUMP profiling_graph_executor_impl.cpp:551]   %95 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%92)
+[DUMP profiling_graph_executor_impl.cpp:551]   %96 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.5 : Tensor = aten::mean(%x.7, %96, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %98 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.5 : Tensor = aten::std(%x.7, %98, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %100 : Tensor = prim::GetAttr[name="a_2"](%95)
+[DUMP profiling_graph_executor_impl.cpp:551]   %101 : Tensor = aten::sub(%x.7, %mean.5, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %102 : Tensor = aten::mul(%100, %101) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %103 : float = prim::GetAttr[name="eps"](%95)
+[DUMP profiling_graph_executor_impl.cpp:551]   %104 : Tensor = aten::add(%std.5, %103, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %105 : Tensor = aten::div(%102, %104) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %106 : Tensor = prim::GetAttr[name="b_2"](%95)
+[DUMP profiling_graph_executor_impl.cpp:551]   %107 : Tensor = aten::add(%105, %106, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %108 : Tensor = prim::CallMethod[name="forward"](%93, %107) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %109 : bool = prim::GetAttr[name="training"](%94)
+[DUMP profiling_graph_executor_impl.cpp:551]   %110 : Tensor = aten::dropout(%108, %8, %109) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.10 : Tensor = aten::add(%x.7, %110, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %112 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%36)
+[DUMP profiling_graph_executor_impl.cpp:551]   %113 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%36)
+[DUMP profiling_graph_executor_impl.cpp:551]   %114 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%112)
+[DUMP profiling_graph_executor_impl.cpp:551]   %115 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%112)
+[DUMP profiling_graph_executor_impl.cpp:551]   %116 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.6 : Tensor = aten::mean(%x.10, %116, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %118 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.6 : Tensor = aten::std(%x.10, %118, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %120 : Tensor = prim::GetAttr[name="a_2"](%115)
+[DUMP profiling_graph_executor_impl.cpp:551]   %121 : Tensor = aten::sub(%x.10, %mean.6, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %122 : Tensor = aten::mul(%120, %121) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %123 : float = prim::GetAttr[name="eps"](%115)
+[DUMP profiling_graph_executor_impl.cpp:551]   %124 : Tensor = aten::add(%std.6, %123, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %125 : Tensor = aten::div(%122, %124) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %126 : Tensor = prim::GetAttr[name="b_2"](%115)
+[DUMP profiling_graph_executor_impl.cpp:551]   %127 : Tensor = aten::add(%125, %126, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %128 : Tensor = prim::CallMethod[name="forward"](%113, %127) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %129 : bool = prim::GetAttr[name="training"](%114)
+[DUMP profiling_graph_executor_impl.cpp:551]   %130 : Tensor = aten::dropout(%128, %8, %129) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.12 : Tensor = aten::add(%x.10, %130, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %132 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%36)
+[DUMP profiling_graph_executor_impl.cpp:551]   %133 : bool = prim::GetAttr[name="training"](%132)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.9 : Tensor = aten::dropout(%x.12, %8, %133) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %135 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%37)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%135, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %136 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%37)
+[DUMP profiling_graph_executor_impl.cpp:551]   %137 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%37)
+[DUMP profiling_graph_executor_impl.cpp:551]   %138 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%136)
+[DUMP profiling_graph_executor_impl.cpp:551]   %139 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%136)
+[DUMP profiling_graph_executor_impl.cpp:551]   %140 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.7 : Tensor = aten::mean(%x.9, %140, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %142 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.7 : Tensor = aten::std(%x.9, %142, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %144 : Tensor = prim::GetAttr[name="a_2"](%139)
+[DUMP profiling_graph_executor_impl.cpp:551]   %145 : Tensor = aten::sub(%x.9, %mean.7, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %146 : Tensor = aten::mul(%144, %145) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %147 : float = prim::GetAttr[name="eps"](%139)
+[DUMP profiling_graph_executor_impl.cpp:551]   %148 : Tensor = aten::add(%std.7, %147, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %149 : Tensor = aten::div(%146, %148) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %150 : Tensor = prim::GetAttr[name="b_2"](%139)
+[DUMP profiling_graph_executor_impl.cpp:551]   %151 : Tensor = aten::add(%149, %150, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %152 : Tensor = prim::CallMethod[name="forward"](%137, %151) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %153 : bool = prim::GetAttr[name="training"](%138)
+[DUMP profiling_graph_executor_impl.cpp:551]   %154 : Tensor = aten::dropout(%152, %8, %153) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.14 : Tensor = aten::add(%x.9, %154, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %156 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%37)
+[DUMP profiling_graph_executor_impl.cpp:551]   %157 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%37)
+[DUMP profiling_graph_executor_impl.cpp:551]   %158 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%156)
+[DUMP profiling_graph_executor_impl.cpp:551]   %159 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%156)
+[DUMP profiling_graph_executor_impl.cpp:551]   %160 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.8 : Tensor = aten::mean(%x.14, %160, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %162 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.8 : Tensor = aten::std(%x.14, %162, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %164 : Tensor = prim::GetAttr[name="a_2"](%159)
+[DUMP profiling_graph_executor_impl.cpp:551]   %165 : Tensor = aten::sub(%x.14, %mean.8, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %166 : Tensor = aten::mul(%164, %165) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %167 : float = prim::GetAttr[name="eps"](%159)
+[DUMP profiling_graph_executor_impl.cpp:551]   %168 : Tensor = aten::add(%std.8, %167, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %169 : Tensor = aten::div(%166, %168) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %170 : Tensor = prim::GetAttr[name="b_2"](%159)
+[DUMP profiling_graph_executor_impl.cpp:551]   %171 : Tensor = aten::add(%169, %170, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %172 : Tensor = prim::CallMethod[name="forward"](%157, %171) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %173 : bool = prim::GetAttr[name="training"](%158)
+[DUMP profiling_graph_executor_impl.cpp:551]   %174 : Tensor = aten::dropout(%172, %8, %173) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.16 : Tensor = aten::add(%x.14, %174, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %176 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%37)
+[DUMP profiling_graph_executor_impl.cpp:551]   %177 : bool = prim::GetAttr[name="training"](%176)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.11 : Tensor = aten::dropout(%x.16, %8, %177) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %179 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%38)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%179, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %180 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%38)
+[DUMP profiling_graph_executor_impl.cpp:551]   %181 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%38)
+[DUMP profiling_graph_executor_impl.cpp:551]   %182 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%180)
+[DUMP profiling_graph_executor_impl.cpp:551]   %183 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%180)
+[DUMP profiling_graph_executor_impl.cpp:551]   %184 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.9 : Tensor = aten::mean(%x.11, %184, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %186 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.9 : Tensor = aten::std(%x.11, %186, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %188 : Tensor = prim::GetAttr[name="a_2"](%183)
+[DUMP profiling_graph_executor_impl.cpp:551]   %189 : Tensor = aten::sub(%x.11, %mean.9, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %190 : Tensor = aten::mul(%188, %189) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %191 : float = prim::GetAttr[name="eps"](%183)
+[DUMP profiling_graph_executor_impl.cpp:551]   %192 : Tensor = aten::add(%std.9, %191, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %193 : Tensor = aten::div(%190, %192) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %194 : Tensor = prim::GetAttr[name="b_2"](%183)
+[DUMP profiling_graph_executor_impl.cpp:551]   %195 : Tensor = aten::add(%193, %194, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %196 : Tensor = prim::CallMethod[name="forward"](%181, %195) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %197 : bool = prim::GetAttr[name="training"](%182)
+[DUMP profiling_graph_executor_impl.cpp:551]   %198 : Tensor = aten::dropout(%196, %8, %197) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.18 : Tensor = aten::add(%x.11, %198, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %200 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%38)
+[DUMP profiling_graph_executor_impl.cpp:551]   %201 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%38)
+[DUMP profiling_graph_executor_impl.cpp:551]   %202 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%200)
+[DUMP profiling_graph_executor_impl.cpp:551]   %203 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%200)
+[DUMP profiling_graph_executor_impl.cpp:551]   %204 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.10 : Tensor = aten::mean(%x.18, %204, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %206 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.10 : Tensor = aten::std(%x.18, %206, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %208 : Tensor = prim::GetAttr[name="a_2"](%203)
+[DUMP profiling_graph_executor_impl.cpp:551]   %209 : Tensor = aten::sub(%x.18, %mean.10, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %210 : Tensor = aten::mul(%208, %209) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %211 : float = prim::GetAttr[name="eps"](%203)
+[DUMP profiling_graph_executor_impl.cpp:551]   %212 : Tensor = aten::add(%std.10, %211, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %213 : Tensor = aten::div(%210, %212) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %214 : Tensor = prim::GetAttr[name="b_2"](%203)
+[DUMP profiling_graph_executor_impl.cpp:551]   %215 : Tensor = aten::add(%213, %214, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %216 : Tensor = prim::CallMethod[name="forward"](%201, %215) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %217 : bool = prim::GetAttr[name="training"](%202)
+[DUMP profiling_graph_executor_impl.cpp:551]   %218 : Tensor = aten::dropout(%216, %8, %217) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.20 : Tensor = aten::add(%x.18, %218, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %220 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%38)
+[DUMP profiling_graph_executor_impl.cpp:551]   %221 : bool = prim::GetAttr[name="training"](%220)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.13 : Tensor = aten::dropout(%x.20, %8, %221) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %223 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%39)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%223, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %224 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%39)
+[DUMP profiling_graph_executor_impl.cpp:551]   %225 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%39)
+[DUMP profiling_graph_executor_impl.cpp:551]   %226 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%224)
+[DUMP profiling_graph_executor_impl.cpp:551]   %227 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%224)
+[DUMP profiling_graph_executor_impl.cpp:551]   %228 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.11 : Tensor = aten::mean(%x.13, %228, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %230 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.11 : Tensor = aten::std(%x.13, %230, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %232 : Tensor = prim::GetAttr[name="a_2"](%227)
+[DUMP profiling_graph_executor_impl.cpp:551]   %233 : Tensor = aten::sub(%x.13, %mean.11, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %234 : Tensor = aten::mul(%232, %233) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %235 : float = prim::GetAttr[name="eps"](%227)
+[DUMP profiling_graph_executor_impl.cpp:551]   %236 : Tensor = aten::add(%std.11, %235, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %237 : Tensor = aten::div(%234, %236) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %238 : Tensor = prim::GetAttr[name="b_2"](%227)
+[DUMP profiling_graph_executor_impl.cpp:551]   %239 : Tensor = aten::add(%237, %238, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %240 : Tensor = prim::CallMethod[name="forward"](%225, %239) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %241 : bool = prim::GetAttr[name="training"](%226)
+[DUMP profiling_graph_executor_impl.cpp:551]   %242 : Tensor = aten::dropout(%240, %8, %241) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.22 : Tensor = aten::add(%x.13, %242, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %244 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%39)
+[DUMP profiling_graph_executor_impl.cpp:551]   %245 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%39)
+[DUMP profiling_graph_executor_impl.cpp:551]   %246 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%244)
+[DUMP profiling_graph_executor_impl.cpp:551]   %247 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%244)
+[DUMP profiling_graph_executor_impl.cpp:551]   %248 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.12 : Tensor = aten::mean(%x.22, %248, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %250 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.12 : Tensor = aten::std(%x.22, %250, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %252 : Tensor = prim::GetAttr[name="a_2"](%247)
+[DUMP profiling_graph_executor_impl.cpp:551]   %253 : Tensor = aten::sub(%x.22, %mean.12, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %254 : Tensor = aten::mul(%252, %253) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %255 : float = prim::GetAttr[name="eps"](%247)
+[DUMP profiling_graph_executor_impl.cpp:551]   %256 : Tensor = aten::add(%std.12, %255, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %257 : Tensor = aten::div(%254, %256) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %258 : Tensor = prim::GetAttr[name="b_2"](%247)
+[DUMP profiling_graph_executor_impl.cpp:551]   %259 : Tensor = aten::add(%257, %258, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %260 : Tensor = prim::CallMethod[name="forward"](%245, %259) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %261 : bool = prim::GetAttr[name="training"](%246)
+[DUMP profiling_graph_executor_impl.cpp:551]   %262 : Tensor = aten::dropout(%260, %8, %261) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.24 : Tensor = aten::add(%x.22, %262, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %264 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%39)
+[DUMP profiling_graph_executor_impl.cpp:551]   %265 : bool = prim::GetAttr[name="training"](%264)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.15 : Tensor = aten::dropout(%x.24, %8, %265) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %267 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%40)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%267, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %268 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%40)
+[DUMP profiling_graph_executor_impl.cpp:551]   %269 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%40)
+[DUMP profiling_graph_executor_impl.cpp:551]   %270 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%268)
+[DUMP profiling_graph_executor_impl.cpp:551]   %271 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%268)
+[DUMP profiling_graph_executor_impl.cpp:551]   %272 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.13 : Tensor = aten::mean(%x.15, %272, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %274 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.13 : Tensor = aten::std(%x.15, %274, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %276 : Tensor = prim::GetAttr[name="a_2"](%271)
+[DUMP profiling_graph_executor_impl.cpp:551]   %277 : Tensor = aten::sub(%x.15, %mean.13, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %278 : Tensor = aten::mul(%276, %277) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %279 : float = prim::GetAttr[name="eps"](%271)
+[DUMP profiling_graph_executor_impl.cpp:551]   %280 : Tensor = aten::add(%std.13, %279, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %281 : Tensor = aten::div(%278, %280) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %282 : Tensor = prim::GetAttr[name="b_2"](%271)
+[DUMP profiling_graph_executor_impl.cpp:551]   %283 : Tensor = aten::add(%281, %282, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %284 : Tensor = prim::CallMethod[name="forward"](%269, %283) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %285 : bool = prim::GetAttr[name="training"](%270)
+[DUMP profiling_graph_executor_impl.cpp:551]   %286 : Tensor = aten::dropout(%284, %8, %285) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.26 : Tensor = aten::add(%x.15, %286, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %288 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%40)
+[DUMP profiling_graph_executor_impl.cpp:551]   %289 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%40)
+[DUMP profiling_graph_executor_impl.cpp:551]   %290 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%288)
+[DUMP profiling_graph_executor_impl.cpp:551]   %291 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%288)
+[DUMP profiling_graph_executor_impl.cpp:551]   %292 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.14 : Tensor = aten::mean(%x.26, %292, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %294 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.14 : Tensor = aten::std(%x.26, %294, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %296 : Tensor = prim::GetAttr[name="a_2"](%291)
+[DUMP profiling_graph_executor_impl.cpp:551]   %297 : Tensor = aten::sub(%x.26, %mean.14, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %298 : Tensor = aten::mul(%296, %297) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %299 : float = prim::GetAttr[name="eps"](%291)
+[DUMP profiling_graph_executor_impl.cpp:551]   %300 : Tensor = aten::add(%std.14, %299, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %301 : Tensor = aten::div(%298, %300) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %302 : Tensor = prim::GetAttr[name="b_2"](%291)
+[DUMP profiling_graph_executor_impl.cpp:551]   %303 : Tensor = aten::add(%301, %302, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %304 : Tensor = prim::CallMethod[name="forward"](%289, %303) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %305 : bool = prim::GetAttr[name="training"](%290)
+[DUMP profiling_graph_executor_impl.cpp:551]   %306 : Tensor = aten::dropout(%304, %8, %305) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.28 : Tensor = aten::add(%x.26, %306, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %308 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%40)
+[DUMP profiling_graph_executor_impl.cpp:551]   %309 : bool = prim::GetAttr[name="training"](%308)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.17 : Tensor = aten::dropout(%x.28, %8, %309) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %311 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%41)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%311, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %312 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%41)
+[DUMP profiling_graph_executor_impl.cpp:551]   %313 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%41)
+[DUMP profiling_graph_executor_impl.cpp:551]   %314 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%312)
+[DUMP profiling_graph_executor_impl.cpp:551]   %315 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%312)
+[DUMP profiling_graph_executor_impl.cpp:551]   %316 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.15 : Tensor = aten::mean(%x.17, %316, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %318 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.15 : Tensor = aten::std(%x.17, %318, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %320 : Tensor = prim::GetAttr[name="a_2"](%315)
+[DUMP profiling_graph_executor_impl.cpp:551]   %321 : Tensor = aten::sub(%x.17, %mean.15, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %322 : Tensor = aten::mul(%320, %321) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %323 : float = prim::GetAttr[name="eps"](%315)
+[DUMP profiling_graph_executor_impl.cpp:551]   %324 : Tensor = aten::add(%std.15, %323, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %325 : Tensor = aten::div(%322, %324) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %326 : Tensor = prim::GetAttr[name="b_2"](%315)
+[DUMP profiling_graph_executor_impl.cpp:551]   %327 : Tensor = aten::add(%325, %326, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %328 : Tensor = prim::CallMethod[name="forward"](%313, %327) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %329 : bool = prim::GetAttr[name="training"](%314)
+[DUMP profiling_graph_executor_impl.cpp:551]   %330 : Tensor = aten::dropout(%328, %8, %329) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.30 : Tensor = aten::add(%x.17, %330, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %332 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%41)
+[DUMP profiling_graph_executor_impl.cpp:551]   %333 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%41)
+[DUMP profiling_graph_executor_impl.cpp:551]   %334 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%332)
+[DUMP profiling_graph_executor_impl.cpp:551]   %335 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%332)
+[DUMP profiling_graph_executor_impl.cpp:551]   %336 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.16 : Tensor = aten::mean(%x.30, %336, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %338 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.16 : Tensor = aten::std(%x.30, %338, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %340 : Tensor = prim::GetAttr[name="a_2"](%335)
+[DUMP profiling_graph_executor_impl.cpp:551]   %341 : Tensor = aten::sub(%x.30, %mean.16, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %342 : Tensor = aten::mul(%340, %341) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %343 : float = prim::GetAttr[name="eps"](%335)
+[DUMP profiling_graph_executor_impl.cpp:551]   %344 : Tensor = aten::add(%std.16, %343, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %345 : Tensor = aten::div(%342, %344) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %346 : Tensor = prim::GetAttr[name="b_2"](%335)
+[DUMP profiling_graph_executor_impl.cpp:551]   %347 : Tensor = aten::add(%345, %346, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %348 : Tensor = prim::CallMethod[name="forward"](%333, %347) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %349 : bool = prim::GetAttr[name="training"](%334)
+[DUMP profiling_graph_executor_impl.cpp:551]   %350 : Tensor = aten::dropout(%348, %8, %349) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.31 : Tensor = aten::add(%x.30, %350, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %352 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%41)
+[DUMP profiling_graph_executor_impl.cpp:551]   %353 : bool = prim::GetAttr[name="training"](%352)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.19 : Tensor = aten::dropout(%x.31, %8, %353) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %355 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%42)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%355, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %356 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%42)
+[DUMP profiling_graph_executor_impl.cpp:551]   %357 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%42)
+[DUMP profiling_graph_executor_impl.cpp:551]   %358 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%356)
+[DUMP profiling_graph_executor_impl.cpp:551]   %359 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%356)
+[DUMP profiling_graph_executor_impl.cpp:551]   %360 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.17 : Tensor = aten::mean(%x.19, %360, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %362 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.17 : Tensor = aten::std(%x.19, %362, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %364 : Tensor = prim::GetAttr[name="a_2"](%359)
+[DUMP profiling_graph_executor_impl.cpp:551]   %365 : Tensor = aten::sub(%x.19, %mean.17, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %366 : Tensor = aten::mul(%364, %365) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %367 : float = prim::GetAttr[name="eps"](%359)
+[DUMP profiling_graph_executor_impl.cpp:551]   %368 : Tensor = aten::add(%std.17, %367, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %369 : Tensor = aten::div(%366, %368) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %370 : Tensor = prim::GetAttr[name="b_2"](%359)
+[DUMP profiling_graph_executor_impl.cpp:551]   %371 : Tensor = aten::add(%369, %370, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %372 : Tensor = prim::CallMethod[name="forward"](%357, %371) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %373 : bool = prim::GetAttr[name="training"](%358)
+[DUMP profiling_graph_executor_impl.cpp:551]   %374 : Tensor = aten::dropout(%372, %8, %373) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.32 : Tensor = aten::add(%x.19, %374, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %376 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%42)
+[DUMP profiling_graph_executor_impl.cpp:551]   %377 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%42)
+[DUMP profiling_graph_executor_impl.cpp:551]   %378 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%376)
+[DUMP profiling_graph_executor_impl.cpp:551]   %379 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%376)
+[DUMP profiling_graph_executor_impl.cpp:551]   %380 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.18 : Tensor = aten::mean(%x.32, %380, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %382 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.18 : Tensor = aten::std(%x.32, %382, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %384 : Tensor = prim::GetAttr[name="a_2"](%379)
+[DUMP profiling_graph_executor_impl.cpp:551]   %385 : Tensor = aten::sub(%x.32, %mean.18, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %386 : Tensor = aten::mul(%384, %385) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %387 : float = prim::GetAttr[name="eps"](%379)
+[DUMP profiling_graph_executor_impl.cpp:551]   %388 : Tensor = aten::add(%std.18, %387, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %389 : Tensor = aten::div(%386, %388) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %390 : Tensor = prim::GetAttr[name="b_2"](%379)
+[DUMP profiling_graph_executor_impl.cpp:551]   %391 : Tensor = aten::add(%389, %390, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %392 : Tensor = prim::CallMethod[name="forward"](%377, %391) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %393 : bool = prim::GetAttr[name="training"](%378)
+[DUMP profiling_graph_executor_impl.cpp:551]   %394 : Tensor = aten::dropout(%392, %8, %393) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.33 : Tensor = aten::add(%x.32, %394, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %396 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%42)
+[DUMP profiling_graph_executor_impl.cpp:551]   %397 : bool = prim::GetAttr[name="training"](%396)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.21 : Tensor = aten::dropout(%x.33, %8, %397) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %399 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%43)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%399, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %400 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%43)
+[DUMP profiling_graph_executor_impl.cpp:551]   %401 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%43)
+[DUMP profiling_graph_executor_impl.cpp:551]   %402 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%400)
+[DUMP profiling_graph_executor_impl.cpp:551]   %403 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%400)
+[DUMP profiling_graph_executor_impl.cpp:551]   %404 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.19 : Tensor = aten::mean(%x.21, %404, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %406 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.19 : Tensor = aten::std(%x.21, %406, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %408 : Tensor = prim::GetAttr[name="a_2"](%403)
+[DUMP profiling_graph_executor_impl.cpp:551]   %409 : Tensor = aten::sub(%x.21, %mean.19, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %410 : Tensor = aten::mul(%408, %409) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %411 : float = prim::GetAttr[name="eps"](%403)
+[DUMP profiling_graph_executor_impl.cpp:551]   %412 : Tensor = aten::add(%std.19, %411, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %413 : Tensor = aten::div(%410, %412) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %414 : Tensor = prim::GetAttr[name="b_2"](%403)
+[DUMP profiling_graph_executor_impl.cpp:551]   %415 : Tensor = aten::add(%413, %414, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %416 : Tensor = prim::CallMethod[name="forward"](%401, %415) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %417 : bool = prim::GetAttr[name="training"](%402)
+[DUMP profiling_graph_executor_impl.cpp:551]   %418 : Tensor = aten::dropout(%416, %8, %417) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.34 : Tensor = aten::add(%x.21, %418, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %420 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%43)
+[DUMP profiling_graph_executor_impl.cpp:551]   %421 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%43)
+[DUMP profiling_graph_executor_impl.cpp:551]   %422 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%420)
+[DUMP profiling_graph_executor_impl.cpp:551]   %423 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%420)
+[DUMP profiling_graph_executor_impl.cpp:551]   %424 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.20 : Tensor = aten::mean(%x.34, %424, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %426 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.20 : Tensor = aten::std(%x.34, %426, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %428 : Tensor = prim::GetAttr[name="a_2"](%423)
+[DUMP profiling_graph_executor_impl.cpp:551]   %429 : Tensor = aten::sub(%x.34, %mean.20, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %430 : Tensor = aten::mul(%428, %429) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %431 : float = prim::GetAttr[name="eps"](%423)
+[DUMP profiling_graph_executor_impl.cpp:551]   %432 : Tensor = aten::add(%std.20, %431, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %433 : Tensor = aten::div(%430, %432) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %434 : Tensor = prim::GetAttr[name="b_2"](%423)
+[DUMP profiling_graph_executor_impl.cpp:551]   %435 : Tensor = aten::add(%433, %434, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %436 : Tensor = prim::CallMethod[name="forward"](%421, %435) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %437 : bool = prim::GetAttr[name="training"](%422)
+[DUMP profiling_graph_executor_impl.cpp:551]   %438 : Tensor = aten::dropout(%436, %8, %437) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.35 : Tensor = aten::add(%x.34, %438, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %440 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%43)
+[DUMP profiling_graph_executor_impl.cpp:551]   %441 : bool = prim::GetAttr[name="training"](%440)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.23 : Tensor = aten::dropout(%x.35, %8, %441) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %443 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%44)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%443, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %444 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%44)
+[DUMP profiling_graph_executor_impl.cpp:551]   %445 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%44)
+[DUMP profiling_graph_executor_impl.cpp:551]   %446 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%444)
+[DUMP profiling_graph_executor_impl.cpp:551]   %447 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%444)
+[DUMP profiling_graph_executor_impl.cpp:551]   %448 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.21 : Tensor = aten::mean(%x.23, %448, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %450 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.21 : Tensor = aten::std(%x.23, %450, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %452 : Tensor = prim::GetAttr[name="a_2"](%447)
+[DUMP profiling_graph_executor_impl.cpp:551]   %453 : Tensor = aten::sub(%x.23, %mean.21, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %454 : Tensor = aten::mul(%452, %453) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %455 : float = prim::GetAttr[name="eps"](%447)
+[DUMP profiling_graph_executor_impl.cpp:551]   %456 : Tensor = aten::add(%std.21, %455, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %457 : Tensor = aten::div(%454, %456) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %458 : Tensor = prim::GetAttr[name="b_2"](%447)
+[DUMP profiling_graph_executor_impl.cpp:551]   %459 : Tensor = aten::add(%457, %458, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %460 : Tensor = prim::CallMethod[name="forward"](%445, %459) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %461 : bool = prim::GetAttr[name="training"](%446)
+[DUMP profiling_graph_executor_impl.cpp:551]   %462 : Tensor = aten::dropout(%460, %8, %461) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.36 : Tensor = aten::add(%x.23, %462, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %464 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%44)
+[DUMP profiling_graph_executor_impl.cpp:551]   %465 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%44)
+[DUMP profiling_graph_executor_impl.cpp:551]   %466 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%464)
+[DUMP profiling_graph_executor_impl.cpp:551]   %467 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%464)
+[DUMP profiling_graph_executor_impl.cpp:551]   %468 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.22 : Tensor = aten::mean(%x.36, %468, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %470 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.22 : Tensor = aten::std(%x.36, %470, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %472 : Tensor = prim::GetAttr[name="a_2"](%467)
+[DUMP profiling_graph_executor_impl.cpp:551]   %473 : Tensor = aten::sub(%x.36, %mean.22, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %474 : Tensor = aten::mul(%472, %473) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %475 : float = prim::GetAttr[name="eps"](%467)
+[DUMP profiling_graph_executor_impl.cpp:551]   %476 : Tensor = aten::add(%std.22, %475, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %477 : Tensor = aten::div(%474, %476) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %478 : Tensor = prim::GetAttr[name="b_2"](%467)
+[DUMP profiling_graph_executor_impl.cpp:551]   %479 : Tensor = aten::add(%477, %478, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %480 : Tensor = prim::CallMethod[name="forward"](%465, %479) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %481 : bool = prim::GetAttr[name="training"](%466)
+[DUMP profiling_graph_executor_impl.cpp:551]   %482 : Tensor = aten::dropout(%480, %8, %481) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.37 : Tensor = aten::add(%x.36, %482, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %484 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%44)
+[DUMP profiling_graph_executor_impl.cpp:551]   %485 : bool = prim::GetAttr[name="training"](%484)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.25 : Tensor = aten::dropout(%x.37, %8, %485) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %487 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%45)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%487, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %488 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%45)
+[DUMP profiling_graph_executor_impl.cpp:551]   %489 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%45)
+[DUMP profiling_graph_executor_impl.cpp:551]   %490 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%488)
+[DUMP profiling_graph_executor_impl.cpp:551]   %491 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%488)
+[DUMP profiling_graph_executor_impl.cpp:551]   %492 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.23 : Tensor = aten::mean(%x.25, %492, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %494 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.23 : Tensor = aten::std(%x.25, %494, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %496 : Tensor = prim::GetAttr[name="a_2"](%491)
+[DUMP profiling_graph_executor_impl.cpp:551]   %497 : Tensor = aten::sub(%x.25, %mean.23, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %498 : Tensor = aten::mul(%496, %497) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %499 : float = prim::GetAttr[name="eps"](%491)
+[DUMP profiling_graph_executor_impl.cpp:551]   %500 : Tensor = aten::add(%std.23, %499, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %501 : Tensor = aten::div(%498, %500) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %502 : Tensor = prim::GetAttr[name="b_2"](%491)
+[DUMP profiling_graph_executor_impl.cpp:551]   %503 : Tensor = aten::add(%501, %502, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %504 : Tensor = prim::CallMethod[name="forward"](%489, %503) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %505 : bool = prim::GetAttr[name="training"](%490)
+[DUMP profiling_graph_executor_impl.cpp:551]   %506 : Tensor = aten::dropout(%504, %8, %505) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.38 : Tensor = aten::add(%x.25, %506, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %508 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%45)
+[DUMP profiling_graph_executor_impl.cpp:551]   %509 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%45)
+[DUMP profiling_graph_executor_impl.cpp:551]   %510 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%508)
+[DUMP profiling_graph_executor_impl.cpp:551]   %511 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%508)
+[DUMP profiling_graph_executor_impl.cpp:551]   %512 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.24 : Tensor = aten::mean(%x.38, %512, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %514 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.24 : Tensor = aten::std(%x.38, %514, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %516 : Tensor = prim::GetAttr[name="a_2"](%511)
+[DUMP profiling_graph_executor_impl.cpp:551]   %517 : Tensor = aten::sub(%x.38, %mean.24, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %518 : Tensor = aten::mul(%516, %517) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %519 : float = prim::GetAttr[name="eps"](%511)
+[DUMP profiling_graph_executor_impl.cpp:551]   %520 : Tensor = aten::add(%std.24, %519, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %521 : Tensor = aten::div(%518, %520) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %522 : Tensor = prim::GetAttr[name="b_2"](%511)
+[DUMP profiling_graph_executor_impl.cpp:551]   %523 : Tensor = aten::add(%521, %522, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %524 : Tensor = prim::CallMethod[name="forward"](%509, %523) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %525 : bool = prim::GetAttr[name="training"](%510)
+[DUMP profiling_graph_executor_impl.cpp:551]   %526 : Tensor = aten::dropout(%524, %8, %525) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.39 : Tensor = aten::add(%x.38, %526, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %528 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%45)
+[DUMP profiling_graph_executor_impl.cpp:551]   %529 : bool = prim::GetAttr[name="training"](%528)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.27 : Tensor = aten::dropout(%x.39, %8, %529) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %531 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%46)
+[DUMP profiling_graph_executor_impl.cpp:551]    = prim::SetAttr[name="mask"](%531, %mask.1)
+[DUMP profiling_graph_executor_impl.cpp:551]   %532 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="input_sublayer"](%46)
+[DUMP profiling_graph_executor_impl.cpp:551]   %533 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.transformer.LambdaModule = prim::GetAttr[name="lambda_module"](%46)
+[DUMP profiling_graph_executor_impl.cpp:551]   %534 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%532)
+[DUMP profiling_graph_executor_impl.cpp:551]   %535 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%532)
+[DUMP profiling_graph_executor_impl.cpp:551]   %536 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.2 : Tensor = aten::mean(%x.27, %536, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %538 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.2 : Tensor = aten::std(%x.27, %538, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %540 : Tensor = prim::GetAttr[name="a_2"](%535)
+[DUMP profiling_graph_executor_impl.cpp:551]   %541 : Tensor = aten::sub(%x.27, %mean.2, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %542 : Tensor = aten::mul(%540, %541) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %543 : float = prim::GetAttr[name="eps"](%535)
+[DUMP profiling_graph_executor_impl.cpp:551]   %544 : Tensor = aten::add(%std.2, %543, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %545 : Tensor = aten::div(%542, %544) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %546 : Tensor = prim::GetAttr[name="b_2"](%535)
+[DUMP profiling_graph_executor_impl.cpp:551]   %547 : Tensor = aten::add(%545, %546, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %548 : Tensor = prim::CallMethod[name="forward"](%533, %547) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %549 : bool = prim::GetAttr[name="training"](%534)
+[DUMP profiling_graph_executor_impl.cpp:551]   %550 : Tensor = aten::dropout(%548, %8, %549) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.3 : Tensor = aten::add(%x.27, %550, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %552 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.sublayer.SublayerConnection = prim::GetAttr[name="output_sublayer"](%46)
+[DUMP profiling_graph_executor_impl.cpp:551]   %553 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.feed_forward.PositionwiseFeedForward = prim::GetAttr[name="feed_forward"](%46)
+[DUMP profiling_graph_executor_impl.cpp:551]   %554 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%552)
+[DUMP profiling_graph_executor_impl.cpp:551]   %555 : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.utils.layer_norm.LayerNorm = prim::GetAttr[name="norm"](%552)
+[DUMP profiling_graph_executor_impl.cpp:551]   %556 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %mean.1 : Tensor = aten::mean(%x.3, %556, %4, %3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:15:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %558 : int[] = prim::ListConstruct(%5)
+[DUMP profiling_graph_executor_impl.cpp:551]   %std.1 : Tensor = aten::std(%x.3, %558, %4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:16:14
+[DUMP profiling_graph_executor_impl.cpp:551]   %560 : Tensor = prim::GetAttr[name="a_2"](%555)
+[DUMP profiling_graph_executor_impl.cpp:551]   %561 : Tensor = aten::sub(%x.3, %mean.1, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:27
+[DUMP profiling_graph_executor_impl.cpp:551]   %562 : Tensor = aten::mul(%560, %561) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %563 : float = prim::GetAttr[name="eps"](%555)
+[DUMP profiling_graph_executor_impl.cpp:551]   %564 : Tensor = aten::add(%std.1, %563, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:40
+[DUMP profiling_graph_executor_impl.cpp:551]   %565 : Tensor = aten::div(%562, %564) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %566 : Tensor = prim::GetAttr[name="b_2"](%555)
+[DUMP profiling_graph_executor_impl.cpp:551]   %567 : Tensor = aten::add(%565, %566, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/layer_norm.py:17:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %568 : Tensor = prim::CallMethod[name="forward"](%553, %567) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %569 : bool = prim::GetAttr[name="training"](%554)
+[DUMP profiling_graph_executor_impl.cpp:551]   %570 : Tensor = aten::dropout(%568, %8, %569) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.5 : Tensor = aten::add(%x.3, %570, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/utils/sublayer.py:18:15
+[DUMP profiling_graph_executor_impl.cpp:551]   %572 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%46)
+[DUMP profiling_graph_executor_impl.cpp:551]   %573 : bool = prim::GetAttr[name="training"](%572)
+[DUMP profiling_graph_executor_impl.cpp:551]   %x.29 : Tensor = aten::dropout(%x.5, %8, %573) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%x.29)
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (float, float) = prim::Constant[value=(1., 1.)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (bool) = prim::Constant[value=(True,)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (bool) = prim::Constant[value=(True,)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (int) = prim::Constant[value=(0,)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (bool) = prim::Constant[value=(False,)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph():
+[DUMP profiling_graph_executor_impl.cpp:551]   %0 : (int) = prim::Constant[value=(0,)]()
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%0)
+[DUMP profiling_graph_executor_impl.cpp:551] graph(%self : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.attention.multi_head.DropoutWrapper,
+[DUMP profiling_graph_executor_impl.cpp:551]       %x.1 : Tensor):
+[DUMP profiling_graph_executor_impl.cpp:551]   %2 : float = prim::Constant[value=0.10000000000000001]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/dropout.py:58:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %3 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%self)
+[DUMP profiling_graph_executor_impl.cpp:551]   %4 : bool = prim::GetAttr[name="training"](%3)
+[DUMP profiling_graph_executor_impl.cpp:551]   %5 : Tensor = aten::dropout(%x.1, %2, %4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%5)
+[DUMP profiling_graph_executor_impl.cpp:551] graph(%self : __torch__.torchbenchmark.models.BERT_pytorch.bert_pytorch.model.attention.multi_head.DropoutWrapper,
+[DUMP profiling_graph_executor_impl.cpp:551]       %x.1 : Tensor):
+[DUMP profiling_graph_executor_impl.cpp:551]   %2 : float = prim::Constant[value=0.10000000000000001]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/dropout.py:58:32
+[DUMP profiling_graph_executor_impl.cpp:551]   %3 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%self)
+[DUMP profiling_graph_executor_impl.cpp:551]   %4 : bool = prim::GetAttr[name="training"](%3)
+[DUMP profiling_graph_executor_impl.cpp:551]   %5 : Tensor = aten::dropout(%x.1, %2, %4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+[DUMP profiling_graph_executor_impl.cpp:551]   return (%5)
