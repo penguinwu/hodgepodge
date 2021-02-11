@@ -1,0 +1,577 @@
+Warning: <module 'torchbenchmark.models.maskrcnn_benchmark' (namespace)> does not define attribute Model, skip it
+Dump graph IR for pytorch_stargan using example inputs
+graph(%self : __torch__.torchbenchmark.models.pytorch_stargan.model.Generator,
+      %x.1 : Tensor,
+      %c.1 : Tensor):
+  %558 : int[] = prim::Constant[value=[0, 0]]()
+  %516 : int[] = prim::Constant[value=[2, 2]]()
+  %514 : int[] = prim::Constant[value=[3, 3]]()
+  %513 : int[] = prim::Constant[value=[1, 1]]()
+  %12 : int = prim::Constant[value=0]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:59:26
+  %11 : int = prim::Constant[value=1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:59:37
+  %10 : int = prim::Constant[value=2]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:60:34
+  %9 : int = prim::Constant[value=3]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:60:45
+  %8 : int = prim::Constant[value=4]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212:26
+  %7 : str = prim::Constant[value="expected 4D input (got {}D input)"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:213:29
+  %6 : float = prim::Constant[value=1.0000000000000001e-05]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:59:74
+  %5 : float = prim::Constant[value=0.10000000000000001]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:59:59
+  %4 : str = prim::Constant[value="Expected more than 1 value per channel when training, got input size {}"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+  %3 : bool = prim::Constant[value=1]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2183:88
+  %13 : int = aten::size(%c.1, %12) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:59:19
+  %14 : int = aten::size(%c.1, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:59:30
+  %15 : int[] = prim::ListConstruct(%13, %14, %11, %11)
+  %c.5 : Tensor = aten::view(%c.1, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:59:12
+  %17 : int = aten::size(%x.1, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:60:27
+  %18 : int = aten::size(%x.1, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:60:38
+  %19 : int[] = prim::ListConstruct(%11, %11, %17, %18)
+  %c.7 : Tensor = aten::repeat(%c.5, %19) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:60:12
+  %21 : Tensor[] = prim::ListConstruct(%x.1, %c.7)
+  %x.5 : Tensor = aten::cat(%21, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:61:12
+  %23 : __torch__.torch.nn.modules.container.___torch_mangle_7.Sequential = prim::GetAttr[name="main"](%self)
+  %24 : __torch__.torch.nn.modules.conv.Conv2d = prim::GetAttr[name="0"](%23)
+  %25 : __torch__.torch.nn.modules.instancenorm.InstanceNorm2d = prim::GetAttr[name="1"](%23)
+  %26 : __torch__.torch.nn.modules.conv.___torch_mangle_0.Conv2d = prim::GetAttr[name="3"](%23)
+  %27 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_1.InstanceNorm2d = prim::GetAttr[name="4"](%23)
+  %28 : __torch__.torch.nn.modules.conv.___torch_mangle_2.Conv2d = prim::GetAttr[name="6"](%23)
+  %29 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="7"](%23)
+  %30 : __torch__.torchbenchmark.models.pytorch_stargan.model.ResidualBlock = prim::GetAttr[name="9"](%23)
+  %31 : __torch__.torchbenchmark.models.pytorch_stargan.model.ResidualBlock = prim::GetAttr[name="10"](%23)
+  %32 : __torch__.torchbenchmark.models.pytorch_stargan.model.ResidualBlock = prim::GetAttr[name="11"](%23)
+  %33 : __torch__.torchbenchmark.models.pytorch_stargan.model.ResidualBlock = prim::GetAttr[name="12"](%23)
+  %34 : __torch__.torchbenchmark.models.pytorch_stargan.model.ResidualBlock = prim::GetAttr[name="13"](%23)
+  %35 : __torch__.torchbenchmark.models.pytorch_stargan.model.ResidualBlock = prim::GetAttr[name="14"](%23)
+  %36 : __torch__.torch.nn.modules.conv.ConvTranspose2d = prim::GetAttr[name="15"](%23)
+  %37 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_1.InstanceNorm2d = prim::GetAttr[name="16"](%23)
+  %38 : __torch__.torch.nn.modules.conv.___torch_mangle_5.ConvTranspose2d = prim::GetAttr[name="18"](%23)
+  %39 : __torch__.torch.nn.modules.instancenorm.InstanceNorm2d = prim::GetAttr[name="19"](%23)
+  %40 : __torch__.torch.nn.modules.conv.___torch_mangle_6.Conv2d = prim::GetAttr[name="21"](%23)
+  %41 : Tensor = prim::GetAttr[name="weight"](%24)
+  %42 : Tensor? = prim::GetAttr[name="bias"](%24)
+  %input.4 : Tensor = aten::conv2d(%x.5, %41, %42, %513, %514, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %47 : Tensor = prim::GetAttr[name="running_mean"](%25)
+  %48 : Tensor = prim::GetAttr[name="running_var"](%25)
+  %49 : Tensor = prim::GetAttr[name="weight"](%25)
+  %50 : Tensor = prim::GetAttr[name="bias"](%25)
+  %51 : bool = prim::GetAttr[name="training"](%25)
+  %52 : int[] = aten::size(%input.4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.12 : int = aten::__getitem__(%52, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %54 : int = aten::len(%52) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %55 : int = aten::sub(%54, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.13 : int = prim::Loop(%55, %3, %size_prods.12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.4 : int, %size_prods.14 : int):
+      %59 : int = aten::add(%i.4, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %60 : int = aten::__getitem__(%52, %59) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.15 : int = aten::mul(%size_prods.14, %60) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.15)
+  %62 : bool = aten::eq(%size_prods.13, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%62) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %63 : str = aten::format(%4, %52) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%63) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.6 : Tensor = aten::instance_norm(%input.4, %49, %50, %47, %48, %51, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.8 : Tensor = aten::relu_(%input.6) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %66 : Tensor = prim::GetAttr[name="weight"](%26)
+  %67 : Tensor? = prim::GetAttr[name="bias"](%26)
+  %input.10 : Tensor = aten::conv2d(%input.8, %66, %67, %516, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %72 : Tensor = prim::GetAttr[name="running_mean"](%27)
+  %73 : Tensor = prim::GetAttr[name="running_var"](%27)
+  %74 : Tensor = prim::GetAttr[name="weight"](%27)
+  %75 : Tensor = prim::GetAttr[name="bias"](%27)
+  %76 : bool = prim::GetAttr[name="training"](%27)
+  %77 : int[] = aten::size(%input.10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.8 : int = aten::__getitem__(%77, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %79 : int = aten::len(%77) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %80 : int = aten::sub(%79, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.9 : int = prim::Loop(%80, %3, %size_prods.8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.3 : int, %size_prods.10 : int):
+      %84 : int = aten::add(%i.3, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %85 : int = aten::__getitem__(%77, %84) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.11 : int = aten::mul(%size_prods.10, %85) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.11)
+  %87 : bool = aten::eq(%size_prods.9, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%87) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %88 : str = aten::format(%4, %77) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%88) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.12 : Tensor = aten::instance_norm(%input.10, %74, %75, %72, %73, %76, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.13 : Tensor = aten::relu_(%input.12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %91 : Tensor = prim::GetAttr[name="weight"](%28)
+  %92 : Tensor? = prim::GetAttr[name="bias"](%28)
+  %input.15 : Tensor = aten::conv2d(%input.13, %91, %92, %516, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %97 : Tensor = prim::GetAttr[name="running_mean"](%29)
+  %98 : Tensor = prim::GetAttr[name="running_var"](%29)
+  %99 : Tensor = prim::GetAttr[name="weight"](%29)
+  %100 : Tensor = prim::GetAttr[name="bias"](%29)
+  %101 : bool = prim::GetAttr[name="training"](%29)
+  %102 : int[] = aten::size(%input.15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.16 : int = aten::__getitem__(%102, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %104 : int = aten::len(%102) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %105 : int = aten::sub(%104, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.17 : int = prim::Loop(%105, %3, %size_prods.16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.5 : int, %size_prods.18 : int):
+      %109 : int = aten::add(%i.5, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %110 : int = aten::__getitem__(%102, %109) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.19 : int = aten::mul(%size_prods.18, %110) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.19)
+  %112 : bool = aten::eq(%size_prods.17, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%112) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %113 : str = aten::format(%4, %102) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%113) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.17 : Tensor = aten::instance_norm(%input.15, %99, %100, %97, %98, %101, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.19 : Tensor = aten::relu_(%input.17) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %116 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="main"](%30)
+  %117 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="0"](%116)
+  %118 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="1"](%116)
+  %119 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="3"](%116)
+  %120 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="4"](%116)
+  %121 : Tensor = prim::GetAttr[name="weight"](%117)
+  %122 : Tensor? = prim::GetAttr[name="bias"](%117)
+  %input.14 : Tensor = aten::conv2d(%input.19, %121, %122, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %127 : Tensor = prim::GetAttr[name="running_mean"](%118)
+  %128 : Tensor = prim::GetAttr[name="running_var"](%118)
+  %129 : Tensor = prim::GetAttr[name="weight"](%118)
+  %130 : Tensor = prim::GetAttr[name="bias"](%118)
+  %131 : bool = prim::GetAttr[name="training"](%118)
+  %132 : int[] = aten::size(%input.14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.20 : int = aten::__getitem__(%132, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %134 : int = aten::len(%132) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %135 : int = aten::sub(%134, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.21 : int = prim::Loop(%135, %3, %size_prods.20) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.6 : int, %size_prods.22 : int):
+      %139 : int = aten::add(%i.6, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %140 : int = aten::__getitem__(%132, %139) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.23 : int = aten::mul(%size_prods.22, %140) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.23)
+  %142 : bool = aten::eq(%size_prods.21, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%142) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %143 : str = aten::format(%4, %132) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%143) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.16 : Tensor = aten::instance_norm(%input.14, %129, %130, %127, %128, %131, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.18 : Tensor = aten::relu_(%input.16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %146 : Tensor = prim::GetAttr[name="weight"](%119)
+  %147 : Tensor? = prim::GetAttr[name="bias"](%119)
+  %input.20 : Tensor = aten::conv2d(%input.18, %146, %147, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %152 : Tensor = prim::GetAttr[name="running_mean"](%120)
+  %153 : Tensor = prim::GetAttr[name="running_var"](%120)
+  %154 : Tensor = prim::GetAttr[name="weight"](%120)
+  %155 : Tensor = prim::GetAttr[name="bias"](%120)
+  %156 : bool = prim::GetAttr[name="training"](%120)
+  %157 : int[] = aten::size(%input.20) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.24 : int = aten::__getitem__(%157, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %159 : int = aten::len(%157) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %160 : int = aten::sub(%159, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.25 : int = prim::Loop(%160, %3, %size_prods.24) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.7 : int, %size_prods.26 : int):
+      %164 : int = aten::add(%i.7, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %165 : int = aten::__getitem__(%157, %164) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.27 : int = aten::mul(%size_prods.26, %165) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.27)
+  %167 : bool = aten::eq(%size_prods.25, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%167) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %168 : str = aten::format(%4, %157) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%168) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.22 : Tensor = aten::instance_norm(%input.20, %154, %155, %152, %153, %156, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.21 : Tensor = aten::add(%input.19, %input.22, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:19:15
+  %171 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="main"](%31)
+  %172 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="0"](%171)
+  %173 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="1"](%171)
+  %174 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="3"](%171)
+  %175 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="4"](%171)
+  %176 : Tensor = prim::GetAttr[name="weight"](%172)
+  %177 : Tensor? = prim::GetAttr[name="bias"](%172)
+  %input.24 : Tensor = aten::conv2d(%input.21, %176, %177, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %182 : Tensor = prim::GetAttr[name="running_mean"](%173)
+  %183 : Tensor = prim::GetAttr[name="running_var"](%173)
+  %184 : Tensor = prim::GetAttr[name="weight"](%173)
+  %185 : Tensor = prim::GetAttr[name="bias"](%173)
+  %186 : bool = prim::GetAttr[name="training"](%173)
+  %187 : int[] = aten::size(%input.24) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.28 : int = aten::__getitem__(%187, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %189 : int = aten::len(%187) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %190 : int = aten::sub(%189, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.29 : int = prim::Loop(%190, %3, %size_prods.28) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.8 : int, %size_prods.30 : int):
+      %194 : int = aten::add(%i.8, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %195 : int = aten::__getitem__(%187, %194) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.31 : int = aten::mul(%size_prods.30, %195) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.31)
+  %197 : bool = aten::eq(%size_prods.29, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%197) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %198 : str = aten::format(%4, %187) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%198) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.26 : Tensor = aten::instance_norm(%input.24, %184, %185, %182, %183, %186, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.28 : Tensor = aten::relu_(%input.26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %201 : Tensor = prim::GetAttr[name="weight"](%174)
+  %202 : Tensor? = prim::GetAttr[name="bias"](%174)
+  %input.30 : Tensor = aten::conv2d(%input.28, %201, %202, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %207 : Tensor = prim::GetAttr[name="running_mean"](%175)
+  %208 : Tensor = prim::GetAttr[name="running_var"](%175)
+  %209 : Tensor = prim::GetAttr[name="weight"](%175)
+  %210 : Tensor = prim::GetAttr[name="bias"](%175)
+  %211 : bool = prim::GetAttr[name="training"](%175)
+  %212 : int[] = aten::size(%input.30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.32 : int = aten::__getitem__(%212, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %214 : int = aten::len(%212) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %215 : int = aten::sub(%214, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.33 : int = prim::Loop(%215, %3, %size_prods.32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.9 : int, %size_prods.34 : int):
+      %219 : int = aten::add(%i.9, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %220 : int = aten::__getitem__(%212, %219) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.35 : int = aten::mul(%size_prods.34, %220) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.35)
+  %222 : bool = aten::eq(%size_prods.33, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%222) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %223 : str = aten::format(%4, %212) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%223) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.32 : Tensor = aten::instance_norm(%input.30, %209, %210, %207, %208, %211, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.23 : Tensor = aten::add(%input.21, %input.32, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:19:15
+  %226 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="main"](%32)
+  %227 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="0"](%226)
+  %228 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="1"](%226)
+  %229 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="3"](%226)
+  %230 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="4"](%226)
+  %231 : Tensor = prim::GetAttr[name="weight"](%227)
+  %232 : Tensor? = prim::GetAttr[name="bias"](%227)
+  %input.34 : Tensor = aten::conv2d(%input.23, %231, %232, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %237 : Tensor = prim::GetAttr[name="running_mean"](%228)
+  %238 : Tensor = prim::GetAttr[name="running_var"](%228)
+  %239 : Tensor = prim::GetAttr[name="weight"](%228)
+  %240 : Tensor = prim::GetAttr[name="bias"](%228)
+  %241 : bool = prim::GetAttr[name="training"](%228)
+  %242 : int[] = aten::size(%input.34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.36 : int = aten::__getitem__(%242, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %244 : int = aten::len(%242) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %245 : int = aten::sub(%244, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.37 : int = prim::Loop(%245, %3, %size_prods.36) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.10 : int, %size_prods.38 : int):
+      %249 : int = aten::add(%i.10, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %250 : int = aten::__getitem__(%242, %249) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.39 : int = aten::mul(%size_prods.38, %250) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.39)
+  %252 : bool = aten::eq(%size_prods.37, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%252) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %253 : str = aten::format(%4, %242) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%253) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.36 : Tensor = aten::instance_norm(%input.34, %239, %240, %237, %238, %241, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.38 : Tensor = aten::relu_(%input.36) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %256 : Tensor = prim::GetAttr[name="weight"](%229)
+  %257 : Tensor? = prim::GetAttr[name="bias"](%229)
+  %input.40 : Tensor = aten::conv2d(%input.38, %256, %257, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %262 : Tensor = prim::GetAttr[name="running_mean"](%230)
+  %263 : Tensor = prim::GetAttr[name="running_var"](%230)
+  %264 : Tensor = prim::GetAttr[name="weight"](%230)
+  %265 : Tensor = prim::GetAttr[name="bias"](%230)
+  %266 : bool = prim::GetAttr[name="training"](%230)
+  %267 : int[] = aten::size(%input.40) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.40 : int = aten::__getitem__(%267, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %269 : int = aten::len(%267) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %270 : int = aten::sub(%269, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.41 : int = prim::Loop(%270, %3, %size_prods.40) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.11 : int, %size_prods.42 : int):
+      %274 : int = aten::add(%i.11, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %275 : int = aten::__getitem__(%267, %274) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.43 : int = aten::mul(%size_prods.42, %275) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.43)
+  %277 : bool = aten::eq(%size_prods.41, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%277) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %278 : str = aten::format(%4, %267) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%278) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.42 : Tensor = aten::instance_norm(%input.40, %264, %265, %262, %263, %266, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.25 : Tensor = aten::add(%input.23, %input.42, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:19:15
+  %281 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="main"](%33)
+  %282 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="0"](%281)
+  %283 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="1"](%281)
+  %284 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="3"](%281)
+  %285 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="4"](%281)
+  %286 : Tensor = prim::GetAttr[name="weight"](%282)
+  %287 : Tensor? = prim::GetAttr[name="bias"](%282)
+  %input.44 : Tensor = aten::conv2d(%input.25, %286, %287, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %292 : Tensor = prim::GetAttr[name="running_mean"](%283)
+  %293 : Tensor = prim::GetAttr[name="running_var"](%283)
+  %294 : Tensor = prim::GetAttr[name="weight"](%283)
+  %295 : Tensor = prim::GetAttr[name="bias"](%283)
+  %296 : bool = prim::GetAttr[name="training"](%283)
+  %297 : int[] = aten::size(%input.44) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.44 : int = aten::__getitem__(%297, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %299 : int = aten::len(%297) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %300 : int = aten::sub(%299, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.45 : int = prim::Loop(%300, %3, %size_prods.44) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.12 : int, %size_prods.46 : int):
+      %304 : int = aten::add(%i.12, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %305 : int = aten::__getitem__(%297, %304) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.47 : int = aten::mul(%size_prods.46, %305) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.47)
+  %307 : bool = aten::eq(%size_prods.45, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%307) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %308 : str = aten::format(%4, %297) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%308) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.46 : Tensor = aten::instance_norm(%input.44, %294, %295, %292, %293, %296, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.48 : Tensor = aten::relu_(%input.46) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %311 : Tensor = prim::GetAttr[name="weight"](%284)
+  %312 : Tensor? = prim::GetAttr[name="bias"](%284)
+  %input.49 : Tensor = aten::conv2d(%input.48, %311, %312, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %317 : Tensor = prim::GetAttr[name="running_mean"](%285)
+  %318 : Tensor = prim::GetAttr[name="running_var"](%285)
+  %319 : Tensor = prim::GetAttr[name="weight"](%285)
+  %320 : Tensor = prim::GetAttr[name="bias"](%285)
+  %321 : bool = prim::GetAttr[name="training"](%285)
+  %322 : int[] = aten::size(%input.49) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.48 : int = aten::__getitem__(%322, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %324 : int = aten::len(%322) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %325 : int = aten::sub(%324, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.49 : int = prim::Loop(%325, %3, %size_prods.48) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.13 : int, %size_prods.50 : int):
+      %329 : int = aten::add(%i.13, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %330 : int = aten::__getitem__(%322, %329) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.51 : int = aten::mul(%size_prods.50, %330) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.51)
+  %332 : bool = aten::eq(%size_prods.49, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%332) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %333 : str = aten::format(%4, %322) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%333) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.50 : Tensor = aten::instance_norm(%input.49, %319, %320, %317, %318, %321, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.27 : Tensor = aten::add(%input.25, %input.50, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:19:15
+  %336 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="main"](%34)
+  %337 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="0"](%336)
+  %338 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="1"](%336)
+  %339 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="3"](%336)
+  %340 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="4"](%336)
+  %341 : Tensor = prim::GetAttr[name="weight"](%337)
+  %342 : Tensor? = prim::GetAttr[name="bias"](%337)
+  %input.51 : Tensor = aten::conv2d(%input.27, %341, %342, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %347 : Tensor = prim::GetAttr[name="running_mean"](%338)
+  %348 : Tensor = prim::GetAttr[name="running_var"](%338)
+  %349 : Tensor = prim::GetAttr[name="weight"](%338)
+  %350 : Tensor = prim::GetAttr[name="bias"](%338)
+  %351 : bool = prim::GetAttr[name="training"](%338)
+  %352 : int[] = aten::size(%input.51) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.52 : int = aten::__getitem__(%352, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %354 : int = aten::len(%352) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %355 : int = aten::sub(%354, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.53 : int = prim::Loop(%355, %3, %size_prods.52) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.14 : int, %size_prods.54 : int):
+      %359 : int = aten::add(%i.14, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %360 : int = aten::__getitem__(%352, %359) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.55 : int = aten::mul(%size_prods.54, %360) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.55)
+  %362 : bool = aten::eq(%size_prods.53, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%362) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %363 : str = aten::format(%4, %352) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%363) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.52 : Tensor = aten::instance_norm(%input.51, %349, %350, %347, %348, %351, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.53 : Tensor = aten::relu_(%input.52) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %366 : Tensor = prim::GetAttr[name="weight"](%339)
+  %367 : Tensor? = prim::GetAttr[name="bias"](%339)
+  %input.54 : Tensor = aten::conv2d(%input.53, %366, %367, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %372 : Tensor = prim::GetAttr[name="running_mean"](%340)
+  %373 : Tensor = prim::GetAttr[name="running_var"](%340)
+  %374 : Tensor = prim::GetAttr[name="weight"](%340)
+  %375 : Tensor = prim::GetAttr[name="bias"](%340)
+  %376 : bool = prim::GetAttr[name="training"](%340)
+  %377 : int[] = aten::size(%input.54) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.56 : int = aten::__getitem__(%377, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %379 : int = aten::len(%377) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %380 : int = aten::sub(%379, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.57 : int = prim::Loop(%380, %3, %size_prods.56) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.15 : int, %size_prods.58 : int):
+      %384 : int = aten::add(%i.15, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %385 : int = aten::__getitem__(%377, %384) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.59 : int = aten::mul(%size_prods.58, %385) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.59)
+  %387 : bool = aten::eq(%size_prods.57, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%387) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %388 : str = aten::format(%4, %377) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%388) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.55 : Tensor = aten::instance_norm(%input.54, %374, %375, %372, %373, %376, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.29 : Tensor = aten::add(%input.27, %input.55, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:19:15
+  %391 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="main"](%35)
+  %392 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="0"](%391)
+  %393 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="1"](%391)
+  %394 : __torch__.torch.nn.modules.conv.___torch_mangle_4.Conv2d = prim::GetAttr[name="3"](%391)
+  %395 : __torch__.torch.nn.modules.instancenorm.___torch_mangle_3.InstanceNorm2d = prim::GetAttr[name="4"](%391)
+  %396 : Tensor = prim::GetAttr[name="weight"](%392)
+  %397 : Tensor? = prim::GetAttr[name="bias"](%392)
+  %input.3 : Tensor = aten::conv2d(%input.29, %396, %397, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %402 : Tensor = prim::GetAttr[name="running_mean"](%393)
+  %403 : Tensor = prim::GetAttr[name="running_var"](%393)
+  %404 : Tensor = prim::GetAttr[name="weight"](%393)
+  %405 : Tensor = prim::GetAttr[name="bias"](%393)
+  %406 : bool = prim::GetAttr[name="training"](%393)
+  %407 : int[] = aten::size(%input.3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.2 : int = aten::__getitem__(%407, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %409 : int = aten::len(%407) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %410 : int = aten::sub(%409, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.4 : int = prim::Loop(%410, %3, %size_prods.2) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.2 : int, %size_prods.7 : int):
+      %414 : int = aten::add(%i.2, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %415 : int = aten::__getitem__(%407, %414) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.5 : int = aten::mul(%size_prods.7, %415) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.5)
+  %417 : bool = aten::eq(%size_prods.4, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%417) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %418 : str = aten::format(%4, %407) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%418) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.5 : Tensor = aten::instance_norm(%input.3, %404, %405, %402, %403, %406, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.7 : Tensor = aten::relu_(%input.5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %421 : Tensor = prim::GetAttr[name="weight"](%394)
+  %422 : Tensor? = prim::GetAttr[name="bias"](%394)
+  %input.9 : Tensor = aten::conv2d(%input.7, %421, %422, %513, %513, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %427 : Tensor = prim::GetAttr[name="running_mean"](%395)
+  %428 : Tensor = prim::GetAttr[name="running_var"](%395)
+  %429 : Tensor = prim::GetAttr[name="weight"](%395)
+  %430 : Tensor = prim::GetAttr[name="bias"](%395)
+  %431 : bool = prim::GetAttr[name="training"](%395)
+  %432 : int[] = aten::size(%input.9) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.60 : int = aten::__getitem__(%432, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %434 : int = aten::len(%432) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %435 : int = aten::sub(%434, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.61 : int = prim::Loop(%435, %3, %size_prods.60) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.16 : int, %size_prods.62 : int):
+      %439 : int = aten::add(%i.16, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %440 : int = aten::__getitem__(%432, %439) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.63 : int = aten::mul(%size_prods.62, %440) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.63)
+  %442 : bool = aten::eq(%size_prods.61, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%442) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %443 : str = aten::format(%4, %432) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%443) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.11 : Tensor = aten::instance_norm(%input.9, %429, %430, %427, %428, %431, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.31 : Tensor = aten::add(%input.29, %input.11, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_stargan/model.py:19:15
+  %447 : Tensor = prim::GetAttr[name="weight"](%36)
+  %448 : Tensor? = prim::GetAttr[name="bias"](%36)
+  %input.33 : Tensor = aten::conv_transpose2d(%input.31, %447, %448, %516, %513, %558, %11, %513) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:840:15
+  %453 : int = aten::dim(%input.33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212:11
+  %454 : bool = aten::ne(%453, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212:11
+   = prim::If(%454) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212:8
+    block0():
+      %456 : str = aten::format(%7, %453) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:213:29
+       = prim::RaiseException(%456) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:213:12
+      -> ()
+    block1():
+      -> ()
+  %457 : Tensor = prim::GetAttr[name="running_mean"](%37)
+  %458 : Tensor = prim::GetAttr[name="running_var"](%37)
+  %459 : Tensor = prim::GetAttr[name="weight"](%37)
+  %460 : Tensor = prim::GetAttr[name="bias"](%37)
+  %461 : bool = prim::GetAttr[name="training"](%37)
+  %462 : int[] = aten::size(%input.33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.64 : int = aten::__getitem__(%462, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %464 : int = aten::len(%462) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %465 : int = aten::sub(%464, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods.65 : int = prim::Loop(%465, %3, %size_prods.64) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.18 : int, %size_prods.66 : int):
+      %469 : int = aten::add(%i.18, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %470 : int = aten::__getitem__(%462, %469) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.67 : int = aten::mul(%size_prods.66, %470) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.67)
+  %472 : bool = aten::eq(%size_prods.65, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%472) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %473 : str = aten::format(%4, %462) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%473) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.35 : Tensor = aten::instance_norm(%input.33, %459, %460, %457, %458, %461, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.37 : Tensor = aten::relu_(%input.35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %477 : Tensor = prim::GetAttr[name="weight"](%38)
+  %478 : Tensor? = prim::GetAttr[name="bias"](%38)
+  %input.39 : Tensor = aten::conv_transpose2d(%input.37, %477, %478, %516, %513, %558, %11, %513) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:840:15
+  %483 : int = aten::dim(%input.39) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212:11
+  %484 : bool = aten::ne(%483, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212:11
+   = prim::If(%484) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212:8
+    block0():
+      %486 : str = aten::format(%7, %483) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:213:29
+       = prim::RaiseException(%486) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:213:12
+      -> ()
+    block1():
+      -> ()
+  %487 : Tensor = prim::GetAttr[name="running_mean"](%39)
+  %488 : Tensor = prim::GetAttr[name="running_var"](%39)
+  %489 : Tensor = prim::GetAttr[name="weight"](%39)
+  %490 : Tensor = prim::GetAttr[name="bias"](%39)
+  %491 : bool = prim::GetAttr[name="training"](%39)
+  %492 : int[] = aten::size(%input.39) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2181:23
+  %size_prods.1 : int = aten::__getitem__(%492, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2107:17
+  %494 : int = aten::len(%492) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %495 : int = aten::sub(%494, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:19
+  %size_prods : int = prim::Loop(%495, %3, %size_prods.1) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108:4
+    block0(%i.1 : int, %size_prods.6 : int):
+      %499 : int = aten::add(%i.1, %10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:27
+      %500 : int = aten::__getitem__(%492, %499) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:22
+      %size_prods.3 : int = aten::mul(%size_prods.6, %500) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2109:8
+      -> (%3, %size_prods.3)
+  %502 : bool = aten::eq(%size_prods, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:7
+   = prim::If(%502) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110:4
+    block0():
+      %503 : str = aten::format(%4, %492) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:25
+       = prim::RaiseException(%503) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2111:8
+      -> ()
+    block1():
+      -> ()
+  %input.41 : Tensor = aten::instance_norm(%input.39, %489, %490, %487, %488, %491, %5, %6, %3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2182:11
+  %input.43 : Tensor = aten::relu_(%input.41) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %506 : Tensor = prim::GetAttr[name="weight"](%40)
+  %507 : Tensor? = prim::GetAttr[name="bias"](%40)
+  %input.45 : Tensor = aten::conv2d(%input.43, %506, %507, %513, %514, %513, %11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.47 : Tensor = aten::tanh(%input.45) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/activation.py:359:15
+  return (%input.47)
+

@@ -1,0 +1,75 @@
+Dump Graph IR for fastNLP using example inputs:
+graph(%self : __torch__.fastNLP.models.bert.BertForSequenceClassification,
+      %words.1 : Tensor,
+      %offsets.1 : Tensor):
+  %55 : int[] = prim::Constant[value=[-1]]()
+  %15 : None = prim::Constant()
+  %14 : str = prim::Constant[value="input has to be 1D or 2D Tensor, but got Tensor of dimension {}"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2057:25
+  %13 : str = prim::Constant[value="offsets has to be a 1D Tensor"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2055:29
+  %11 : str = prim::Constant[value="if input is 2D, then offsets has to be None, as input is treated is a mini-batch of fixed length sequences. However, found offsets of type {}"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2041:16
+  %type_str.1 : str = prim::Constant[value="<unknown>"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2036:23
+  %9 : str = prim::Constant[value="Argument order of nn.functional.embedding_bag was changed. Usage `embedding_bag(weight, input, ...)` is deprecated, and should now be `embedding_bag(input, weight, ...)`."]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2022:12
+  %8 : int = prim::Constant[value=4]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2020:23
+  %7 : int = prim::Constant[value=2]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2034:22
+  %6 : int = prim::Constant[value=0]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2046:31
+  %5 : int = prim::Constant[value=1]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2046:60
+  %4 : bool = prim::Constant[value=0]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/sparse.py:328:31
+  %3 : float = prim::Constant[value=0.10000000000000001]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/dropout.py:58:32
+  %16 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%self)
+  %17 : __torch__.torch.nn.modules.sparse.EmbeddingBag = prim::GetAttr[name="bert"](%self)
+  %18 : Tensor = prim::GetAttr[name="weight"](%17)
+  %19 : Tensor = prim::Uninitialized()
+  %20 : int = prim::dtype(%18)
+  %21 : bool = aten::eq(%20, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2020:7
+  %22 : bool = prim::If(%21) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2020:7
+    block0():
+      %23 : bool = aten::is_floating_point(%words.1) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2020:38
+      -> (%23)
+    block1():
+      -> (%4)
+  %input.27 : Tensor, %weight : Tensor = prim::If(%22) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2020:4
+    block0():
+       = aten::warn[warn_id=0](%9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2021:8
+      -> (%18, %words.1)
+    block1():
+      -> (%words.1, %18)
+  %26 : int = aten::dim(%input.27) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2034:7
+  %27 : bool = aten::eq(%26, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2034:7
+  %input : Tensor, %offsets : Tensor = prim::If(%27) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2034:4
+    block0():
+      %30 : str = aten::format(%11, %type_str.1) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2041:16
+       = prim::RaiseException(%30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2040:12
+      %31 : int = aten::numel(%input.27) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2046:34
+      %32 : int = aten::size(%input.27, %5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2046:49
+      %33 : int = prim::dtype(%input.27)
+      %34 : Device = prim::device(%input.27)
+      %offsets.8 : Tensor = aten::arange(%6, %31, %32, %33, %15, %34, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2046:18
+      %input.18 : Tensor = aten::reshape(%input.27, %55) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2048:16
+      -> (%input.18, %offsets.8)
+    block1():
+      %39 : bool = aten::eq(%26, %5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2051:9
+      %offsets.26 : Tensor = prim::If(%39) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2051:4
+        block0():
+          %41 : int = aten::dim(%offsets.1) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2054:11
+          %42 : bool = aten::ne(%41, %5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2054:11
+           = prim::If(%42) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2054:8
+            block0():
+               = prim::RaiseException(%13) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2055:12
+              -> ()
+            block1():
+              -> ()
+          -> (%offsets.1)
+        block1():
+          %44 : str = aten::format(%14, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2057:25
+           = prim::RaiseException(%44) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2057:8
+          -> (%19)
+      -> (%input.27, %offsets.26)
+  %ret.1 : Tensor, %46 : Tensor, %47 : Tensor, %48 : Tensor = aten::embedding_bag(%weight, %input, %offsets, %4, %5, %4, %15, %4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2088:19
+  %49 : bool = prim::GetAttr[name="training"](%16)
+  %hidden.1 : Tensor = aten::dropout(%ret.1, %3, %49) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %51 : __torch__.torch.nn.modules.linear.Linear = prim::GetAttr[name="classifier"](%self)
+  %52 : Tensor = prim::GetAttr[name="weight"](%51)
+  %53 : Tensor = prim::GetAttr[name="bias"](%51)
+  %logits.1 : Tensor = aten::linear(%hidden.1, %52, %53) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  return (%logits.1)
+
