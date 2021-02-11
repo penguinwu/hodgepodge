@@ -1,5 +1,4 @@
-Warning: <module 'torchbenchmark.models.maskrcnn_benchmark' (namespace)> does not define attribute Model, skip it
-Dump Graph IR for pytorch_mobilenetv3
+Dump Graph IR for pytorch_mobilenet_v3 using example inputs:
 graph(%self : __torch__.torchbenchmark.models.pytorch_mobilenet_v3.mobilenetv3.MobileNetV3,
       %x.1 : Tensor):
   %3186 : int[] = prim::Constant[value=[2]]()

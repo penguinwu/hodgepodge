@@ -1,11 +1,12 @@
 #!/bin/bash
 
-benchmarks="attention_is_all_you_need demucs dlrm maml yolov3"
-#benchmarks="BERT_pytorch pytorch_stargan pytorch_mobilenet_v3"
-#benchmarks2_dump_in_test_py="mobilenet_v2 LearningToPaint alexnet densenet121 fastNLP mnasnet1_0 pytorch_struct resnet18 resnet50 resnext50_32x4d shufflenet_v2_x1_0 squeezenet1_1 vgg16"
+#benchmarks_not_yet_collected="attention_is_all_you_need demucs dlrm maml yolov3"
+
+#benchmarks_mod_init="BERT_pytorch pytorch_stargan"
+#benchmarks2_dump_in_test_py="mobilenet_v2 mobilenet_v2 LearningToPaint alexnet densenet121 fastNLP mnasnet1_0 pytorch_struct resnet18 resnet50 resnext50_32x4d shufflenet_v2_x1_0 squeezenet1_1 vgg16"
 #benchmarks_no_jit="Background_Matting moco pytorch_CycleGAN_and_pix2pix Super_SloMo tacotron2"
 
-#benchmarks="Background_Matting"
+benchmarks="pytorch_mobilenet_v3"
 
 core="13"
 
