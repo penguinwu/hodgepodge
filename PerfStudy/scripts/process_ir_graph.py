@@ -5,13 +5,10 @@ import subprocess
 from collections import OrderedDict
 from operator import itemgetter
 import re
+import os
 
-benchmarks = ['alexnet', 'BERT_pytorch', 'densenet121', 'fastNLP', 'LearningToPaint', 'mnasnet1_0', 'mobilenet_v2',
-              'pytorch_mobilenet_v3', 'pytorch_stargan','pytorch_struct', 'resnet18', 'resnet50',
-              'resnext50_32x4d', 'shufflenet_v2_x1_0', 'squeezenet1_1', 'vgg16']
-internal_benchmarks = ['adindexer-merge-net-ctr-mobilefeed', 'deep-and-wide']
-ops_pattern = ['*', 'aten::', "prim::", "fb::", "quantized::", "block*()", "prim::If", "prim::Loop", "prim::CallMethod", "prim::SetAttr"]
-op_name = "prim::CallMethod"
+ops_pattern = ['*', 'aten::', "prim::", "fb::", "quantized::", "block*()", "prim::If", "prim::Loop", "prim::CallMethod", "prim::SetAttr", "prim::GetAttr"]
+op_name = "prim::If"
 
 def sort_by_graph_size(stats_table):
     ordered_stats = OrderedDict(sorted(stats_table.items(), key=lambda x:x[1][0]))
@@ -22,33 +19,61 @@ def sort_by_key(stats_table):
 
 def print_benchmark_stats(stats_table):
     stats_table = sort_by_graph_size(stats_table)
-    headers = ['name (occurances)'] + ops_pattern
+    headers = ['Logfile (ir counts)'] + ops_pattern
     rows = []
     for bench_name in stats_table:
-        row = [bench_name] + stats_table[bench_name]
+        row = [bench_name] + add_percentage_to_stat(stats_table[bench_name])
         rows.append(row)
     print(tabulate(rows, headers=headers))
 
-def get_log_file_name(bench_name):
-    return f"{bench_name}.last_executed_graph.dump.log"
-
-def collect_stat(bench_name, stats_table):
-    log_file_name = get_log_file_name(bench_name)
+def process_stat(logfile_name, stats_table):
     stat = []
     for grep_str in ops_pattern:
-        cmd = f"egrep \"{grep_str}\" {log_file_name} | wc -l"
+        cmd = f"egrep \"{grep_str}\" {logfile_name} | wc -l"
         ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         output = ps.communicate()[0]
-        stat.append(int(output))
-    stats_table[bench_name] = stat
+        count = int(output)
+        stat.append(count)
+    stats_table[logfile_name] = stat
 
-def process_all_stats(benchmarks):
+def add_percentage_to_stat(stat):
+    total_ops = stat[0]
+    stat_with_percentage = []
+    assert(total_ops > 0)
+    for count in stat:
+        if total_ops == count or count == 0:
+            stat_with_percentage.append(count)
+        else:
+            ratio = count * 100/total_ops
+            stat_with_percentage.append(f"{count} ({ratio:2.0f}%)")
+    return stat_with_percentage
+
+def process_all_stats(logfile_list):
     stats_table = {}
-    for bench_name in benchmarks:
-        collect_stat(bench_name, stats_table)
+    for logfile in logfile_list:
+        print(".", end="", flush=True)
+        process_stat(logfile, stats_table)
+    print("")
     print_benchmark_stats(stats_table)
 
-def extract_source_from(line, source_dict):
+# Since Predictor models are collected at different times
+# the source info may contain different vm-id info, strip
+# those so that we can consolidate identical source locations
+def remove_devvm_prefix(filepath):
+    #filepath ="/mnt/xarfuse/uid-30718/7f35743e-seed-f6439dc8-443c-4262-aba8-e81f46a0cf6f-ns-4026534173/pytext/data/bert_tensorizer.py"
+    #filepath = "/mnt/xxxx/uid-xx/yy-seed-xxx-yy-ns-2-1xx/sdg.py"
+    #filepath = "/mnt/xarfuse/uid-183475/c17bcd48-ns-4026531840/torch/nn/functional.py"
+    result = re.match("\/mnt\/(?P<firstpart>\w+)\/uid-(?P<secondpart>[\w-]+)\/[\w-]+-ns-(?P<thirdpart>[\w-]+)\/(?P<filepath>[\w.\/]+)$", filepath)
+    newpath = filepath
+    if result:
+        newpath = result.group('filepath')
+        #print(f"Found match {newpath}")
+    else:
+         print(f"Did not find match {filepath}")
+    return newpath
+
+
+def extract_source_from(line, source_dict, filter_devvm_path):
     line = line.strip().decode('utf-8')
     result = re.split("\s+", line)
     no_source_ifs = 0
@@ -56,17 +81,21 @@ def extract_source_from(line, source_dict):
         # print(f"WARNING - no source info: {line}")
         no_source_ifs = 1
     else:
-        result2 = re.split(":", result[-1])
+        long_source = result[-1]
+        result2 = re.split(":", long_source)
         # take filename and lineno
-        source = result2[0] + ":" + result2[1]
+        filename = result2[0]
+        if filter_devvm_path:
+            filename = remove_devvm_prefix(filename)
+        lineno = result2[1]
+        source = filename + ":" + lineno
         if source in source_dict:
             source_dict[source] += 1
         else:
             source_dict[source] = 1
     return no_source_ifs
 
-def analyze_bench(benchmark, source_dict={}, print_stat=False):
-    log_file_name = get_log_file_name(benchmark)
+def analyze_bench(log_file_name, source_dict, print_stat, filter_devvm_path):
     cmd = f"egrep \"{op_name}\" {log_file_name}"
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     no_source_count = 0
@@ -74,9 +103,9 @@ def analyze_bench(benchmark, source_dict={}, print_stat=False):
         line = ps.stdout.readline()
         if not line:
             break
-        no_source_count += extract_source_from(line, source_dict)
+        no_source_count += extract_source_from(line, source_dict, filter_devvm_path)
     if print_stat:
-        print_source_count(benchmark, source_dict, no_source_count)
+        print_source_count(log_file_name, source_dict, no_source_count)
     return no_source_count
 
 def print_source_count(benchmark, source_dict, no_source_count):
@@ -87,48 +116,70 @@ def print_source_count(benchmark, source_dict, no_source_count):
     if no_source_count > 0:
         print(f"Missing source file info for {no_source_count} occurances")
 
-def analyze_all(benchmarks):
+def analyze_dir(logfile_list, filter_devvm_path):
     source_dict = {}
     no_source_count = 0
-    for bench in benchmarks:
-        no_source_count += analyze_bench(bench, source_dict)
-    print_source_count("all benchmarks", source_dict, no_source_count)
+    for logfile_name in logfile_list:
+        print(".", end="", flush=True)
+        no_source_count += analyze_bench(logfile_name, source_dict, False, filter_devvm_path)
+    print("")
+    print_source_count("all logfiles", source_dict, no_source_count)
+
+# scan files under the current directory and return ones whose filename
+# matched filename_pattern
+def collect_files(filename_ext):
+    filelist = []
+    with os.scandir('./') as entries:
+        for entry in entries:
+            t = re.split("\.", entry.name)
+            if len(t) > 1 and t[-1] == filename_ext:
+                filelist.append(entry.name)
+    return filelist
 
 if __name__ == "__main__":
+    #remove_devvm_prefix("")
+
     parser = argparse.ArgumentParser(description="Commands to process Graph-IR dump logs")
-    parser.add_argument("-l", "--list",
-                        action="store_true",
-                        help="List benchmark names")
     parser.add_argument("--list_ir",
                         action="store_true",
                         help="List IR types")
-    parser.add_argument("-a", "--all_stats",
+    parser.add_argument("--stats_dir",
+                        help="Dump stats for files with extension <STATS_DIR> in current dir, e.g., \"--stats_dir txt\" ")
+    parser.add_argument("--stats_file",
+                        help="Dump stats for file <STATS_FILE>, e.g., \"--stats_file foo.txt\" ")
+    parser.add_argument("--analyze_file",
+                        help="Analyze ops pattern for file <ANALYZE_FILE>, e.g., \"--analyze_file foo.txt\" ")
+    parser.add_argument("--analyze_dir",
+                        help="Analyze ops pattern for files w/ extension <ANALYZE_DIR> in current dir, e.g., \"--analyze_dir txt\"")
+    parser.add_argument("-f", "--filter_devvm_path",
                         action="store_true",
-                        help="Dump stats for all benchmarks")
-    parser.add_argument("--analyze",
-                        help="Analyze graph ir for <benchmark_name>")
-    parser.add_argument("--analyze_all",
-                        action="store_true",
-                        help="Analyze graph ir for all benchmarks")
+                        help="Filter out devvm generated path prefix in source info")
+
     args = parser.parse_args()
-
-    # TODO: check if logs for internal_benchmarks are available
-    benchmarks += internal_benchmarks
-
-    if args.list:
-        for bench_name in benchmarks:
-            print(bench_name)
 
     if args.list_ir:
         print("IR type names: ")
         for op in ops_pattern:
             if op != "*": print(f"   - {op}")
 
-    if args.all_stats:
-        process_all_stats(benchmarks)
+    if args.stats_dir:
+        logfile_list = collect_files(args.stats_dir)
+        if logfile_list:
+            process_all_stats(logfile_list)
+        else:
+            print(f"Found no graph dump files w \"{args.stats_dir}\" extension")
 
-    if args.analyze:
-        analyze_bench(args.analyze, {}, True)
+    if args.stats_file:
+        stats_table = {}
+        process_stats(args.stats_file, stats_table)
+        print_benchmark_stats(stats_table)
 
-    if args.analyze_all:
-        analyze_all(benchmarks)
+    if args.analyze_file:
+        analyze_bench(args.analyze_file, {}, True, args.filter_devvm_path)
+
+    if args.analyze_dir:
+        logfile_list = collect_files(args.analyze_dir)
+        if logfile_list:
+            analyze_dir(logfile_list, args.filter_devvm_path)
+        else:
+            print(f"Found no graph dump files w \"{args.analyze_dir}\" extension")
