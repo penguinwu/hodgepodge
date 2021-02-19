@@ -11,11 +11,14 @@ benchmarks = ['alexnet', 'BERT_pytorch', 'densenet121', 'fastNLP', 'LearningToPa
               'resnext50_32x4d', 'shufflenet_v2_x1_0', 'squeezenet1_1', 'vgg16']
 internal_benchmarks = ['adindexer-merge-net-ctr-mobilefeed', 'deep-and-wide']
 ops_pattern = ['*', 'aten::', "prim::", "fb::", "quantized::", "block*()", "prim::If", "prim::Loop", "prim::CallMethod", "prim::SetAttr"]
-op_name = "prim::If"
+op_name = "prim::CallMethod"
 
 def sort_by_graph_size(stats_table):
     ordered_stats = OrderedDict(sorted(stats_table.items(), key=lambda x:x[1][0]))
     return ordered_stats
+
+def sort_by_key(stats_table):
+    return OrderedDict(sorted(stats_table.items()))
 
 def print_benchmark_stats(stats_table):
     stats_table = sort_by_graph_size(stats_table)
@@ -77,9 +80,10 @@ def analyze_bench(benchmark, source_dict={}, print_stat=False):
     return no_source_count
 
 def print_source_count(benchmark, source_dict, no_source_count):
-    print(f"\"{op_name}\" in [{benchmark}] (source:count): {len(source_dict)} total sources")
+    print(f"\"{op_name}\" in [{benchmark}] (source: [count]): {len(source_dict)} total sources")
+    source_dict = sort_by_key(source_dict)
     for key in source_dict:
-        print(f"  - {key}: {source_dict[key]}")
+        print(f"  - {key}: [{source_dict[key]}]")
     if no_source_count > 0:
         print(f"Missing source file info for {no_source_count} occurances")
 
