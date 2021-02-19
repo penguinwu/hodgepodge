@@ -1,0 +1,21 @@
+..................
+Logfile (ir counts)                                                 *  aten::      prim::      fb::      quantized::    block*()    prim::If    prim::Loop    prim::CallMethod    prim::SetAttr    prim::GetAttr
+---------------------------------------------------------------  ----  ----------  ----------  --------  -------------  ----------  ----------  ------------  ------------------  ---------------  ---------------
+deep-and-wide.last_executed_graph.dump.log                         26  10 (38%)    10 (38%)    0         0              0           0           0             0                   0                4 (15%)
+adindexer-merge-net-ctr-mobilefeed.last_executed_graph.dump.log    48  20 (42%)    9 (19%)     15 (31%)  4 ( 8%)        0           0           0             0                   0                0
+LearningToPaint.last_executed_graph.dump.log                       65  25 (38%)    35 (54%)    0         0              0           0           0             0                   0                30 (46%)
+fastNLP.last_executed_graph.dump.log                               75  17 (23%)    32 (43%)    0         0              10 (13%)    5 ( 7%)     0             0                   0                7 ( 9%)
+alexnet.last_executed_graph.dump.log                               78  25 (32%)    44 (56%)    0         0              2 ( 3%)     1 ( 1%)     0             0                   0                30 (38%)
+pytorch_struct.last_executed_graph.dump.log                       113  45 (40%)    63 (56%)    0         0              0           0           0             0                   0                41 (36%)
+vgg16.last_executed_graph.dump.log                                118  43 (36%)    66 (56%)    0         0              2 ( 2%)     1 ( 1%)     0             0                   0                54 (46%)
+squeezenet1_1.last_executed_graph.dump.log                        188  69 (37%)    110 (59%)   0         0              2 ( 1%)     1 ( 1%)     0             0                   0                90 (48%)
+pytorch_stargan.last_executed_graph.dump.log                      577  219 (38%)   241 (42%)   0         0              55 (10%)    19 ( 3%)    17 ( 3%)      0                   0                169 (29%)
+resnet18.last_executed_graph.dump.log                             935  272 (29%)   374 (40%)   0         0              142 (15%)   61 ( 7%)    20 ( 2%)      0                   20 ( 2%)         238 (25%)
+BERT_pytorch.last_executed_graph.dump.log                        1356  697 (51%)   651 (48%)   0         0              1 ( 0%)     0           0             12 ( 1%)            12 ( 1%)         562 (41%)
+resnet50.last_executed_graph.dump.log                            2403  708 (29%)   944 (39%)   0         0              373 (16%)   160 ( 7%)   53 ( 2%)      0                   53 ( 2%)         610 (25%)
+resnext50_32x4d.last_executed_graph.dump.log                     2404  708 (29%)   945 (39%)   0         0              373 (16%)   160 ( 7%)   53 ( 2%)      0                   53 ( 2%)         610 (25%)
+pytorch_mobilenet_v3.last_executed_graph.dump.log                4192  1293 (31%)  1610 (38%)  0         0              642 (15%)   287 ( 7%)   68 ( 2%)      0                   68 ( 2%)         1018 (24%)
+mnasnet1_0.last_executed_graph.dump.log                          4570  1286 (28%)  1815 (40%)  0         0              732 (16%)   316 ( 7%)   100 ( 2%)     0                   100 ( 2%)        1177 (26%)
+mobilenet_v2.last_executed_graph.dump.log                        4742  1318 (28%)  1919 (40%)  0         0              750 (16%)   324 ( 7%)   102 ( 2%)     0                   102 ( 2%)        1265 (27%)
+shufflenet_v2_x1_0.last_executed_graph.dump.log                  4963  1464 (29%)  1974 (40%)  0         0              760 (15%)   328 ( 7%)   104 ( 2%)     0                   104 ( 2%)        1219 (25%)
+densenet121.last_executed_graph.dump.log                         9885  2700 (27%)  3262 (33%)  0         0              1963 (20%)  890 ( 9%)   179 ( 2%)     0                   121 ( 1%)        1571 (16%)
