@@ -7,7 +7,25 @@ from operator import itemgetter
 import re
 import os
 
-ops_pattern = ['*', 'aten::', "prim::", "fb::", "quantized::", "block*()", "prim::If", "prim::Loop", "prim::CallMethod", "prim::SetAttr", "prim::GetAttr"]
+block_pattern = "[[:space:]]+block*()"
+block_pattern_name ="block*()"
+block_return_pattern = "[[:space:]]+-> *"
+block_return_pattern_name = "block return"
+return_pattern = "[[:space:]]+return *"
+return_pattern_name = "return"
+graph_decl_pattern="^graph\("
+graph_decl_pattern_name="graph decl"
+graph_decl_leftover_pattern="^[[:space:]]+%\w+\.\w+ \: \w+\)\:$"
+graph_decl_leftover_pattern_name="graph decl others"
+emptyline_pattern="^$"
+ops_pattern = ["*", "aten::", "prim::", "fb::", "quantized::", block_pattern, block_return_pattern, "prim::If", "prim::Loop", "prim::CallMethod",
+               "prim::SetAttr", "prim::GetAttr", return_pattern, "internal::", "_caffe2::", graph_decl_pattern, graph_decl_leftover_pattern]
+ops_pattern_header = ["*", "aten::", "prim::", "fb::", "quantized::", block_pattern_name, block_return_pattern_name, "prim::If", "prim::Loop", "prim::CallMethod",
+               "prim::SetAttr", "prim::GetAttr", return_pattern_name, "internal::", "_caffe2::", graph_decl_pattern_name, graph_decl_leftover_pattern_name]
+reported_ops_pattern = ["*", "aten::", "prim::", "fb::", "quantized::", "internal::", block_pattern, block_return_pattern, "prim::If",
+               "prim::Loop", "prim::CallMethod", "prim::SetAttr", "prim::GetAttr", "_caffe2::"]
+ops_category = {"aten::", "prim::", "fb::", "quantized::", "internal::", "_caffe2::", block_pattern, block_return_pattern,
+                return_pattern, graph_decl_pattern, graph_decl_leftover_pattern}
 op_name = "prim::If"
 
 def sort_by_graph_size(stats_table):
@@ -19,14 +37,31 @@ def sort_by_key(stats_table):
 
 def print_benchmark_stats(stats_table):
     stats_table = sort_by_graph_size(stats_table)
-    headers = ['Logfile (ir counts)'] + ops_pattern
+    headers = ['Logfile (ir counts)'] + reported_ops_pattern + ['Others', 'Uncounted']
     rows = []
     for bench_name in stats_table:
-        row = [bench_name] + add_percentage_to_stat(stats_table[bench_name])
+        row = [bench_name] + postprocess_stats(stats_table[bench_name])
         rows.append(row)
     print(tabulate(rows, headers=headers))
 
-def process_stat(logfile_name, stats_table):
+# check if there are lines not captured by current pattern
+def check_ir_coverage(logfile_name):
+    tmp_source = "inter1.tmp"
+    tmp_output = "inter2.tmp"
+    cp_cmd = f"cp {logfile_name} {tmp_source}"
+    subprocess.run(cp_cmd, shell=True, check=True)
+    for grep_str in ops_pattern:
+        if grep_str == "*":
+            continue
+        grep_cmd = f"egrep -v \"{grep_str}\" {tmp_source} > {tmp_output}"
+        subprocess.run(grep_cmd, shell=True, check=False)
+        mv_cmd = f"mv {tmp_output} {tmp_source}"
+        subprocess.run(mv_cmd, shell=True, check=True)
+    file1 = open(tmp_source)
+    print(file1.read())
+    file1.close()
+
+def process_stats(logfile_name, stats_table):
     stat = []
     for grep_str in ops_pattern:
         cmd = f"egrep \"{grep_str}\" {logfile_name} | wc -l"
@@ -36,23 +71,45 @@ def process_stat(logfile_name, stats_table):
         stat.append(count)
     stats_table[logfile_name] = stat
 
-def add_percentage_to_stat(stat):
+def postprocess_stats(stat):
     total_ops = stat[0]
     stat_with_percentage = []
+    uncounted_ops = total_ops
+    other_ops = 0
     assert(total_ops > 0)
-    for count in stat:
-        if total_ops == count or count == 0:
+    for index, count in enumerate(stat):
+        if ops_pattern[index] in ops_category:
+            # print(f"found {ops_pattern[index]} count={count}")
+            uncounted_ops -= count
+        if ops_pattern[index] not in reported_ops_pattern:
+            other_ops += count
+            continue
+        if index == 0:
+            assert(total_ops == count)
+            stat_with_percentage.append(count)
+        elif count == 0:
             stat_with_percentage.append(count)
         else:
             ratio = count * 100/total_ops
             stat_with_percentage.append(f"{count} ({ratio:2.0f}%)")
+    if other_ops > 0:
+        ratio = other_ops * 100/total_ops
+        stat_with_percentage.append(f"{other_ops} ({ratio:2.0f}%)")
+    else:
+        stat_with_percentage.append(f"{other_ops}")
+    if uncounted_ops > 0:
+        ratio = uncounted_ops * 100/total_ops
+        stat_with_percentage.append(f"{uncounted_ops} ({ratio:2.0f}%)")
+    else:
+        assert(uncounted_ops == 0)
+        stat_with_percentage.append(f"{uncounted_ops}")
     return stat_with_percentage
 
 def process_all_stats(logfile_list):
     stats_table = {}
     for logfile in logfile_list:
         print(".", end="", flush=True)
-        process_stat(logfile, stats_table)
+        process_stats(logfile, stats_table)
     print("")
     print_benchmark_stats(stats_table)
 
@@ -147,6 +204,10 @@ if __name__ == "__main__":
                         help="Dump stats for files with extension <STATS_DIR> in current dir, e.g., \"--stats_dir txt\" ")
     parser.add_argument("--stats_file",
                         help="Dump stats for file <STATS_FILE>, e.g., \"--stats_file foo.txt\" ")
+    parser.add_argument("--ir_coverage_file",
+                        help="Check recognized IR coverage for file <IR_COVERAGE_FILE>, e.g., \"--ir_coverage_file foo.txt\" ")
+    parser.add_argument("--ir_coverage_dir",
+                        help="Check recognized IR coverage for file with extebsuib <IR_COVERAGE_DIR> in current dir, e.g., \"--ir_coverage_file foo.txt\" ")
     parser.add_argument("--analyze_file",
                         help="Analyze ops pattern for file <ANALYZE_FILE>, e.g., \"--analyze_file foo.txt\" ")
     parser.add_argument("--analyze_dir",
@@ -173,6 +234,16 @@ if __name__ == "__main__":
         stats_table = {}
         process_stats(args.stats_file, stats_table)
         print_benchmark_stats(stats_table)
+
+    if args.ir_coverage_file:
+        check_ir_coverage(args.ir_coverage_file)
+
+    if args.ir_coverage_dir:
+        logfile_list = collect_files(args.ir_coverage_dir)
+        for logfile in logfile_list:
+            check_ir_coverage(logfile)
+        if logfile_list is None:
+            print(f"Found no graph dump files w \"{args.ir_coverage_dir}\" extension")
 
     if args.analyze_file:
         analyze_bench(args.analyze_file, {}, True, args.filter_devvm_path)
