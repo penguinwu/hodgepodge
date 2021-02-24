@@ -7,37 +7,74 @@ from operator import itemgetter
 import re
 import os
 
-block_pattern = "[[:space:]]+block*()"
-block_pattern_name ="block*()"
-block_return_pattern = "[[:space:]]+-> *"
-block_return_pattern_name = "block return"
-return_pattern = "[[:space:]]+return *"
-return_pattern_name = "return"
-graph_decl_pattern="^graph\("
-graph_decl_pattern_name="graph decl"
-graph_decl_leftover_pattern="^[[:space:]]+%\w+\.\w+ \: \w+\)\:$"
-graph_decl_leftover_pattern_name="graph decl others"
-emptyline_pattern="^$"
-ops_pattern = ["*", "aten::", "prim::", "fb::", "quantized::", block_pattern, block_return_pattern, "prim::If", "prim::Loop", "prim::CallMethod",
-               "prim::SetAttr", "prim::GetAttr", return_pattern, "internal::", "_caffe2::", graph_decl_pattern, graph_decl_leftover_pattern]
-ops_pattern_header = ["*", "aten::", "prim::", "fb::", "quantized::", block_pattern_name, block_return_pattern_name, "prim::If", "prim::Loop", "prim::CallMethod",
-               "prim::SetAttr", "prim::GetAttr", return_pattern_name, "internal::", "_caffe2::", graph_decl_pattern_name, graph_decl_leftover_pattern_name]
-reported_ops_pattern = ["*", "aten::", "prim::", "fb::", "quantized::", "internal::", block_pattern, block_return_pattern, "prim::If",
-               "prim::Loop", "prim::CallMethod", "prim::SetAttr", "prim::GetAttr", "_caffe2::"]
-ops_category = {"aten::", "prim::", "fb::", "quantized::", "internal::", "_caffe2::", block_pattern, block_return_pattern,
-                return_pattern, graph_decl_pattern, graph_decl_leftover_pattern}
-op_name = "prim::If"
+all_pattern_name = "all"
+block_op_name ="block*()"
+block_return_name = "block-ret"
+return_op_name = "return"
+graph_decl_op_name="graph"
+graph_decl_sig_name="graph-others"
+aten_op_name = "aten::*"
+prim_op_name = "prim::*"
+fb_op_name = "fb::*"
+quantized_op_name = "quantized::*"
+internal_op_name = "internal::*"
+caffe2_op_name = "caffe2::*"
+if_op_name = "if"
+loop_op_name = "loop"
+call_op_name = "call"
+setattr_op_name = "setattr"
+getattr_op_name = "getattr"
+
+op_name = "if"
+ops_pattern = {}
+reported_ops = [aten_op_name, prim_op_name, fb_op_name, quantized_op_name, internal_op_name, caffe2_op_name,
+                if_op_name, loop_op_name, call_op_name, setattr_op_name, getattr_op_name]
+ops_category = {aten_op_name, prim_op_name, fb_op_name, quantized_op_name, internal_op_name, caffe2_op_name,
+                block_op_name, block_return_name, return_op_name, graph_decl_op_name, graph_decl_sig_name}
+
+def initialize_ops_pattern():
+    # ops category
+    ops_pattern[all_pattern_name] = "*"
+    ops_pattern[aten_op_name] = "aten::"
+    ops_pattern[prim_op_name] = "prim::"
+    ops_pattern[fb_op_name] = "fb::"
+    ops_pattern[quantized_op_name] = "quantized::"
+    ops_pattern[block_op_name] = "[[:space:]]+block*()"
+    ops_pattern[block_return_name] = "[[:space:]]+-> *"
+    ops_pattern[internal_op_name] = "internal::"
+    ops_pattern[caffe2_op_name] = "caffe2::"
+    ops_pattern[return_op_name] = "[[:space:]]+return *"
+    ops_pattern[graph_decl_op_name] = "^graph\("
+    ops_pattern[graph_decl_sig_name] = "^[[:space:]]+%\w+\.\w+ \: \w+\)\:$"
+
+    # ops pattern
+    ops_pattern[if_op_name] = "prim::If"
+    ops_pattern[loop_op_name] = "prim::Loop"
+    ops_pattern[call_op_name] = "prim::CallMethod"
+    ops_pattern[setattr_op_name] = "prim::SetAttr"
+    ops_pattern[getattr_op_name] = "prim::GetAttr"
 
 def sort_by_graph_size(stats_table):
-    ordered_stats = OrderedDict(sorted(stats_table.items(), key=lambda x:x[1][0]))
+    ordered_stats = OrderedDict(sorted(stats_table.items(), key=lambda x:x[1][all_pattern_name]))
     return ordered_stats
 
 def sort_by_key(stats_table):
     return OrderedDict(sorted(stats_table.items()))
 
+def get_ignored_ops():
+    ignored_ops = ""
+    for op_name in ops_pattern:
+        if op_name != all_pattern_name and op_name not in reported_ops:
+            ignored_ops += f"{op_name} "
+    return ignored_ops
+
 def print_benchmark_stats(stats_table):
     stats_table = sort_by_graph_size(stats_table)
-    headers = ['Logfile (ir counts)'] + reported_ops_pattern + ['Others', 'Uncounted']
+    ignored_ops = "graph-decl/others, return, block*, block-ret"
+    print("=======================================================================================================")
+    print(f"Note: \"others\" is the sum of unreported ops ({get_ignored_ops()})")
+    print("=======================================================================================================")
+    headers = ['Logfile (ir counts)'] + reported_ops + [f"{all_pattern_name} [others]"]
     rows = []
     for bench_name in stats_table:
         row = [bench_name] + postprocess_stats(stats_table[bench_name])
@@ -50,59 +87,54 @@ def check_ir_coverage(logfile_name):
     tmp_output = "inter2.tmp"
     cp_cmd = f"cp {logfile_name} {tmp_source}"
     subprocess.run(cp_cmd, shell=True, check=True)
-    for grep_str in ops_pattern:
+    for ir_name, grep_str in ops_pattern.items():
         if grep_str == "*":
             continue
         grep_cmd = f"egrep -v \"{grep_str}\" {tmp_source} > {tmp_output}"
         subprocess.run(grep_cmd, shell=True, check=False)
         mv_cmd = f"mv {tmp_output} {tmp_source}"
         subprocess.run(mv_cmd, shell=True, check=True)
-    file1 = open(tmp_source)
-    print(file1.read())
-    file1.close()
+    if os.path.getsize(tmp_source) != 0:
+        print(f"{logfile_name} has lines with undetected patterns:")
+        file1 = open(tmp_source)
+        print(file1.read())
+        file1.close()
 
 def process_stats(logfile_name, stats_table):
-    stat = []
-    for grep_str in ops_pattern:
+    stat = {}
+    for ir_name, grep_str in ops_pattern.items():
         cmd = f"egrep \"{grep_str}\" {logfile_name} | wc -l"
         ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         output = ps.communicate()[0]
         count = int(output)
-        stat.append(count)
+        stat[ir_name] = count
     stats_table[logfile_name] = stat
 
+def count_nonzero_ratio(count, total_ops):
+    if count == 0:
+        return f"-"
+    else:
+        ratio = count * 100/total_ops
+        return f"{count} ({ratio:2.0f}%)"
+
 def postprocess_stats(stat):
-    total_ops = stat[0]
     stat_with_percentage = []
-    uncounted_ops = total_ops
-    other_ops = 0
+    total_ops = stat[all_pattern_name]
     assert(total_ops > 0)
-    for index, count in enumerate(stat):
-        if ops_pattern[index] in ops_category:
-            # print(f"found {ops_pattern[index]} count={count}")
-            uncounted_ops -= count
-        if ops_pattern[index] not in reported_ops_pattern:
+
+    # print "reported_ops"
+    for op_name in reported_ops:
+        count = stat[op_name]
+        stat_with_percentage.append(count_nonzero_ratio(count, total_ops))
+
+    # print "total_ops" and "other_ops"
+    other_ops = 0
+    for op_name, count in stat.items():
+        if op_name != all_pattern_name and op_name not in reported_ops:
             other_ops += count
-            continue
-        if index == 0:
-            assert(total_ops == count)
-            stat_with_percentage.append(count)
-        elif count == 0:
-            stat_with_percentage.append(count)
-        else:
-            ratio = count * 100/total_ops
-            stat_with_percentage.append(f"{count} ({ratio:2.0f}%)")
-    if other_ops > 0:
-        ratio = other_ops * 100/total_ops
-        stat_with_percentage.append(f"{other_ops} ({ratio:2.0f}%)")
-    else:
-        stat_with_percentage.append(f"{other_ops}")
-    if uncounted_ops > 0:
-        ratio = uncounted_ops * 100/total_ops
-        stat_with_percentage.append(f"{uncounted_ops} ({ratio:2.0f}%)")
-    else:
-        assert(uncounted_ops == 0)
-        stat_with_percentage.append(f"{uncounted_ops}")
+    stat_with_percentage.append(f"{total_ops} [{other_ops}]")
+    #stat_with_percentage.append(count_nonzero_ratio(other_ops, total_ops))
+
     return stat_with_percentage
 
 def process_all_stats(logfile_list):
@@ -194,8 +226,6 @@ def collect_files(filename_ext):
     return filelist
 
 if __name__ == "__main__":
-    #remove_devvm_prefix("")
-
     parser = argparse.ArgumentParser(description="Commands to process Graph-IR dump logs")
     parser.add_argument("--list_ir",
                         action="store_true",
@@ -218,10 +248,12 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    initialize_ops_pattern()
+
     if args.list_ir:
         print("IR type names: ")
-        for op in ops_pattern:
-            if op != "*": print(f"   - {op}")
+        for op, pattern in ops_pattern.items():
+            if op != "all": print(f"   - {op} (egrep=\"{pattern}\")")
 
     if args.stats_dir:
         logfile_list = collect_files(args.stats_dir)
