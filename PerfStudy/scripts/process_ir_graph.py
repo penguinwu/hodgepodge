@@ -26,9 +26,12 @@ call_op_name = "call"
 setattr_op_name = "setattr"
 getattr_op_name = "getattr"
 
+<<<<<<< HEAD
 getattr_table_name = "getattr-names"
 setattr_table_name = "setattr-names"
 
+=======
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
 ops_pattern = {}
 reported_ops = [aten_op_name, prim_op_name, fb_op_name, quantized_op_name, internal_op_name, caffe2_op_name,
                 if_op_name, loop_op_name, call_op_name, setattr_op_name, getattr_op_name]
@@ -192,6 +195,7 @@ def extract_source_from(line, source_dict, filter_devvm_path):
         else:
             source_dict[source] = 1
     return no_source_count
+<<<<<<< HEAD
 
 def extract_name_from(line, op_prefix):
     line = line.strip().decode('utf-8')
@@ -209,6 +213,14 @@ def extract_attr_from(line, is_setattr):
     result = re.search(f"prim\:\:{op_name}\[name\=\"(?P<name>[a-zA-Z0-9_\-]+)\"\]", line)
     if result:
         #print(f"Found match {result.group('name')} in {line}")
+=======
+
+def extract_name_from(line, op_prefix, source_dict):
+    line = line.strip().decode('utf-8')
+    result = re.search(f"{op_prefix}\:\:(?P<name>[a-zA-Z0-9_\-]+)", line)
+    if result:
+        #print(f"Found match {result.group('name')}")
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
         return result.group('name')
     else:
         print(f"Did not find match {line} for {op_prefix}")
@@ -227,6 +239,7 @@ def collect_source_info(logfile, op_pattern, source_dict, filter_devvm_path):
         source_dict[no_source_count_key] += no_source_count
     else:
         source_dict[no_source_count_key] = no_source_count
+<<<<<<< HEAD
 
 def collect_ops_name_info(logfile, op_pattern, name_dict):
     cmd = f"egrep \"{op_pattern}\" {logfile}"
@@ -264,6 +277,26 @@ def collect_attr_info(logfile, attr_dict, is_setattr):
         else:
             assert(False)
     #print(attr_dict)
+=======
+
+def collect_ops_name_info(logfile, op_pattern, name_dict):
+    cmd = f"egrep \"{op_pattern}\" {logfile}"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+
+    op_prefix = get_op_prefix(op_pattern)
+    while True:
+        line = ps.stdout.readline()
+        if not line:
+            break
+        name = extract_name_from(line, op_prefix, name_dict)
+        if name:
+            if name in name_dict:
+                name_dict[name] += 1
+            else:
+                name_dict[name] = 1
+        else:
+            assert(False)
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
 
 # strip the ending "::" from op_pattern
 def get_op_prefix(op_pattern):
@@ -274,6 +307,7 @@ def get_op_prefix(op_pattern):
 # distinct ops used in a benchmark
 def analyze_file(log_file_name, op_stats_dict, filter_devvm_path):
     for op in ops_with_source_info:
+<<<<<<< HEAD
         if op not in op_stats_dict: op_stats_dict[op] = {}
         collect_source_info(log_file_name, ops_pattern[op], op_stats_dict[op], filter_devvm_path)
 
@@ -287,6 +321,16 @@ def analyze_file(log_file_name, op_stats_dict, filter_devvm_path):
     if setattr_table_name not in op_stats_dict: op_stats_dict[setattr_table_name] = {}
     collect_attr_info(log_file_name, op_stats_dict[setattr_table_name], True)
 
+=======
+        if op not in op_stats_dict:
+             op_stats_dict[op] = {}
+        collect_source_info(log_file_name, ops_pattern[op], op_stats_dict[op], filter_devvm_path)
+    for op in ops_with_many_names:
+        if op not in op_stats_dict:
+            op_stats_dict[op] = {}
+        collect_ops_name_info(log_file_name, ops_pattern[op], op_stats_dict[op])
+
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
 def print_source_count(op_name, source_dict):
     no_source_count = source_dict[no_source_count_key]
     op_pattern = ops_pattern[op_name]
@@ -311,6 +355,7 @@ def print_op_names(op_name, name_dict):
     if count == 0:
         print(f"    - \"{op_name}\": not found")
     else:
+<<<<<<< HEAD
         print(f"    - \"{op_name}\": {count} distinct names (name [count])")
     new_dict = sort_by_key(name_dict)
     for name, count in new_dict.items():
@@ -329,11 +374,20 @@ def print_attr_names(attr_dict, is_setattr):
 def print_ops_stats_dict(logfile, source_dict):
     print(f"Detailed op stats for [{logfile}]")
 
+=======
+        print(f"    - \"{op_name}\": {count} disctinct names")
+    for name in name_dict.keys():
+        print(f"        + {ops_pattern[op_name]}{name} ({name_dict[name]})")
+
+def print_ops_stats_dict(logfile, source_dict):
+    print(f"Detailed op stats for [{logfile}]")
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
     for op_name in source_dict.keys():
         if op_name in ops_with_source_info:
             print_source_count(op_name, source_dict[op_name])
         elif op_name in ops_with_many_names:
             print_op_names(op_name, source_dict[op_name])
+<<<<<<< HEAD
         elif op_name == getattr_table_name:
             print_attr_names(source_dict[op_name], False)
         elif op_name == setattr_table_name:
@@ -346,11 +400,16 @@ def analyze_dir(extension, filter_devvm_path):
     if not logfile_list:
         print(f"Found no graph dump files w \"{args.analyze_dir}\" extension")
         return
+=======
+        else:
+            print(f"Unknown op_name = {op_name}")
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
 
     source_dict = {}
     for logfile_name in logfile_list:
         print(".", end="", flush=True)
         analyze_file(logfile_name, source_dict, filter_devvm_path)
+<<<<<<< HEAD
     print("")
     print_ops_stats_dict(f"{len(logfile_list)} graphs combined", source_dict)
 
@@ -377,6 +436,11 @@ def analyze_files(extension, filter_devvm_path):
 
     else:
         print(f"Found no graph dump files w \"{extension}\" extension")
+=======
+
+    print("")
+    print_ops_stats_dict("all logfiles", source_dict)
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
 
 # scan files under the current directory and return ones whose filename
 # matched filename_pattern
@@ -410,6 +474,8 @@ if __name__ == "__main__":
                         help="Check recognized IR coverage for file with extebsuib <IR_COVERAGE_DIR> in current dir, e.g., \"--ir_coverage_file foo.txt\" ")
     parser.add_argument("--analyze_file",
                         help="Analyze ops pattern for file <ANALYZE_FILE>, e.g., \"--analyze_file foo.txt\" ")
+    parser.add_argument("--ops_used_file",
+                        help="Dump distinct ops used for file <OPS_USED_FILE>, e.g., \"--ops_used_file foo.txt\" ")
     parser.add_argument("--analyze_dir",
                         help="Analyze and combine ops pattern for files w/ extension <ANALYZE_DIR> in current dir, e.g., \"--analyze_dir txt\"")
     parser.add_argument("--analyze_files",
@@ -455,7 +521,26 @@ if __name__ == "__main__":
         print_ops_stats_dict(args.analyze_file, ops_stats_dict)
 
     if args.analyze_dir:
+<<<<<<< HEAD
         analyze_dir(args.analyze_dir, args.filter_devvm_path)
 
     if args.analyze_files:
         analyze_files(args.analyze_files, args.filter_devvm_path)
+=======
+        logfile_list = collect_files(args.analyze_dir)
+        if logfile_list:
+            analyze_dir(logfile_list, args.filter_devvm_path)
+        else:
+            print(f"Found no graph dump files w \"{args.analyze_dir}\" extension")
+
+    # if args.ops_used_file:
+    #     collect_ops_used(args.ops_used_file)
+
+    # if args.ops_used_dir:
+    #     logfile_list = collect_files(args.ops_used_dir)
+    #     if logfile_list:
+    #         for logfile in logfile_list:
+    #             collect_ops_used(logfile)
+    #     else:
+    #         print(f"Found no graph dump files w \"{args.ops_used_dir}\" extension")
+>>>>>>> 9fa9860a6cc1e1905847e05ee7cc7cfe09d4b4ac
