@@ -6,6 +6,7 @@ from collections import OrderedDict
 from operator import itemgetter
 import re
 import os
+import sys
 
 all_pattern_name = "all"
 block_op_name ="block*()"
@@ -25,12 +26,19 @@ call_op_name = "call"
 setattr_op_name = "setattr"
 getattr_op_name = "getattr"
 
-op_name = "if"
+getattr_table_name = "getattr-names"
+setattr_table_name = "setattr-names"
+
 ops_pattern = {}
 reported_ops = [aten_op_name, prim_op_name, fb_op_name, quantized_op_name, internal_op_name, caffe2_op_name,
                 if_op_name, loop_op_name, call_op_name, setattr_op_name, getattr_op_name]
 ops_category = {aten_op_name, prim_op_name, fb_op_name, quantized_op_name, internal_op_name, caffe2_op_name,
                 block_op_name, block_return_name, return_op_name, graph_decl_op_name, graph_decl_sig_name}
+
+ops_with_source_info = {if_op_name, loop_op_name, call_op_name}
+ops_with_many_names = {aten_op_name, prim_op_name, fb_op_name, quantized_op_name, internal_op_name, caffe2_op_name}
+
+no_source_count_key = "z-no-source"
 
 def initialize_ops_pattern():
     # ops category
@@ -68,9 +76,10 @@ def get_ignored_ops():
             ignored_ops += f"{op_name} "
     return ignored_ops
 
-def print_benchmark_stats(stats_table):
+def print_toplevel_stats(stats_table):
     stats_table = sort_by_graph_size(stats_table)
     ignored_ops = "graph-decl/others, return, block*, block-ret"
+
     print("=======================================================================================================")
     print(f"Note: \"others\" is the sum of unreported ops ({get_ignored_ops()})")
     print("=======================================================================================================")
@@ -143,7 +152,7 @@ def process_all_stats(logfile_list):
         print(".", end="", flush=True)
         process_stats(logfile, stats_table)
     print("")
-    print_benchmark_stats(stats_table)
+    print_toplevel_stats(stats_table)
 
 # Since Predictor models are collected at different times
 # the source info may contain different vm-id info, strip
@@ -157,18 +166,17 @@ def remove_devvm_prefix(filepath):
     if result:
         newpath = result.group('filepath')
         #print(f"Found match {newpath}")
-    else:
-         print(f"Did not find match {filepath}")
+    # else:
+    #      print(f"Did not find match {filepath}")
     return newpath
-
 
 def extract_source_from(line, source_dict, filter_devvm_path):
     line = line.strip().decode('utf-8')
     result = re.split("\s+", line)
-    no_source_ifs = 0
+    no_source_count = 0
     if result[-2] != "#":
         # print(f"WARNING - no source info: {line}")
-        no_source_ifs = 1
+        no_source_count = 1
     else:
         long_source = result[-1]
         result2 = re.split(":", long_source)
@@ -178,14 +186,36 @@ def extract_source_from(line, source_dict, filter_devvm_path):
             filename = remove_devvm_prefix(filename)
         lineno = result2[1]
         source = filename + ":" + lineno
+        # print(f"found {source}")
         if source in source_dict:
             source_dict[source] += 1
         else:
             source_dict[source] = 1
-    return no_source_ifs
+    return no_source_count
 
-def analyze_bench(log_file_name, source_dict, print_stat, filter_devvm_path):
-    cmd = f"egrep \"{op_name}\" {log_file_name}"
+def extract_name_from(line, op_prefix):
+    line = line.strip().decode('utf-8')
+    result = re.search(f"{op_prefix}\:\:(?P<name>[a-zA-Z0-9_\-]+)", line)
+    if result:
+        #print(f"Found match {result.group('name')}")
+        return result.group('name')
+    else:
+        print(f"Did not find match {line} for {op_prefix}")
+        return None
+
+def extract_attr_from(line, is_setattr):
+    line = line.strip().decode('utf-8')
+    op_name = "SetAttr" if is_setattr else "GetAttr"
+    result = re.search(f"prim\:\:{op_name}\[name\=\"(?P<name>[a-zA-Z0-9_\-]+)\"\]", line)
+    if result:
+        #print(f"Found match {result.group('name')} in {line}")
+        return result.group('name')
+    else:
+        print(f"Did not find match {line} for {op_prefix}")
+        return None
+
+def collect_source_info(logfile, op_pattern, source_dict, filter_devvm_path):
+    cmd = f"egrep \"{op_pattern}\" {logfile}"
     ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
     no_source_count = 0
     while True:
@@ -193,26 +223,160 @@ def analyze_bench(log_file_name, source_dict, print_stat, filter_devvm_path):
         if not line:
             break
         no_source_count += extract_source_from(line, source_dict, filter_devvm_path)
-    if print_stat:
-        print_source_count(log_file_name, source_dict, no_source_count)
-    return no_source_count
+    if no_source_count_key in source_dict:
+        source_dict[no_source_count_key] += no_source_count
+    else:
+        source_dict[no_source_count_key] = no_source_count
 
-def print_source_count(benchmark, source_dict, no_source_count):
-    print(f"\"{op_name}\" in [{benchmark}] (source: [count]): {len(source_dict)} total sources")
+def collect_ops_name_info(logfile, op_pattern, name_dict):
+    cmd = f"egrep \"{op_pattern}\" {logfile}"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+
+    op_prefix = get_op_prefix(op_pattern)
+    while True:
+        line = ps.stdout.readline()
+        if not line:
+            break
+        name = extract_name_from(line, op_prefix)
+        if name:
+            if name in name_dict:
+                name_dict[name] += 1
+            else:
+                name_dict[name] = 1
+        else:
+            assert(False)
+
+# Collect attr names for GetAttr and SetAttr
+def collect_attr_info(logfile, attr_dict, is_setattr):
+    op_pattern = "prim::SetAttr" if is_setattr else "prim::GetAttr"
+
+    cmd = f"egrep \"{op_pattern}\" {logfile}"
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    while True:
+        line = ps.stdout.readline()
+        if not line: break
+        attr_name = extract_attr_from(line, is_setattr)
+        if attr_name:
+            if attr_name in attr_dict:
+                attr_dict[attr_name] += 1
+            else:
+                attr_dict[attr_name] = 1
+        else:
+            assert(False)
+    #print(attr_dict)
+
+# strip the ending "::" from op_pattern
+def get_op_prefix(op_pattern):
+    op_prefix = op_pattern[:-2]
+    return op_prefix
+
+# Collect detailed ops stats such as source lines for if, loop, and call nodes,
+# distinct ops used in a benchmark
+def analyze_file(log_file_name, op_stats_dict, filter_devvm_path):
+    for op in ops_with_source_info:
+        if op not in op_stats_dict: op_stats_dict[op] = {}
+        collect_source_info(log_file_name, ops_pattern[op], op_stats_dict[op], filter_devvm_path)
+
+    for op in ops_with_many_names:
+        if op not in op_stats_dict: op_stats_dict[op] = {}
+        collect_ops_name_info(log_file_name, ops_pattern[op], op_stats_dict[op])
+
+    if getattr_table_name not in op_stats_dict: op_stats_dict[getattr_table_name] = {}
+    collect_attr_info(log_file_name, op_stats_dict[getattr_table_name], False)
+
+    if setattr_table_name not in op_stats_dict: op_stats_dict[setattr_table_name] = {}
+    collect_attr_info(log_file_name, op_stats_dict[setattr_table_name], True)
+
+def print_source_count(op_name, source_dict):
+    no_source_count = source_dict[no_source_count_key]
+    op_pattern = ops_pattern[op_name]
+    distinct_source_count = len(source_dict)
+    if no_source_count == 0:
+        distinct_source_count -= 1
+    if distinct_source_count == 0:
+        print(f"    - \"{op_pattern}\": 0 found")
+        return
+
+    print(f"    - \"{op_pattern}\": {distinct_source_count} distinct sources (source:line [count])")
     source_dict = sort_by_key(source_dict)
     for key in source_dict:
-        print(f"  - {key}: [{source_dict[key]}]")
-    if no_source_count > 0:
-        print(f"Missing source file info for {no_source_count} occurances")
+        if key != no_source_count_key:
+            print(f"        + {key} [{source_dict[key]}]")
 
-def analyze_dir(logfile_list, filter_devvm_path):
+    if no_source_count > 0:
+        print(f"        + <missing-source> [{no_source_count}]")
+
+def print_op_names(op_name, name_dict):
+    count = len(name_dict)
+    if count == 0:
+        print(f"    - \"{op_name}\": not found")
+    else:
+        print(f"    - \"{op_name}\": {count} distinct names (name [count])")
+    new_dict = sort_by_key(name_dict)
+    for name, count in new_dict.items():
+        print(f"        + {ops_pattern[op_name]}{name} ({count})")
+
+def print_attr_names(attr_dict, is_setattr):
+    count = len(attr_dict)
+    op_name = "prim::SetAttr" if is_setattr else "prim::GetAttr"
+    if count > 0:
+        print(f"    - \"{op_name}\": {count} distinct attr names (attr [count])")
+        # print(f"print attr_dict {attr_dict}")
+        new_attr_dict = sort_by_key(attr_dict)
+        for attr, count in new_attr_dict.items():
+            print(f"        + \"{attr}\" ({count})")
+
+def print_ops_stats_dict(logfile, source_dict):
+    print(f"Detailed op stats for [{logfile}]")
+
+    for op_name in source_dict.keys():
+        if op_name in ops_with_source_info:
+            print_source_count(op_name, source_dict[op_name])
+        elif op_name in ops_with_many_names:
+            print_op_names(op_name, source_dict[op_name])
+        elif op_name == getattr_table_name:
+            print_attr_names(source_dict[op_name], False)
+        elif op_name == setattr_table_name:
+            print_attr_names(source_dict[op_name], True)
+        else:
+            print(f"Unknown op_name = {op_name}")
+
+def analyze_dir(extension, filter_devvm_path):
+    logfile_list = collect_files(extension)
+    if not logfile_list:
+        print(f"Found no graph dump files w \"{args.analyze_dir}\" extension")
+        return
+
     source_dict = {}
-    no_source_count = 0
     for logfile_name in logfile_list:
         print(".", end="", flush=True)
-        no_source_count += analyze_bench(logfile_name, source_dict, False, filter_devvm_path)
+        analyze_file(logfile_name, source_dict, filter_devvm_path)
     print("")
-    print_source_count("all logfiles", source_dict, no_source_count)
+    print_ops_stats_dict(f"{len(logfile_list)} graphs combined", source_dict)
+
+def analyze_files(extension, filter_devvm_path):
+    logfile_list = collect_files(extension)
+    if logfile_list:
+        for logfile in logfile_list:
+            # top-level stats
+            stats_table = {}
+            ops_stats_dict = {}
+            process_stats(logfile, stats_table)
+            # detailed stats
+            analyze_file(logfile, ops_stats_dict, filter_devvm_path)
+
+            save_filename = logfile + ".summary"
+            original_stdout = sys.stdout
+            with open(save_filename, 'w') as f:
+                sys.stdout = f
+                print_toplevel_stats(stats_table)
+                print("-------------------------------------------------------------------------------------------------------\n")
+                print_ops_stats_dict(logfile, ops_stats_dict)
+                sys.stdout = original_stdout
+                print(f"Detailed op stats are saved to \"{save_filename}\" ")
+
+    else:
+        print(f"Found no graph dump files w \"{extension}\" extension")
 
 # scan files under the current directory and return ones whose filename
 # matched filename_pattern
@@ -226,6 +390,12 @@ def collect_files(filename_ext):
     return filelist
 
 if __name__ == "__main__":
+    line = "%62 : bool = prim::Constant[value=0]() # :0:0"
+    result = re.search(f"prim\:\:(?P<name>[a-zA-Z0-9\_\-]+)", line)
+    if result is None:
+        print("Not found")
+        assert(False)
+
     parser = argparse.ArgumentParser(description="Commands to process Graph-IR dump logs")
     parser.add_argument("--list_ir",
                         action="store_true",
@@ -241,10 +411,12 @@ if __name__ == "__main__":
     parser.add_argument("--analyze_file",
                         help="Analyze ops pattern for file <ANALYZE_FILE>, e.g., \"--analyze_file foo.txt\" ")
     parser.add_argument("--analyze_dir",
-                        help="Analyze ops pattern for files w/ extension <ANALYZE_DIR> in current dir, e.g., \"--analyze_dir txt\"")
+                        help="Analyze and combine ops pattern for files w/ extension <ANALYZE_DIR> in current dir, e.g., \"--analyze_dir txt\"")
+    parser.add_argument("--analyze_files",
+                        help="Analyze and save ops pattern for each file w/ extension <ANALYZE_DIR> in current dir, e.g., \"--analyze_files txt\"")
     parser.add_argument("-f", "--filter_devvm_path",
                         action="store_true",
-                        help="Filter out devvm generated path prefix in source info")
+                        help="Filter out devvm path prefix in source info, used with --analyze_file or --analyze_dir")
 
     args = parser.parse_args()
 
@@ -265,7 +437,7 @@ if __name__ == "__main__":
     if args.stats_file:
         stats_table = {}
         process_stats(args.stats_file, stats_table)
-        print_benchmark_stats(stats_table)
+        print_toplevel_stats(stats_table)
 
     if args.ir_coverage_file:
         check_ir_coverage(args.ir_coverage_file)
@@ -278,11 +450,12 @@ if __name__ == "__main__":
             print(f"Found no graph dump files w \"{args.ir_coverage_dir}\" extension")
 
     if args.analyze_file:
-        analyze_bench(args.analyze_file, {}, True, args.filter_devvm_path)
+        ops_stats_dict = {}
+        analyze_file(args.analyze_file, ops_stats_dict, args.filter_devvm_path)
+        print_ops_stats_dict(args.analyze_file, ops_stats_dict)
 
     if args.analyze_dir:
-        logfile_list = collect_files(args.analyze_dir)
-        if logfile_list:
-            analyze_dir(logfile_list, args.filter_devvm_path)
-        else:
-            print(f"Found no graph dump files w \"{args.analyze_dir}\" extension")
+        analyze_dir(args.analyze_dir, args.filter_devvm_path)
+
+    if args.analyze_files:
+        analyze_files(args.analyze_files, args.filter_devvm_path)
