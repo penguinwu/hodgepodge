@@ -1,0 +1,38 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if       loop     call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  -------  -------  ------  ---------  ---------  --------------
+graph_59.txt           60 (45%)   30 (23%)   -        -               -              -            9 ( 7%)  2 ( 2%)  -       -          1 ( 1%)    133 [43]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_59.txt]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/5e43b05/fluent2/domains/citi_user_preference/user_report_content_feature/common/truncate_text_transformer.py:24 [2]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 1 distinct sources (source:line [count])
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/5e43b05/fluent2/domains/citi_user_preference/user_report_content_feature/common/truncate_text_transformer.py:26 [9]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 7 distinct names (name [count])
+        + prim::Constant (7)
+        + prim::GetAttr (1)
+        + prim::If (9)
+        + prim::ListConstruct (1)
+        + prim::Loop (2)
+        + prim::TupleUnpack (1)
+        + prim::unchecked_cast (9)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 9 distinct names (name [count])
+        + aten::__getitem__ (11)
+        + aten::__isnot__ (9)
+        + aten::__round_to_zero_floordiv (1)
+        + aten::add (9)
+        + aten::append (18)
+        + aten::len (1)
+        + aten::mul (1)
+        + aten::slice (9)
+        + aten::sub (1)
+    - "prim::GetAttr": 1 distinct attr names (attr [count])
+        + "invocations" (1)

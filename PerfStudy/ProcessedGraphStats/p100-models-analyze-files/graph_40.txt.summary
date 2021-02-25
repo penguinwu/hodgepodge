@@ -1,0 +1,32 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if    loop    call     setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  ----  ------  -------  ---------  ---------  --------------
+graph_40.txt           3 (10%)    23 (79%)   -        -               -              -            -     -       1 ( 3%)  -          4 (14%)    29 [3]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_40.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 1 distinct sources (source:line [count])
+        + :0 [1]
+    - "prim::If": 0 found
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 7 distinct names (name [count])
+        + prim::CallMethod (1)
+        + prim::Constant (6)
+        + prim::DictConstruct (2)
+        + prim::GetAttr (4)
+        + prim::TupleConstruct (3)
+        + prim::TupleIndex (6)
+        + prim::TupleUnpack (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 1 distinct names (name [count])
+        + aten::__getitem__ (3)
+    - "prim::GetAttr": 4 distinct attr names (attr [count])
+        + "bdt" (1)
+        + "c2_pred_wrapper" (1)
+        + "invocations" (1)
+        + "submodule" (1)

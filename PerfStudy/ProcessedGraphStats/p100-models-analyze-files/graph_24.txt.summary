@@ -1,0 +1,141 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_24.txt           903 (54%)  471 (28%)  -        -               -              -            61 ( 4%)  23 ( 1%)  -       -          235 (14%)  1667 [293]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_24.txt]
+    - "prim::Loop": 8 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:125 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:129 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:132 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:52 [3]
+        + fblearner.flow.fluent2.diffcanary@dbbd133/fblearner/flow/projects/fluent2/domains/si/content_behavior_learning/multigate_moe/multigate_moe_expert_model.py:453 [8]
+        + fblearner.flow.fluent2.diffcanary@dbbd133/fblearner/flow/projects/fluent2/domains/si/content_behavior_learning/multigate_moe/multigate_moe_expert_model.py:518 [2]
+        + fblearner.flow.fluent2.diffcanary@dbbd133/fblearner/flow/projects/fluent2/domains/si/content_behavior_learning/multigate_moe/multigate_moe_expert_model.py:524 [2]
+        + fblearner.flow.fluent2.diffcanary@dbbd133/fblearner/flow/projects/fluent2/domains/si/content_behavior_learning/multigate_moe/multigate_moe_expert_model.py:598 [2]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 10 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:131 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:136 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:138 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:147 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:56 [15]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/torch/nn/functional.py:1663 [26]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/torch/nn/modules/rnn.py:173 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/torch/nn/modules/rnn.py:177 [2]
+        + /mnt/xarfuse/uid-30500/a77815ec-seed-9138f3c0-bffa-4f2c-b27e-6dd0c68cb5b7-ns-4026534177/torch/nn/modules/rnn.py:195 [4]
+        + fblearner.flow.fluent2.diffcanary@dbbd133/fblearner/flow/projects/fluent2/domains/si/content_behavior_learning/multigate_moe/multigate_moe_expert_model.py:427 [4]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 13 distinct names (name [count])
+        + prim::Constant (41)
+        + prim::GetAttr (235)
+        + prim::If (61)
+        + prim::ListConstruct (47)
+        + prim::ListUnpack (4)
+        + prim::Loop (23)
+        + prim::RaiseException (8)
+        + prim::TupleConstruct (12)
+        + prim::TupleUnpack (3)
+        + prim::device (4)
+        + prim::dtype (4)
+        + prim::max (10)
+        + prim::unchecked_cast (19)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 51 distinct names (name [count])
+        + aten::Bool (2)
+        + aten::IntImplicit (20)
+        + aten::__contains__ (2)
+        + aten::__derive_index (9)
+        + aten::__getitem__ (97)
+        + aten::__isnot__ (19)
+        + aten::__not__ (2)
+        + aten::__range_length (1)
+        + aten::__round_to_zero_floordiv (8)
+        + aten::add (120)
+        + aten::add_ (26)
+        + aten::append (103)
+        + aten::arange (1)
+        + aten::bmm (8)
+        + aten::cat (6)
+        + aten::contiguous (4)
+        + aten::copy_ (2)
+        + aten::dim (28)
+        + aten::div (2)
+        + aten::embedding (2)
+        + aten::eq (32)
+        + aten::format (8)
+        + aten::get (2)
+        + aten::layer_norm (22)
+        + aten::len (26)
+        + aten::list (4)
+        + aten::lstm (2)
+        + aten::matmul (30)
+        + aten::max (2)
+        + aten::mean (8)
+        + aten::mm (26)
+        + aten::mul (21)
+        + aten::ne (8)
+        + aten::ones (8)
+        + aten::permute (4)
+        + aten::relu (22)
+        + aten::reshape (9)
+        + aten::select (30)
+        + aten::sigmoid (4)
+        + aten::size (14)
+        + aten::slice (18)
+        + aten::softmax (4)
+        + aten::sub (17)
+        + aten::sum (4)
+        + aten::t (56)
+        + aten::tensor (2)
+        + aten::to (2)
+        + aten::transpose (8)
+        + aten::unsqueeze (36)
+        + aten::view (8)
+        + aten::zeros (4)
+    - "prim::GetAttr": 40 distinct attr names (attr [count])
+        + "0" (12)
+        + "1" (16)
+        + "2" (2)
+        + "3" (12)
+        + "4" (10)
+        + "EmbeddingMoE_list" (1)
+        + "_flat_weights" (2)
+        + "attention_type" (4)
+        + "behavior_expert" (1)
+        + "bias" (48)
+        + "bio" (2)
+        + "body" (2)
+        + "content_behavior_mtml_mmoe_multi_entity" (1)
+        + "emb_seq_layers" (1)
+        + "embed_segment" (19)
+        + "embedding_expert" (1)
+        + "invocations" (1)
+        + "layernorm_si_behavior" (1)
+        + "layernorm_text" (1)
+        + "linear_in" (4)
+        + "linear_si_behavior" (1)
+        + "linear_text" (1)
+        + "lstm" (2)
+        + "model" (1)
+        + "numericalizer" (1)
+        + "ocr" (2)
+        + "output_layer" (4)
+        + "pad" (2)
+        + "padding_token_id" (2)
+        + "sep" (2)
+        + "sequential_layer" (6)
+        + "submodule" (1)
+        + "text_encoder" (2)
+        + "text_expert" (1)
+        + "title" (2)
+        + "training" (2)
+        + "unk" (2)
+        + "vocab" (4)
+        + "weight" (54)
+        + "word_embeddings" (2)

@@ -1,0 +1,97 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_70.txt           349 (46%)  230 (31%)  -        -               -              -            38 ( 5%)  10 ( 1%)  -       5 ( 1%)    100 (13%)  754 [175]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_70.txt]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/torch/nn/functional.py:2011 [10]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 9 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/fblearner/flow/projects/fluent2/domains/feed_integrity/personalization/common/layers.py:38 [2]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/fblearner/flow/projects/fluent2/domains/feed_integrity/personalization/common/layers.py:43 [2]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/fblearner/flow/projects/fluent2/domains/feed_integrity/personalization/gftw_two_tower/modeling.py:167 [1]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/fblearner/flow/projects/fluent2/domains/feed_integrity/personalization/gftw_two_tower/modeling.py:18 [1]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/torch/nn/functional.py:1663 [7]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/torch/nn/functional.py:2013 [5]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/torch/nn/functional.py:2030 [5]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/torch/nn/modules/batchnorm.py:110 [5]
+        + /mnt/xarfuse/uid-194456/f110a6ac-seed-342bea32-d067-4e54-9403-f67e489edd0c-ns-4026533076/torch/nn/modules/batchnorm.py:211 [10]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 11 distinct names (name [count])
+        + prim::Constant (60)
+        + prim::GetAttr (100)
+        + prim::If (38)
+        + prim::ListConstruct (3)
+        + prim::Loop (10)
+        + prim::RaiseException (10)
+        + prim::SetAttr (5)
+        + prim::TupleConstruct (1)
+        + prim::TupleIndex (1)
+        + prim::TupleUnpack (1)
+        + prim::is_cuda (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 23 distinct names (name [count])
+        + aten::__getitem__ (55)
+        + aten::__round_to_zero_floordiv (5)
+        + aten::add (104)
+        + aten::add_ (7)
+        + aten::batch_norm (5)
+        + aten::cat (1)
+        + aten::cuda (1)
+        + aten::dim (22)
+        + aten::eq (12)
+        + aten::format (10)
+        + aten::len (5)
+        + aten::matmul (7)
+        + aten::mm (7)
+        + aten::mul (51)
+        + aten::narrow (9)
+        + aten::ne (10)
+        + aten::ones (1)
+        + aten::relu (4)
+        + aten::size (7)
+        + aten::sub (10)
+        + aten::t (14)
+        + aten::to (1)
+        + aten::zeros (1)
+    - "prim::GetAttr": 32 distinct attr names (attr [count])
+        + "0" (3)
+        + "1" (3)
+        + "bias" (12)
+        + "bn1" (2)
+        + "bn2" (2)
+        + "bottleneck" (1)
+        + "content_engagements_extractor" (1)
+        + "creator_is_page_extractor" (1)
+        + "creator_u2v_embedder" (1)
+        + "creator_w2v_extractor" (1)
+        + "gftw_two_tower_embedding_content_embedding" (1)
+        + "invocations" (1)
+        + "is_group_post_extractor" (1)
+        + "is_share_post_extractor" (1)
+        + "length" (9)
+        + "linear1" (2)
+        + "linear2" (2)
+        + "mask_ih" (1)
+        + "model" (1)
+        + "num_batches_tracked" (5)
+        + "ocxray_embedder" (1)
+        + "photo_count_extractor" (1)
+        + "running_mean" (5)
+        + "running_var" (5)
+        + "start_idx" (9)
+        + "submodule" (1)
+        + "training" (10)
+        + "use_bn" (2)
+        + "video_count_extractor" (1)
+        + "weight" (12)
+        + "wpie_embeddings_extractor" (1)
+        + "xray_oc_hash_extractor" (1)
+    - "prim::SetAttr": 1 distinct attr names (attr [count])
+        + "num_batches_tracked" (5)

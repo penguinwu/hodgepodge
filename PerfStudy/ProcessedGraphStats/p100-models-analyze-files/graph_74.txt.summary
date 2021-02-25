@@ -1,0 +1,48 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop    call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  ------  ------  ---------  ---------  --------------
+graph_74.txt           369 (43%)  347 (40%)  -        -               -              -            35 ( 4%)  -       -       -          1 ( 0%)    859 [143]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_74.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 3 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-197654/caf481c6-seed-ac9f06c3-9cbf-4b4b-a54c-0d300247f0b9-ns-4026532833/fblearner/flow/projects/fluent2/definition/transformers/explode_list.py:288 [1]
+        + /mnt/xarfuse/uid-197654/caf481c6-seed-ac9f06c3-9cbf-4b4b-a54c-0d300247f0b9-ns-4026532833/fblearner/flow/projects/fluent2/definition/transformers/explode_list.py:345 [1]
+        + <missing-source> [33]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 11 distinct names (name [count])
+        + prim::Constant (70)
+        + prim::GetAttr (1)
+        + prim::If (35)
+        + prim::ListConstruct (7)
+        + prim::RaiseException (34)
+        + prim::TupleConstruct (65)
+        + prim::TupleIndex (33)
+        + prim::TupleUnpack (3)
+        + prim::Uninitialized (33)
+        + prim::isinstance (33)
+        + prim::unchecked_cast (33)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 14 distinct names (name [count])
+        + aten::__getitem__ (38)
+        + aten::add (1)
+        + aten::cat (1)
+        + aten::eq (2)
+        + aten::extend (31)
+        + aten::format (1)
+        + aten::index_select (32)
+        + aten::len (1)
+        + aten::ones (1)
+        + aten::select (64)
+        + aten::size (4)
+        + aten::slice (64)
+        + aten::unsqueeze (128)
+        + aten::view (1)
+    - "prim::GetAttr": 1 distinct attr names (attr [count])
+        + "invocations" (1)

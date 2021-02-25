@@ -1,0 +1,38 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if       loop    call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  -------  ------  ------  ---------  ---------  --------------
+graph_67.txt           10 (38%)   9 (35%)    -        -               -              -            1 ( 4%)  -       -       -          5 (19%)    26 [7]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_67.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 1 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-223428/e43e966e-seed-773ac7b6-fc7a-4b23-b282-af9eabcefd32-ns-4026532945/torch/nn/functional.py:1663 [1]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 4 distinct names (name [count])
+        + prim::Constant (2)
+        + prim::GetAttr (5)
+        + prim::If (1)
+        + prim::TupleUnpack (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 9 distinct names (name [count])
+        + aten::__getitem__ (1)
+        + aten::add (1)
+        + aten::add_ (1)
+        + aten::dim (1)
+        + aten::eq (1)
+        + aten::matmul (1)
+        + aten::mm (1)
+        + aten::sigmoid (1)
+        + aten::t (2)
+    - "prim::GetAttr": 5 distinct attr names (attr [count])
+        + "bias" (1)
+        + "invocations" (1)
+        + "layer" (1)
+        + "submodule" (1)
+        + "weight" (1)

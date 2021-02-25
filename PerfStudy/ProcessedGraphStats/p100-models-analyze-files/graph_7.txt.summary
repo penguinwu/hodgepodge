@@ -1,0 +1,66 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop    call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  ------  ------  ---------  ---------  --------------
+graph_7.txt            47 (31%)   58 (38%)   -        -               -              -            11 ( 7%)  -       -       -          11 ( 7%)   152 [47]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_7.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 5 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-127871/654c3006-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1677 [1]
+        + /mnt/xarfuse/uid-127871/654c3006-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1935 [4]
+        + /mnt/xarfuse/uid-127871/654c3006-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1946 [2]
+        + /mnt/xarfuse/uid-127871/654c3006-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1962 [2]
+        + /mnt/xarfuse/uid-127871/654c3006-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1965 [2]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 11 distinct names (name [count])
+        + prim::Constant (19)
+        + prim::DictConstruct (1)
+        + prim::GetAttr (11)
+        + prim::If (11)
+        + prim::ListConstruct (1)
+        + prim::RaiseException (6)
+        + prim::TupleConstruct (1)
+        + prim::TupleUnpack (3)
+        + prim::Uninitialized (1)
+        + prim::device (2)
+        + prim::dtype (2)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 23 distinct names (name [count])
+        + aten::__getitem__ (3)
+        + aten::add (1)
+        + aten::add_ (1)
+        + aten::append (1)
+        + aten::arange (2)
+        + aten::cat (1)
+        + aten::clamp_min (1)
+        + aten::dim (5)
+        + aten::div (1)
+        + aten::embedding_bag (2)
+        + aten::eq (7)
+        + aten::expand_as (1)
+        + aten::format (4)
+        + aten::is_floating_point (2)
+        + aten::matmul (1)
+        + aten::mm (1)
+        + aten::ne (2)
+        + aten::norm (1)
+        + aten::numel (2)
+        + aten::reshape (2)
+        + aten::size (2)
+        + aten::t (2)
+        + aten::warn (2)
+    - "prim::GetAttr": 8 distinct attr names (attr [count])
+        + "0" (2)
+        + "1" (1)
+        + "bias" (1)
+        + "embedding_tables" (1)
+        + "invocations" (1)
+        + "mlp" (1)
+        + "submodule" (1)
+        + "weight" (3)

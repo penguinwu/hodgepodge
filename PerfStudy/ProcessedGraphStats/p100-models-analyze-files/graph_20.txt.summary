@@ -1,0 +1,99 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop     call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  -------  ------  ---------  ---------  --------------
+graph_20.txt           311 (42%)  209 (28%)  -        -               -              -            49 ( 7%)  9 ( 1%)  -       -          37 ( 5%)   737 [217]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_20.txt]
+    - "prim::Loop": 6 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:152 [2]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:170 [1]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:173 [1]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:184 [2]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:189 [1]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:191 [2]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 9 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:153 [9]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:157 [1]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:176 [1]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/fblearner/flow/projects/fluent2/domains/privacy/bii_binary_classifiers/bii_simple_nn_binary_classifier_model.py:186 [9]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/torch/nn/functional.py:1663 [4]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/torch/nn/functional.py:1921 [10]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/torch/nn/functional.py:1932 [5]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/torch/nn/functional.py:1948 [5]
+        + /mnt/xarfuse/uid-30162/093d25ee-seed-eefcaf46-b141-4080-a114-994761ea19e6-ns-4026533075/torch/nn/functional.py:1951 [5]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 15 distinct names (name [count])
+        + prim::Constant (52)
+        + prim::GetAttr (37)
+        + prim::If (49)
+        + prim::ListConstruct (11)
+        + prim::Loop (9)
+        + prim::RaiseException (15)
+        + prim::TupleConstruct (2)
+        + prim::TupleIndex (1)
+        + prim::TupleUnpack (6)
+        + prim::Uninitialized (1)
+        + prim::abs (9)
+        + prim::device (5)
+        + prim::dtype (10)
+        + prim::min (1)
+        + prim::unchecked_cast (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 35 distinct names (name [count])
+        + aten::__contains__ (18)
+        + aten::__getitem__ (41)
+        + aten::__isnot__ (1)
+        + aten::__not__ (9)
+        + aten::__round_to_zero_floordiv (3)
+        + aten::add (40)
+        + aten::add_ (5)
+        + aten::append (34)
+        + aten::arange (5)
+        + aten::cat (2)
+        + aten::dim (14)
+        + aten::embedding_bag (5)
+        + aten::eq (19)
+        + aten::format (10)
+        + aten::hash (9)
+        + aten::is_floating_point (5)
+        + aten::len (7)
+        + aten::lt (1)
+        + aten::matmul (4)
+        + aten::mm (4)
+        + aten::mul (3)
+        + aten::ne (5)
+        + aten::numel (5)
+        + aten::ones (1)
+        + aten::relu (3)
+        + aten::remainder (9)
+        + aten::reshape (5)
+        + aten::sigmoid (1)
+        + aten::size (6)
+        + aten::slice (10)
+        + aten::str (9)
+        + aten::sub (3)
+        + aten::t (8)
+        + aten::tensor (2)
+        + aten::warn (5)
+    - "prim::GetAttr": 15 distinct attr names (attr [count])
+        + "0" (2)
+        + "1" (1)
+        + "2" (2)
+        + "3" (1)
+        + "4" (2)
+        + "6" (1)
+        + "bias" (4)
+        + "bii_derived_uii_classification" (1)
+        + "dense_layers" (1)
+        + "invocations" (1)
+        + "num_embeddings" (9)
+        + "str_feature_delimiters" (1)
+        + "submodule" (1)
+        + "text_embeddings" (1)
+        + "weight" (9)

@@ -1,0 +1,110 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_88.txt           528 (57%)  186 (20%)  -        3 ( 0%)         -              -            32 ( 3%)  37 ( 4%)  -       -          54 ( 6%)   922 [205]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_88.txt]
+    - "prim::Loop": 12 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:104 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:62 [1]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:66 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/models/output_layers/doc_classification_output_layer.py:127 [1]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/models/output_layers/doc_classification_output_layer.py:130 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/utils.py:146 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/utils.py:159 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/utils.py:169 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/utils.py:170 [18]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/utils.py:28 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/vocab.py:46 [2]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/vocab.py:53 [1]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 6 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:228 [1]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:65 [1]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:68 [9]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/utils.py:147 [9]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/pytext/torchscript/utils.py:149 [9]
+        + /mnt/xarfuse/uid-199225/4ec6d194-seed-e942bc8e-1385-450f-94c9-c7297ea18b5b-ns-4026533585/torch/nn/functional.py:1437 [3]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 11 distinct names (name [count])
+        + prim::Constant (21)
+        + prim::DictConstruct (1)
+        + prim::GetAttr (54)
+        + prim::If (32)
+        + prim::ListConstruct (19)
+        + prim::Loop (37)
+        + prim::Print (1)
+        + prim::TupleConstruct (1)
+        + prim::TupleUnpack (1)
+        + prim::max (9)
+        + prim::unchecked_cast (10)
+    - "quantized::*": 1 distinct names (name [count])
+        + quantized::linear_dynamic (3)
+    - "caffe2::*": not found
+    - "aten::*": 34 distinct names (name [count])
+        + aten::Float (9)
+        + aten::__getitem__ (87)
+        + aten::__isnot__ (10)
+        + aten::__round_to_zero_floordiv (17)
+        + aten::_convolution (3)
+        + aten::_set_item (9)
+        + aten::add (72)
+        + aten::append (147)
+        + aten::cat (2)
+        + aten::chunk (1)
+        + aten::dim (1)
+        + aten::dropout (2)
+        + aten::embedding (1)
+        + aten::eq (12)
+        + aten::exp (1)
+        + aten::format (1)
+        + aten::get (9)
+        + aten::gt (9)
+        + aten::index_select (2)
+        + aten::item (9)
+        + aten::len (40)
+        + aten::log_softmax (1)
+        + aten::max (3)
+        + aten::mul (18)
+        + aten::relu (5)
+        + aten::select (9)
+        + aten::slice (9)
+        + aten::squeeze (1)
+        + aten::sub (27)
+        + aten::tensor (3)
+        + aten::to (4)
+        + aten::transpose (1)
+        + aten::unsqueeze (2)
+        + aten::warn (1)
+    - "prim::GetAttr": 27 distinct attr names (attr [count])
+        + "0" (4)
+        + "1" (1)
+        + "2" (1)
+        + "3" (1)
+        + "_packed_params" (6)
+        + "bias" (3)
+        + "classes" (10)
+        + "convs" (3)
+        + "decoder" (1)
+        + "docnn_pytext" (1)
+        + "embedding" (1)
+        + "idx" (2)
+        + "invocations" (1)
+        + "max_seq_len" (1)
+        + "mlp" (2)
+        + "model" (1)
+        + "output_layer" (1)
+        + "pad_idx" (1)
+        + "pad_token" (1)
+        + "representation" (1)
+        + "submodule" (1)
+        + "true_label" (1)
+        + "unk_idx" (2)
+        + "vocab" (1)
+        + "weight" (4)
+        + "word_embedding" (1)
+        + "wrapped_model" (1)

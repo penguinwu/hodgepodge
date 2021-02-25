@@ -1,0 +1,154 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*     prim::*     fb::*    quantized::*    internal::*    caffe2::*    if         loop      call    setattr    getattr    all [others]
+---------------------  ----------  ----------  -------  --------------  -------------  -----------  ---------  --------  ------  ---------  ---------  --------------
+graph_19.txt           2978 (49%)  1457 (24%)  -        -               -              -            379 ( 6%)  78 ( 1%)  -       32 ( 1%)   563 ( 9%)  6110 [1675]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_19.txt]
+    - "prim::Loop": 10 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:295 [2]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:317 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:320 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:331 [2]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:336 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:338 [2]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:378 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:381 [2]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:389 [2]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:2011 [64]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 17 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:296 [9]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:300 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:323 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:333 [9]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:365 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:379 [1]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_predict.py:387 [9]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/fblearner/flow/projects/fluent2/domains/privacy/bii_aggregate_submodels.py:274 [6]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:1663 [32]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:1921 [60]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:1932 [30]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:1948 [30]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:1951 [30]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:2013 [32]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/functional.py:2030 [32]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/modules/batchnorm.py:108 [32]
+        + /mnt/xarfuse/uid-30162/9c5395f0-seed-51ad57e6-3398-4884-9c06-c48219833d5a-ns-4026532921/torch/nn/modules/batchnorm.py:207 [64]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 16 distinct names (name [count])
+        + prim::Constant (95)
+        + prim::GetAttr (563)
+        + prim::If (379)
+        + prim::ListConstruct (41)
+        + prim::Loop (78)
+        + prim::RaiseException (154)
+        + prim::SetAttr (32)
+        + prim::TupleConstruct (2)
+        + prim::TupleIndex (1)
+        + prim::TupleUnpack (40)
+        + prim::Uninitialized (1)
+        + prim::abs (9)
+        + prim::device (30)
+        + prim::dtype (30)
+        + prim::min (1)
+        + prim::unchecked_cast (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 51 distinct names (name [count])
+        + aten::Bool (9)
+        + aten::__contains__ (18)
+        + aten::__getitem__ (434)
+        + aten::__isnot__ (1)
+        + aten::__not__ (9)
+        + aten::__round_to_zero_floordiv (37)
+        + aten::add (694)
+        + aten::add_ (33)
+        + aten::append (63)
+        + aten::arange (31)
+        + aten::batch_norm (32)
+        + aten::cat (12)
+        + aten::copy_ (9)
+        + aten::detach (6)
+        + aten::dim (212)
+        + aten::dropout (32)
+        + aten::embedding_bag (30)
+        + aten::eq (154)
+        + aten::expand (1)
+        + aten::format (124)
+        + aten::gather (1)
+        + aten::hash (9)
+        + aten::index (12)
+        + aten::index_put_ (6)
+        + aten::index_select (1)
+        + aten::is_floating_point (30)
+        + aten::le (9)
+        + aten::len (40)
+        + aten::lt (1)
+        + aten::matmul (32)
+        + aten::mean (1)
+        + aten::mm (32)
+        + aten::mul (335)
+        + aten::ne (94)
+        + aten::numel (30)
+        + aten::numpy_T (1)
+        + aten::ones (1)
+        + aten::relu (20)
+        + aten::remainder (9)
+        + aten::reshape (31)
+        + aten::select (53)
+        + aten::sigmoid (6)
+        + aten::size (64)
+        + aten::slice (25)
+        + aten::sort (1)
+        + aten::str (9)
+        + aten::sub (69)
+        + aten::t (64)
+        + aten::tensor (20)
+        + aten::unsqueeze (1)
+        + aten::warn (30)
+    - "prim::GetAttr": 39 distinct attr names (attr [count])
+        + "0" (25)
+        + "1" (19)
+        + "10" (5)
+        + "11" (1)
+        + "13" (1)
+        + "14" (1)
+        + "2" (25)
+        + "3" (21)
+        + "4" (7)
+        + "5" (9)
+        + "6" (8)
+        + "7" (5)
+        + "9" (5)
+        + "bias" (64)
+        + "bii_privacy_pytorch_model" (1)
+        + "frozen" (6)
+        + "invocations" (1)
+        + "labels" (9)
+        + "median_indices" (1)
+        + "modules_cat" (6)
+        + "modules_dense" (6)
+        + "modules_sparse" (6)
+        + "num_batches_tracked" (32)
+        + "num_embeddings" (9)
+        + "num_labels" (1)
+        + "output_indices" (6)
+        + "running_mean" (32)
+        + "running_var" (32)
+        + "select_input_dense" (6)
+        + "select_input_sparse" (6)
+        + "select_subindices" (6)
+        + "sparse_preprocess" (6)
+        + "special_cases" (1)
+        + "str_feature_delimiters" (1)
+        + "submodels" (1)
+        + "submodule" (1)
+        + "training" (96)
+        + "training_done" (1)
+        + "weight" (94)
+    - "prim::SetAttr": 1 distinct attr names (attr [count])
+        + "num_batches_tracked" (32)

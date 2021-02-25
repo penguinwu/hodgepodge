@@ -1,0 +1,159 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*     prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call     setattr    getattr    all [others]
+---------------------  ----------  ---------  -------  --------------  -------------  -----------  --------  --------  -------  ---------  ---------  --------------
+graph_64.txt           1175 (59%)  503 (25%)  -        25 ( 1%)        -              -            29 ( 1%)  77 ( 4%)  9 ( 0%)  -          196 (10%)  1976 [273]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_64.txt]
+    - "prim::Loop": 20 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:131 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:136 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:24 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/data/bert_tensorizer.py:141 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/data/bert_tensorizer.py:149 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/data/bert_tensorizer.py:204 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/data/bert_tensorizer.py:230 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/models/output_layers/doc_classification_output_layer.py:127 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/models/output_layers/doc_classification_output_layer.py:130 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/tensorizer/tensorizer.py:149 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:169 [4]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:170 [36]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:244 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:28 [4]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:68 [4]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:70 [4]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:83 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:87 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/utils.py:88 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/vocab.py:38 [2]
+    - "prim::CallMethod": 1 distinct sources (source:line [count])
+        + :0 [9]
+    - "prim::If": 9 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:209 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:26 [18]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/data/bert_tensorizer.py:169 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/data/bert_tensorizer.py:203 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/data/tensorizers.py:143 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/tensorizer/tensorizer.py:147 [2]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/tensorizer/tensorizer.py:158 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/pytext/torchscript/tensorizer/tensorizer.py:164 [1]
+        + /mnt/xarfuse/uid-30718/4010ae70-seed-bc689083-5ad7-4ade-83eb-b2db15dd89c7-ns-4026534030/torch/nn/functional.py:1437 [3]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 18 distinct names (name [count])
+        + prim::CallMethod (9)
+        + prim::Constant (23)
+        + prim::ConstantChunk (6)
+        + prim::DictConstruct (1)
+        + prim::GetAttr (196)
+        + prim::If (29)
+        + prim::ListConstruct (57)
+        + prim::Loop (77)
+        + prim::NumToTensor (6)
+        + prim::Print (1)
+        + prim::TupleConstruct (3)
+        + prim::TupleIndex (9)
+        + prim::TupleUnpack (2)
+        + prim::device (18)
+        + prim::dtype (18)
+        + prim::max (27)
+        + prim::min (2)
+        + prim::unchecked_cast (19)
+    - "quantized::*": 1 distinct names (name [count])
+        + quantized::linear_dynamic (25)
+    - "caffe2::*": not found
+    - "aten::*": 48 distinct names (name [count])
+        + aten::Float (9)
+        + aten::Int (6)
+        + aten::__getitem__ (144)
+        + aten::__is__ (9)
+        + aten::__isnot__ (1)
+        + aten::__round_to_zero_floordiv (35)
+        + aten::_set_item (9)
+        + aten::add (142)
+        + aten::append (286)
+        + aten::bmm (12)
+        + aten::cat (1)
+        + aten::chunk (1)
+        + aten::contiguous (24)
+        + aten::copy_ (18)
+        + aten::cumsum (1)
+        + aten::device (1)
+        + aten::dim (1)
+        + aten::dropout (26)
+        + aten::embedding (2)
+        + aten::eq (15)
+        + aten::exp (1)
+        + aten::extend (2)
+        + aten::format (1)
+        + aten::ge (2)
+        + aten::gelu (6)
+        + aten::get (9)
+        + aten::item (9)
+        + aten::keys (1)
+        + aten::layer_norm (13)
+        + aten::len (52)
+        + aten::log_softmax (1)
+        + aten::masked_fill (6)
+        + aten::mul (50)
+        + aten::ne (1)
+        + aten::rsub (1)
+        + aten::select (46)
+        + aten::size (19)
+        + aten::slice (2)
+        + aten::softmax (6)
+        + aten::squeeze (1)
+        + aten::sub (57)
+        + aten::tensor (24)
+        + aten::to (37)
+        + aten::transpose (32)
+        + aten::type_as (13)
+        + aten::unsqueeze (3)
+        + aten::view (36)
+        + aten::warn (1)
+    - "prim::GetAttr": 43 distinct attr names (attr [count])
+        + "0" (8)
+        + "1" (1)
+        + "2" (1)
+        + "3" (7)
+        + "4" (1)
+        + "5" (1)
+        + "_packed_params" (50)
+        + "attention" (6)
+        + "attention_layer_norm" (6)
+        + "bias" (13)
+        + "bos_idx" (1)
+        + "classes" (10)
+        + "decoder" (1)
+        + "device" (1)
+        + "embedding" (1)
+        + "embedding_layer_norm" (1)
+        + "encoder" (2)
+        + "eos_idx" (1)
+        + "final_layer_norm" (6)
+        + "idx" (2)
+        + "input_projection" (6)
+        + "invocations" (1)
+        + "layers" (6)
+        + "max_seq_len" (1)
+        + "mlp" (7)
+        + "model" (1)
+        + "output_layer" (1)
+        + "output_projection" (6)
+        + "pad_idx" (1)
+        + "positional_embedding" (1)
+        + "processor" (9)
+        + "residual_mlp" (6)
+        + "submodule" (1)
+        + "tensorizer" (1)
+        + "token_embedding" (1)
+        + "tokenizer" (2)
+        + "transformer" (1)
+        + "unk_idx" (2)
+        + "vocab" (4)
+        + "vocab_lookup" (1)
+        + "weight" (15)
+        + "wrapped_model" (1)
+        + "xlmr_classifier_oc_multi_task_xlmr" (1)

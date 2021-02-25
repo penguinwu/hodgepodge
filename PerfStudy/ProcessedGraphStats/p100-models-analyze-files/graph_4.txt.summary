@@ -1,0 +1,44 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if    loop    call     setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  ----  ------  -------  ---------  ---------  --------------
+graph_4.txt            90 (40%)   134 (59%)  -        -               -              -            -     -       2 ( 1%)  -          6 ( 3%)    227 [3]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_4.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 1 distinct sources (source:line [count])
+        + :0 [2]
+    - "prim::If": 0 found
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 8 distinct names (name [count])
+        + prim::CallMethod (2)
+        + prim::Constant (48)
+        + prim::DictConstruct (4)
+        + prim::GetAttr (6)
+        + prim::ListConstruct (19)
+        + prim::TupleConstruct (4)
+        + prim::TupleIndex (50)
+        + prim::TupleUnpack (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 11 distinct names (name [count])
+        + aten::__getitem__ (13)
+        + aten::cat (9)
+        + aten::index_select (8)
+        + aten::numel (9)
+        + aten::ones (1)
+        + aten::size (1)
+        + aten::slice (11)
+        + aten::squeeze (1)
+        + aten::sub (9)
+        + aten::tensor (9)
+        + aten::to (19)
+    - "prim::GetAttr": 5 distinct attr names (attr [count])
+        + "bdt" (1)
+        + "c2_pred_wrapper" (2)
+        + "invocations" (1)
+        + "sparse_nn" (1)
+        + "submodule" (1)

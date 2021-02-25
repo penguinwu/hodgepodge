@@ -1,0 +1,51 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if    loop    call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  ----  ------  ------  ---------  ---------  --------------
+graph_87.txt           33 (42%)   43 (54%)   -        -               -              -            -     -       -       -          23 (29%)   79 [3]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_87.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 0 found
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 4 distinct names (name [count])
+        + prim::Constant (16)
+        + prim::GetAttr (23)
+        + prim::ListConstruct (3)
+        + prim::TupleUnpack (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 16 distinct names (name [count])
+        + aten::__getitem__ (1)
+        + aten::_convolution (3)
+        + aten::add (3)
+        + aten::cat (2)
+        + aten::detach (1)
+        + aten::dropout (1)
+        + aten::embedding (1)
+        + aten::flatten (3)
+        + aten::max_pool1d (3)
+        + aten::mm (3)
+        + aten::permute (1)
+        + aten::relu (5)
+        + aten::size (1)
+        + aten::softmax (1)
+        + aten::t (3)
+        + aten::zeros (1)
+    - "prim::GetAttr": 12 distinct attr names (attr [count])
+        + "0" (1)
+        + "1" (1)
+        + "2" (1)
+        + "bias" (6)
+        + "convs" (1)
+        + "dense1" (1)
+        + "dense2" (1)
+        + "dense3" (1)
+        + "embedding" (1)
+        + "invocations" (1)
+        + "submodule" (1)
+        + "weight" (7)

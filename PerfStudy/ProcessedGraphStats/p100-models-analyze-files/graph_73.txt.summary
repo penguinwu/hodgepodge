@@ -1,0 +1,181 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*     prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop       call    setattr    getattr    all [others]
+---------------------  ----------  ---------  -------  --------------  -------------  -----------  --------  ---------  ------  ---------  ---------  --------------
+graph_73.txt           1916 (59%)  673 (21%)  -        -               -              -            85 ( 3%)  147 ( 5%)  -       -          183 ( 6%)  3226 [637]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_73.txt]
+    - "prim::Loop": 23 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:148 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:150 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:68 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:72 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/bert_tensorizer.py:141 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/bert_tensorizer.py:149 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/bert_tensorizer.py:213 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/bert_tensorizer.py:215 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/bert_tensorizer.py:236 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/normalizer.py:77 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/normalizer.py:78 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/tensorizer.py:149 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:117 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:124 [1]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:125 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:206 [8]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:207 [72]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:28 [8]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:291 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:72 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:96 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:98 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/vocab.py:46 [4]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 21 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:693 [1]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:695 [1]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:71 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:74 [18]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/bert_tensorizer.py:175 [1]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/bert_tensorizer.py:212 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/data/tensorizers.py:175 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/module.py:850 [1]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/normalizer.py:76 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/normalizer.py:81 [18]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/tensorizer.py:147 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/tensorizer.py:158 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/tensorizer/tensorizer.py:164 [2]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:55 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:56 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:58 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:68 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:71 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:73 [4]
+        + /mnt/xarfuse/uid-230748/68161608-seed-42d160c5-8105-478a-a575-6080aa7a1aa5-ns-4026534173/pytext/torchscript/utils.py:76 [1]
+        + :0 [4]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 17 distinct names (name [count])
+        + prim::Constant (29)
+        + prim::GetAttr (183)
+        + prim::If (85)
+        + prim::ListConstruct (85)
+        + prim::Loop (147)
+        + prim::NumToTensor (2)
+        + prim::Print (2)
+        + prim::RaiseException (4)
+        + prim::TupleConstruct (21)
+        + prim::TupleIndex (20)
+        + prim::TupleUnpack (2)
+        + prim::Uninitialized (1)
+        + prim::device (9)
+        + prim::dtype (9)
+        + prim::max (38)
+        + prim::min (6)
+        + prim::unchecked_cast (30)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 51 distinct names (name [count])
+        + aten::Float (18)
+        + aten::Int (2)
+        + aten::__and__ (4)
+        + aten::__getitem__ (356)
+        + aten::__isnot__ (30)
+        + aten::__not__ (4)
+        + aten::__round_to_zero_floordiv (65)
+        + aten::_set_item (36)
+        + aten::add (258)
+        + aten::add_ (12)
+        + aten::append (484)
+        + aten::bmm (4)
+        + aten::cat (1)
+        + aten::contiguous (14)
+        + aten::copy_ (9)
+        + aten::cpu (2)
+        + aten::cumsum (1)
+        + aten::device (2)
+        + aten::div (18)
+        + aten::dropout (12)
+        + aten::embedding (2)
+        + aten::eq (4)
+        + aten::extend (22)
+        + aten::ge (8)
+        + aten::gelu (2)
+        + aten::get (18)
+        + aten::gt (5)
+        + aten::layer_norm (5)
+        + aten::len (104)
+        + aten::lt (8)
+        + aten::matmul (16)
+        + aten::mm (3)
+        + aten::mul (72)
+        + aten::mul_ (2)
+        + aten::ne (25)
+        + aten::permute (6)
+        + aten::relu (2)
+        + aten::reshape (1)
+        + aten::rsub (1)
+        + aten::select (55)
+        + aten::size (12)
+        + aten::slice (10)
+        + aten::softmax (2)
+        + aten::sub (127)
+        + aten::t (19)
+        + aten::tensor (14)
+        + aten::to (11)
+        + aten::transpose (12)
+        + aten::type_as (5)
+        + aten::unsqueeze (2)
+        + aten::view (9)
+    - "prim::GetAttr": 50 distinct attr names (attr [count])
+        + "0" (5)
+        + "1" (1)
+        + "3" (3)
+        + "6" (1)
+        + "attention" (3)
+        + "attention_layer_norm" (2)
+        + "batch_padding_control" (2)
+        + "bias" (20)
+        + "bos_idx" (2)
+        + "compress_k" (2)
+        + "decoder" (1)
+        + "device" (2)
+        + "do_normalization" (2)
+        + "embedding" (1)
+        + "embedding_layer_norm" (1)
+        + "encoder" (1)
+        + "eos_idx" (2)
+        + "feature_avgs" (18)
+        + "feature_stddevs" (36)
+        + "final_layer_norm" (2)
+        + "idx" (4)
+        + "invocations" (1)
+        + "kput_projection" (2)
+        + "layers" (3)
+        + "left_normalizer" (1)
+        + "left_tensorizer" (1)
+        + "max_seq_len" (3)
+        + "mlp" (2)
+        + "mlp_for_right" (1)
+        + "model" (1)
+        + "out_embedding_dim" (1)
+        + "output_projection" (2)
+        + "pad_idx" (1)
+        + "positional_embedding" (1)
+        + "qput_projection" (2)
+        + "residual_mlp" (2)
+        + "right_encoder" (1)
+        + "right_normalizer" (1)
+        + "right_tensorizer" (2)
+        + "seq_padding_control" (2)
+        + "submodule" (1)
+        + "token_embedding" (1)
+        + "transformer" (1)
+        + "twotower_linformer_embedding" (1)
+        + "unk_idx" (4)
+        + "vocab" (5)
+        + "vocab_lookup" (2)
+        + "vput_projection" (2)
+        + "weight" (24)
+        + "wrapped_embedder" (1)

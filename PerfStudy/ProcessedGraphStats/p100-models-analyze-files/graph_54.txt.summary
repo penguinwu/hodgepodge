@@ -1,0 +1,75 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if       loop     call     setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  -------  -------  -------  ---------  ---------  --------------
+graph_54.txt           290 (50%)  227 (39%)  -        -               34 ( 6%)       -            3 ( 1%)  6 ( 1%)  1 ( 0%)  -          27 ( 5%)   578 [27]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_54.txt]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-200749/b78b60ba-seed-cc5de7d3-0398-4bb5-a2c6-fa663d8f8967-ns-4026533080/fblearner/flow/projects/fluent2/definition/transformers/dynamic_number_categories.py:505 [6]
+    - "prim::CallMethod": 1 distinct sources (source:line [count])
+        + :0 [1]
+    - "prim::If": 1 distinct sources (source:line [count])
+        + <missing-source> [3]
+    - "internal::*": 3 distinct names (name [count])
+        + internal::explode_int_single (5)
+        + internal::explode_int_weighted_multi (2)
+        + internal::replace_string_single_using_index (27)
+    - "fb::*": not found
+    - "prim::*": 15 distinct names (name [count])
+        + prim::CallMethod (1)
+        + prim::Constant (46)
+        + prim::DictConstruct (2)
+        + prim::GetAttr (27)
+        + prim::If (3)
+        + prim::ListConstruct (37)
+        + prim::Loop (6)
+        + prim::RaiseException (3)
+        + prim::TupleConstruct (36)
+        + prim::TupleIndex (53)
+        + prim::TupleUnpack (1)
+        + prim::Uninitialized (3)
+        + prim::isinstance (3)
+        + prim::min (3)
+        + prim::unchecked_cast (3)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 18 distinct names (name [count])
+        + aten::__getitem__ (72)
+        + aten::__round_to_zero_floordiv (3)
+        + aten::add (33)
+        + aten::append (27)
+        + aten::cat (11)
+        + aten::extend (18)
+        + aten::index_select (4)
+        + aten::len (3)
+        + aten::mul (3)
+        + aten::numel (7)
+        + aten::ones (7)
+        + aten::size (7)
+        + aten::slice (7)
+        + aten::str (3)
+        + aten::sub (10)
+        + aten::tensor (7)
+        + aten::to (14)
+        + aten::unsqueeze (54)
+    - "prim::GetAttr": 17 distinct attr names (attr [count])
+        + "NN" (1)
+        + "aymt_world2vec_pages_features_explode" (1)
+        + "aymt_world2vec_user_features_explode" (1)
+        + "c2_pred_wrapper" (1)
+        + "categories" (7)
+        + "currency_explode" (1)
+        + "currency_static_categories" (1)
+        + "funding_type_explode" (1)
+        + "general_module" (3)
+        + "gvm_vertical_name_explode" (1)
+        + "gvm_vertical_name_static_categories" (1)
+        + "invocations" (1)
+        + "region_explode" (1)
+        + "region_static_categories" (1)
+        + "status_explode" (1)
+        + "string_single_categorical_features_category_indexes" (3)
+        + "submodule" (1)

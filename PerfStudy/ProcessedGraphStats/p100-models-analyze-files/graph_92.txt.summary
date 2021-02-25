@@ -1,0 +1,121 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_92.txt           697 (60%)  226 (19%)  -        2 ( 0%)         -              -            39 ( 3%)  43 ( 4%)  -       -          79 ( 7%)   1170 [245]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_92.txt]
+    - "prim::Loop": 16 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:114 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:148 [1]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:150 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:68 [1]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:72 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/models/output_layers/doc_classification_output_layer.py:132 [1]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/models/output_layers/doc_classification_output_layer.py:135 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/tensorizer/normalizer.py:77 [1]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/tensorizer/normalizer.py:78 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/utils.py:183 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/utils.py:196 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/utils.py:206 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/utils.py:207 [18]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/utils.py:28 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/vocab.py:46 [2]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/vocab.py:53 [1]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 7 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:357 [1]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:71 [1]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/fblearner/flow/projects/fluent2/definition/transformers/contrib/pytext/torchscript.py:74 [9]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/tensorizer/normalizer.py:76 [1]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/tensorizer/normalizer.py:81 [9]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/utils.py:184 [9]
+        + /mnt/xarfuse/uid-216175/86622222-seed-17da1a0c-1e54-4789-961d-d17093eb2dd1-ns-4026534239/pytext/torchscript/utils.py:186 [9]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 12 distinct names (name [count])
+        + prim::Constant (20)
+        + prim::DictConstruct (1)
+        + prim::GetAttr (79)
+        + prim::If (39)
+        + prim::ListConstruct (21)
+        + prim::Loop (43)
+        + prim::Print (1)
+        + prim::TupleConstruct (1)
+        + prim::TupleIndex (1)
+        + prim::TupleUnpack (1)
+        + prim::max (9)
+        + prim::unchecked_cast (10)
+    - "quantized::*": 1 distinct names (name [count])
+        + quantized::linear_dynamic (2)
+    - "caffe2::*": not found
+    - "aten::*": 34 distinct names (name [count])
+        + aten::Float (18)
+        + aten::__getitem__ (154)
+        + aten::__isnot__ (10)
+        + aten::__round_to_zero_floordiv (19)
+        + aten::_convolution (3)
+        + aten::_set_item (27)
+        + aten::add (90)
+        + aten::append (157)
+        + aten::cat (2)
+        + aten::chunk (1)
+        + aten::div (9)
+        + aten::dropout (2)
+        + aten::embedding (1)
+        + aten::eq (9)
+        + aten::exp (1)
+        + aten::get (9)
+        + aten::gt (9)
+        + aten::index_select (2)
+        + aten::item (9)
+        + aten::len (42)
+        + aten::log_softmax (1)
+        + aten::max (3)
+        + aten::mul (20)
+        + aten::ne (9)
+        + aten::relu (4)
+        + aten::select (27)
+        + aten::size (1)
+        + aten::slice (9)
+        + aten::squeeze (1)
+        + aten::sub (38)
+        + aten::tensor (4)
+        + aten::to (3)
+        + aten::transpose (1)
+        + aten::unsqueeze (2)
+    - "prim::GetAttr": 32 distinct attr names (attr [count])
+        + "0" (2)
+        + "1" (1)
+        + "2" (1)
+        + "3" (1)
+        + "_packed_params" (4)
+        + "bias" (3)
+        + "classes" (10)
+        + "convs" (3)
+        + "decoder" (1)
+        + "do_normalization" (1)
+        + "embedding" (1)
+        + "feature_avgs" (9)
+        + "feature_stddevs" (18)
+        + "idx" (2)
+        + "invocations" (1)
+        + "max_seq_len" (1)
+        + "mlp" (1)
+        + "model" (1)
+        + "normalizer" (1)
+        + "output_layer" (1)
+        + "pad_idx" (1)
+        + "pad_token" (1)
+        + "representation" (1)
+        + "score_function_dim" (1)
+        + "student_pytext_i18n_ig_voting" (1)
+        + "submodule" (1)
+        + "true_label" (1)
+        + "unk_idx" (2)
+        + "vocab" (1)
+        + "weight" (4)
+        + "word_embedding" (1)
+        + "wrapped_model" (1)

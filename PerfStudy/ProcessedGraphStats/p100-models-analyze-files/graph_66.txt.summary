@@ -1,0 +1,104 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_66.txt           250 (43%)  202 (35%)  -        -               -              -            27 ( 5%)  10 ( 2%)  -       -          58 (10%)   583 [131]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_66.txt]
+    - "prim::Loop": 6 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/aml/integrity_solutions/wholepostclassifier/model.py:87 [2]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/domains/aml/integrity/multimodalcontentclassifier_torchscript.py:102 [1]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/domains/aml/integrity/multimodalcontentclassifier_torchscript.py:126 [2]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:34 [2]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:88 [1]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:91 [2]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 8 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/aml/integrity_solutions/wholepostclassifier/model.py:111 [1]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:36 [9]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:90 [1]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:93 [9]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/torch/nn/functional.py:1680 [3]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/torch/nn/modules/rnn.py:172 [1]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/torch/nn/modules/rnn.py:176 [1]
+        + /mnt/xarfuse/uid-194451/0facccb4-seed-77805b2d-33d6-41e9-a009-00c569c7958a-ns-4026534172/torch/nn/modules/rnn.py:194 [2]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 13 distinct names (name [count])
+        + prim::Constant (34)
+        + prim::GetAttr (58)
+        + prim::If (27)
+        + prim::ListConstruct (11)
+        + prim::Loop (10)
+        + prim::RaiseException (5)
+        + prim::TupleConstruct (5)
+        + prim::TupleUnpack (2)
+        + prim::device (10)
+        + prim::dtype (10)
+        + prim::max (9)
+        + prim::min (2)
+        + prim::unchecked_cast (19)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 36 distinct names (name [count])
+        + aten::__getitem__ (33)
+        + aten::__isnot__ (19)
+        + aten::__round_to_zero_floordiv (4)
+        + aten::add (33)
+        + aten::add_ (3)
+        + aten::append (29)
+        + aten::arange (1)
+        + aten::cat (3)
+        + aten::conv1d (1)
+        + aten::copy_ (9)
+        + aten::dim (4)
+        + aten::dropout (1)
+        + aten::embedding (1)
+        + aten::eq (4)
+        + aten::format (4)
+        + aten::get (9)
+        + aten::layer_norm (3)
+        + aten::len (16)
+        + aten::list (2)
+        + aten::lstm (1)
+        + aten::matmul (3)
+        + aten::max (2)
+        + aten::mm (3)
+        + aten::mul (5)
+        + aten::ne (4)
+        + aten::ones (1)
+        + aten::permute (2)
+        + aten::relu (3)
+        + aten::reshape (1)
+        + aten::select (18)
+        + aten::size (6)
+        + aten::softmax (1)
+        + aten::sub (4)
+        + aten::t (6)
+        + aten::tensor (9)
+        + aten::zeros (2)
+    - "prim::GetAttr": 22 distinct attr names (attr [count])
+        + "0" (4)
+        + "1" (3)
+        + "3" (1)
+        + "4" (1)
+        + "_flat_weights" (1)
+        + "ai_integrity_super_light_hate" (1)
+        + "bias" (7)
+        + "conv_layers" (1)
+        + "dense_feature_sizes" (1)
+        + "dropout_and_layer_norm" (1)
+        + "invocations" (1)
+        + "lstm" (1)
+        + "model" (1)
+        + "output_layer" (1)
+        + "sequential_layer" (1)
+        + "submodule" (1)
+        + "text_encoders" (1)
+        + "text_numericalizer" (1)
+        + "training" (2)
+        + "vocab" (18)
+        + "weight" (8)
+        + "word_embeddings" (1)

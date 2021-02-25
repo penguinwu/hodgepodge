@@ -1,0 +1,193 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*     prim::*    fb::*    quantized::*    internal::*    caffe2::*    if         loop      call     setattr    getattr    all [others]
+---------------------  ----------  ---------  -------  --------------  -------------  -----------  ---------  --------  -------  ---------  ---------  --------------
+graph_12.txt           1153 (51%)  578 (26%)  -        -               -              -            112 ( 5%)  38 ( 2%)  9 ( 0%)  -          219 (10%)  2258 [527]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_12.txt]
+    - "prim::Loop": 15 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/core/multi_model.py:61 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/core/multi_model.py:69 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/core/multi_model.py:78 [6]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/encoder/non_temporal/text/xlm_encoder.py:244 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/fusion/non_temporal/attention_fusion.py:76 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/datasets/transform_utils.py:72 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/datasets/transform_utils.py:77 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/text/vocab/vocab.py:246 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/text/vocab/vocab.py:250 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/text/vocab/vocab.py:259 [9]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_predictor.py:211 [1]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_predictor.py:215 [2]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_predictor.py:283 [2]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_predictor.py:770 [2]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_utils.py:257 [2]
+    - "prim::CallMethod": 1 distinct sources (source:line [count])
+        + :0 [9]
+    - "prim::If": 22 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/core/multi_model.py:70 [9]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/core/multi_model.py:79 [27]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/encoder/non_temporal/category/embedding_bag_encoder.py:57 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/encoder/non_temporal/category/embedding_bag_encoder.py:64 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/faim/encoder/non_temporal/category/embedding_bag_encoder.py:66 [2]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/datasets/transform_utils.py:101 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/datasets/transform_utils.py:78 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/datasets/transform_utils.py:80 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/datasets/transform_utils.py:84 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/datasets/transform_utils.py:97 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/text/tokenizers/sentencepiece_tokenizer.py:49 [18]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/text/vocab/vocab.py:244 [1]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/multimo/text/vocab/vocab.py:260 [9]
+        + /mnt/xarfuse/uid-189014/c0196fa8-seed-8b562338-0213-42a8-92c7-9fdb64c92c6e-ns-4026533586/torch/nn/functional.py:1663 [5]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_predictor.py:282 [1]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_predictor.py:765 [1]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_predictor.py:769 [1]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_utils.py:169 [1]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_utils.py:256 [1]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_utils.py:259 [9]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_utils.py:261 [9]
+        + fblearner.flow.fluent2.diffcanary@71e9c0b/fblearner/flow/projects/fluent2/definition/transformers/contrib/faim/faim_utils.py:266 [9]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 15 distinct names (name [count])
+        + prim::CallMethod (9)
+        + prim::Constant (46)
+        + prim::DictConstruct (8)
+        + prim::GetAttr (219)
+        + prim::If (112)
+        + prim::ListConstruct (66)
+        + prim::Loop (38)
+        + prim::NumToTensor (4)
+        + prim::TupleConstruct (3)
+        + prim::TupleIndex (1)
+        + prim::TupleUnpack (20)
+        + prim::device (3)
+        + prim::max (9)
+        + prim::min (12)
+        + prim::unchecked_cast (28)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 65 distinct names (name [count])
+        + aten::Int (12)
+        + aten::__and__ (9)
+        + aten::__contains__ (36)
+        + aten::__getitem__ (202)
+        + aten::__is__ (19)
+        + aten::__not__ (9)
+        + aten::__round_to_zero_floordiv (13)
+        + aten::_set_item (83)
+        + aten::add (161)
+        + aten::add_ (17)
+        + aten::append (27)
+        + aten::bmm (4)
+        + aten::cat (14)
+        + aten::clamp_min (1)
+        + aten::contiguous (8)
+        + aten::detach (19)
+        + aten::device (2)
+        + aten::dim (14)
+        + aten::div (1)
+        + aten::dropout (2)
+        + aten::embedding (5)
+        + aten::eq (30)
+        + aten::expand_as (1)
+        + aten::find (9)
+        + aten::floor_divide (2)
+        + aten::format (27)
+        + aten::ge (11)
+        + aten::gelu (2)
+        + aten::get (9)
+        + aten::gt (9)
+        + aten::items (2)
+        + aten::keys (32)
+        + aten::layer_norm (6)
+        + aten::leaky_relu (1)
+        + aten::len (40)
+        + aten::lt (10)
+        + aten::masked_fill (2)
+        + aten::matmul (17)
+        + aten::max (2)
+        + aten::mean (2)
+        + aten::mm (5)
+        + aten::mul (41)
+        + aten::ne (13)
+        + aten::norm (1)
+        + aten::ones (1)
+        + aten::remainder (2)
+        + aten::rsub (1)
+        + aten::select (16)
+        + aten::size (10)
+        + aten::slice (27)
+        + aten::softmax (3)
+        + aten::squeeze (9)
+        + aten::stack (2)
+        + aten::sub (17)
+        + aten::sum (3)
+        + aten::t (22)
+        + aten::tensor (4)
+        + aten::to (29)
+        + aten::transpose (11)
+        + aten::type_as (3)
+        + aten::unsqueeze (12)
+        + aten::update (4)
+        + aten::view (12)
+        + aten::warn (27)
+        + aten::zeros (6)
+    - "prim::GetAttr": 56 distinct attr names (attr [count])
+        + "0" (4)
+        + "1" (4)
+        + "2" (2)
+        + "attention_weights_dim" (1)
+        + "attention_weights_suffix" (1)
+        + "attn" (1)
+        + "bias" (23)
+        + "cadinality" (2)
+        + "category_feat_length" (1)
+        + "category_feat_name" (1)
+        + "channel_name" (7)
+        + "device" (1)
+        + "eager_encoder" (1)
+        + "emb_layer_norm" (1)
+        + "embed_positions" (1)
+        + "embed_tokens" (1)
+        + "embedding" (2)
+        + "encoded_feature_key" (10)
+        + "encoders" (1)
+        + "eos_token" (2)
+        + "export_embedding_dim" (1)
+        + "faim_predictor" (1)
+        + "fc1" (2)
+        + "fc2" (2)
+        + "final_layer_norm" (2)
+        + "fusion_model_name" (29)
+        + "invocations" (1)
+        + "itos" (1)
+        + "k_proj" (4)
+        + "layer_embedding_suffix" (1)
+        + "layers" (2)
+        + "mode" (4)
+        + "module" (3)
+        + "out_proj" (4)
+        + "padding_idx" (4)
+        + "pool_dim" (6)
+        + "processor" (9)
+        + "proj" (1)
+        + "projections" (1)
+        + "q_proj" (4)
+        + "segment_embeddings" (1)
+        + "self_attn" (2)
+        + "self_attn_layer_norm" (2)
+        + "sos_token" (2)
+        + "stoi" (9)
+        + "submodule" (1)
+        + "text_feat_name" (1)
+        + "text_feat_seq_len" (1)
+        + "tokenizer" (2)
+        + "torchscript_model" (3)
+        + "unknown_idx" (9)
+        + "use_hash" (2)
+        + "use_mini_length_pad" (1)
+        + "v_proj" (4)
+        + "vocab" (2)
+        + "weight" (28)

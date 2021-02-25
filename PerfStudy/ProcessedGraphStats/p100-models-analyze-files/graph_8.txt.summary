@@ -1,0 +1,89 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop     call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  -------  ------  ---------  ---------  --------------
+graph_8.txt            172 (45%)  110 (29%)  -        -               -              -            23 ( 6%)  4 ( 1%)  -       2 ( 1%)    35 ( 9%)   385 [103]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_8.txt]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:2011 [4]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 9 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1663 [3]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1921 [4]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1932 [2]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1948 [2]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:1951 [2]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:2013 [2]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/functional.py:2030 [2]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/modules/batchnorm.py:108 [2]
+        + /mnt/xarfuse/uid-168916/0ec2c676-seed-nspid4026531836-ns-4026531840/torch/nn/modules/batchnorm.py:207 [4]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 13 distinct names (name [count])
+        + prim::Constant (24)
+        + prim::DictConstruct (1)
+        + prim::GetAttr (35)
+        + prim::If (23)
+        + prim::ListConstruct (2)
+        + prim::Loop (4)
+        + prim::RaiseException (10)
+        + prim::SetAttr (2)
+        + prim::TupleConstruct (1)
+        + prim::TupleUnpack (3)
+        + prim::Uninitialized (1)
+        + prim::device (2)
+        + prim::dtype (2)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 28 distinct names (name [count])
+        + aten::__getitem__ (23)
+        + aten::__round_to_zero_floordiv (2)
+        + aten::add (42)
+        + aten::add_ (3)
+        + aten::append (1)
+        + aten::arange (2)
+        + aten::batch_norm (2)
+        + aten::cat (2)
+        + aten::dim (13)
+        + aten::embedding_bag (2)
+        + aten::eq (11)
+        + aten::format (8)
+        + aten::is_floating_point (2)
+        + aten::layer_norm (1)
+        + aten::len (2)
+        + aten::matmul (3)
+        + aten::mm (3)
+        + aten::mul (20)
+        + aten::ne (6)
+        + aten::neg (1)
+        + aten::numel (2)
+        + aten::relu (2)
+        + aten::reshape (2)
+        + aten::sigmoid (1)
+        + aten::size (4)
+        + aten::sub (4)
+        + aten::t (6)
+        + aten::warn (2)
+    - "prim::GetAttr": 17 distinct attr names (attr [count])
+        + "0" (1)
+        + "1" (1)
+        + "bias" (6)
+        + "bn1" (1)
+        + "bn2" (1)
+        + "embedding_tables" (1)
+        + "invocations" (1)
+        + "linear1" (1)
+        + "linear2" (1)
+        + "linear3" (1)
+        + "ln" (1)
+        + "num_batches_tracked" (2)
+        + "running_mean" (2)
+        + "running_var" (2)
+        + "submodule" (1)
+        + "training" (4)
+        + "weight" (8)
+    - "prim::SetAttr": 1 distinct attr names (attr [count])
+        + "num_batches_tracked" (2)

@@ -1,0 +1,57 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if       loop    call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  -------  ------  ------  ---------  ---------  --------------
+graph_95.txt           43 (37%)   46 (40%)   -        -               -              -            6 ( 5%)  -       -       -          20 (17%)   116 [27]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_95.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 2 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-197654/925494a6-seed-0fe69c2f-57fa-4859-bf79-f8866ac95871-ns-4026534049/torch/nn/functional.py:1443 [3]
+        + /mnt/xarfuse/uid-197654/925494a6-seed-0fe69c2f-57fa-4859-bf79-f8866ac95871-ns-4026534049/torch/nn/functional.py:1688 [3]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 7 distinct names (name [count])
+        + prim::Constant (13)
+        + prim::GetAttr (20)
+        + prim::If (6)
+        + prim::ListConstruct (1)
+        + prim::TupleConstruct (4)
+        + prim::TupleIndex (1)
+        + prim::TupleUnpack (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 18 distinct names (name [count])
+        + aten::__getitem__ (2)
+        + aten::add (3)
+        + aten::add_ (3)
+        + aten::arange (1)
+        + aten::dim (4)
+        + aten::eq (6)
+        + aten::format (1)
+        + aten::layer_norm (1)
+        + aten::len (2)
+        + aten::matmul (3)
+        + aten::mm (3)
+        + aten::mul (2)
+        + aten::ones (1)
+        + aten::relu (2)
+        + aten::reshape (1)
+        + aten::softmax (1)
+        + aten::t (6)
+        + aten::warn (1)
+    - "prim::GetAttr": 11 distinct attr names (attr [count])
+        + "0" (1)
+        + "1" (2)
+        + "3" (1)
+        + "bacon_transformer" (1)
+        + "bias" (4)
+        + "invocations" (1)
+        + "labels" (2)
+        + "model" (2)
+        + "probs_layer" (1)
+        + "submodule" (1)
+        + "weight" (4)

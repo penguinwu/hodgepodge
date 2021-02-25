@@ -1,0 +1,91 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_90.txt           432 (61%)  140 (20%)  -        -               -              -            18 ( 3%)  32 ( 5%)  -       -          50 ( 7%)   711 [139]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_90.txt]
+    - "prim::Loop": 9 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/models/output_layers/doc_classification_output_layer.py:132 [1]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/models/output_layers/doc_classification_output_layer.py:135 [2]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/utils.py:183 [2]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/utils.py:196 [2]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/utils.py:206 [2]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/utils.py:207 [18]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/utils.py:28 [2]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/vocab.py:46 [2]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/vocab.py:53 [1]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 2 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/utils.py:184 [9]
+        + /mnt/xarfuse/uid-207971/08fd7ef0-seed-e52d3060-8ca3-412f-9078-a6b958732b4a-ns-4026532480/pytext/torchscript/utils.py:186 [9]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 8 distinct names (name [count])
+        + prim::Constant (13)
+        + prim::DictConstruct (1)
+        + prim::GetAttr (50)
+        + prim::If (18)
+        + prim::ListConstruct (16)
+        + prim::Loop (32)
+        + prim::TupleUnpack (1)
+        + prim::max (9)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 30 distinct names (name [count])
+        + aten::Float (9)
+        + aten::__getitem__ (58)
+        + aten::__round_to_zero_floordiv (15)
+        + aten::_convolution (3)
+        + aten::_set_item (9)
+        + aten::add (56)
+        + aten::add_ (1)
+        + aten::append (128)
+        + aten::cat (2)
+        + aten::chunk (1)
+        + aten::dropout (1)
+        + aten::embedding (1)
+        + aten::eq (9)
+        + aten::get (9)
+        + aten::gt (9)
+        + aten::item (9)
+        + aten::len (36)
+        + aten::log_softmax (1)
+        + aten::matmul (1)
+        + aten::max (3)
+        + aten::mm (2)
+        + aten::mul (15)
+        + aten::relu (5)
+        + aten::select (9)
+        + aten::slice (9)
+        + aten::squeeze (1)
+        + aten::sub (25)
+        + aten::t (3)
+        + aten::tensor (1)
+        + aten::transpose (1)
+    - "prim::GetAttr": 23 distinct attr names (attr [count])
+        + "0" (4)
+        + "1" (1)
+        + "2" (2)
+        + "bias" (6)
+        + "classes" (10)
+        + "convs" (1)
+        + "decoder" (1)
+        + "embedding" (1)
+        + "idx" (2)
+        + "invocations" (1)
+        + "max_seq_len" (1)
+        + "mlp" (2)
+        + "model" (1)
+        + "output_layer" (1)
+        + "pad_idx" (1)
+        + "pad_token" (1)
+        + "representation" (1)
+        + "score_function_dim" (1)
+        + "submodule" (1)
+        + "unk_idx" (2)
+        + "vocab" (1)
+        + "weight" (7)
+        + "word_embedding" (1)

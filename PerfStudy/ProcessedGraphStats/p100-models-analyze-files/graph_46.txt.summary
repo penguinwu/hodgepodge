@@ -1,0 +1,126 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*     prim::*     fb::*    quantized::*    internal::*    caffe2::*    if         loop      call     setattr    getattr    all [others]
+---------------------  ----------  ----------  -------  --------------  -------------  -----------  ---------  --------  -------  ---------  ---------  --------------
+graph_46.txt           3602 (33%)  4828 (44%)  -        -               2 ( 0%)        -            614 ( 6%)  28 ( 0%)  1 ( 0%)  -          91 ( 1%)   10947 [2515]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_46.txt]
+    - "prim::Loop": 7 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-199975/441f3e0a-seed-65c0d4e2-5f0b-41b9-8e96-64a7cdf960fb-ns-4026532824/fblearner/flow/projects/fluent2/definition/transformers/static_default_value.py:520 [4]
+        + /mnt/xarfuse/uid-199975/441f3e0a-seed-65c0d4e2-5f0b-41b9-8e96-64a7cdf960fb-ns-4026532824/fblearner/flow/projects/fluent2/definition/transformers/static_default_value.py:567 [4]
+        + /mnt/xarfuse/uid-199975/441f3e0a-seed-65c0d4e2-5f0b-41b9-8e96-64a7cdf960fb-ns-4026532824/fblearner/flow/projects/fluent2/definition/transformers/truncate_or_pad.py:641 [4]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:38 [6]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:94 [3]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:97 [6]
+        + fblearner.flow.fluent2.diffcanary@10ec555/fblearner/flow/projects/fluent2/domains/feed_integrity/content_quality/common/model_zoo/RNN.py:179 [1]
+    - "prim::CallMethod": 1 distinct sources (source:line [count])
+        + :0 [1]
+    - "prim::If": 12 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-199975/441f3e0a-seed-65c0d4e2-5f0b-41b9-8e96-64a7cdf960fb-ns-4026532824/fblearner/flow/projects/fluent2/definition/transformers/explode_list.py:330 [1]
+        + /mnt/xarfuse/uid-199975/441f3e0a-seed-65c0d4e2-5f0b-41b9-8e96-64a7cdf960fb-ns-4026532824/fblearner/flow/projects/fluent2/definition/transformers/explode_list.py:331 [1]
+        + /mnt/xarfuse/uid-199975/441f3e0a-seed-65c0d4e2-5f0b-41b9-8e96-64a7cdf960fb-ns-4026532824/fblearner/flow/projects/fluent2/definition/transformers/pack_features_to_tensor.py:124 [1]
+        + /mnt/xarfuse/uid-199975/441f3e0a-seed-65c0d4e2-5f0b-41b9-8e96-64a7cdf960fb-ns-4026532824/fblearner/flow/projects/fluent2/definition/transformers/static_default_value.py:498 [1]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:40 [27]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:96 [3]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/fblearner/flow/projects/fluent2/utils/pytorch/contrib/ai_integrity/preprocessing.py:99 [27]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/torch/nn/functional.py:1663 [2]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/torch/nn/modules/rnn.py:173 [1]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/torch/nn/modules/rnn.py:177 [1]
+        + /mnt/xarfuse/uid-199975/691d162e-seed-3d4d5788-8de1-4d15-8516-b53b74e2f50c-ns-4026533584/torch/nn/modules/rnn.py:194 [1]
+        + <missing-source> [548]
+    - "internal::*": 1 distinct names (name [count])
+        + internal::truncate_or_pad_multi_text (2)
+    - "fb::*": not found
+    - "prim::*": 17 distinct names (name [count])
+        + prim::CallMethod (1)
+        + prim::Constant (1114)
+        + prim::GetAttr (91)
+        + prim::If (614)
+        + prim::ListConstruct (48)
+        + prim::Loop (28)
+        + prim::RaiseException (552)
+        + prim::TupleConstruct (38)
+        + prim::TupleIndex (550)
+        + prim::TupleUnpack (2)
+        + prim::Uninitialized (546)
+        + prim::device (28)
+        + prim::dtype (30)
+        + prim::isinstance (548)
+        + prim::max (27)
+        + prim::min (6)
+        + prim::unchecked_cast (605)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 42 distinct names (name [count])
+        + aten::__getitem__ (1187)
+        + aten::__isnot__ (57)
+        + aten::__round_to_zero_floordiv (12)
+        + aten::add (1212)
+        + aten::add_ (2)
+        + aten::append (58)
+        + aten::cat (6)
+        + aten::copy_ (27)
+        + aten::dim (4)
+        + aten::dropout (1)
+        + aten::embedding (3)
+        + aten::eq (5)
+        + aten::extend (20)
+        + aten::format (4)
+        + aten::get (27)
+        + aten::gru (1)
+        + aten::index_select (3)
+        + aten::len (64)
+        + aten::list (1)
+        + aten::matmul (2)
+        + aten::max (2)
+        + aten::mm (2)
+        + aten::mul (16)
+        + aten::ne (3)
+        + aten::neg (2)
+        + aten::ones (19)
+        + aten::ones_like (2)
+        + aten::permute (2)
+        + aten::relu (1)
+        + aten::repeat (1)
+        + aten::select (112)
+        + aten::sigmoid (1)
+        + aten::size (9)
+        + aten::slice (54)
+        + aten::str (548)
+        + aten::sub (12)
+        + aten::t (4)
+        + aten::tensor (29)
+        + aten::to (25)
+        + aten::unsqueeze (57)
+        + aten::view (1)
+        + aten::zeros (4)
+    - "prim::GetAttr": 27 distinct attr names (attr [count])
+        + "_flat_weights" (1)
+        + "bias" (2)
+        + "bigru" (1)
+        + "disable_padding" (2)
+        + "dropout" (1)
+        + "embedding" (3)
+        + "engagement_bait_multimodal_pytorch" (1)
+        + "fc_hidden" (1)
+        + "fc_out" (1)
+        + "float_default" (1)
+        + "general_module" (1)
+        + "include_presence_features" (1)
+        + "int_default" (1)
+        + "invocations" (1)
+        + "model" (1)
+        + "numericalizer" (1)
+        + "static_default_values" (1)
+        + "string_multi_padding_lengths" (2)
+        + "string_multi_padding_values" (2)
+        + "submodule" (1)
+        + "tokenizer" (1)
+        + "tokenizer_wrapper" (1)
+        + "training" (2)
+        + "truncate_or_pad_main" (1)
+        + "truncate_or_pad_parent_ocr" (1)
+        + "vocab" (54)
+        + "weight" (5)

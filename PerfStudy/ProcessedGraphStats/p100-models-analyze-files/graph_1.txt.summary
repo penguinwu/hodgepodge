@@ -1,0 +1,72 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if       loop     call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  -------  -------  ------  ---------  ---------  --------------
+graph_1.txt            150 (62%)  66 (27%)   -        -               -              -            4 ( 2%)  3 ( 1%)  -       -          34 (14%)   241 [25]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_1.txt]
+    - "prim::Loop": 2 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-193722/71aa0450-seed-3cfaebf8-3515-47ae-a6d0-fecfe52bfff4-ns-4026534100/fblearner/flow/projects/fluent2/domains/igml/distillation/pytorch_model.py:275 [1]
+        + /mnt/xarfuse/uid-193722/71aa0450-seed-3cfaebf8-3515-47ae-a6d0-fecfe52bfff4-ns-4026534100/fblearner/flow/projects/fluent2/domains/igml/distillation/pytorch_model.py:276 [2]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 2 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-193722/71aa0450-seed-3cfaebf8-3515-47ae-a6d0-fecfe52bfff4-ns-4026534100/fblearner/flow/projects/fluent2/domains/igml/distillation/pytorch_model.py:273 [1]
+        + /mnt/xarfuse/uid-193722/71aa0450-seed-3cfaebf8-3515-47ae-a6d0-fecfe52bfff4-ns-4026534100/torch/nn/functional.py:1753 [3]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 8 distinct names (name [count])
+        + prim::Constant (10)
+        + prim::GetAttr (34)
+        + prim::If (4)
+        + prim::ListConstruct (8)
+        + prim::Loop (3)
+        + prim::TupleConstruct (1)
+        + prim::TupleIndex (5)
+        + prim::TupleUnpack (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 26 distinct names (name [count])
+        + aten::__derive_index (9)
+        + aten::__getitem__ (34)
+        + aten::__range_length (1)
+        + aten::__round_to_zero_floordiv (1)
+        + aten::add (12)
+        + aten::add_ (3)
+        + aten::append (15)
+        + aten::bmm (9)
+        + aten::cat (1)
+        + aten::dim (3)
+        + aten::embedding (4)
+        + aten::eq (3)
+        + aten::extend (1)
+        + aten::len (2)
+        + aten::matmul (3)
+        + aten::mm (3)
+        + aten::mul (1)
+        + aten::ones (1)
+        + aten::remainder (4)
+        + aten::size (1)
+        + aten::squeeze (9)
+        + aten::sub (1)
+        + aten::t (6)
+        + aten::to (4)
+        + aten::unsqueeze (1)
+        + aten::view (18)
+    - "prim::GetAttr": 15 distinct attr names (attr [count])
+        + "0" (2)
+        + "1" (2)
+        + "2" (2)
+        + "3" (1)
+        + "bias" (3)
+        + "distill_clips_pytorch" (1)
+        + "hash_sizes" (4)
+        + "invocations" (1)
+        + "mlp" (1)
+        + "model" (5)
+        + "shared_dim" (2)
+        + "sparse_embeddings" (1)
+        + "submodule" (1)
+        + "use_dot_product" (1)
+        + "weight" (7)

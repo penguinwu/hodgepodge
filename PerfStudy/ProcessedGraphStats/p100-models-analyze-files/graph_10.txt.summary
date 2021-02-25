@@ -1,0 +1,50 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if       loop    call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  -------  ------  ------  ---------  ---------  --------------
+graph_10.txt           16 (23%)   30 (43%)   -        -               -              -            5 ( 7%)  -       -       -          4 ( 6%)    69 [23]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_10.txt]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 4 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-183475/c17bcd48-ns-4026531840/torch/nn/functional.py:1908 [2]
+        + /mnt/xarfuse/uid-183475/c17bcd48-ns-4026531840/torch/nn/functional.py:1919 [1]
+        + /mnt/xarfuse/uid-183475/c17bcd48-ns-4026531840/torch/nn/functional.py:1931 [1]
+        + /mnt/xarfuse/uid-183475/c17bcd48-ns-4026531840/torch/nn/functional.py:1934 [1]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 11 distinct names (name [count])
+        + prim::Constant (10)
+        + prim::DictConstruct (1)
+        + prim::GetAttr (4)
+        + prim::If (5)
+        + prim::ListConstruct (1)
+        + prim::RaiseException (3)
+        + prim::TupleConstruct (1)
+        + prim::TupleUnpack (2)
+        + prim::Uninitialized (1)
+        + prim::device (1)
+        + prim::dtype (1)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 12 distinct names (name [count])
+        + aten::__getitem__ (2)
+        + aten::arange (1)
+        + aten::cat (1)
+        + aten::dim (2)
+        + aten::embedding_bag (1)
+        + aten::eq (3)
+        + aten::is_floating_point (1)
+        + aten::ne (1)
+        + aten::numel (1)
+        + aten::reshape (1)
+        + aten::size (1)
+        + aten::warn (1)
+    - "prim::GetAttr": 4 distinct attr names (attr [count])
+        + "embedding_table" (1)
+        + "invocations" (1)
+        + "submodule" (1)
+        + "weight" (1)

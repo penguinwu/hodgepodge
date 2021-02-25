@@ -1,0 +1,64 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop     call     setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  -------  -------  ---------  ---------  --------------
+graph_32.txt           179 (43%)  171 (41%)  -        -               10 ( 2%)       -            13 ( 3%)  2 ( 0%)  1 ( 0%)  -          10 ( 2%)   419 [59]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_32.txt]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-211112/1e53969e-seed-1b577e17-9b7c-4143-b190-7a6ab4c0a1a9-ns-4026532673/fblearner/flow/projects/fluent2/definition/transformers/hash_categories.py:269 [2]
+    - "prim::CallMethod": 1 distinct sources (source:line [count])
+        + :0 [1]
+    - "prim::If": 1 distinct sources (source:line [count])
+        + <missing-source> [13]
+    - "internal::*": 3 distinct names (name [count])
+        + internal::explode_fixed_length_variable_length_tensor_float_dense_output (8)
+        + internal::hash_list (1)
+        + internal::linearTransformBinaryOp (1)
+    - "fb::*": not found
+    - "prim::*": 15 distinct names (name [count])
+        + prim::CallMethod (1)
+        + prim::Constant (37)
+        + prim::DictConstruct (2)
+        + prim::GetAttr (10)
+        + prim::If (13)
+        + prim::ListConstruct (7)
+        + prim::ListUnpack (1)
+        + prim::Loop (2)
+        + prim::RaiseException (13)
+        + prim::TupleConstruct (13)
+        + prim::TupleIndex (32)
+        + prim::TupleUnpack (1)
+        + prim::Uninitialized (13)
+        + prim::isinstance (13)
+        + prim::unchecked_cast (13)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 14 distinct names (name [count])
+        + aten::__getitem__ (52)
+        + aten::__round_to_zero_floordiv (1)
+        + aten::add (35)
+        + aten::append (9)
+        + aten::cat (4)
+        + aten::extend (6)
+        + aten::len (2)
+        + aten::mul (1)
+        + aten::select (18)
+        + aten::size (1)
+        + aten::slice (18)
+        + aten::str (13)
+        + aten::sub (1)
+        + aten::unsqueeze (18)
+    - "prim::GetAttr": 10 distinct attr names (attr [count])
+        + "bdt" (1)
+        + "bounds" (1)
+        + "c2_pred_wrapper" (1)
+        + "calibrated_bdt" (1)
+        + "hash_categorical_features" (1)
+        + "intercepts" (1)
+        + "invocations" (1)
+        + "modulo" (1)
+        + "slopes" (1)
+        + "submodule" (1)

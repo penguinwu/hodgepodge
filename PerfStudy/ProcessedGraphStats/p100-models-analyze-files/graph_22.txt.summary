@@ -1,0 +1,92 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_22.txt           409 (40%)  334 (33%)  -        -               -              -            62 ( 6%)  16 ( 2%)  -       -          76 ( 7%)   1026 [283]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_22.txt]
+    - "prim::Loop": 4 distinct sources (source:line [count])
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/e32b36f/fluent2/domains/aml/integrity/pytorch.py:121 [6]
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/e32b36f/fluent2/domains/aml/integrity/pytorch.py:239 [3]
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/e32b36f/fluent2/domains/aml/integrity/pytorch.py:242 [6]
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/e32b36f/fluent2/domains/feed_integrity/content_quality/common/model_zoo/RNN.py:155 [1]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 7 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-197785/3c5e8462-seed-eae79b20-0f53-4160-8f86-380084534b21-ns-4026534175/torch/nn/functional.py:1672 [2]
+        + /mnt/xarfuse/uid-197785/3c5e8462-seed-eae79b20-0f53-4160-8f86-380084534b21-ns-4026534175/torch/nn/modules/rnn.py:165 [1]
+        + /mnt/xarfuse/uid-197785/3c5e8462-seed-eae79b20-0f53-4160-8f86-380084534b21-ns-4026534175/torch/nn/modules/rnn.py:169 [1]
+        + /mnt/xarfuse/uid-197785/3c5e8462-seed-eae79b20-0f53-4160-8f86-380084534b21-ns-4026534175/torch/nn/modules/rnn.py:188 [1]
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/e32b36f/fluent2/domains/aml/integrity/pytorch.py:123 [27]
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/e32b36f/fluent2/domains/aml/integrity/pytorch.py:241 [3]
+        + /var/chronos/fbpackages/fblearner.flow.fluent2.diffcanary/e32b36f/fluent2/domains/aml/integrity/pytorch.py:244 [27]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 14 distinct names (name [count])
+        + prim::Constant (20)
+        + prim::GetAttr (76)
+        + prim::If (62)
+        + prim::ListConstruct (8)
+        + prim::Loop (16)
+        + prim::RaiseException (3)
+        + prim::TupleConstruct (1)
+        + prim::TupleIndex (1)
+        + prim::TupleUnpack (1)
+        + prim::device (28)
+        + prim::dtype (28)
+        + prim::max (27)
+        + prim::min (6)
+        + prim::unchecked_cast (57)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 33 distinct names (name [count])
+        + aten::__getitem__ (63)
+        + aten::__isnot__ (57)
+        + aten::__round_to_zero_floordiv (6)
+        + aten::add (56)
+        + aten::add_ (2)
+        + aten::append (1)
+        + aten::cat (2)
+        + aten::copy_ (27)
+        + aten::dim (3)
+        + aten::dropout (1)
+        + aten::embedding (3)
+        + aten::eq (2)
+        + aten::get (27)
+        + aten::gru (1)
+        + aten::index_select (2)
+        + aten::len (33)
+        + aten::matmul (2)
+        + aten::max (2)
+        + aten::mm (2)
+        + aten::mul (6)
+        + aten::ne (3)
+        + aten::ones (1)
+        + aten::permute (3)
+        + aten::relu (1)
+        + aten::select (54)
+        + aten::sigmoid (1)
+        + aten::size (3)
+        + aten::squeeze (1)
+        + aten::sub (6)
+        + aten::t (4)
+        + aten::tensor (27)
+        + aten::unsqueeze (3)
+        + aten::zeros (4)
+    - "prim::GetAttr": 15 distinct attr names (attr [count])
+        + "_flat_weights" (1)
+        + "bias" (2)
+        + "embedding" (3)
+        + "engagement_bait_multimodal_pytorch" (1)
+        + "fc_1" (1)
+        + "fc_2" (1)
+        + "fc_dropout" (1)
+        + "invocations" (1)
+        + "model" (1)
+        + "numericalizer" (1)
+        + "rnn" (1)
+        + "submodule" (1)
+        + "training" (2)
+        + "vocab" (54)
+        + "weight" (5)

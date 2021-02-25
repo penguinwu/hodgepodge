@@ -1,0 +1,107 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)    aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+---------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+graph_51.txt           369 (42%)  335 (38%)  -        -               -              -            38 ( 4%)  15 ( 2%)  -       -          127 (14%)  889 [185]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [graph_51.txt]
+    - "prim::Loop": 6 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/data/token_tensorizer.py:95 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/fb/torchscript/matcha_saliency_model.py:32 [1]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/fb/torchscript/matcha_saliency_model.py:60 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/tensorizer/tensorizer.py:149 [4]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/vocab.py:37 [4]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/vocab.py:61 [2]
+    - "prim::CallMethod": 0 found
+    - "prim::If": 10 distinct sources (source:line [count])
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/data/token_tensorizer.py:80 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/data/token_tensorizer.py:81 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/tensorizer/tensorizer.py:137 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/tensorizer/tensorizer.py:139 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/tensorizer/tensorizer.py:147 [4]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/tensorizer/tensorizer.py:158 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/tensorizer/tensorizer.py:159 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/tensorizer/tensorizer.py:164 [2]
+        + /mnt/xarfuse/uid-130160/f69f3006-seed-1af0d211-fbfa-4618-be21-aa8d79488830-ns-4026534169/pytext/torchscript/vocab.py:103 [18]
+        + <string>:3 [2]
+    - "internal::*": not found
+    - "fb::*": not found
+    - "prim::*": 10 distinct names (name [count])
+        + prim::Constant (94)
+        + prim::GetAttr (127)
+        + prim::If (38)
+        + prim::ListConstruct (25)
+        + prim::Loop (15)
+        + prim::TupleConstruct (11)
+        + prim::TupleIndex (18)
+        + prim::TupleUnpack (1)
+        + prim::min (2)
+        + prim::unchecked_cast (4)
+    - "quantized::*": not found
+    - "caffe2::*": not found
+    - "aten::*": 36 distinct names (name [count])
+        + aten::Float (9)
+        + aten::Int (9)
+        + aten::__getitem__ (65)
+        + aten::__is__ (4)
+        + aten::__round_to_zero_floordiv (7)
+        + aten::add (68)
+        + aten::add_ (1)
+        + aten::append (56)
+        + aten::cat (2)
+        + aten::div (1)
+        + aten::dropout (1)
+        + aten::embedding (2)
+        + aten::extend (10)
+        + aten::flatten (3)
+        + aten::floor_divide (1)
+        + aten::ge (8)
+        + aten::get (18)
+        + aten::is_floating_point (2)
+        + aten::item (9)
+        + aten::len (17)
+        + aten::lt (9)
+        + aten::mm (3)
+        + aten::mul (7)
+        + aten::ne (9)
+        + aten::permute (2)
+        + aten::relu (2)
+        + aten::reshape (1)
+        + aten::select (18)
+        + aten::sigmoid (1)
+        + aten::size (2)
+        + aten::squeeze (1)
+        + aten::sub (11)
+        + aten::sum (1)
+        + aten::t (3)
+        + aten::tensor (3)
+        + aten::unsqueeze (3)
+    - "prim::GetAttr": 26 distinct attr names (attr [count])
+        + "0" (1)
+        + "2" (1)
+        + "4" (1)
+        + "add_bos_token" (2)
+        + "add_eos_token" (2)
+        + "avg_embed_mlp" (1)
+        + "bias" (3)
+        + "bos_idx" (2)
+        + "doc_tensorizer" (1)
+        + "entity_embedding" (1)
+        + "entity_tensorizer" (2)
+        + "eos_idx" (2)
+        + "idx" (18)
+        + "invocations" (1)
+        + "max_seq_len" (2)
+        + "mlp" (1)
+        + "model" (1)
+        + "submodule" (1)
+        + "tensorizer" (2)
+        + "token_embedding" (1)
+        + "unk_idx" (36)
+        + "use_eos_token_for_bos" (2)
+        + "vocab" (34)
+        + "vocab_lookup_1d" (2)
+        + "weight" (5)
+        + "word_embedding" (2)
