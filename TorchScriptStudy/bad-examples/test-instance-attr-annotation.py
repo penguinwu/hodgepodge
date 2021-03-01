@@ -6,21 +6,17 @@ class MyClass(object):
     x: Optional[int]
 
     def __init__(self, x: int):
-       self.x = x
+        self.x = None
+        if x > 0:
+            self.x = x
 
-    def inc(self, val: int):
-        if self.x is not None:
-            self.x += val
-
-def fn(a: MyClass, b: int):
-    a.inc(b)
+def fn(a: MyClass):
     return a.x
 
-x = MyClass(1)
-y = MyClass(None)
-print("Eager: ", fn(x, 100), fn(y, 100))
+# x = MyClass(1)
+# y = MyClass(0)
+# print("Eager: ", fn(x), fn(y))
 
-x = MyClass(1)
-y = MyClass(None)
 scripted_fn = torch.jit.script(fn)
-print("Scripted: ", scripted_fn(x, 100), scripted_fn(y, 100))
+print("Scripted: ", scripted_fn(MyClass(1)))
+print("Scripted: ", scripted_fn(MyClass(0)))
