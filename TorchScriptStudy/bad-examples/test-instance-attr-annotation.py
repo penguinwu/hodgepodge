@@ -9,10 +9,7 @@ class MyClass(object):
        self.x = x
 
     def inc(self, val: int):
-        y: Optional[int] = val
-        if y != None:
-            return val
-        if self.x != None:
+        if self.x is not None:
             self.x += val
 
 def fn(a: MyClass, b: int):
