@@ -1,0 +1,24 @@
+..................
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                                                 aten::*     prim::*     fb::*    quantized::*    internal::*    caffe2::*    if         loop       call      setattr    getattr     all [others]
+------------------------------------------------------------------  ----------  ----------  -------  --------------  -------------  -----------  ---------  ---------  --------  ---------  ----------  --------------
+LearningToPaint.cpu.last_executed_graph_dump.log                    25 (39%)    35 (55%)    -        -               -              -            -          -          -         -          30 (47%)    64 [3]
+fastNLP.cpu.last_executed_graph_dump.log                            17 (23%)    32 (43%)    -        -               -              -            5 ( 7%)    -          -         -          7 ( 9%)     74 [23]
+alexnet.cpu.last_executed_graph_dump.log                            25 (32%)    44 (57%)    -        -               -              -            1 ( 1%)    -          -         -          30 (39%)    77 [7]
+pytorch_struct.cpu.last_executed_graph_dump.log                     45 (40%)    63 (56%)    -        -               -              -            -          -          -         -          41 (37%)    112 [3]
+vgg16.cpu.last_executed_graph_dump.log                              43 (37%)    66 (56%)    -        -               -              -            1 ( 1%)    -          -         -          54 (46%)    117 [7]
+squeezenet1_1.cpu.last_executed_graph_dump.log                      69 (37%)    110 (59%)   -        -               -              -            1 ( 1%)    -          -         -          90 (48%)    187 [7]
+pytorch_stargan.cpu.last_executed_graph_dump.log                    219 (38%)   241 (42%)   -        -               -              -            19 ( 3%)   17 ( 3%)   -         -          169 (29%)   575 [113]
+resnet18.cpu.last_executed_graph_dump.log                           272 (29%)   374 (40%)   -        -               -              -            61 ( 7%)   20 ( 2%)   -         20 ( 2%)   238 (25%)   934 [287]
+attention_is_all_you_need_pytorch.cpu.last_executed_graph_dump.log  564 (46%)   645 (53%)   -        -               -              -            2 ( 0%)    -          -         -          561 (46%)   1222 [11]
+Super_SloMo.cpu.last_executed_graph_dump.log                        617 (50%)   414 (33%)   -        -               -              -            40 ( 3%)   20 ( 2%)   -         -          252 (20%)   1244 [203]
+BERT_pytorch.cpu.last_executed_graph_dump.log                       697 (52%)   651 (48%)   -        -               -              -            -          -          12 ( 1%)  12 ( 1%)   562 (42%)   1353 [3]
+resnet50.cpu.last_executed_graph_dump.log                           708 (29%)   944 (39%)   -        -               -              -            160 ( 7%)  53 ( 2%)   -         53 ( 2%)   610 (25%)   2402 [749]
+resnext50_32x4d.cpu.last_executed_graph_dump.log                    708 (29%)   945 (39%)   -        -               -              -            160 ( 7%)  53 ( 2%)   -         53 ( 2%)   610 (25%)   2403 [749]
+pytorch_mobilenet_v3.cpu.last_executed_graph_dump.log               1293 (31%)  1610 (38%)  -        -               -              -            287 ( 7%)  68 ( 2%)   -         68 ( 2%)   1018 (24%)  4191 [1287]
+mnasnet1_0.cpu.last_executed_graph_dump.log                         1286 (28%)  1815 (40%)  -        -               -              -            316 ( 7%)  100 ( 2%)  -         100 ( 2%)  1177 (26%)  4569 [1467]
+mobilenet_v2.cpu.last_executed_graph_dump.log                       1318 (28%)  1919 (40%)  -        -               -              -            324 ( 7%)  102 ( 2%)  -         102 ( 2%)  1265 (27%)  4741 [1503]
+shufflenet_v2_x1_0.cpu.last_executed_graph_dump.log                 1464 (30%)  1974 (40%)  -        -               -              -            328 ( 7%)  104 ( 2%)  -         104 ( 2%)  1219 (25%)  4962 [1523]
+densenet121.cpu.last_executed_graph_dump.log                        2700 (27%)  3262 (33%)  -        -               -              -            890 ( 9%)  179 ( 2%)  -         121 ( 1%)  1571 (16%)  9884 [3921]

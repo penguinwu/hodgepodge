@@ -1,0 +1,103 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                           aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+--------------------------------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+Super_SloMo.cpu.last_executed_graph_dump.log  617 (50%)  414 (33%)  -        -               -              -            40 ( 3%)  20 ( 2%)  -       -          252 (20%)  1244 [203]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [Super_SloMo.cpu.last_executed_graph_dump.log]
+    - "prim::Loop": 2 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489 [10]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497 [10]
+    - "prim::If": 4 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498 [10]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549 [10]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559 [10]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569 [10]
+    - "prim::CallMethod": 0 found
+    - "internal::*": not found
+    - "quantized::*": not found
+    - "aten::*": 36 distinct names (name [count])
+        + aten::__and__ (10)
+        + aten::__getitem__ (10)
+        + aten::abs (4)
+        + aten::add (42)
+        + aten::append (10)
+        + aten::avg_pool2d (10)
+        + aten::cat (12)
+        + aten::conv2d (66)
+        + aten::dim (10)
+        + aten::div (13)
+        + aten::eq (30)
+        + aten::expand_as (12)
+        + aten::floor (10)
+        + aten::format (11)
+        + aten::grid_sampler (6)
+        + aten::gt (10)
+        + aten::index (8)
+        + aten::leaky_relu (46)
+        + aten::len (10)
+        + aten::lt (10)
+        + aten::max_pool2d (6)
+        + aten::mean (4)
+        + aten::mul (28)
+        + aten::ne (10)
+        + aten::neg (6)
+        + aten::permute (6)
+        + aten::relu_ (18)
+        + aten::select (12)
+        + aten::sigmoid (1)
+        + aten::slice (69)
+        + aten::stack (6)
+        + aten::sub (26)
+        + aten::to (18)
+        + aten::unsqueeze (30)
+        + aten::upsample_bilinear2d (10)
+        + aten::warn (27)
+    - "caffe2::*": not found
+    - "prim::*": 9 distinct names (name [count])
+        + prim::Constant (33)
+        + prim::GetAttr (252)
+        + prim::If (40)
+        + prim::ListConstruct (36)
+        + prim::Loop (20)
+        + prim::RaiseException (30)
+        + prim::TupleConstruct (1)
+        + prim::Uninitialized (1)
+        + prim::device (1)
+    - "fb::*": not found
+    - "prim::GetAttr": 33 distinct attr names (attr [count])
+        + "0" (2)
+        + "10" (2)
+        + "12" (2)
+        + "14" (2)
+        + "17" (2)
+        + "19" (2)
+        + "2" (2)
+        + "21" (2)
+        + "5" (2)
+        + "7" (2)
+        + "ArbTimeFlowIntrp" (1)
+        + "H" (6)
+        + "W" (6)
+        + "bias" (66)
+        + "conv1" (22)
+        + "conv2" (22)
+        + "conv3" (2)
+        + "down1" (2)
+        + "down2" (2)
+        + "down3" (2)
+        + "down4" (2)
+        + "down5" (2)
+        + "flowComp" (1)
+        + "gridX" (6)
+        + "gridY" (6)
+        + "trainFlowBackWarp" (6)
+        + "up1" (2)
+        + "up2" (2)
+        + "up3" (2)
+        + "up4" (2)
+        + "up5" (2)
+        + "vgg16_conv_4_3" (2)
+        + "weight" (66)

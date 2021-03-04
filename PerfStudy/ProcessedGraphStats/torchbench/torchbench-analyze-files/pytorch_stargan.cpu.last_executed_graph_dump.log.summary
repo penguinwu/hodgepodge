@@ -1,0 +1,69 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                               aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if        loop      call    setattr    getattr    all [others]
+------------------------------------------------  ---------  ---------  -------  --------------  -------------  -----------  --------  --------  ------  ---------  ---------  --------------
+pytorch_stargan.cpu.last_executed_graph_dump.log  219 (38%)  241 (42%)  -        -               -              -            19 ( 3%)  17 ( 3%)  -       -          169 (29%)  575 [113]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [pytorch_stargan.cpu.last_executed_graph_dump.log]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [17]
+    - "prim::If": 2 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [17]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212 [2]
+    - "prim::CallMethod": 0 found
+    - "internal::*": not found
+    - "quantized::*": not found
+    - "aten::*": 18 distinct names (name [count])
+        + aten::__getitem__ (34)
+        + aten::add (23)
+        + aten::cat (1)
+        + aten::conv2d (16)
+        + aten::conv_transpose2d (2)
+        + aten::dim (2)
+        + aten::eq (17)
+        + aten::format (19)
+        + aten::instance_norm (17)
+        + aten::len (17)
+        + aten::mul (17)
+        + aten::ne (2)
+        + aten::relu_ (11)
+        + aten::repeat (1)
+        + aten::size (21)
+        + aten::sub (17)
+        + aten::tanh (1)
+        + aten::view (1)
+    - "caffe2::*": not found
+    - "prim::*": 6 distinct names (name [count])
+        + prim::Constant (14)
+        + prim::GetAttr (169)
+        + prim::If (19)
+        + prim::ListConstruct (3)
+        + prim::Loop (17)
+        + prim::RaiseException (19)
+    - "fb::*": not found
+    - "prim::GetAttr": 23 distinct attr names (attr [count])
+        + "0" (7)
+        + "1" (7)
+        + "10" (1)
+        + "11" (1)
+        + "12" (1)
+        + "13" (1)
+        + "14" (1)
+        + "15" (1)
+        + "16" (1)
+        + "18" (1)
+        + "19" (1)
+        + "21" (1)
+        + "3" (7)
+        + "4" (7)
+        + "6" (1)
+        + "7" (1)
+        + "9" (1)
+        + "bias" (35)
+        + "main" (7)
+        + "running_mean" (17)
+        + "running_var" (17)
+        + "training" (17)
+        + "weight" (35)

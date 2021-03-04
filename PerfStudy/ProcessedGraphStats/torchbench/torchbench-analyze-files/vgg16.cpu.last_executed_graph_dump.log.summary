@@ -1,0 +1,54 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                     aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if       loop    call    setattr    getattr    all [others]
+--------------------------------------  ---------  ---------  -------  --------------  -------------  -----------  -------  ------  ------  ---------  ---------  --------------
+vgg16.cpu.last_executed_graph_dump.log  43 (37%)   66 (56%)   -        -               -              -            1 ( 1%)  -       -       -          54 (46%)   117 [7]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [vgg16.cpu.last_executed_graph_dump.log]
+    - "prim::Loop": 0 found
+    - "prim::If": 1 distinct sources (source:line [count])
+        + <string>:5 [1]
+    - "prim::CallMethod": 0 found
+    - "internal::*": not found
+    - "quantized::*": not found
+    - "aten::*": 10 distinct names (name [count])
+        + aten::adaptive_avg_pool2d (1)
+        + aten::conv2d (13)
+        + aten::dropout (2)
+        + aten::flatten (1)
+        + aten::gt (1)
+        + aten::len (1)
+        + aten::linear (3)
+        + aten::max_pool2d (5)
+        + aten::relu_ (15)
+        + aten::size (1)
+    - "caffe2::*": not found
+    - "prim::*": 4 distinct names (name [count])
+        + prim::Constant (10)
+        + prim::GetAttr (54)
+        + prim::If (1)
+        + prim::RaiseException (1)
+    - "fb::*": not found
+    - "prim::GetAttr": 20 distinct attr names (attr [count])
+        + "0" (2)
+        + "10" (1)
+        + "12" (1)
+        + "14" (1)
+        + "17" (1)
+        + "19" (1)
+        + "2" (2)
+        + "21" (1)
+        + "24" (1)
+        + "26" (1)
+        + "28" (1)
+        + "3" (1)
+        + "5" (2)
+        + "6" (1)
+        + "7" (1)
+        + "bias" (16)
+        + "classifier" (1)
+        + "features" (1)
+        + "training" (2)
+        + "weight" (16)

@@ -1,0 +1,70 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                          aten::*     prim::*     fb::*    quantized::*    internal::*    caffe2::*    if         loop       call    setattr    getattr     all [others]
+-------------------------------------------  ----------  ----------  -------  --------------  -------------  -----------  ---------  ---------  ------  ---------  ----------  --------------
+mnasnet1_0.cpu.last_executed_graph_dump.log  1286 (28%)  1815 (40%)  -        -               -              -            316 ( 7%)  100 ( 2%)  -       100 ( 2%)  1177 (26%)  4569 [1467]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [mnasnet1_0.cpu.last_executed_graph_dump.log]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [100]
+    - "prim::If": 4 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [100]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2143 [100]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py:110 [100]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/mnasnet.py:56 [16]
+    - "prim::CallMethod": 0 found
+    - "internal::*": not found
+    - "quantized::*": not found
+    - "aten::*": 14 distinct names (name [count])
+        + aten::__getitem__ (200)
+        + aten::add (216)
+        + aten::batch_norm (100)
+        + aten::conv2d (100)
+        + aten::dropout_ (1)
+        + aten::eq (100)
+        + aten::format (100)
+        + aten::len (100)
+        + aten::linear (1)
+        + aten::mean (1)
+        + aten::mul (100)
+        + aten::relu_ (67)
+        + aten::size (100)
+        + aten::sub (100)
+    - "caffe2::*": not found
+    - "prim::*": 6 distinct names (name [count])
+        + prim::Constant (22)
+        + prim::GetAttr (1177)
+        + prim::If (316)
+        + prim::Loop (100)
+        + prim::RaiseException (100)
+        + prim::SetAttr (100)
+    - "fb::*": not found
+    - "prim::GetAttr": 24 distinct attr names (attr [count])
+        + "0" (40)
+        + "1" (39)
+        + "10" (1)
+        + "11" (1)
+        + "12" (1)
+        + "13" (1)
+        + "14" (1)
+        + "15" (1)
+        + "2" (4)
+        + "3" (34)
+        + "4" (33)
+        + "6" (33)
+        + "7" (33)
+        + "8" (1)
+        + "9" (1)
+        + "apply_residual" (16)
+        + "bias" (201)
+        + "classifier" (1)
+        + "layers" (33)
+        + "num_batches_tracked" (100)
+        + "running_mean" (100)
+        + "running_var" (100)
+        + "training" (201)
+        + "weight" (201)
+    - "prim::SetAttr": 1 distinct attr names (attr [count])
+        + "num_batches_tracked" (100)

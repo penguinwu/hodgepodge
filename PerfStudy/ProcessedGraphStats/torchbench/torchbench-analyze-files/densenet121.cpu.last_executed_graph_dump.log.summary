@@ -1,0 +1,116 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                           aten::*     prim::*     fb::*    quantized::*    internal::*    caffe2::*    if         loop       call    setattr    getattr     all [others]
+--------------------------------------------  ----------  ----------  -------  --------------  -------------  -----------  ---------  ---------  ------  ---------  ----------  --------------
+densenet121.cpu.last_executed_graph_dump.log  2700 (27%)  3262 (33%)  -        -               -              -            890 ( 9%)  179 ( 2%)  -       121 ( 1%)  1571 (16%)  9884 [3921]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [densenet121.cpu.last_executed_graph_dump.log]
+    - "prim::Loop": 2 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [121]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/densenet.py:58 [58]
+    - "prim::If": 10 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1074 [116]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [121]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2143 [121]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py:110 [121]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py:284 [120]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/densenet.py:59 [58]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/densenet.py:86 [116]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/densenet.py:95 [58]
+        + <string>:5 [1]
+        + <missing-source> [58]
+    - "prim::CallMethod": 0 found
+    - "internal::*": not found
+    - "quantized::*": not found
+    - "aten::*": 24 distinct names (name [count])
+        + aten::__and__ (58)
+        + aten::__getitem__ (300)
+        + aten::adaptive_avg_pool2d (1)
+        + aten::add (300)
+        + aten::append (58)
+        + aten::avg_pool2d (3)
+        + aten::batch_norm (121)
+        + aten::cat (62)
+        + aten::conv2d (120)
+        + aten::dim (120)
+        + aten::dropout (58)
+        + aten::eq (121)
+        + aten::flatten (1)
+        + aten::format (299)
+        + aten::gt (175)
+        + aten::len (180)
+        + aten::linear (1)
+        + aten::lt (116)
+        + aten::max_pool2d (1)
+        + aten::mul (121)
+        + aten::ne (120)
+        + aten::relu_ (121)
+        + aten::size (122)
+        + aten::sub (121)
+    - "caffe2::*": not found
+    - "prim::*": 9 distinct names (name [count])
+        + prim::Constant (22)
+        + prim::GetAttr (1571)
+        + prim::If (890)
+        + prim::ListConstruct (4)
+        + prim::Loop (179)
+        + prim::RaiseException (358)
+        + prim::SetAttr (121)
+        + prim::Uninitialized (59)
+        + prim::requires_grad (58)
+    - "fb::*": not found
+    - "prim::GetAttr": 50 distinct attr names (attr [count])
+        + "bias" (242)
+        + "classifier" (1)
+        + "conv" (3)
+        + "conv0" (1)
+        + "conv1" (58)
+        + "conv2" (58)
+        + "denseblock1" (1)
+        + "denseblock2" (1)
+        + "denseblock3" (1)
+        + "denseblock4" (1)
+        + "denselayer1" (4)
+        + "denselayer10" (3)
+        + "denselayer11" (3)
+        + "denselayer12" (3)
+        + "denselayer13" (2)
+        + "denselayer14" (2)
+        + "denselayer15" (2)
+        + "denselayer16" (2)
+        + "denselayer17" (1)
+        + "denselayer18" (1)
+        + "denselayer19" (1)
+        + "denselayer2" (4)
+        + "denselayer20" (1)
+        + "denselayer21" (1)
+        + "denselayer22" (1)
+        + "denselayer23" (1)
+        + "denselayer24" (1)
+        + "denselayer3" (4)
+        + "denselayer4" (4)
+        + "denselayer5" (4)
+        + "denselayer6" (4)
+        + "denselayer7" (3)
+        + "denselayer8" (3)
+        + "denselayer9" (3)
+        + "drop_rate" (58)
+        + "features" (1)
+        + "memory_efficient" (58)
+        + "norm" (3)
+        + "norm0" (1)
+        + "norm1" (58)
+        + "norm2" (58)
+        + "norm5" (1)
+        + "num_batches_tracked" (121)
+        + "running_mean" (121)
+        + "running_var" (121)
+        + "training" (300)
+        + "transition1" (1)
+        + "transition2" (1)
+        + "transition3" (1)
+        + "weight" (242)
+    - "prim::SetAttr": 1 distinct attr names (attr [count])
+        + "num_batches_tracked" (121)

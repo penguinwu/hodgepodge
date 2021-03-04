@@ -1,0 +1,84 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                                    aten::*     prim::*     fb::*    quantized::*    internal::*    caffe2::*    if         loop      call    setattr    getattr     all [others]
+-----------------------------------------------------  ----------  ----------  -------  --------------  -------------  -----------  ---------  --------  ------  ---------  ----------  --------------
+pytorch_mobilenet_v3.cpu.last_executed_graph_dump.log  1293 (31%)  1610 (38%)  -        -               -              -            287 ( 7%)  68 ( 2%)  -       68 ( 2%)   1018 (24%)  4191 [1287]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [pytorch_mobilenet_v3.cpu.last_executed_graph_dump.log]
+    - "prim::Loop": 1 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [68]
+    - "prim::If": 6 distinct sources (source:line [count])
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1254 [53]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [68]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2143 [68]
+        + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py:110 [68]
+        + /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_mobilenet_v3/mobilenetv3.py:112 [11]
+        + <string>:5 [19]
+    - "prim::CallMethod": 0 found
+    - "internal::*": not found
+    - "quantized::*": not found
+    - "aten::*": 21 distinct names (name [count])
+        + aten::__getitem__ (136)
+        + aten::adaptive_avg_pool2d (19)
+        + aten::add (200)
+        + aten::batch_norm (68)
+        + aten::conv2d (69)
+        + aten::div (53)
+        + aten::dropout (1)
+        + aten::eq (68)
+        + aten::expand_as (18)
+        + aten::format (68)
+        + aten::gt (19)
+        + aten::hardtanh (53)
+        + aten::hardtanh_ (53)
+        + aten::len (87)
+        + aten::linear (37)
+        + aten::mean (2)
+        + aten::mul (121)
+        + aten::relu_ (30)
+        + aten::size (87)
+        + aten::sub (68)
+        + aten::view (36)
+    - "caffe2::*": not found
+    - "prim::*": 8 distinct names (name [count])
+        + prim::Constant (28)
+        + prim::GetAttr (1018)
+        + prim::If (287)
+        + prim::ListConstruct (36)
+        + prim::ListUnpack (18)
+        + prim::Loop (68)
+        + prim::RaiseException (87)
+        + prim::SetAttr (68)
+    - "fb::*": not found
+    - "prim::GetAttr": 27 distinct attr names (attr [count])
+        + "0" (44)
+        + "1" (26)
+        + "10" (1)
+        + "11" (1)
+        + "12" (1)
+        + "14" (1)
+        + "15" (1)
+        + "2" (37)
+        + "3" (41)
+        + "4" (23)
+        + "5" (19)
+        + "6" (17)
+        + "7" (23)
+        + "8" (23)
+        + "9" (1)
+        + "bias" (138)
+        + "classifier" (1)
+        + "conv" (22)
+        + "fc" (18)
+        + "features" (1)
+        + "inplace" (53)
+        + "num_batches_tracked" (68)
+        + "running_mean" (68)
+        + "running_var" (68)
+        + "training" (137)
+        + "use_res_connect" (11)
+        + "weight" (174)
+    - "prim::SetAttr": 1 distinct attr names (attr [count])
+        + "num_batches_tracked" (68)
