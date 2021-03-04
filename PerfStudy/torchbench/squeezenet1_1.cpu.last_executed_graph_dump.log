@@ -1,0 +1,187 @@
+graph(%self : __torch__.torchvision.models.squeezenet.SqueezeNet,
+      %x.1 : Tensor):
+  %271 : int[] = prim::Constant[value=[3, 3]]()
+  %270 : int[] = prim::Constant[value=[1, 1]]()
+  %269 : int[] = prim::Constant[value=[0, 0]]()
+  %268 : int[] = prim::Constant[value=[2, 2]]()
+  %9 : int = prim::Constant[value=-1]()
+  %8 : int = prim::Constant[value=1]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:112:32
+  %7 : bool = prim::Constant[value=1]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/pooling.py:163:57
+  %5 : int = prim::Constant[value=2]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:45
+  %3 : str = prim::Constant[value="AssertionError: "]()
+  %2 : float = prim::Constant[value=0.5]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/dropout.py:58:32
+  %10 : __torch__.torch.nn.modules.container.___torch_mangle_547.Sequential = prim::GetAttr[name="features"](%self)
+  %11 : __torch__.torch.nn.modules.conv.___torch_mangle_524.Conv2d = prim::GetAttr[name="0"](%10)
+  %12 : __torch__.torchvision.models.squeezenet.Fire = prim::GetAttr[name="3"](%10)
+  %13 : __torch__.torchvision.models.squeezenet.___torch_mangle_530.Fire = prim::GetAttr[name="4"](%10)
+  %14 : __torch__.torchvision.models.squeezenet.___torch_mangle_534.Fire = prim::GetAttr[name="6"](%10)
+  %15 : __torch__.torchvision.models.squeezenet.___torch_mangle_536.Fire = prim::GetAttr[name="7"](%10)
+  %16 : __torch__.torchvision.models.squeezenet.___torch_mangle_540.Fire = prim::GetAttr[name="9"](%10)
+  %17 : __torch__.torchvision.models.squeezenet.___torch_mangle_542.Fire = prim::GetAttr[name="10"](%10)
+  %18 : __torch__.torchvision.models.squeezenet.___torch_mangle_544.Fire = prim::GetAttr[name="11"](%10)
+  %19 : __torch__.torchvision.models.squeezenet.___torch_mangle_546.Fire = prim::GetAttr[name="12"](%10)
+  %20 : Tensor = prim::GetAttr[name="weight"](%11)
+  %21 : Tensor? = prim::GetAttr[name="bias"](%11)
+  %input.4 : Tensor = aten::conv2d(%x.1, %20, %21, %268, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.6 : Tensor = aten::relu_(%input.4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %input.8 : Tensor = aten::max_pool2d(%input.6, %271, %268, %269, %270, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %32 : __torch__.torch.nn.modules.conv.___torch_mangle_526.Conv2d = prim::GetAttr[name="squeeze"](%12)
+  %33 : Tensor = prim::GetAttr[name="weight"](%32)
+  %34 : Tensor? = prim::GetAttr[name="bias"](%32)
+  %38 : Tensor = aten::conv2d(%input.8, %33, %34, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.4 : Tensor = aten::relu_(%38) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %40 : __torch__.torch.nn.modules.conv.___torch_mangle_527.Conv2d = prim::GetAttr[name="expand1x1"](%12)
+  %41 : Tensor = prim::GetAttr[name="weight"](%40)
+  %42 : Tensor? = prim::GetAttr[name="bias"](%40)
+  %46 : Tensor = aten::conv2d(%x.4, %41, %42, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.3 : Tensor = aten::relu_(%46) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %48 : __torch__.torch.nn.modules.conv.___torch_mangle_528.Conv2d = prim::GetAttr[name="expand3x3"](%12)
+  %49 : Tensor = prim::GetAttr[name="weight"](%48)
+  %50 : Tensor? = prim::GetAttr[name="bias"](%48)
+  %54 : Tensor = aten::conv2d(%x.4, %49, %50, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.4 : Tensor = aten::relu_(%54) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %56 : Tensor[] = prim::ListConstruct(%result.3, %result.4)
+  %input.10 : Tensor = aten::cat(%56, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %58 : __torch__.torch.nn.modules.conv.___torch_mangle_529.Conv2d = prim::GetAttr[name="squeeze"](%13)
+  %59 : Tensor = prim::GetAttr[name="weight"](%58)
+  %60 : Tensor? = prim::GetAttr[name="bias"](%58)
+  %64 : Tensor = aten::conv2d(%input.10, %59, %60, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.5 : Tensor = aten::relu_(%64) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %66 : __torch__.torch.nn.modules.conv.___torch_mangle_527.Conv2d = prim::GetAttr[name="expand1x1"](%13)
+  %67 : Tensor = prim::GetAttr[name="weight"](%66)
+  %68 : Tensor? = prim::GetAttr[name="bias"](%66)
+  %72 : Tensor = aten::conv2d(%x.5, %67, %68, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.5 : Tensor = aten::relu_(%72) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %74 : __torch__.torch.nn.modules.conv.___torch_mangle_528.Conv2d = prim::GetAttr[name="expand3x3"](%13)
+  %75 : Tensor = prim::GetAttr[name="weight"](%74)
+  %76 : Tensor? = prim::GetAttr[name="bias"](%74)
+  %80 : Tensor = aten::conv2d(%x.5, %75, %76, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.6 : Tensor = aten::relu_(%80) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %82 : Tensor[] = prim::ListConstruct(%result.5, %result.6)
+  %input.11 : Tensor = aten::cat(%82, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %input.13 : Tensor = aten::max_pool2d(%input.11, %271, %268, %269, %270, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %89 : __torch__.torch.nn.modules.conv.___torch_mangle_531.Conv2d = prim::GetAttr[name="squeeze"](%14)
+  %90 : Tensor = prim::GetAttr[name="weight"](%89)
+  %91 : Tensor? = prim::GetAttr[name="bias"](%89)
+  %95 : Tensor = aten::conv2d(%input.13, %90, %91, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.6 : Tensor = aten::relu_(%95) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %97 : __torch__.torch.nn.modules.conv.___torch_mangle_532.Conv2d = prim::GetAttr[name="expand1x1"](%14)
+  %98 : Tensor = prim::GetAttr[name="weight"](%97)
+  %99 : Tensor? = prim::GetAttr[name="bias"](%97)
+  %103 : Tensor = aten::conv2d(%x.6, %98, %99, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.7 : Tensor = aten::relu_(%103) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %105 : __torch__.torch.nn.modules.conv.___torch_mangle_533.Conv2d = prim::GetAttr[name="expand3x3"](%14)
+  %106 : Tensor = prim::GetAttr[name="weight"](%105)
+  %107 : Tensor? = prim::GetAttr[name="bias"](%105)
+  %111 : Tensor = aten::conv2d(%x.6, %106, %107, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.8 : Tensor = aten::relu_(%111) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %113 : Tensor[] = prim::ListConstruct(%result.7, %result.8)
+  %input.15 : Tensor = aten::cat(%113, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %115 : __torch__.torch.nn.modules.conv.___torch_mangle_535.Conv2d = prim::GetAttr[name="squeeze"](%15)
+  %116 : Tensor = prim::GetAttr[name="weight"](%115)
+  %117 : Tensor? = prim::GetAttr[name="bias"](%115)
+  %121 : Tensor = aten::conv2d(%input.15, %116, %117, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.7 : Tensor = aten::relu_(%121) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %123 : __torch__.torch.nn.modules.conv.___torch_mangle_532.Conv2d = prim::GetAttr[name="expand1x1"](%15)
+  %124 : Tensor = prim::GetAttr[name="weight"](%123)
+  %125 : Tensor? = prim::GetAttr[name="bias"](%123)
+  %129 : Tensor = aten::conv2d(%x.7, %124, %125, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.9 : Tensor = aten::relu_(%129) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %131 : __torch__.torch.nn.modules.conv.___torch_mangle_533.Conv2d = prim::GetAttr[name="expand3x3"](%15)
+  %132 : Tensor = prim::GetAttr[name="weight"](%131)
+  %133 : Tensor? = prim::GetAttr[name="bias"](%131)
+  %137 : Tensor = aten::conv2d(%x.7, %132, %133, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.10 : Tensor = aten::relu_(%137) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %139 : Tensor[] = prim::ListConstruct(%result.9, %result.10)
+  %input.17 : Tensor = aten::cat(%139, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %input.19 : Tensor = aten::max_pool2d(%input.17, %271, %268, %269, %270, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %146 : __torch__.torch.nn.modules.conv.___torch_mangle_537.Conv2d = prim::GetAttr[name="squeeze"](%16)
+  %147 : Tensor = prim::GetAttr[name="weight"](%146)
+  %148 : Tensor? = prim::GetAttr[name="bias"](%146)
+  %152 : Tensor = aten::conv2d(%input.19, %147, %148, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.8 : Tensor = aten::relu_(%152) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %154 : __torch__.torch.nn.modules.conv.___torch_mangle_538.Conv2d = prim::GetAttr[name="expand1x1"](%16)
+  %155 : Tensor = prim::GetAttr[name="weight"](%154)
+  %156 : Tensor? = prim::GetAttr[name="bias"](%154)
+  %160 : Tensor = aten::conv2d(%x.8, %155, %156, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.11 : Tensor = aten::relu_(%160) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %162 : __torch__.torch.nn.modules.conv.___torch_mangle_539.Conv2d = prim::GetAttr[name="expand3x3"](%16)
+  %163 : Tensor = prim::GetAttr[name="weight"](%162)
+  %164 : Tensor? = prim::GetAttr[name="bias"](%162)
+  %168 : Tensor = aten::conv2d(%x.8, %163, %164, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.12 : Tensor = aten::relu_(%168) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %170 : Tensor[] = prim::ListConstruct(%result.11, %result.12)
+  %input.21 : Tensor = aten::cat(%170, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %172 : __torch__.torch.nn.modules.conv.___torch_mangle_541.Conv2d = prim::GetAttr[name="squeeze"](%17)
+  %173 : Tensor = prim::GetAttr[name="weight"](%172)
+  %174 : Tensor? = prim::GetAttr[name="bias"](%172)
+  %178 : Tensor = aten::conv2d(%input.21, %173, %174, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.9 : Tensor = aten::relu_(%178) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %180 : __torch__.torch.nn.modules.conv.___torch_mangle_538.Conv2d = prim::GetAttr[name="expand1x1"](%17)
+  %181 : Tensor = prim::GetAttr[name="weight"](%180)
+  %182 : Tensor? = prim::GetAttr[name="bias"](%180)
+  %186 : Tensor = aten::conv2d(%x.9, %181, %182, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.13 : Tensor = aten::relu_(%186) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %188 : __torch__.torch.nn.modules.conv.___torch_mangle_539.Conv2d = prim::GetAttr[name="expand3x3"](%17)
+  %189 : Tensor = prim::GetAttr[name="weight"](%188)
+  %190 : Tensor? = prim::GetAttr[name="bias"](%188)
+  %194 : Tensor = aten::conv2d(%x.9, %189, %190, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.14 : Tensor = aten::relu_(%194) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %196 : Tensor[] = prim::ListConstruct(%result.13, %result.14)
+  %input.23 : Tensor = aten::cat(%196, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %198 : __torch__.torch.nn.modules.conv.___torch_mangle_284.Conv2d = prim::GetAttr[name="squeeze"](%18)
+  %199 : Tensor = prim::GetAttr[name="weight"](%198)
+  %200 : Tensor? = prim::GetAttr[name="bias"](%198)
+  %204 : Tensor = aten::conv2d(%input.23, %199, %200, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.10 : Tensor = aten::relu_(%204) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %206 : __torch__.torch.nn.modules.conv.___torch_mangle_431.Conv2d = prim::GetAttr[name="expand1x1"](%18)
+  %207 : Tensor = prim::GetAttr[name="weight"](%206)
+  %208 : Tensor? = prim::GetAttr[name="bias"](%206)
+  %212 : Tensor = aten::conv2d(%x.10, %207, %208, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.15 : Tensor = aten::relu_(%212) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %214 : __torch__.torch.nn.modules.conv.___torch_mangle_543.Conv2d = prim::GetAttr[name="expand3x3"](%18)
+  %215 : Tensor = prim::GetAttr[name="weight"](%214)
+  %216 : Tensor? = prim::GetAttr[name="bias"](%214)
+  %220 : Tensor = aten::conv2d(%x.10, %215, %216, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.16 : Tensor = aten::relu_(%220) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %222 : Tensor[] = prim::ListConstruct(%result.15, %result.16)
+  %input.25 : Tensor = aten::cat(%222, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %224 : __torch__.torch.nn.modules.conv.___torch_mangle_545.Conv2d = prim::GetAttr[name="squeeze"](%19)
+  %225 : Tensor = prim::GetAttr[name="weight"](%224)
+  %226 : Tensor? = prim::GetAttr[name="bias"](%224)
+  %230 : Tensor = aten::conv2d(%input.25, %225, %226, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.3 : Tensor = aten::relu_(%230) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %232 : __torch__.torch.nn.modules.conv.___torch_mangle_431.Conv2d = prim::GetAttr[name="expand1x1"](%19)
+  %233 : Tensor = prim::GetAttr[name="weight"](%232)
+  %234 : Tensor? = prim::GetAttr[name="bias"](%232)
+  %238 : Tensor = aten::conv2d(%x.3, %233, %234, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.2 : Tensor = aten::relu_(%238) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %240 : __torch__.torch.nn.modules.conv.___torch_mangle_543.Conv2d = prim::GetAttr[name="expand3x3"](%19)
+  %241 : Tensor = prim::GetAttr[name="weight"](%240)
+  %242 : Tensor? = prim::GetAttr[name="bias"](%240)
+  %246 : Tensor = aten::conv2d(%x.3, %241, %242, %270, %270, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.1 : Tensor = aten::relu_(%246) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %248 : Tensor[] = prim::ListConstruct(%result.2, %result.1)
+  %x.12 : Tensor = aten::cat(%248, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:37:15
+  %250 : __torch__.torch.nn.modules.container.___torch_mangle_549.Sequential = prim::GetAttr[name="classifier"](%self)
+  %251 : __torch__.torch.nn.modules.dropout.___torch_mangle_50.Dropout = prim::GetAttr[name="0"](%250)
+  %252 : __torch__.torch.nn.modules.conv.___torch_mangle_548.Conv2d = prim::GetAttr[name="1"](%250)
+  %253 : bool = prim::GetAttr[name="training"](%251)
+  %input.3 : Tensor = aten::dropout(%x.12, %2, %253) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %255 : Tensor = prim::GetAttr[name="weight"](%252)
+  %256 : Tensor? = prim::GetAttr[name="bias"](%252)
+  %input.5 : Tensor = aten::conv2d(%input.3, %255, %256, %270, %269, %270, %8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.7 : Tensor = aten::relu_(%input.5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %263 : int[] = aten::size(%input.7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1036:51
+  %264 : int = aten::len(%263) # <string>:5:9
+  %265 : bool = aten::gt(%264, %5) # <string>:5:9
+   = prim::If(%265) # <string>:5:2
+    block0():
+      -> ()
+    block1():
+       = prim::RaiseException(%3) # <string>:5:2
+      -> ()
+  %x.11 : Tensor = aten::adaptive_avg_pool2d(%input.7, %270) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1037:11
+  %267 : Tensor = aten::flatten(%x.11, %8, %9) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/squeezenet.py:112:15
+  return (%267)
+

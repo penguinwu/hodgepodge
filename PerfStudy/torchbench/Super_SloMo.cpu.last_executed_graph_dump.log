@@ -1,0 +1,1244 @@
+graph(%self : __torch__.torchbenchmark.models.Super_SloMo.model_wrapper.Model,
+      %trainFrameIndex.1 : Tensor,
+      %I0.1 : Tensor,
+      %I1.1 : Tensor,
+      %IFrame.1 : Tensor):
+  %1485 : int[] = prim::Constant[value=[3, 0, 1, 2]]()
+  %1484 : Float(7, strides=[1], requires_grad=0, device=cpu) = prim::Constant[value= 0.1250  0.2500  0.3750  0.5000  0.6250  0.7500  0.8750 [ CPUFloatType{7} ]]()
+  %1396 : int[] = prim::Constant[value=[2, 2]]()
+  %1391 : int[] = prim::Constant[value=[3, 3]]()
+  %1390 : int[] = prim::Constant[value=[1, 1]]()
+  %38 : None = prim::Constant()
+  %37 : int = prim::Constant[value=-1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:63
+  %36 : int = prim::Constant[value=9223372036854775807]()
+  %35 : int = prim::Constant[value=1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:28:56
+  %34 : int = prim::Constant[value=2]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:31:27
+  %33 : int = prim::Constant[value=0]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:37:23
+  %32 : int = prim::Constant[value=3]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:38:43
+  %31 : int = prim::Constant[value=4]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:49:32
+  %30 : int = prim::Constant[value=5]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:50:42
+  %29 : int = prim::Constant[value=204]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:77:15
+  %28 : int = prim::Constant[value=102]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:77:32
+  %27 : float = prim::Constant[value=0.0050000000000000001]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:77:49
+  %26 : str = prim::Constant[value="bilinear"]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:130:51
+  %25 : float = prim::Constant[value=2.]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:130:42
+  %22 : str = prim::Constant[value="Default upsampling behavior when mode={} is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details."]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3452:16
+  %20 : str = prim::Constant[value="The default behavior for interpolate/upsample with float scale_factor changed in 1.6.0 to align with other frameworks/libraries, and now uses scale_factor directly, instead of relying on the computed output size. If you wish to restore the old behavior, please set recompute_scale_factor=True. See the documentation of nn.Upsample for details. "]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3500:24
+  %19 : str = prim::Constant[value="Got 3D input, but bilinear mode needs 4D input"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:34
+  %18 : str = prim::Constant[value="Got 5D input, but bilinear mode needs 4D input"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:34
+  %17 : str = prim::Constant[value="Input Error: Only 3D, 4D and 5D input Tensors supported (got {}D) for the modes: nearest | linear | bilinear | bicubic | trilinear (got {})"]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+  %16 : bool = prim::Constant[value=1]()
+  %15 : bool = prim::Constant[value=0]()
+  %14 : int[] = prim::Constant[value=[0, 0]]()
+  %13 : int[] = prim::Constant[value=annotate(List[int], [])]()
+  %12 : float = prim::Constant[value=0.10000000000000001]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:197:58
+  %8 : str = prim::Constant[value="Default grid_sample and affine_grid behavior has changed to align_corners=False since 1.3.0. Please specify align_corners=True if the old behavior is desired. See the documentation of grid_sample for details."]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3826:12
+  %7 : float = prim::Constant[value=0.5]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:26
+  %6 : int = prim::Constant[value=6]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %5 : str = prim::Constant[value="nn.functional.sigmoid is deprecated. Use torch.sigmoid instead."]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1709:18
+  %39 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.UNet = prim::GetAttr[name="flowComp"](%self)
+  %40 : Tensor[] = prim::ListConstruct(%I0.1, %I1.1)
+  %41 : Tensor = aten::cat(%40, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:28:32
+  %42 : __torch__.torch.nn.modules.conv.___torch_mangle_12.Conv2d = prim::GetAttr[name="conv1"](%39)
+  %43 : Tensor = prim::GetAttr[name="weight"](%42)
+  %44 : Tensor? = prim::GetAttr[name="bias"](%42)
+  %48 : Tensor = aten::conv2d(%41, %43, %44, %1390, %1391, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.16 : Tensor = aten::leaky_relu(%48, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %50 : __torch__.torch.nn.modules.conv.___torch_mangle_13.Conv2d = prim::GetAttr[name="conv2"](%39)
+  %51 : Tensor = prim::GetAttr[name="weight"](%50)
+  %52 : Tensor? = prim::GetAttr[name="bias"](%50)
+  %56 : Tensor = aten::conv2d(%result.16, %51, %52, %1390, %1391, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.17 : Tensor = aten::leaky_relu(%56, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %58 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.down = prim::GetAttr[name="down1"](%39)
+  %x.16 : Tensor = aten::avg_pool2d(%result.17, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %61 : __torch__.torch.nn.modules.conv.___torch_mangle_14.Conv2d = prim::GetAttr[name="conv1"](%58)
+  %62 : Tensor = prim::GetAttr[name="weight"](%61)
+  %63 : Tensor? = prim::GetAttr[name="bias"](%61)
+  %67 : Tensor = aten::conv2d(%x.16, %62, %63, %1390, %1396, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.18 : Tensor = aten::leaky_relu(%67, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %69 : __torch__.torch.nn.modules.conv.___torch_mangle_15.Conv2d = prim::GetAttr[name="conv2"](%58)
+  %70 : Tensor = prim::GetAttr[name="weight"](%69)
+  %71 : Tensor? = prim::GetAttr[name="bias"](%69)
+  %75 : Tensor = aten::conv2d(%result.18, %70, %71, %1390, %1396, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s2.2 : Tensor = aten::leaky_relu(%75, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %77 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_18.down = prim::GetAttr[name="down2"](%39)
+  %x.17 : Tensor = aten::avg_pool2d(%s2.2, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %80 : __torch__.torch.nn.modules.conv.___torch_mangle_16.Conv2d = prim::GetAttr[name="conv1"](%77)
+  %81 : Tensor = prim::GetAttr[name="weight"](%80)
+  %82 : Tensor? = prim::GetAttr[name="bias"](%80)
+  %86 : Tensor = aten::conv2d(%x.17, %81, %82, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.19 : Tensor = aten::leaky_relu(%86, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %88 : __torch__.torch.nn.modules.conv.___torch_mangle_17.Conv2d = prim::GetAttr[name="conv2"](%77)
+  %89 : Tensor = prim::GetAttr[name="weight"](%88)
+  %90 : Tensor? = prim::GetAttr[name="bias"](%88)
+  %94 : Tensor = aten::conv2d(%result.19, %89, %90, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s3.2 : Tensor = aten::leaky_relu(%94, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %96 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_21.down = prim::GetAttr[name="down3"](%39)
+  %x.18 : Tensor = aten::avg_pool2d(%s3.2, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %99 : __torch__.torch.nn.modules.conv.___torch_mangle_19.Conv2d = prim::GetAttr[name="conv1"](%96)
+  %100 : Tensor = prim::GetAttr[name="weight"](%99)
+  %101 : Tensor? = prim::GetAttr[name="bias"](%99)
+  %105 : Tensor = aten::conv2d(%x.18, %100, %101, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.20 : Tensor = aten::leaky_relu(%105, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %107 : __torch__.torch.nn.modules.conv.___torch_mangle_20.Conv2d = prim::GetAttr[name="conv2"](%96)
+  %108 : Tensor = prim::GetAttr[name="weight"](%107)
+  %109 : Tensor? = prim::GetAttr[name="bias"](%107)
+  %113 : Tensor = aten::conv2d(%result.20, %108, %109, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s4.2 : Tensor = aten::leaky_relu(%113, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %115 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_24.down = prim::GetAttr[name="down4"](%39)
+  %x.19 : Tensor = aten::avg_pool2d(%s4.2, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %118 : __torch__.torch.nn.modules.conv.___torch_mangle_22.Conv2d = prim::GetAttr[name="conv1"](%115)
+  %119 : Tensor = prim::GetAttr[name="weight"](%118)
+  %120 : Tensor? = prim::GetAttr[name="bias"](%118)
+  %124 : Tensor = aten::conv2d(%x.19, %119, %120, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.21 : Tensor = aten::leaky_relu(%124, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %126 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv2"](%115)
+  %127 : Tensor = prim::GetAttr[name="weight"](%126)
+  %128 : Tensor? = prim::GetAttr[name="bias"](%126)
+  %132 : Tensor = aten::conv2d(%result.21, %127, %128, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s5.2 : Tensor = aten::leaky_relu(%132, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %134 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_25.down = prim::GetAttr[name="down5"](%39)
+  %x.4 : Tensor = aten::avg_pool2d(%s5.2, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %137 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv1"](%134)
+  %138 : Tensor = prim::GetAttr[name="weight"](%137)
+  %139 : Tensor? = prim::GetAttr[name="bias"](%137)
+  %143 : Tensor = aten::conv2d(%x.4, %138, %139, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.22 : Tensor = aten::leaky_relu(%143, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %145 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv2"](%134)
+  %146 : Tensor = prim::GetAttr[name="weight"](%145)
+  %147 : Tensor? = prim::GetAttr[name="bias"](%145)
+  %151 : Tensor = aten::conv2d(%result.22, %146, %147, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.21 : Tensor = aten::leaky_relu(%151, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %153 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.up = prim::GetAttr[name="up1"](%39)
+  %154 : Tensor = prim::Uninitialized()
+  %159 : str = aten::format(%22, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3452:16
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %160 : int = aten::dim(%x.21) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.6 : int = aten::sub(%160, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.7 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.6, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%163 : int):
+      %164 : float[] = aten::append(%scale_factors.7, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %165 : int = aten::len(%scale_factors.7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %166 : bool = aten::gt(%165, %33)
+  %167 : int = prim::Loop(%36, %166, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%168 : int, %169 : int):
+      %scale.6 : float = aten::__getitem__(%scale_factors.7, %169) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %171 : int = aten::floor(%scale.6) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %172 : bool = aten::ne(%171, %scale.6) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %173 : bool = prim::If(%172) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %174 : int = aten::add(%169, %35)
+      %175 : bool = aten::lt(%174, %165)
+      %176 : bool = aten::__and__(%175, %173)
+      -> (%176, %174)
+  %178 : bool = aten::eq(%160, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %179 : Tensor = prim::If(%178) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %183 : Tensor = aten::upsample_bilinear2d(%x.21, %38, %15, %scale_factors.7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%183)
+    block1():
+      %185 : bool = aten::eq(%160, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%185) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %187 : bool = aten::eq(%160, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%187) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %189 : str = aten::format(%17, %160, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%189) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %190 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv1"](%153)
+  %191 : Tensor = prim::GetAttr[name="weight"](%190)
+  %192 : Tensor? = prim::GetAttr[name="bias"](%190)
+  %196 : Tensor = aten::conv2d(%179, %191, %192, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.23 : Tensor = aten::leaky_relu(%196, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %198 : __torch__.torch.nn.modules.conv.___torch_mangle_26.Conv2d = prim::GetAttr[name="conv2"](%153)
+  %199 : Tensor[] = prim::ListConstruct(%result.23, %s5.2)
+  %200 : Tensor = aten::cat(%199, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %201 : Tensor = prim::GetAttr[name="weight"](%198)
+  %202 : Tensor? = prim::GetAttr[name="bias"](%198)
+  %206 : Tensor = aten::conv2d(%200, %201, %202, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.22 : Tensor = aten::leaky_relu(%206, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %208 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_28.up = prim::GetAttr[name="up2"](%39)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %215 : int = aten::dim(%x.22) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.7 : int = aten::sub(%215, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.8 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.7, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%218 : int):
+      %219 : float[] = aten::append(%scale_factors.8, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %220 : int = aten::len(%scale_factors.8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %221 : bool = aten::gt(%220, %33)
+  %222 : int = prim::Loop(%36, %221, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%223 : int, %224 : int):
+      %scale.7 : float = aten::__getitem__(%scale_factors.8, %224) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %226 : int = aten::floor(%scale.7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %227 : bool = aten::ne(%226, %scale.7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %228 : bool = prim::If(%227) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %229 : int = aten::add(%224, %35)
+      %230 : bool = aten::lt(%229, %220)
+      %231 : bool = aten::__and__(%230, %228)
+      -> (%231, %229)
+  %233 : bool = aten::eq(%215, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %234 : Tensor = prim::If(%233) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %238 : Tensor = aten::upsample_bilinear2d(%x.22, %38, %15, %scale_factors.8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%238)
+    block1():
+      %240 : bool = aten::eq(%215, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%240) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %242 : bool = aten::eq(%215, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%242) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %244 : str = aten::format(%17, %215, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%244) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %245 : __torch__.torch.nn.modules.conv.___torch_mangle_27.Conv2d = prim::GetAttr[name="conv1"](%208)
+  %246 : Tensor = prim::GetAttr[name="weight"](%245)
+  %247 : Tensor? = prim::GetAttr[name="bias"](%245)
+  %251 : Tensor = aten::conv2d(%234, %246, %247, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.24 : Tensor = aten::leaky_relu(%251, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %253 : __torch__.torch.nn.modules.conv.___torch_mangle_27.Conv2d = prim::GetAttr[name="conv2"](%208)
+  %254 : Tensor[] = prim::ListConstruct(%result.24, %s4.2)
+  %255 : Tensor = aten::cat(%254, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %256 : Tensor = prim::GetAttr[name="weight"](%253)
+  %257 : Tensor? = prim::GetAttr[name="bias"](%253)
+  %261 : Tensor = aten::conv2d(%255, %256, %257, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.23 : Tensor = aten::leaky_relu(%261, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %263 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_30.up = prim::GetAttr[name="up3"](%39)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %270 : int = aten::dim(%x.23) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.8 : int = aten::sub(%270, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.9 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.8, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%273 : int):
+      %274 : float[] = aten::append(%scale_factors.9, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %275 : int = aten::len(%scale_factors.9) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %276 : bool = aten::gt(%275, %33)
+  %277 : int = prim::Loop(%36, %276, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%278 : int, %279 : int):
+      %scale.8 : float = aten::__getitem__(%scale_factors.9, %279) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %281 : int = aten::floor(%scale.8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %282 : bool = aten::ne(%281, %scale.8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %283 : bool = prim::If(%282) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %284 : int = aten::add(%279, %35)
+      %285 : bool = aten::lt(%284, %275)
+      %286 : bool = aten::__and__(%285, %283)
+      -> (%286, %284)
+  %288 : bool = aten::eq(%270, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %289 : Tensor = prim::If(%288) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %293 : Tensor = aten::upsample_bilinear2d(%x.23, %38, %15, %scale_factors.9) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%293)
+    block1():
+      %295 : bool = aten::eq(%270, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%295) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %297 : bool = aten::eq(%270, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%297) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %299 : str = aten::format(%17, %270, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%299) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %300 : __torch__.torch.nn.modules.conv.___torch_mangle_29.Conv2d = prim::GetAttr[name="conv1"](%263)
+  %301 : Tensor = prim::GetAttr[name="weight"](%300)
+  %302 : Tensor? = prim::GetAttr[name="bias"](%300)
+  %306 : Tensor = aten::conv2d(%289, %301, %302, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.25 : Tensor = aten::leaky_relu(%306, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %308 : __torch__.torch.nn.modules.conv.___torch_mangle_29.Conv2d = prim::GetAttr[name="conv2"](%263)
+  %309 : Tensor[] = prim::ListConstruct(%result.25, %s3.2)
+  %310 : Tensor = aten::cat(%309, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %311 : Tensor = prim::GetAttr[name="weight"](%308)
+  %312 : Tensor? = prim::GetAttr[name="bias"](%308)
+  %316 : Tensor = aten::conv2d(%310, %311, %312, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.24 : Tensor = aten::leaky_relu(%316, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %318 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_32.up = prim::GetAttr[name="up4"](%39)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %325 : int = aten::dim(%x.24) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.9 : int = aten::sub(%325, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.10 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.9, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%328 : int):
+      %329 : float[] = aten::append(%scale_factors.10, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %330 : int = aten::len(%scale_factors.10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %331 : bool = aten::gt(%330, %33)
+  %332 : int = prim::Loop(%36, %331, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%333 : int, %334 : int):
+      %scale.9 : float = aten::__getitem__(%scale_factors.10, %334) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %336 : int = aten::floor(%scale.9) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %337 : bool = aten::ne(%336, %scale.9) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %338 : bool = prim::If(%337) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %339 : int = aten::add(%334, %35)
+      %340 : bool = aten::lt(%339, %330)
+      %341 : bool = aten::__and__(%340, %338)
+      -> (%341, %339)
+  %343 : bool = aten::eq(%325, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %344 : Tensor = prim::If(%343) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %348 : Tensor = aten::upsample_bilinear2d(%x.24, %38, %15, %scale_factors.10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%348)
+    block1():
+      %350 : bool = aten::eq(%325, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%350) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %352 : bool = aten::eq(%325, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%352) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %354 : str = aten::format(%17, %325, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%354) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %355 : __torch__.torch.nn.modules.conv.___torch_mangle_31.Conv2d = prim::GetAttr[name="conv1"](%318)
+  %356 : Tensor = prim::GetAttr[name="weight"](%355)
+  %357 : Tensor? = prim::GetAttr[name="bias"](%355)
+  %361 : Tensor = aten::conv2d(%344, %356, %357, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.26 : Tensor = aten::leaky_relu(%361, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %363 : __torch__.torch.nn.modules.conv.___torch_mangle_31.Conv2d = prim::GetAttr[name="conv2"](%318)
+  %364 : Tensor[] = prim::ListConstruct(%result.26, %s2.2)
+  %365 : Tensor = aten::cat(%364, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %366 : Tensor = prim::GetAttr[name="weight"](%363)
+  %367 : Tensor? = prim::GetAttr[name="bias"](%363)
+  %371 : Tensor = aten::conv2d(%365, %366, %367, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.25 : Tensor = aten::leaky_relu(%371, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %373 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_34.up = prim::GetAttr[name="up5"](%39)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %380 : int = aten::dim(%x.25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.10 : int = aten::sub(%380, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.11 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.10, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%383 : int):
+      %384 : float[] = aten::append(%scale_factors.11, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %385 : int = aten::len(%scale_factors.11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %386 : bool = aten::gt(%385, %33)
+  %387 : int = prim::Loop(%36, %386, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%388 : int, %389 : int):
+      %scale.10 : float = aten::__getitem__(%scale_factors.11, %389) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %391 : int = aten::floor(%scale.10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %392 : bool = aten::ne(%391, %scale.10) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %393 : bool = prim::If(%392) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %394 : int = aten::add(%389, %35)
+      %395 : bool = aten::lt(%394, %385)
+      %396 : bool = aten::__and__(%395, %393)
+      -> (%396, %394)
+  %398 : bool = aten::eq(%380, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %399 : Tensor = prim::If(%398) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %403 : Tensor = aten::upsample_bilinear2d(%x.25, %38, %15, %scale_factors.11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%403)
+    block1():
+      %405 : bool = aten::eq(%380, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%405) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %407 : bool = aten::eq(%380, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%407) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %409 : str = aten::format(%17, %380, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%409) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %410 : __torch__.torch.nn.modules.conv.___torch_mangle_33.Conv2d = prim::GetAttr[name="conv1"](%373)
+  %411 : Tensor = prim::GetAttr[name="weight"](%410)
+  %412 : Tensor? = prim::GetAttr[name="bias"](%410)
+  %416 : Tensor = aten::conv2d(%399, %411, %412, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.27 : Tensor = aten::leaky_relu(%416, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %418 : __torch__.torch.nn.modules.conv.___torch_mangle_33.Conv2d = prim::GetAttr[name="conv2"](%373)
+  %419 : Tensor[] = prim::ListConstruct(%result.27, %result.17)
+  %420 : Tensor = aten::cat(%419, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %421 : Tensor = prim::GetAttr[name="weight"](%418)
+  %422 : Tensor? = prim::GetAttr[name="bias"](%418)
+  %426 : Tensor = aten::conv2d(%420, %421, %422, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.26 : Tensor = aten::leaky_relu(%426, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %428 : __torch__.torch.nn.modules.conv.___torch_mangle_35.Conv2d = prim::GetAttr[name="conv3"](%39)
+  %429 : Tensor = prim::GetAttr[name="weight"](%428)
+  %430 : Tensor? = prim::GetAttr[name="bias"](%428)
+  %434 : Tensor = aten::conv2d(%x.26, %429, %430, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %flowOut.1 : Tensor = aten::leaky_relu(%434, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %436 : Tensor = aten::slice(%flowOut.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:31:16
+  %437 : Tensor = aten::slice(%436, %35, %33, %34, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:31:16
+  %438 : Tensor = aten::slice(%437, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:31:16
+  %F_0_1.1 : Tensor = aten::slice(%438, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:31:16
+  %441 : Tensor = aten::slice(%436, %35, %34, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:32:16
+  %442 : Tensor = aten::slice(%441, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:32:16
+  %F_1_0.1 : Tensor = aten::slice(%442, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:32:16
+  %444 : Device = prim::device(%I0.1)
+  %446 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %447 : Tensor = aten::index(%1484, %446) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:324:24
+  %448 : Tensor = aten::neg(%447) # <string>:19:9
+  %449 : Tensor = aten::add(%448, %35, %35) # <string>:19:9
+  %450 : Tensor = aten::neg(%449) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:324:16
+  %451 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %452 : Tensor = aten::index(%1484, %451) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:324:36
+  %453 : Tensor = aten::mul(%450, %452) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:324:16
+  %454 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %455 : Tensor = aten::index(%1484, %454) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:325:11
+  %456 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %457 : Tensor = aten::index(%1484, %456) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:325:22
+  %C01.1 : Tensor = aten::mul(%455, %457) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:325:11
+  %459 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %460 : Tensor = aten::index(%1484, %459) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:326:16
+  %461 : Tensor = aten::neg(%460) # <string>:19:9
+  %462 : Tensor = aten::add(%461, %35, %35) # <string>:19:9
+  %463 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %464 : Tensor = aten::index(%1484, %463) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:326:33
+  %465 : Tensor = aten::neg(%464) # <string>:19:9
+  %466 : Tensor = aten::add(%465, %35, %35) # <string>:19:9
+  %C10.1 : Tensor = aten::mul(%462, %466) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:326:11
+  %468 : Tensor = aten::unsqueeze(%453, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:11
+  %469 : Tensor = aten::unsqueeze(%468, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:11
+  %470 : Tensor = aten::unsqueeze(%469, %34) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:11
+  %471 : Tensor = aten::slice(%470, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:11
+  %473 : Tensor = aten::permute(%471, %1485) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:11
+  %474 : Tensor = aten::to(%473, %444, %38, %15, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:11
+  %475 : Tensor = aten::unsqueeze(%C01.1, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:68
+  %476 : Tensor = aten::unsqueeze(%475, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:68
+  %477 : Tensor = aten::unsqueeze(%476, %34) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:68
+  %478 : Tensor = aten::slice(%477, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:68
+  %480 : Tensor = aten::permute(%478, %1485) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:68
+  %481 : Tensor = aten::to(%480, %444, %38, %15, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:68
+  %482 : Tensor = aten::unsqueeze(%C10.1, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:125
+  %483 : Tensor = aten::unsqueeze(%482, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:125
+  %484 : Tensor = aten::unsqueeze(%483, %34) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:125
+  %485 : Tensor = aten::slice(%484, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:125
+  %487 : Tensor = aten::permute(%485, %1485) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:125
+  %488 : Tensor = aten::to(%487, %444, %38, %15, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:125
+  %489 : Tensor = aten::unsqueeze(%453, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:182
+  %490 : Tensor = aten::unsqueeze(%489, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:182
+  %491 : Tensor = aten::unsqueeze(%490, %34) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:182
+  %492 : Tensor = aten::slice(%491, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:182
+  %494 : Tensor = aten::permute(%492, %1485) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:182
+  %495 : Tensor = aten::to(%494, %444, %38, %15, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:327:182
+  %498 : Tensor = aten::mul(%474, %F_0_1.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:37:16
+  %500 : Tensor = aten::mul(%481, %F_1_0.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:37:36
+  %F_t_0.1 : Tensor = aten::add(%498, %500, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:37:16
+  %503 : Tensor = aten::mul(%488, %F_0_1.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:38:16
+  %505 : Tensor = aten::mul(%495, %F_1_0.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:38:36
+  %F_t_1.1 : Tensor = aten::add(%503, %505, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:38:16
+  %507 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.backWarp = prim::GetAttr[name="trainFlowBackWarp"](%self)
+  %508 : Tensor = aten::slice(%F_t_0.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %509 : Tensor = aten::select(%508, %35, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %510 : Tensor = aten::slice(%509, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %u.2 : Tensor = aten::slice(%510, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %513 : Tensor = aten::select(%508, %35, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %514 : Tensor = aten::slice(%513, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %v.2 : Tensor = aten::slice(%514, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %516 : Tensor = prim::GetAttr[name="gridX"](%507)
+  %517 : Tensor = aten::unsqueeze(%516, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %518 : Tensor = aten::expand_as(%517, %u.2) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %519 : Tensor = aten::to(%518, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %x.2 : Tensor = aten::add(%519, %u.2, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %521 : Tensor = prim::GetAttr[name="gridY"](%507)
+  %522 : Tensor = aten::unsqueeze(%521, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %523 : Tensor = aten::expand_as(%522, %v.2) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %524 : Tensor = aten::to(%523, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %y.2 : Tensor = aten::add(%524, %v.2, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %526 : int = prim::GetAttr[name="W"](%507)
+  %527 : Tensor = aten::div(%x.2, %526) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %528 : Tensor = aten::sub(%527, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %x.14 : Tensor = aten::mul(%528, %34) # <string>:3:9
+  %530 : int = prim::GetAttr[name="H"](%507)
+  %531 : Tensor = aten::div(%y.2, %530) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %532 : Tensor = aten::sub(%531, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %y.4 : Tensor = aten::mul(%532, %34) # <string>:3:9
+  %534 : Tensor[] = prim::ListConstruct(%x.14, %y.4)
+  %grid.2 : Tensor = aten::stack(%534, %32) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:282:15
+   = aten::warn[warn_id=9](%8, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3825:8
+  %g_I0_F_t_0.1 : Tensor = aten::grid_sampler(%I0.1, %grid.2, %33, %33, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3833:11
+  %537 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.backWarp = prim::GetAttr[name="trainFlowBackWarp"](%self)
+  %538 : Tensor = aten::slice(%F_t_1.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %539 : Tensor = aten::select(%538, %35, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %540 : Tensor = aten::slice(%539, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %u.3 : Tensor = aten::slice(%540, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %543 : Tensor = aten::select(%538, %35, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %544 : Tensor = aten::slice(%543, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %v.3 : Tensor = aten::slice(%544, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %546 : Tensor = prim::GetAttr[name="gridX"](%537)
+  %547 : Tensor = aten::unsqueeze(%546, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %548 : Tensor = aten::expand_as(%547, %u.3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %549 : Tensor = aten::to(%548, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %x.27 : Tensor = aten::add(%549, %u.3, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %551 : Tensor = prim::GetAttr[name="gridY"](%537)
+  %552 : Tensor = aten::unsqueeze(%551, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %553 : Tensor = aten::expand_as(%552, %v.3) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %554 : Tensor = aten::to(%553, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %y.5 : Tensor = aten::add(%554, %v.3, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %556 : int = prim::GetAttr[name="W"](%537)
+  %557 : Tensor = aten::div(%x.27, %556) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %558 : Tensor = aten::sub(%557, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %x.20 : Tensor = aten::mul(%558, %34) # <string>:3:9
+  %560 : int = prim::GetAttr[name="H"](%537)
+  %561 : Tensor = aten::div(%y.5, %560) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %562 : Tensor = aten::sub(%561, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %y.6 : Tensor = aten::mul(%562, %34) # <string>:3:9
+  %564 : Tensor[] = prim::ListConstruct(%x.20, %y.6)
+  %grid.3 : Tensor = aten::stack(%564, %32) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:282:15
+   = aten::warn[warn_id=9](%8, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3825:8
+  %g_I1_F_t_1.1 : Tensor = aten::grid_sampler(%I1.1, %grid.3, %33, %33, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3833:11
+  %567 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_38.UNet = prim::GetAttr[name="ArbTimeFlowIntrp"](%self)
+  %568 : Tensor[] = prim::ListConstruct(%I0.1, %I1.1, %F_0_1.1, %F_1_0.1, %F_t_1.1, %F_t_0.1, %g_I1_F_t_1.1, %g_I0_F_t_0.1)
+  %569 : Tensor = aten::cat(%568, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:45:41
+  %570 : __torch__.torch.nn.modules.conv.___torch_mangle_36.Conv2d = prim::GetAttr[name="conv1"](%567)
+  %571 : Tensor = prim::GetAttr[name="weight"](%570)
+  %572 : Tensor? = prim::GetAttr[name="bias"](%570)
+  %576 : Tensor = aten::conv2d(%569, %571, %572, %1390, %1391, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.5 : Tensor = aten::leaky_relu(%576, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %578 : __torch__.torch.nn.modules.conv.___torch_mangle_13.Conv2d = prim::GetAttr[name="conv2"](%567)
+  %579 : Tensor = prim::GetAttr[name="weight"](%578)
+  %580 : Tensor? = prim::GetAttr[name="bias"](%578)
+  %584 : Tensor = aten::conv2d(%result.5, %579, %580, %1390, %1391, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.6 : Tensor = aten::leaky_relu(%584, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %586 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.down = prim::GetAttr[name="down1"](%567)
+  %x.6 : Tensor = aten::avg_pool2d(%result.6, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %589 : __torch__.torch.nn.modules.conv.___torch_mangle_14.Conv2d = prim::GetAttr[name="conv1"](%586)
+  %590 : Tensor = prim::GetAttr[name="weight"](%589)
+  %591 : Tensor? = prim::GetAttr[name="bias"](%589)
+  %595 : Tensor = aten::conv2d(%x.6, %590, %591, %1390, %1396, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.7 : Tensor = aten::leaky_relu(%595, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %597 : __torch__.torch.nn.modules.conv.___torch_mangle_15.Conv2d = prim::GetAttr[name="conv2"](%586)
+  %598 : Tensor = prim::GetAttr[name="weight"](%597)
+  %599 : Tensor? = prim::GetAttr[name="bias"](%597)
+  %603 : Tensor = aten::conv2d(%result.7, %598, %599, %1390, %1396, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s2.1 : Tensor = aten::leaky_relu(%603, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %605 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_18.down = prim::GetAttr[name="down2"](%567)
+  %x.8 : Tensor = aten::avg_pool2d(%s2.1, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %608 : __torch__.torch.nn.modules.conv.___torch_mangle_16.Conv2d = prim::GetAttr[name="conv1"](%605)
+  %609 : Tensor = prim::GetAttr[name="weight"](%608)
+  %610 : Tensor? = prim::GetAttr[name="bias"](%608)
+  %614 : Tensor = aten::conv2d(%x.8, %609, %610, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.8 : Tensor = aten::leaky_relu(%614, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %616 : __torch__.torch.nn.modules.conv.___torch_mangle_17.Conv2d = prim::GetAttr[name="conv2"](%605)
+  %617 : Tensor = prim::GetAttr[name="weight"](%616)
+  %618 : Tensor? = prim::GetAttr[name="bias"](%616)
+  %622 : Tensor = aten::conv2d(%result.8, %617, %618, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s3.1 : Tensor = aten::leaky_relu(%622, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %624 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_21.down = prim::GetAttr[name="down3"](%567)
+  %x.10 : Tensor = aten::avg_pool2d(%s3.1, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %627 : __torch__.torch.nn.modules.conv.___torch_mangle_19.Conv2d = prim::GetAttr[name="conv1"](%624)
+  %628 : Tensor = prim::GetAttr[name="weight"](%627)
+  %629 : Tensor? = prim::GetAttr[name="bias"](%627)
+  %633 : Tensor = aten::conv2d(%x.10, %628, %629, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.9 : Tensor = aten::leaky_relu(%633, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %635 : __torch__.torch.nn.modules.conv.___torch_mangle_20.Conv2d = prim::GetAttr[name="conv2"](%624)
+  %636 : Tensor = prim::GetAttr[name="weight"](%635)
+  %637 : Tensor? = prim::GetAttr[name="bias"](%635)
+  %641 : Tensor = aten::conv2d(%result.9, %636, %637, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s4.1 : Tensor = aten::leaky_relu(%641, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %643 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_24.down = prim::GetAttr[name="down4"](%567)
+  %x.12 : Tensor = aten::avg_pool2d(%s4.1, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %646 : __torch__.torch.nn.modules.conv.___torch_mangle_22.Conv2d = prim::GetAttr[name="conv1"](%643)
+  %647 : Tensor = prim::GetAttr[name="weight"](%646)
+  %648 : Tensor? = prim::GetAttr[name="bias"](%646)
+  %652 : Tensor = aten::conv2d(%x.12, %647, %648, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.10 : Tensor = aten::leaky_relu(%652, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %654 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv2"](%643)
+  %655 : Tensor = prim::GetAttr[name="weight"](%654)
+  %656 : Tensor? = prim::GetAttr[name="bias"](%654)
+  %660 : Tensor = aten::conv2d(%result.10, %655, %656, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %s5.1 : Tensor = aten::leaky_relu(%660, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %662 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_25.down = prim::GetAttr[name="down5"](%567)
+  %x.28 : Tensor = aten::avg_pool2d(%s5.1, %1396, %13, %14, %15, %16, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:67:12
+  %665 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv1"](%662)
+  %666 : Tensor = prim::GetAttr[name="weight"](%665)
+  %667 : Tensor? = prim::GetAttr[name="bias"](%665)
+  %671 : Tensor = aten::conv2d(%x.28, %666, %667, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.11 : Tensor = aten::leaky_relu(%671, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %673 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv2"](%662)
+  %674 : Tensor = prim::GetAttr[name="weight"](%673)
+  %675 : Tensor? = prim::GetAttr[name="bias"](%673)
+  %679 : Tensor = aten::conv2d(%result.11, %674, %675, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.5 : Tensor = aten::leaky_relu(%679, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %681 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.up = prim::GetAttr[name="up1"](%567)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %688 : int = aten::dim(%x.5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.2 : int = aten::sub(%688, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.3 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.2, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%691 : int):
+      %692 : float[] = aten::append(%scale_factors.3, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %693 : int = aten::len(%scale_factors.3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %694 : bool = aten::gt(%693, %33)
+  %695 : int = prim::Loop(%36, %694, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%696 : int, %697 : int):
+      %scale.2 : float = aten::__getitem__(%scale_factors.3, %697) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %699 : int = aten::floor(%scale.2) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %700 : bool = aten::ne(%699, %scale.2) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %701 : bool = prim::If(%700) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %702 : int = aten::add(%697, %35)
+      %703 : bool = aten::lt(%702, %693)
+      %704 : bool = aten::__and__(%703, %701)
+      -> (%704, %702)
+  %706 : bool = aten::eq(%688, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %707 : Tensor = prim::If(%706) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %711 : Tensor = aten::upsample_bilinear2d(%x.5, %38, %15, %scale_factors.3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%711)
+    block1():
+      %713 : bool = aten::eq(%688, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%713) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %715 : bool = aten::eq(%688, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%715) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %717 : str = aten::format(%17, %688, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%717) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %718 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="conv1"](%681)
+  %719 : Tensor = prim::GetAttr[name="weight"](%718)
+  %720 : Tensor? = prim::GetAttr[name="bias"](%718)
+  %724 : Tensor = aten::conv2d(%707, %719, %720, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.12 : Tensor = aten::leaky_relu(%724, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %726 : __torch__.torch.nn.modules.conv.___torch_mangle_26.Conv2d = prim::GetAttr[name="conv2"](%681)
+  %727 : Tensor[] = prim::ListConstruct(%result.12, %s5.1)
+  %728 : Tensor = aten::cat(%727, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %729 : Tensor = prim::GetAttr[name="weight"](%726)
+  %730 : Tensor? = prim::GetAttr[name="bias"](%726)
+  %734 : Tensor = aten::conv2d(%728, %729, %730, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.7 : Tensor = aten::leaky_relu(%734, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %736 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_28.up = prim::GetAttr[name="up2"](%567)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %743 : int = aten::dim(%x.7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.3 : int = aten::sub(%743, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.4 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.3, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%746 : int):
+      %747 : float[] = aten::append(%scale_factors.4, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %748 : int = aten::len(%scale_factors.4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %749 : bool = aten::gt(%748, %33)
+  %750 : int = prim::Loop(%36, %749, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%751 : int, %752 : int):
+      %scale.3 : float = aten::__getitem__(%scale_factors.4, %752) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %754 : int = aten::floor(%scale.3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %755 : bool = aten::ne(%754, %scale.3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %756 : bool = prim::If(%755) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %757 : int = aten::add(%752, %35)
+      %758 : bool = aten::lt(%757, %748)
+      %759 : bool = aten::__and__(%758, %756)
+      -> (%759, %757)
+  %761 : bool = aten::eq(%743, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %762 : Tensor = prim::If(%761) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %766 : Tensor = aten::upsample_bilinear2d(%x.7, %38, %15, %scale_factors.4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%766)
+    block1():
+      %768 : bool = aten::eq(%743, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%768) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %770 : bool = aten::eq(%743, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%770) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %772 : str = aten::format(%17, %743, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%772) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %773 : __torch__.torch.nn.modules.conv.___torch_mangle_27.Conv2d = prim::GetAttr[name="conv1"](%736)
+  %774 : Tensor = prim::GetAttr[name="weight"](%773)
+  %775 : Tensor? = prim::GetAttr[name="bias"](%773)
+  %779 : Tensor = aten::conv2d(%762, %774, %775, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.13 : Tensor = aten::leaky_relu(%779, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %781 : __torch__.torch.nn.modules.conv.___torch_mangle_27.Conv2d = prim::GetAttr[name="conv2"](%736)
+  %782 : Tensor[] = prim::ListConstruct(%result.13, %s4.1)
+  %783 : Tensor = aten::cat(%782, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %784 : Tensor = prim::GetAttr[name="weight"](%781)
+  %785 : Tensor? = prim::GetAttr[name="bias"](%781)
+  %789 : Tensor = aten::conv2d(%783, %784, %785, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.9 : Tensor = aten::leaky_relu(%789, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %791 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_30.up = prim::GetAttr[name="up3"](%567)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %798 : int = aten::dim(%x.9) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.4 : int = aten::sub(%798, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.5 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.4, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%801 : int):
+      %802 : float[] = aten::append(%scale_factors.5, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %803 : int = aten::len(%scale_factors.5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %804 : bool = aten::gt(%803, %33)
+  %805 : int = prim::Loop(%36, %804, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%806 : int, %807 : int):
+      %scale.4 : float = aten::__getitem__(%scale_factors.5, %807) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %809 : int = aten::floor(%scale.4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %810 : bool = aten::ne(%809, %scale.4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %811 : bool = prim::If(%810) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %812 : int = aten::add(%807, %35)
+      %813 : bool = aten::lt(%812, %803)
+      %814 : bool = aten::__and__(%813, %811)
+      -> (%814, %812)
+  %816 : bool = aten::eq(%798, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %817 : Tensor = prim::If(%816) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %821 : Tensor = aten::upsample_bilinear2d(%x.9, %38, %15, %scale_factors.5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%821)
+    block1():
+      %823 : bool = aten::eq(%798, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%823) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %825 : bool = aten::eq(%798, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%825) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %827 : str = aten::format(%17, %798, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%827) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %828 : __torch__.torch.nn.modules.conv.___torch_mangle_29.Conv2d = prim::GetAttr[name="conv1"](%791)
+  %829 : Tensor = prim::GetAttr[name="weight"](%828)
+  %830 : Tensor? = prim::GetAttr[name="bias"](%828)
+  %834 : Tensor = aten::conv2d(%817, %829, %830, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.14 : Tensor = aten::leaky_relu(%834, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %836 : __torch__.torch.nn.modules.conv.___torch_mangle_29.Conv2d = prim::GetAttr[name="conv2"](%791)
+  %837 : Tensor[] = prim::ListConstruct(%result.14, %s3.1)
+  %838 : Tensor = aten::cat(%837, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %839 : Tensor = prim::GetAttr[name="weight"](%836)
+  %840 : Tensor? = prim::GetAttr[name="bias"](%836)
+  %844 : Tensor = aten::conv2d(%838, %839, %840, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.11 : Tensor = aten::leaky_relu(%844, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %846 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_32.up = prim::GetAttr[name="up4"](%567)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %853 : int = aten::dim(%x.11) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.5 : int = aten::sub(%853, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.6 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.5, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%856 : int):
+      %857 : float[] = aten::append(%scale_factors.6, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %858 : int = aten::len(%scale_factors.6) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %859 : bool = aten::gt(%858, %33)
+  %860 : int = prim::Loop(%36, %859, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%861 : int, %862 : int):
+      %scale.5 : float = aten::__getitem__(%scale_factors.6, %862) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %864 : int = aten::floor(%scale.5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %865 : bool = aten::ne(%864, %scale.5) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %866 : bool = prim::If(%865) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %867 : int = aten::add(%862, %35)
+      %868 : bool = aten::lt(%867, %858)
+      %869 : bool = aten::__and__(%868, %866)
+      -> (%869, %867)
+  %871 : bool = aten::eq(%853, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %872 : Tensor = prim::If(%871) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %876 : Tensor = aten::upsample_bilinear2d(%x.11, %38, %15, %scale_factors.6) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%876)
+    block1():
+      %878 : bool = aten::eq(%853, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%878) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %880 : bool = aten::eq(%853, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%880) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %882 : str = aten::format(%17, %853, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%882) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %883 : __torch__.torch.nn.modules.conv.___torch_mangle_31.Conv2d = prim::GetAttr[name="conv1"](%846)
+  %884 : Tensor = prim::GetAttr[name="weight"](%883)
+  %885 : Tensor? = prim::GetAttr[name="bias"](%883)
+  %889 : Tensor = aten::conv2d(%872, %884, %885, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.15 : Tensor = aten::leaky_relu(%889, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %891 : __torch__.torch.nn.modules.conv.___torch_mangle_31.Conv2d = prim::GetAttr[name="conv2"](%846)
+  %892 : Tensor[] = prim::ListConstruct(%result.15, %s2.1)
+  %893 : Tensor = aten::cat(%892, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %894 : Tensor = prim::GetAttr[name="weight"](%891)
+  %895 : Tensor? = prim::GetAttr[name="bias"](%891)
+  %899 : Tensor = aten::conv2d(%893, %894, %895, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.13 : Tensor = aten::leaky_relu(%899, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %901 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.___torch_mangle_34.up = prim::GetAttr[name="up5"](%567)
+   = aten::warn[warn_id=5](%159, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3451:12
+  %908 : int = aten::dim(%x.13) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %dim.1 : int = aten::sub(%908, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3459:10
+  %scale_factors.2 : float[] = prim::ListConstruct()
+   = prim::Loop(%dim.1, %16) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+    block0(%911 : int):
+      %912 : float[] = aten::append(%scale_factors.2, %25) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489:28
+      -> (%16)
+  %913 : int = aten::len(%scale_factors.2) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+  %914 : bool = aten::gt(%913, %33)
+  %915 : int = prim::Loop(%36, %914, %33) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+    block0(%916 : int, %917 : int):
+      %scale.1 : float = aten::__getitem__(%scale_factors.2, %917) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497:12
+      %919 : int = aten::floor(%scale.1) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %920 : bool = aten::ne(%919, %scale.1) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:19
+      %921 : bool = prim::If(%920) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498:16
+        block0():
+           = aten::warn[warn_id=6](%20, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3499:20
+          -> (%15)
+        block1():
+          -> (%16)
+      %922 : int = aten::add(%917, %35)
+      %923 : bool = aten::lt(%922, %913)
+      %924 : bool = aten::__and__(%923, %921)
+      -> (%924, %922)
+  %926 : bool = aten::eq(%908, %31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:7
+  %927 : Tensor = prim::If(%926) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549:4
+    block0():
+      %931 : Tensor = aten::upsample_bilinear2d(%x.13, %38, %15, %scale_factors.2) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3551:15
+      -> (%931)
+    block1():
+      %933 : bool = aten::eq(%908, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:7
+       = prim::If(%933) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559:4
+        block0():
+           = prim::RaiseException(%19) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3560:8
+          -> ()
+        block1():
+          -> ()
+      %935 : bool = aten::eq(%908, %30) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:7
+       = prim::If(%935) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569:4
+        block0():
+           = prim::RaiseException(%18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3570:8
+          -> ()
+        block1():
+          -> ()
+      %937 : str = aten::format(%17, %908, %26) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3573:8
+       = prim::RaiseException(%937) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3572:4
+      -> (%154)
+  %938 : __torch__.torch.nn.modules.conv.___torch_mangle_33.Conv2d = prim::GetAttr[name="conv1"](%901)
+  %939 : Tensor = prim::GetAttr[name="weight"](%938)
+  %940 : Tensor? = prim::GetAttr[name="bias"](%938)
+  %944 : Tensor = aten::conv2d(%927, %939, %940, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %result.4 : Tensor = aten::leaky_relu(%944, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %946 : __torch__.torch.nn.modules.conv.___torch_mangle_33.Conv2d = prim::GetAttr[name="conv2"](%901)
+  %947 : Tensor[] = prim::ListConstruct(%result.4, %result.6)
+  %948 : Tensor = aten::cat(%947, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:134:36
+  %949 : Tensor = prim::GetAttr[name="weight"](%946)
+  %950 : Tensor? = prim::GetAttr[name="bias"](%946)
+  %954 : Tensor = aten::conv2d(%948, %949, %950, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %x.15 : Tensor = aten::leaky_relu(%954, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %956 : __torch__.torch.nn.modules.conv.___torch_mangle_37.Conv2d = prim::GetAttr[name="conv3"](%567)
+  %957 : Tensor = prim::GetAttr[name="weight"](%956)
+  %958 : Tensor? = prim::GetAttr[name="bias"](%956)
+  %962 : Tensor = aten::conv2d(%x.15, %957, %958, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %intrpOut.1 : Tensor = aten::leaky_relu(%962, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1378:17
+  %964 : Tensor = aten::slice(%intrpOut.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:48:18
+  %965 : Tensor = aten::slice(%964, %35, %33, %34, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:48:18
+  %966 : Tensor = aten::slice(%965, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:48:18
+  %967 : Tensor = aten::slice(%966, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:48:18
+  %F_t_0_f.1 : Tensor = aten::add(%967, %F_t_0.1, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:48:18
+  %970 : Tensor = aten::slice(%964, %35, %34, %31, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:49:18
+  %971 : Tensor = aten::slice(%970, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:49:18
+  %972 : Tensor = aten::slice(%971, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:49:18
+  %F_t_1_f.1 : Tensor = aten::add(%972, %F_t_1.1, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:49:18
+  %975 : Tensor = aten::slice(%964, %35, %31, %30, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:50:28
+  %976 : Tensor = aten::slice(%975, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:50:28
+  %977 : Tensor = aten::slice(%976, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:50:28
+   = aten::warn[warn_id=10](%5, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1709:4
+  %V_t_0.1 : Tensor = aten::sigmoid(%977) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1710:11
+  %979 : Tensor = aten::neg(%V_t_0.1) # <string>:19:9
+  %V_t_1.1 : Tensor = aten::add(%979, %35, %35) # <string>:19:9
+  %981 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.backWarp = prim::GetAttr[name="trainFlowBackWarp"](%self)
+  %982 : Tensor = aten::slice(%F_t_0_f.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %983 : Tensor = aten::select(%982, %35, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %984 : Tensor = aten::slice(%983, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %u.4 : Tensor = aten::slice(%984, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %987 : Tensor = aten::select(%982, %35, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %988 : Tensor = aten::slice(%987, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %v.4 : Tensor = aten::slice(%988, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %990 : Tensor = prim::GetAttr[name="gridX"](%981)
+  %991 : Tensor = aten::unsqueeze(%990, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %992 : Tensor = aten::expand_as(%991, %u.4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %993 : Tensor = aten::to(%992, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %x.29 : Tensor = aten::add(%993, %u.4, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %995 : Tensor = prim::GetAttr[name="gridY"](%981)
+  %996 : Tensor = aten::unsqueeze(%995, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %997 : Tensor = aten::expand_as(%996, %v.4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %998 : Tensor = aten::to(%997, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %y.7 : Tensor = aten::add(%998, %v.4, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1000 : int = prim::GetAttr[name="W"](%981)
+  %1001 : Tensor = aten::div(%x.29, %1000) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %1002 : Tensor = aten::sub(%1001, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %x.30 : Tensor = aten::mul(%1002, %34) # <string>:3:9
+  %1004 : int = prim::GetAttr[name="H"](%981)
+  %1005 : Tensor = aten::div(%y.7, %1004) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %1006 : Tensor = aten::sub(%1005, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %y.8 : Tensor = aten::mul(%1006, %34) # <string>:3:9
+  %1008 : Tensor[] = prim::ListConstruct(%x.30, %y.8)
+  %grid.4 : Tensor = aten::stack(%1008, %32) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:282:15
+   = aten::warn[warn_id=9](%8, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3825:8
+  %g_I0_F_t_0_f.1 : Tensor = aten::grid_sampler(%I0.1, %grid.4, %33, %33, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3833:11
+  %1011 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.backWarp = prim::GetAttr[name="trainFlowBackWarp"](%self)
+  %1012 : Tensor = aten::slice(%F_t_1_f.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1013 : Tensor = aten::select(%1012, %35, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1014 : Tensor = aten::slice(%1013, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %u.5 : Tensor = aten::slice(%1014, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1017 : Tensor = aten::select(%1012, %35, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %1018 : Tensor = aten::slice(%1017, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %v.5 : Tensor = aten::slice(%1018, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %1020 : Tensor = prim::GetAttr[name="gridX"](%1011)
+  %1021 : Tensor = aten::unsqueeze(%1020, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1022 : Tensor = aten::expand_as(%1021, %u.5) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1023 : Tensor = aten::to(%1022, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %x.31 : Tensor = aten::add(%1023, %u.5, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1025 : Tensor = prim::GetAttr[name="gridY"](%1011)
+  %1026 : Tensor = aten::unsqueeze(%1025, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1027 : Tensor = aten::expand_as(%1026, %v.5) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1028 : Tensor = aten::to(%1027, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %y.9 : Tensor = aten::add(%1028, %v.5, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1030 : int = prim::GetAttr[name="W"](%1011)
+  %1031 : Tensor = aten::div(%x.31, %1030) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %1032 : Tensor = aten::sub(%1031, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %x.32 : Tensor = aten::mul(%1032, %34) # <string>:3:9
+  %1034 : int = prim::GetAttr[name="H"](%1011)
+  %1035 : Tensor = aten::div(%y.9, %1034) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %1036 : Tensor = aten::sub(%1035, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %y.10 : Tensor = aten::mul(%1036, %34) # <string>:3:9
+  %1038 : Tensor[] = prim::ListConstruct(%x.32, %y.10)
+  %grid.5 : Tensor = aten::stack(%1038, %32) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:282:15
+   = aten::warn[warn_id=9](%8, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3825:8
+  %g_I1_F_t_1_f.1 : Tensor = aten::grid_sampler(%I1.1, %grid.5, %33, %33, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3833:11
+  %1043 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %1044 : Tensor = aten::index(%1484, %1043) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:361:13
+  %1045 : Tensor = aten::neg(%1044) # <string>:19:9
+  %C0.1 : Tensor = aten::add(%1045, %35, %35) # <string>:19:9
+  %1047 : Tensor?[] = prim::ListConstruct(%trainFrameIndex.1)
+  %C1.1 : Tensor = aten::index(%1484, %1047) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:362:9
+  %1049 : Tensor = aten::unsqueeze(%C0.1, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:11
+  %1050 : Tensor = aten::unsqueeze(%1049, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:11
+  %1051 : Tensor = aten::unsqueeze(%1050, %34) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:11
+  %1052 : Tensor = aten::slice(%1051, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:11
+  %1054 : Tensor = aten::permute(%1052, %1485) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:11
+  %1055 : Tensor = aten::to(%1054, %444, %38, %15, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:11
+  %1056 : Tensor = aten::unsqueeze(%C1.1, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:67
+  %1057 : Tensor = aten::unsqueeze(%1056, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:67
+  %1058 : Tensor = aten::unsqueeze(%1057, %34) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:67
+  %1059 : Tensor = aten::slice(%1058, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:67
+  %1061 : Tensor = aten::permute(%1059, %1485) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:67
+  %1062 : Tensor = aten::to(%1061, %444, %38, %15, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:363:67
+  %1065 : Tensor = aten::mul(%1055, %V_t_0.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:16
+  %1066 : Tensor = aten::mul(%1065, %g_I0_F_t_0_f.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:16
+  %1068 : Tensor = aten::mul(%1062, %V_t_1.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:51
+  %1069 : Tensor = aten::mul(%1068, %g_I1_F_t_1_f.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:51
+  %1070 : Tensor = aten::add(%1066, %1069, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:16
+  %1072 : Tensor = aten::mul(%1055, %V_t_0.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:88
+  %1074 : Tensor = aten::mul(%1062, %V_t_1.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:108
+  %1075 : Tensor = aten::add(%1072, %1074, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:88
+  %Ft_p.1 : Tensor = aten::div(%1070, %1075) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:60:16
+  %recnLoss.1 : Tensor = ^<python_value>()(%Ft_p.1, %IFrame.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:64:19
+  %1078 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="vgg16_conv_4_3"](%self)
+  %1079 : __torch__.torch.nn.modules.conv.___torch_mangle_39.Conv2d = prim::GetAttr[name="0"](%1078)
+  %1080 : __torch__.torch.nn.modules.conv.___torch_mangle_40.Conv2d = prim::GetAttr[name="2"](%1078)
+  %1081 : __torch__.torch.nn.modules.conv.___torch_mangle_16.Conv2d = prim::GetAttr[name="5"](%1078)
+  %1082 : __torch__.torch.nn.modules.conv.___torch_mangle_17.Conv2d = prim::GetAttr[name="7"](%1078)
+  %1083 : __torch__.torch.nn.modules.conv.___torch_mangle_19.Conv2d = prim::GetAttr[name="10"](%1078)
+  %1084 : __torch__.torch.nn.modules.conv.___torch_mangle_20.Conv2d = prim::GetAttr[name="12"](%1078)
+  %1085 : __torch__.torch.nn.modules.conv.___torch_mangle_20.Conv2d = prim::GetAttr[name="14"](%1078)
+  %1086 : __torch__.torch.nn.modules.conv.___torch_mangle_22.Conv2d = prim::GetAttr[name="17"](%1078)
+  %1087 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="19"](%1078)
+  %1088 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="21"](%1078)
+  %1089 : Tensor = prim::GetAttr[name="weight"](%1079)
+  %1090 : Tensor? = prim::GetAttr[name="bias"](%1079)
+  %input.4 : Tensor = aten::conv2d(%Ft_p.1, %1089, %1090, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.6 : Tensor = aten::relu_(%input.4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1096 : Tensor = prim::GetAttr[name="weight"](%1080)
+  %1097 : Tensor? = prim::GetAttr[name="bias"](%1080)
+  %input.8 : Tensor = aten::conv2d(%input.6, %1096, %1097, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.10 : Tensor = aten::relu_(%input.8) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %input.12 : Tensor = aten::max_pool2d(%input.10, %1396, %1396, %14, %1390, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %1108 : Tensor = prim::GetAttr[name="weight"](%1081)
+  %1109 : Tensor? = prim::GetAttr[name="bias"](%1081)
+  %input.14 : Tensor = aten::conv2d(%input.12, %1108, %1109, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.16 : Tensor = aten::relu_(%input.14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1115 : Tensor = prim::GetAttr[name="weight"](%1082)
+  %1116 : Tensor? = prim::GetAttr[name="bias"](%1082)
+  %input.18 : Tensor = aten::conv2d(%input.16, %1115, %1116, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.20 : Tensor = aten::relu_(%input.18) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %input.22 : Tensor = aten::max_pool2d(%input.20, %1396, %1396, %14, %1390, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %1127 : Tensor = prim::GetAttr[name="weight"](%1083)
+  %1128 : Tensor? = prim::GetAttr[name="bias"](%1083)
+  %input.24 : Tensor = aten::conv2d(%input.22, %1127, %1128, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.26 : Tensor = aten::relu_(%input.24) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1134 : Tensor = prim::GetAttr[name="weight"](%1084)
+  %1135 : Tensor? = prim::GetAttr[name="bias"](%1084)
+  %input.28 : Tensor = aten::conv2d(%input.26, %1134, %1135, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.30 : Tensor = aten::relu_(%input.28) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1141 : Tensor = prim::GetAttr[name="weight"](%1085)
+  %1142 : Tensor? = prim::GetAttr[name="bias"](%1085)
+  %input.32 : Tensor = aten::conv2d(%input.30, %1141, %1142, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.34 : Tensor = aten::relu_(%input.32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %input.36 : Tensor = aten::max_pool2d(%input.34, %1396, %1396, %14, %1390, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %1153 : Tensor = prim::GetAttr[name="weight"](%1086)
+  %1154 : Tensor? = prim::GetAttr[name="bias"](%1086)
+  %input.38 : Tensor = aten::conv2d(%input.36, %1153, %1154, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.40 : Tensor = aten::relu_(%input.38) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1160 : Tensor = prim::GetAttr[name="weight"](%1087)
+  %1161 : Tensor? = prim::GetAttr[name="bias"](%1087)
+  %input.42 : Tensor = aten::conv2d(%input.40, %1160, %1161, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.44 : Tensor = aten::relu_(%input.42) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1167 : Tensor = prim::GetAttr[name="weight"](%1088)
+  %1168 : Tensor? = prim::GetAttr[name="bias"](%1088)
+  %input.46 : Tensor = aten::conv2d(%input.44, %1167, %1168, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %1173 : __torch__.torch.nn.modules.container.Sequential = prim::GetAttr[name="vgg16_conv_4_3"](%self)
+  %1174 : __torch__.torch.nn.modules.conv.___torch_mangle_39.Conv2d = prim::GetAttr[name="0"](%1173)
+  %1175 : __torch__.torch.nn.modules.conv.___torch_mangle_40.Conv2d = prim::GetAttr[name="2"](%1173)
+  %1176 : __torch__.torch.nn.modules.conv.___torch_mangle_16.Conv2d = prim::GetAttr[name="5"](%1173)
+  %1177 : __torch__.torch.nn.modules.conv.___torch_mangle_17.Conv2d = prim::GetAttr[name="7"](%1173)
+  %1178 : __torch__.torch.nn.modules.conv.___torch_mangle_19.Conv2d = prim::GetAttr[name="10"](%1173)
+  %1179 : __torch__.torch.nn.modules.conv.___torch_mangle_20.Conv2d = prim::GetAttr[name="12"](%1173)
+  %1180 : __torch__.torch.nn.modules.conv.___torch_mangle_20.Conv2d = prim::GetAttr[name="14"](%1173)
+  %1181 : __torch__.torch.nn.modules.conv.___torch_mangle_22.Conv2d = prim::GetAttr[name="17"](%1173)
+  %1182 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="19"](%1173)
+  %1183 : __torch__.torch.nn.modules.conv.___torch_mangle_23.Conv2d = prim::GetAttr[name="21"](%1173)
+  %1184 : Tensor = prim::GetAttr[name="weight"](%1174)
+  %1185 : Tensor? = prim::GetAttr[name="bias"](%1174)
+  %input.3 : Tensor = aten::conv2d(%IFrame.1, %1184, %1185, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.5 : Tensor = aten::relu_(%input.3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1191 : Tensor = prim::GetAttr[name="weight"](%1175)
+  %1192 : Tensor? = prim::GetAttr[name="bias"](%1175)
+  %input.7 : Tensor = aten::conv2d(%input.5, %1191, %1192, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.9 : Tensor = aten::relu_(%input.7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %input.11 : Tensor = aten::max_pool2d(%input.9, %1396, %1396, %14, %1390, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %1203 : Tensor = prim::GetAttr[name="weight"](%1176)
+  %1204 : Tensor? = prim::GetAttr[name="bias"](%1176)
+  %input.13 : Tensor = aten::conv2d(%input.11, %1203, %1204, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.15 : Tensor = aten::relu_(%input.13) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1210 : Tensor = prim::GetAttr[name="weight"](%1177)
+  %1211 : Tensor? = prim::GetAttr[name="bias"](%1177)
+  %input.17 : Tensor = aten::conv2d(%input.15, %1210, %1211, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.19 : Tensor = aten::relu_(%input.17) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %input.21 : Tensor = aten::max_pool2d(%input.19, %1396, %1396, %14, %1390, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %1222 : Tensor = prim::GetAttr[name="weight"](%1178)
+  %1223 : Tensor? = prim::GetAttr[name="bias"](%1178)
+  %input.23 : Tensor = aten::conv2d(%input.21, %1222, %1223, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.25 : Tensor = aten::relu_(%input.23) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1229 : Tensor = prim::GetAttr[name="weight"](%1179)
+  %1230 : Tensor? = prim::GetAttr[name="bias"](%1179)
+  %input.27 : Tensor = aten::conv2d(%input.25, %1229, %1230, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.29 : Tensor = aten::relu_(%input.27) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1236 : Tensor = prim::GetAttr[name="weight"](%1180)
+  %1237 : Tensor? = prim::GetAttr[name="bias"](%1180)
+  %input.31 : Tensor = aten::conv2d(%input.29, %1236, %1237, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.33 : Tensor = aten::relu_(%input.31) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %input.35 : Tensor = aten::max_pool2d(%input.33, %1396, %1396, %14, %1390, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:659:11
+  %1248 : Tensor = prim::GetAttr[name="weight"](%1181)
+  %1249 : Tensor? = prim::GetAttr[name="bias"](%1181)
+  %input.37 : Tensor = aten::conv2d(%input.35, %1248, %1249, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.39 : Tensor = aten::relu_(%input.37) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1255 : Tensor = prim::GetAttr[name="weight"](%1182)
+  %1256 : Tensor? = prim::GetAttr[name="bias"](%1182)
+  %input.41 : Tensor = aten::conv2d(%input.39, %1255, %1256, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %input.43 : Tensor = aten::relu_(%input.41) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1204:17
+  %1262 : Tensor = prim::GetAttr[name="weight"](%1183)
+  %1263 : Tensor? = prim::GetAttr[name="bias"](%1183)
+  %input.45 : Tensor = aten::conv2d(%input.43, %1262, %1263, %1390, %1390, %1390, %35) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/conv.py:395:15
+  %prcpLoss.1 : Tensor = ^<python_value>()(%input.46, %input.45) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:66:19
+  %1269 : Tensor = ^<python_value>()(%g_I0_F_t_0.1, %IFrame.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:68:19
+  %1270 : Tensor = ^<python_value>()(%g_I1_F_t_1.1, %IFrame.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:68:51
+  %1271 : Tensor = aten::add(%1269, %1270, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:68:19
+  %1272 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.backWarp = prim::GetAttr[name="trainFlowBackWarp"](%self)
+  %1273 : Tensor = aten::slice(%F_1_0.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1274 : Tensor = aten::select(%1273, %35, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1275 : Tensor = aten::slice(%1274, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %u.6 : Tensor = aten::slice(%1275, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1278 : Tensor = aten::select(%1273, %35, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %1279 : Tensor = aten::slice(%1278, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %v.6 : Tensor = aten::slice(%1279, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %1281 : Tensor = prim::GetAttr[name="gridX"](%1272)
+  %1282 : Tensor = aten::unsqueeze(%1281, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1283 : Tensor = aten::expand_as(%1282, %u.6) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1284 : Tensor = aten::to(%1283, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %x.33 : Tensor = aten::add(%1284, %u.6, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1286 : Tensor = prim::GetAttr[name="gridY"](%1272)
+  %1287 : Tensor = aten::unsqueeze(%1286, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1288 : Tensor = aten::expand_as(%1287, %v.6) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1289 : Tensor = aten::to(%1288, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %y.11 : Tensor = aten::add(%1289, %v.6, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1291 : int = prim::GetAttr[name="W"](%1272)
+  %1292 : Tensor = aten::div(%x.33, %1291) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %1293 : Tensor = aten::sub(%1292, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %x.34 : Tensor = aten::mul(%1293, %34) # <string>:3:9
+  %1295 : int = prim::GetAttr[name="H"](%1272)
+  %1296 : Tensor = aten::div(%y.11, %1295) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %1297 : Tensor = aten::sub(%1296, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %y.12 : Tensor = aten::mul(%1297, %34) # <string>:3:9
+  %1299 : Tensor[] = prim::ListConstruct(%x.34, %y.12)
+  %grid.6 : Tensor = aten::stack(%1299, %32) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:282:15
+   = aten::warn[warn_id=9](%8, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3825:8
+  %imgOut.2 : Tensor = aten::grid_sampler(%I0.1, %grid.6, %33, %33, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3833:11
+  %1302 : Tensor = ^<python_value>()(%imgOut.2, %I1.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:68:83
+  %1303 : Tensor = aten::add(%1271, %1302, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:68:19
+  %1304 : __torch__.torchbenchmark.models.Super_SloMo.slomo_model.backWarp = prim::GetAttr[name="trainFlowBackWarp"](%self)
+  %1305 : Tensor = aten::slice(%F_0_1.1, %33, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1306 : Tensor = aten::select(%1305, %35, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1307 : Tensor = aten::slice(%1306, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %u.1 : Tensor = aten::slice(%1307, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:274:12
+  %1310 : Tensor = aten::select(%1305, %35, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %1311 : Tensor = aten::slice(%1310, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %v.1 : Tensor = aten::slice(%1311, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:275:12
+  %1313 : Tensor = prim::GetAttr[name="gridX"](%1304)
+  %1314 : Tensor = aten::unsqueeze(%1313, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1315 : Tensor = aten::expand_as(%1314, %u.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1316 : Tensor = aten::to(%1315, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %x.1 : Tensor = aten::add(%1316, %u.1, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:276:12
+  %1318 : Tensor = prim::GetAttr[name="gridY"](%1304)
+  %1319 : Tensor = aten::unsqueeze(%1318, %33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1320 : Tensor = aten::expand_as(%1319, %v.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1321 : Tensor = aten::to(%1320, %6, %15, %15, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %y.1 : Tensor = aten::add(%1321, %v.1, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:277:12
+  %1323 : int = prim::GetAttr[name="W"](%1304)
+  %1324 : Tensor = aten::div(%x.1, %1323) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %1325 : Tensor = aten::sub(%1324, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:279:15
+  %x.3 : Tensor = aten::mul(%1325, %34) # <string>:3:9
+  %1327 : int = prim::GetAttr[name="H"](%1304)
+  %1328 : Tensor = aten::div(%y.1, %1327) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %1329 : Tensor = aten::sub(%1328, %7, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:280:15
+  %y.3 : Tensor = aten::mul(%1329, %34) # <string>:3:9
+  %1331 : Tensor[] = prim::ListConstruct(%x.3, %y.3)
+  %grid.1 : Tensor = aten::stack(%1331, %32) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/slomo_model.py:282:15
+   = aten::warn[warn_id=9](%8, %34) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3825:8
+  %imgOut.1 : Tensor = aten::grid_sampler(%I1.1, %grid.1, %33, %33, %15) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3833:11
+  %1334 : Tensor = ^<python_value>()(%imgOut.1, %I0.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:68:134
+  %warpLoss.1 : Tensor = aten::add(%1303, %1334, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:68:19
+  %1337 : Tensor = aten::slice(%1273, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:47
+  %1338 : Tensor = aten::slice(%1337, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:47
+  %1339 : Tensor = aten::slice(%1338, %32, %33, %37, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:47
+  %1343 : Tensor = aten::slice(%1338, %32, %35, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:69
+  %1344 : Tensor = aten::sub(%1339, %1343, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:47
+  %1345 : Tensor = aten::abs(%1344) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:37
+  %1346 : Tensor = aten::mean(%1345, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:26
+  %1349 : Tensor = aten::slice(%1337, %34, %33, %37, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:113
+  %1350 : Tensor = aten::slice(%1349, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:113
+  %1353 : Tensor = aten::slice(%1337, %34, %35, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:135
+  %1354 : Tensor = aten::slice(%1353, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:135
+  %1355 : Tensor = aten::sub(%1350, %1354, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:113
+  %1356 : Tensor = aten::abs(%1355) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:103
+  %1357 : Tensor = aten::mean(%1356, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:92
+  %loss_smooth_1_0.1 : Tensor = aten::add(%1346, %1357, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:70:26
+  %1360 : Tensor = aten::slice(%1305, %35, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:47
+  %1361 : Tensor = aten::slice(%1360, %34, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:47
+  %1362 : Tensor = aten::slice(%1361, %32, %33, %37, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:47
+  %1366 : Tensor = aten::slice(%1361, %32, %35, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:69
+  %1367 : Tensor = aten::sub(%1362, %1366, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:47
+  %1368 : Tensor = aten::abs(%1367) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:37
+  %1369 : Tensor = aten::mean(%1368, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:26
+  %1372 : Tensor = aten::slice(%1360, %34, %33, %37, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:113
+  %1373 : Tensor = aten::slice(%1372, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:113
+  %1376 : Tensor = aten::slice(%1360, %34, %35, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:135
+  %1377 : Tensor = aten::slice(%1376, %32, %33, %36, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:135
+  %1378 : Tensor = aten::sub(%1373, %1377, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:113
+  %1379 : Tensor = aten::abs(%1378) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:103
+  %1380 : Tensor = aten::mean(%1379, %38) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:92
+  %loss_smooth_0_1.1 : Tensor = aten::add(%1369, %1380, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:71:26
+  %loss_smooth.1 : Tensor = aten::add(%loss_smooth_1_0.1, %loss_smooth_0_1.1, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:72:22
+  %1383 : Tensor = aten::mul(%recnLoss.1, %29) # <string>:3:9
+  %1384 : Tensor = aten::mul(%warpLoss.1, %28) # <string>:3:9
+  %1385 : Tensor = aten::add(%1383, %1384, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:77:15
+  %1386 : Tensor = aten::mul(%prcpLoss.1, %27) # <string>:3:9
+  %1387 : Tensor = aten::add(%1385, %1386, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:77:15
+  %loss.1 : Tensor = aten::add(%1387, %loss_smooth.1, %35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/Super_SloMo/model_wrapper.py:77:15
+  %1389 : (Tensor, Tensor) = prim::TupleConstruct(%Ft_p.1, %loss.1)
+  return (%1389)
+

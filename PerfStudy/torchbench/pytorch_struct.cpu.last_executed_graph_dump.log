@@ -1,0 +1,112 @@
+graph(%self : __torch__.torch_struct.networks.NeuralCFG.NeuralCFG,
+      %x.1 : Tensor):
+  %11 : int = prim::Constant[value=0]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:76:24
+  %10 : int = prim::Constant[value=3]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:52:68
+  %9 : int = prim::Constant[value=2]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:44:28
+  %8 : int = prim::Constant[value=1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:44:15
+  %7 : str = prim::Constant[value="vh,th->tv"]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:46:25
+  %6 : int = prim::Constant[value=-1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:47:25
+  %5 : None = prim::Constant()
+  %4 : bool = prim::Constant[value=0]()
+  %3 : str = prim::Constant[value="sh,tuh->stu"]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:58:25
+  %2 : str = prim::Constant[value="ah,th->t"]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:67:25
+  %12 : int[] = aten::size(%x.1) # <string>:7:9
+  %batch.1 : int = aten::__getitem__(%12, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:76:16
+  %15 : int[] = aten::slice(%12, %11, %9, %8) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:44:15
+  %b.1 : int, %n.1 : int = prim::ListUnpack(%15)
+  %18 : Tensor = prim::GetAttr[name="word_emb"](%self)
+  %19 : __torch__.torch_struct.networks.NeuralCFG.Res = prim::GetAttr[name="mlp1"](%self)
+  %20 : Tensor = prim::GetAttr[name="term_emb"](%self)
+  %21 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="w"](%19)
+  %22 : Tensor = prim::GetAttr[name="weight"](%21)
+  %23 : Tensor = prim::GetAttr[name="bias"](%21)
+  %y.4 : Tensor = aten::linear(%20, %22, %23) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %25 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="v1"](%19)
+  %26 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="u1"](%19)
+  %27 : Tensor = prim::GetAttr[name="weight"](%26)
+  %28 : Tensor = prim::GetAttr[name="bias"](%26)
+  %29 : Tensor = aten::linear(%y.4, %27, %28) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %30 : Tensor = aten::relu(%29) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:17:35
+  %31 : Tensor = prim::GetAttr[name="weight"](%25)
+  %32 : Tensor = prim::GetAttr[name="bias"](%25)
+  %33 : Tensor = aten::linear(%30, %31, %32) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %34 : Tensor = aten::relu(%33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:17:16
+  %y.7 : Tensor = aten::add(%y.4, %34, %8) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:17:12
+  %36 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="v2"](%19)
+  %37 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="u2"](%19)
+  %38 : Tensor = prim::GetAttr[name="weight"](%37)
+  %39 : Tensor = prim::GetAttr[name="bias"](%37)
+  %40 : Tensor = aten::linear(%y.7, %38, %39) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %41 : Tensor = aten::relu(%40) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:18:38
+  %42 : Tensor = prim::GetAttr[name="weight"](%36)
+  %43 : Tensor = prim::GetAttr[name="bias"](%36)
+  %44 : Tensor = aten::linear(%41, %42, %43) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %45 : Tensor = aten::relu(%44) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:18:19
+  %46 : Tensor = aten::add(%y.7, %45, %8) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:18:15
+  %47 : Tensor[] = prim::ListConstruct(%18, %46)
+  %48 : Tensor = aten::einsum(%7, %47) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:46:12
+  %49 : Tensor = aten::log_softmax(%48, %6, %5) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:46:12
+  %50 : Tensor = aten::unsqueeze(%49, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:46:12
+  %51 : Tensor = aten::unsqueeze(%50, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:46:12
+  %52 : int = prim::GetAttr[name="T"](%self)
+  %53 : int = prim::GetAttr[name="V"](%self)
+  %54 : int[] = prim::ListConstruct(%b.1, %n.1, %52, %53)
+  %term_prob.1 : Tensor = aten::expand(%51, %54, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:46:12
+  %56 : Tensor = aten::unsqueeze(%x.1, %9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:52:18
+  %58 : int[] = prim::ListConstruct(%b.1, %n.1, %52)
+  %59 : Tensor = aten::expand(%56, %58, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:52:18
+  %indices.1 : Tensor = aten::unsqueeze(%59, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:52:18
+  %61 : Tensor = aten::gather(%term_prob.1, %10, %indices.1, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:53:20
+  %term_prob.3 : Tensor = aten::squeeze(%61, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:53:20
+  %63 : Tensor = prim::GetAttr[name="nonterm_emb"](%self)
+  %64 : Tensor = prim::GetAttr[name="nonterm_emb_c"](%self)
+  %65 : Tensor[] = prim::ListConstruct(%63, %64)
+  %66 : Tensor = aten::einsum(%3, %65) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:58:12
+  %67 : int = prim::GetAttr[name="NT"](%self)
+  %68 : int[] = prim::ListConstruct(%67, %6)
+  %69 : Tensor = aten::view(%66, %68) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:58:12
+  %70 : Tensor = aten::log_softmax(%69, %6, %5) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:58:12
+  %74 : int = aten::add(%67, %52) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:61:30
+  %78 : int[] = prim::ListConstruct(%8, %67, %74, %74)
+  %79 : Tensor = aten::view(%70, %78) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:58:12
+  %87 : int[] = prim::ListConstruct(%batch.1, %67, %74, %74)
+  %88 : Tensor = aten::expand(%79, %87, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:58:12
+  %89 : Tensor = prim::GetAttr[name="s_emb"](%self)
+  %90 : __torch__.torch_struct.networks.NeuralCFG.Res = prim::GetAttr[name="mlp2"](%self)
+  %91 : Tensor = prim::GetAttr[name="root_emb"](%self)
+  %92 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="w"](%90)
+  %93 : Tensor = prim::GetAttr[name="weight"](%92)
+  %94 : Tensor = prim::GetAttr[name="bias"](%92)
+  %y.3 : Tensor = aten::linear(%91, %93, %94) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %96 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="v1"](%90)
+  %97 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="u1"](%90)
+  %98 : Tensor = prim::GetAttr[name="weight"](%97)
+  %99 : Tensor = prim::GetAttr[name="bias"](%97)
+  %100 : Tensor = aten::linear(%y.3, %98, %99) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %101 : Tensor = aten::relu(%100) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:17:35
+  %102 : Tensor = prim::GetAttr[name="weight"](%96)
+  %103 : Tensor = prim::GetAttr[name="bias"](%96)
+  %104 : Tensor = aten::linear(%101, %102, %103) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %105 : Tensor = aten::relu(%104) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:17:16
+  %y.6 : Tensor = aten::add(%y.3, %105, %8) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:17:12
+  %107 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="v2"](%90)
+  %108 : __torch__.torch.nn.modules.linear.___torch_mangle_408.Linear = prim::GetAttr[name="u2"](%90)
+  %109 : Tensor = prim::GetAttr[name="weight"](%108)
+  %110 : Tensor = prim::GetAttr[name="bias"](%108)
+  %111 : Tensor = aten::linear(%y.6, %109, %110) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %112 : Tensor = aten::relu(%111) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:18:38
+  %113 : Tensor = prim::GetAttr[name="weight"](%107)
+  %114 : Tensor = prim::GetAttr[name="bias"](%107)
+  %115 : Tensor = aten::linear(%112, %113, %114) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %116 : Tensor = aten::relu(%115) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:18:19
+  %117 : Tensor = aten::add(%y.6, %116, %8) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:18:15
+  %118 : Tensor[] = prim::ListConstruct(%89, %117)
+  %119 : Tensor = aten::einsum(%2, %118) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:67:12
+  %120 : Tensor = aten::log_softmax(%119, %6, %5) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:67:12
+  %122 : int[] = prim::ListConstruct(%8, %67)
+  %123 : Tensor = aten::view(%120, %122) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:67:12
+  %125 : int[] = prim::ListConstruct(%batch.1, %67)
+  %126 : Tensor = aten::expand(%123, %125, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_struct/torch_struct/networks/NeuralCFG.py:67:12
+  %127 : (Tensor, Tensor, Tensor) = prim::TupleConstruct(%term_prob.3, %88, %126)
+  return (%127)
+

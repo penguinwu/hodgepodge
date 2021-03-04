@@ -1,0 +1,1222 @@
+graph(%self : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Models.Transformer,
+      %src_seq.1 : Tensor,
+      %trg_seq.1 : Tensor):
+  %1474 : int[] = prim::Constant[value=[512]]()
+  %18 : int = prim::Constant[value=-1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:175:30
+  %17 : int = prim::Constant[value=2]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:175:49
+  %16 : int = prim::Constant[value=-2]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:12:38
+  %15 : int = prim::Constant[value=1]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:18:23
+  %14 : None = prim::Constant()
+  %13 : int = prim::Constant[value=11]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:19:74
+  %12 : bool = prim::Constant[value=0]()
+  %11 : float = prim::Constant[value=-1000000000.]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:47
+  %10 : int = prim::Constant[value=3]() # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:65
+  %9 : float = prim::Constant[value=9.9999999999999995e-07]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/normalization.py:171:66
+  %7 : bool = prim::Constant[value=1]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:72
+  %6 : float = prim::Constant[value=0.10000000000000001]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/dropout.py:58:32
+  %5 : int = prim::Constant[value=9223372036854775807]()
+  %4 : int = prim::Constant[value=0]() # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1896:25
+  %3 : str = prim::Constant[value="AssertionError: Padding_idx must be within num_embeddings"]()
+  %19 : int = prim::GetAttr[name="src_pad_idx"](%self)
+  %20 : Tensor = aten::ne(%src_seq.1, %19) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:12:12
+  %src_mask.1 : Tensor = aten::unsqueeze(%20, %16) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:12:12
+  %22 : int = prim::GetAttr[name="trg_pad_idx"](%self)
+  %23 : Tensor = aten::ne(%trg_seq.1, %22) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:12:12
+  %24 : Tensor = aten::unsqueeze(%23, %16) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:12:12
+  %25 : int[] = aten::size(%trg_seq.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:17:18
+  %sz_b : int, %len_s.1 : int = prim::ListUnpack(%25)
+  %28 : Device = prim::device(%trg_seq.1)
+  %29 : int[] = prim::ListConstruct(%15, %len_s.1, %len_s.1)
+  %30 : Tensor = aten::ones(%29, %14, %14, %28, %14) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:19:8
+  %31 : Tensor = aten::triu(%30, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:18:27
+  %32 : Tensor = aten::neg(%31) # <string>:19:9
+  %33 : Tensor = aten::add(%32, %15, %15) # <string>:19:9
+  %subsequent_mask.1 : Tensor = aten::to(%33, %13, %12, %12, %14) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:18:23
+  %trg_mask.1 : Tensor = aten::__and__(%24, %subsequent_mask.1) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:169:19
+  %36 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Models.Encoder = prim::GetAttr[name="encoder"](%self)
+  %37 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%36)
+  %38 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Models.PositionalEncoding = prim::GetAttr[name="position_enc"](%36)
+  %39 : __torch__.torch.nn.modules.sparse.Embedding = prim::GetAttr[name="src_word_emb"](%36)
+  %40 : Tensor = prim::GetAttr[name="weight"](%39)
+  %41 : int = aten::size(%40, %4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:33
+  %42 : bool = aten::lt(%15, %41) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:19
+   = prim::If(%42) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:12
+    block0():
+      -> ()
+    block1():
+       = prim::RaiseException(%3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:12
+      -> ()
+  %43 : Tensor = aten::embedding(%40, %src_seq.1, %15, %12, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1913:11
+  %44 : Tensor = prim::GetAttr[name="pos_table"](%38)
+  %45 : Tensor = aten::slice(%44, %4, %4, %5, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %46 : int = aten::size(%43, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:38
+  %47 : Tensor = aten::slice(%45, %15, %4, %46, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %48 : Tensor = aten::clone(%47, %14) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %49 : Tensor = aten::detach(%48) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %50 : Tensor = aten::add(%43, %49, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:15
+  %51 : bool = prim::GetAttr[name="training"](%37)
+  %enc_output.2 : Tensor = aten::dropout(%50, %6, %51) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %53 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%36)
+  %54 : Tensor = prim::GetAttr[name="weight"](%53)
+  %55 : Tensor = prim::GetAttr[name="bias"](%53)
+  %enc_output.4 : Tensor = aten::layer_norm(%enc_output.2, %1474, %54, %55, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %58 : __torch__.torch.nn.modules.container.___torch_mangle_58.ModuleList = prim::GetAttr[name="layer_stack"](%36)
+  %59 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.EncoderLayer = prim::GetAttr[name="0"](%58)
+  %60 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.EncoderLayer = prim::GetAttr[name="1"](%58)
+  %61 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.EncoderLayer = prim::GetAttr[name="2"](%58)
+  %62 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.EncoderLayer = prim::GetAttr[name="3"](%58)
+  %63 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.EncoderLayer = prim::GetAttr[name="4"](%58)
+  %64 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.EncoderLayer = prim::GetAttr[name="5"](%58)
+  %65 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%59)
+  %d_k.17 : int = prim::GetAttr[name="d_k"](%65)
+  %d_v.17 : int = prim::GetAttr[name="d_v"](%65)
+  %n_head.17 : int = prim::GetAttr[name="n_head"](%65)
+  %sz_b.17 : int = aten::size(%enc_output.4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.17 : int = aten::size(%enc_output.4, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %73 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%65)
+  %74 : Tensor = prim::GetAttr[name="weight"](%73)
+  %75 : Tensor = aten::linear(%enc_output.4, %74, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %76 : int[] = prim::ListConstruct(%sz_b.17, %len_q.17, %n_head.17, %d_k.17)
+  %q.118 : Tensor = aten::view(%75, %76) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %78 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%65)
+  %79 : Tensor = prim::GetAttr[name="weight"](%78)
+  %80 : Tensor = aten::linear(%enc_output.4, %79, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.36 : Tensor = aten::view(%80, %76) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %83 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%65)
+  %84 : Tensor = prim::GetAttr[name="weight"](%83)
+  %85 : Tensor = aten::linear(%enc_output.4, %84, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %86 : int[] = prim::ListConstruct(%sz_b.17, %len_q.17, %n_head.17, %d_v.17)
+  %v.36 : Tensor = aten::view(%85, %86) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.119 : Tensor = aten::transpose(%q.118, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.37 : Tensor = aten::transpose(%k.36, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.37 : Tensor = aten::transpose(%v.36, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %mask.10 : Tensor = aten::unsqueeze(%src_mask.1, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:49:19
+  %92 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%65)
+  %93 : float = prim::GetAttr[name="temperature"](%92)
+  %94 : Tensor = aten::div(%q.119, %93) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %95 : Tensor = aten::transpose(%k.37, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.80 : Tensor = aten::matmul(%94, %95) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %97 : Tensor = aten::eq(%mask.10, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:36
+  %attn.82 : Tensor = aten::masked_fill(%attn.80, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %99 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%92)
+  %ret.17 : Tensor = aten::softmax(%attn.82, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %101 : bool = prim::GetAttr[name="training"](%99)
+  %attn.83 : Tensor = aten::dropout(%ret.17, %6, %101) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.17 : Tensor = aten::matmul(%attn.83, %v.37) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %107 : Tensor = aten::transpose(%output.17, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %108 : Tensor = aten::contiguous(%107, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %109 : int[] = prim::ListConstruct(%sz_b.17, %len_q.17, %18)
+  %q.121 : Tensor = aten::view(%108, %109) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %111 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%65)
+  %112 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%65)
+  %113 : Tensor = prim::GetAttr[name="weight"](%112)
+  %114 : Tensor = aten::linear(%q.121, %113, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %115 : bool = prim::GetAttr[name="training"](%111)
+  %q.122 : Tensor = aten::dropout(%114, %6, %115) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.123 : Tensor = aten::add_(%q.122, %enc_output.4, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %118 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%65)
+  %119 : Tensor = prim::GetAttr[name="weight"](%118)
+  %120 : Tensor = prim::GetAttr[name="bias"](%118)
+  %q.124 : Tensor = aten::layer_norm(%q.123, %1474, %119, %120, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %126 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%59)
+  %127 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%126)
+  %128 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%126)
+  %129 : Tensor = prim::GetAttr[name="weight"](%128)
+  %130 : Tensor = prim::GetAttr[name="bias"](%128)
+  %131 : Tensor = aten::linear(%q.124, %129, %130) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.8 : Tensor = aten::relu(%131) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %133 : Tensor = prim::GetAttr[name="weight"](%127)
+  %134 : Tensor = prim::GetAttr[name="bias"](%127)
+  %x.22 : Tensor = aten::linear(%result.8, %133, %134) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %136 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%126)
+  %137 : bool = prim::GetAttr[name="training"](%136)
+  %x.23 : Tensor = aten::dropout(%x.22, %6, %137) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.24 : Tensor = aten::add_(%x.23, %q.124, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %140 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%126)
+  %141 : Tensor = prim::GetAttr[name="weight"](%140)
+  %142 : Tensor = prim::GetAttr[name="bias"](%140)
+  %enc_output.8 : Tensor = aten::layer_norm(%x.24, %1474, %141, %142, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %148 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%60)
+  %d_k.15 : int = prim::GetAttr[name="d_k"](%148)
+  %d_v.15 : int = prim::GetAttr[name="d_v"](%148)
+  %n_head.15 : int = prim::GetAttr[name="n_head"](%148)
+  %sz_b.15 : int = aten::size(%enc_output.8, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.15 : int = aten::size(%enc_output.8, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %156 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%148)
+  %157 : Tensor = prim::GetAttr[name="weight"](%156)
+  %158 : Tensor = aten::linear(%enc_output.8, %157, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %159 : int[] = prim::ListConstruct(%sz_b.15, %len_q.15, %n_head.15, %d_k.15)
+  %q.104 : Tensor = aten::view(%158, %159) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %161 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%148)
+  %162 : Tensor = prim::GetAttr[name="weight"](%161)
+  %163 : Tensor = aten::linear(%enc_output.8, %162, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.32 : Tensor = aten::view(%163, %159) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %166 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%148)
+  %167 : Tensor = prim::GetAttr[name="weight"](%166)
+  %168 : Tensor = aten::linear(%enc_output.8, %167, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %169 : int[] = prim::ListConstruct(%sz_b.15, %len_q.15, %n_head.15, %d_v.15)
+  %v.32 : Tensor = aten::view(%168, %169) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.105 : Tensor = aten::transpose(%q.104, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.33 : Tensor = aten::transpose(%k.32, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.33 : Tensor = aten::transpose(%v.32, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %175 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%148)
+  %176 : float = prim::GetAttr[name="temperature"](%175)
+  %177 : Tensor = aten::div(%q.105, %176) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %178 : Tensor = aten::transpose(%k.33, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.70 : Tensor = aten::matmul(%177, %178) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.72 : Tensor = aten::masked_fill(%attn.70, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %182 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%175)
+  %ret.15 : Tensor = aten::softmax(%attn.72, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %184 : bool = prim::GetAttr[name="training"](%182)
+  %attn.73 : Tensor = aten::dropout(%ret.15, %6, %184) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.15 : Tensor = aten::matmul(%attn.73, %v.33) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %190 : Tensor = aten::transpose(%output.15, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %191 : Tensor = aten::contiguous(%190, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %192 : int[] = prim::ListConstruct(%sz_b.15, %len_q.15, %18)
+  %q.107 : Tensor = aten::view(%191, %192) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %194 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%148)
+  %195 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%148)
+  %196 : Tensor = prim::GetAttr[name="weight"](%195)
+  %197 : Tensor = aten::linear(%q.107, %196, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %198 : bool = prim::GetAttr[name="training"](%194)
+  %q.108 : Tensor = aten::dropout(%197, %6, %198) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.109 : Tensor = aten::add_(%q.108, %enc_output.8, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %201 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%148)
+  %202 : Tensor = prim::GetAttr[name="weight"](%201)
+  %203 : Tensor = prim::GetAttr[name="bias"](%201)
+  %q.110 : Tensor = aten::layer_norm(%q.109, %1474, %202, %203, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %209 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%60)
+  %210 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%209)
+  %211 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%209)
+  %212 : Tensor = prim::GetAttr[name="weight"](%211)
+  %213 : Tensor = prim::GetAttr[name="bias"](%211)
+  %214 : Tensor = aten::linear(%q.110, %212, %213) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.9 : Tensor = aten::relu(%214) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %216 : Tensor = prim::GetAttr[name="weight"](%210)
+  %217 : Tensor = prim::GetAttr[name="bias"](%210)
+  %x.25 : Tensor = aten::linear(%result.9, %216, %217) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %219 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%209)
+  %220 : bool = prim::GetAttr[name="training"](%219)
+  %x.26 : Tensor = aten::dropout(%x.25, %6, %220) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.27 : Tensor = aten::add_(%x.26, %q.110, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %223 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%209)
+  %224 : Tensor = prim::GetAttr[name="weight"](%223)
+  %225 : Tensor = prim::GetAttr[name="bias"](%223)
+  %enc_output.12 : Tensor = aten::layer_norm(%x.27, %1474, %224, %225, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %231 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%61)
+  %d_k.16 : int = prim::GetAttr[name="d_k"](%231)
+  %d_v.16 : int = prim::GetAttr[name="d_v"](%231)
+  %n_head.16 : int = prim::GetAttr[name="n_head"](%231)
+  %sz_b.16 : int = aten::size(%enc_output.12, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.16 : int = aten::size(%enc_output.12, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %239 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%231)
+  %240 : Tensor = prim::GetAttr[name="weight"](%239)
+  %241 : Tensor = aten::linear(%enc_output.12, %240, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %242 : int[] = prim::ListConstruct(%sz_b.16, %len_q.16, %n_head.16, %d_k.16)
+  %q.111 : Tensor = aten::view(%241, %242) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %244 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%231)
+  %245 : Tensor = prim::GetAttr[name="weight"](%244)
+  %246 : Tensor = aten::linear(%enc_output.12, %245, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.34 : Tensor = aten::view(%246, %242) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %249 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%231)
+  %250 : Tensor = prim::GetAttr[name="weight"](%249)
+  %251 : Tensor = aten::linear(%enc_output.12, %250, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %252 : int[] = prim::ListConstruct(%sz_b.16, %len_q.16, %n_head.16, %d_v.16)
+  %v.34 : Tensor = aten::view(%251, %252) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.112 : Tensor = aten::transpose(%q.111, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.35 : Tensor = aten::transpose(%k.34, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.35 : Tensor = aten::transpose(%v.34, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %258 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%231)
+  %259 : float = prim::GetAttr[name="temperature"](%258)
+  %260 : Tensor = aten::div(%q.112, %259) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %261 : Tensor = aten::transpose(%k.35, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.75 : Tensor = aten::matmul(%260, %261) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.77 : Tensor = aten::masked_fill(%attn.75, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %265 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%258)
+  %ret.16 : Tensor = aten::softmax(%attn.77, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %267 : bool = prim::GetAttr[name="training"](%265)
+  %attn.78 : Tensor = aten::dropout(%ret.16, %6, %267) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.16 : Tensor = aten::matmul(%attn.78, %v.35) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %273 : Tensor = aten::transpose(%output.16, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %274 : Tensor = aten::contiguous(%273, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %275 : int[] = prim::ListConstruct(%sz_b.16, %len_q.16, %18)
+  %q.114 : Tensor = aten::view(%274, %275) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %277 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%231)
+  %278 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%231)
+  %279 : Tensor = prim::GetAttr[name="weight"](%278)
+  %280 : Tensor = aten::linear(%q.114, %279, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %281 : bool = prim::GetAttr[name="training"](%277)
+  %q.115 : Tensor = aten::dropout(%280, %6, %281) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.116 : Tensor = aten::add_(%q.115, %enc_output.12, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %284 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%231)
+  %285 : Tensor = prim::GetAttr[name="weight"](%284)
+  %286 : Tensor = prim::GetAttr[name="bias"](%284)
+  %q.117 : Tensor = aten::layer_norm(%q.116, %1474, %285, %286, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %292 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%61)
+  %293 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%292)
+  %294 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%292)
+  %295 : Tensor = prim::GetAttr[name="weight"](%294)
+  %296 : Tensor = prim::GetAttr[name="bias"](%294)
+  %297 : Tensor = aten::linear(%q.117, %295, %296) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.10 : Tensor = aten::relu(%297) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %299 : Tensor = prim::GetAttr[name="weight"](%293)
+  %300 : Tensor = prim::GetAttr[name="bias"](%293)
+  %x.28 : Tensor = aten::linear(%result.10, %299, %300) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %302 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%292)
+  %303 : bool = prim::GetAttr[name="training"](%302)
+  %x.29 : Tensor = aten::dropout(%x.28, %6, %303) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.30 : Tensor = aten::add_(%x.29, %q.117, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %306 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%292)
+  %307 : Tensor = prim::GetAttr[name="weight"](%306)
+  %308 : Tensor = prim::GetAttr[name="bias"](%306)
+  %enc_output.16 : Tensor = aten::layer_norm(%x.30, %1474, %307, %308, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %314 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%62)
+  %d_k.13 : int = prim::GetAttr[name="d_k"](%314)
+  %d_v.13 : int = prim::GetAttr[name="d_v"](%314)
+  %n_head.13 : int = prim::GetAttr[name="n_head"](%314)
+  %sz_b.13 : int = aten::size(%enc_output.16, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.13 : int = aten::size(%enc_output.16, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %322 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%314)
+  %323 : Tensor = prim::GetAttr[name="weight"](%322)
+  %324 : Tensor = aten::linear(%enc_output.16, %323, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %325 : int[] = prim::ListConstruct(%sz_b.13, %len_q.13, %n_head.13, %d_k.13)
+  %q.90 : Tensor = aten::view(%324, %325) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %327 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%314)
+  %328 : Tensor = prim::GetAttr[name="weight"](%327)
+  %329 : Tensor = aten::linear(%enc_output.16, %328, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.28 : Tensor = aten::view(%329, %325) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %332 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%314)
+  %333 : Tensor = prim::GetAttr[name="weight"](%332)
+  %334 : Tensor = aten::linear(%enc_output.16, %333, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %335 : int[] = prim::ListConstruct(%sz_b.13, %len_q.13, %n_head.13, %d_v.13)
+  %v.28 : Tensor = aten::view(%334, %335) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.91 : Tensor = aten::transpose(%q.90, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.29 : Tensor = aten::transpose(%k.28, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.29 : Tensor = aten::transpose(%v.28, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %341 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%314)
+  %342 : float = prim::GetAttr[name="temperature"](%341)
+  %343 : Tensor = aten::div(%q.91, %342) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %344 : Tensor = aten::transpose(%k.29, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.60 : Tensor = aten::matmul(%343, %344) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.62 : Tensor = aten::masked_fill(%attn.60, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %348 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%341)
+  %ret.13 : Tensor = aten::softmax(%attn.62, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %350 : bool = prim::GetAttr[name="training"](%348)
+  %attn.63 : Tensor = aten::dropout(%ret.13, %6, %350) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.13 : Tensor = aten::matmul(%attn.63, %v.29) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %356 : Tensor = aten::transpose(%output.13, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %357 : Tensor = aten::contiguous(%356, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %358 : int[] = prim::ListConstruct(%sz_b.13, %len_q.13, %18)
+  %q.93 : Tensor = aten::view(%357, %358) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %360 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%314)
+  %361 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%314)
+  %362 : Tensor = prim::GetAttr[name="weight"](%361)
+  %363 : Tensor = aten::linear(%q.93, %362, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %364 : bool = prim::GetAttr[name="training"](%360)
+  %q.94 : Tensor = aten::dropout(%363, %6, %364) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.95 : Tensor = aten::add_(%q.94, %enc_output.16, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %367 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%314)
+  %368 : Tensor = prim::GetAttr[name="weight"](%367)
+  %369 : Tensor = prim::GetAttr[name="bias"](%367)
+  %q.96 : Tensor = aten::layer_norm(%q.95, %1474, %368, %369, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %375 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%62)
+  %376 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%375)
+  %377 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%375)
+  %378 : Tensor = prim::GetAttr[name="weight"](%377)
+  %379 : Tensor = prim::GetAttr[name="bias"](%377)
+  %380 : Tensor = aten::linear(%q.96, %378, %379) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.11 : Tensor = aten::relu(%380) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %382 : Tensor = prim::GetAttr[name="weight"](%376)
+  %383 : Tensor = prim::GetAttr[name="bias"](%376)
+  %x.31 : Tensor = aten::linear(%result.11, %382, %383) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %385 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%375)
+  %386 : bool = prim::GetAttr[name="training"](%385)
+  %x.32 : Tensor = aten::dropout(%x.31, %6, %386) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.33 : Tensor = aten::add_(%x.32, %q.96, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %389 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%375)
+  %390 : Tensor = prim::GetAttr[name="weight"](%389)
+  %391 : Tensor = prim::GetAttr[name="bias"](%389)
+  %enc_output.18 : Tensor = aten::layer_norm(%x.33, %1474, %390, %391, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %397 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%63)
+  %d_k.14 : int = prim::GetAttr[name="d_k"](%397)
+  %d_v.14 : int = prim::GetAttr[name="d_v"](%397)
+  %n_head.14 : int = prim::GetAttr[name="n_head"](%397)
+  %sz_b.14 : int = aten::size(%enc_output.18, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.14 : int = aten::size(%enc_output.18, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %405 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%397)
+  %406 : Tensor = prim::GetAttr[name="weight"](%405)
+  %407 : Tensor = aten::linear(%enc_output.18, %406, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %408 : int[] = prim::ListConstruct(%sz_b.14, %len_q.14, %n_head.14, %d_k.14)
+  %q.97 : Tensor = aten::view(%407, %408) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %410 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%397)
+  %411 : Tensor = prim::GetAttr[name="weight"](%410)
+  %412 : Tensor = aten::linear(%enc_output.18, %411, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.30 : Tensor = aten::view(%412, %408) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %415 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%397)
+  %416 : Tensor = prim::GetAttr[name="weight"](%415)
+  %417 : Tensor = aten::linear(%enc_output.18, %416, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %418 : int[] = prim::ListConstruct(%sz_b.14, %len_q.14, %n_head.14, %d_v.14)
+  %v.30 : Tensor = aten::view(%417, %418) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.98 : Tensor = aten::transpose(%q.97, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.31 : Tensor = aten::transpose(%k.30, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.31 : Tensor = aten::transpose(%v.30, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %424 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%397)
+  %425 : float = prim::GetAttr[name="temperature"](%424)
+  %426 : Tensor = aten::div(%q.98, %425) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %427 : Tensor = aten::transpose(%k.31, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.65 : Tensor = aten::matmul(%426, %427) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.67 : Tensor = aten::masked_fill(%attn.65, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %431 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%424)
+  %ret.14 : Tensor = aten::softmax(%attn.67, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %433 : bool = prim::GetAttr[name="training"](%431)
+  %attn.68 : Tensor = aten::dropout(%ret.14, %6, %433) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.14 : Tensor = aten::matmul(%attn.68, %v.31) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %439 : Tensor = aten::transpose(%output.14, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %440 : Tensor = aten::contiguous(%439, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %441 : int[] = prim::ListConstruct(%sz_b.14, %len_q.14, %18)
+  %q.100 : Tensor = aten::view(%440, %441) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %443 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%397)
+  %444 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%397)
+  %445 : Tensor = prim::GetAttr[name="weight"](%444)
+  %446 : Tensor = aten::linear(%q.100, %445, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %447 : bool = prim::GetAttr[name="training"](%443)
+  %q.101 : Tensor = aten::dropout(%446, %6, %447) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.102 : Tensor = aten::add_(%q.101, %enc_output.18, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %450 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%397)
+  %451 : Tensor = prim::GetAttr[name="weight"](%450)
+  %452 : Tensor = prim::GetAttr[name="bias"](%450)
+  %q.103 : Tensor = aten::layer_norm(%q.102, %1474, %451, %452, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %458 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%63)
+  %459 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%458)
+  %460 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%458)
+  %461 : Tensor = prim::GetAttr[name="weight"](%460)
+  %462 : Tensor = prim::GetAttr[name="bias"](%460)
+  %463 : Tensor = aten::linear(%q.103, %461, %462) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.12 : Tensor = aten::relu(%463) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %465 : Tensor = prim::GetAttr[name="weight"](%459)
+  %466 : Tensor = prim::GetAttr[name="bias"](%459)
+  %x.34 : Tensor = aten::linear(%result.12, %465, %466) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %468 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%458)
+  %469 : bool = prim::GetAttr[name="training"](%468)
+  %x.35 : Tensor = aten::dropout(%x.34, %6, %469) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.36 : Tensor = aten::add_(%x.35, %q.103, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %472 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%458)
+  %473 : Tensor = prim::GetAttr[name="weight"](%472)
+  %474 : Tensor = prim::GetAttr[name="bias"](%472)
+  %enc_output.20 : Tensor = aten::layer_norm(%x.36, %1474, %473, %474, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %480 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%64)
+  %d_k.18 : int = prim::GetAttr[name="d_k"](%480)
+  %d_v.18 : int = prim::GetAttr[name="d_v"](%480)
+  %n_head.18 : int = prim::GetAttr[name="n_head"](%480)
+  %sz_b.18 : int = aten::size(%enc_output.20, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.18 : int = aten::size(%enc_output.20, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %488 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%480)
+  %489 : Tensor = prim::GetAttr[name="weight"](%488)
+  %490 : Tensor = aten::linear(%enc_output.20, %489, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %491 : int[] = prim::ListConstruct(%sz_b.18, %len_q.18, %n_head.18, %d_k.18)
+  %q.125 : Tensor = aten::view(%490, %491) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %493 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%480)
+  %494 : Tensor = prim::GetAttr[name="weight"](%493)
+  %495 : Tensor = aten::linear(%enc_output.20, %494, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.38 : Tensor = aten::view(%495, %491) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %498 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%480)
+  %499 : Tensor = prim::GetAttr[name="weight"](%498)
+  %500 : Tensor = aten::linear(%enc_output.20, %499, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %501 : int[] = prim::ListConstruct(%sz_b.18, %len_q.18, %n_head.18, %d_v.18)
+  %v.38 : Tensor = aten::view(%500, %501) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.126 : Tensor = aten::transpose(%q.125, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.39 : Tensor = aten::transpose(%k.38, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.39 : Tensor = aten::transpose(%v.38, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %507 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%480)
+  %508 : float = prim::GetAttr[name="temperature"](%507)
+  %509 : Tensor = aten::div(%q.126, %508) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %510 : Tensor = aten::transpose(%k.39, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.85 : Tensor = aten::matmul(%509, %510) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.87 : Tensor = aten::masked_fill(%attn.85, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %514 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%507)
+  %ret.18 : Tensor = aten::softmax(%attn.87, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %516 : bool = prim::GetAttr[name="training"](%514)
+  %attn.88 : Tensor = aten::dropout(%ret.18, %6, %516) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.18 : Tensor = aten::matmul(%attn.88, %v.39) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %522 : Tensor = aten::transpose(%output.18, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %523 : Tensor = aten::contiguous(%522, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %524 : int[] = prim::ListConstruct(%sz_b.18, %len_q.18, %18)
+  %q.128 : Tensor = aten::view(%523, %524) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %526 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%480)
+  %527 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%480)
+  %528 : Tensor = prim::GetAttr[name="weight"](%527)
+  %529 : Tensor = aten::linear(%q.128, %528, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %530 : bool = prim::GetAttr[name="training"](%526)
+  %q.129 : Tensor = aten::dropout(%529, %6, %530) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.130 : Tensor = aten::add_(%q.129, %enc_output.20, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %533 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%480)
+  %534 : Tensor = prim::GetAttr[name="weight"](%533)
+  %535 : Tensor = prim::GetAttr[name="bias"](%533)
+  %q.131 : Tensor = aten::layer_norm(%q.130, %1474, %534, %535, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %541 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%64)
+  %542 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%541)
+  %543 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%541)
+  %544 : Tensor = prim::GetAttr[name="weight"](%543)
+  %545 : Tensor = prim::GetAttr[name="bias"](%543)
+  %546 : Tensor = aten::linear(%q.131, %544, %545) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.13 : Tensor = aten::relu(%546) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %548 : Tensor = prim::GetAttr[name="weight"](%542)
+  %549 : Tensor = prim::GetAttr[name="bias"](%542)
+  %x.37 : Tensor = aten::linear(%result.13, %548, %549) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %551 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%541)
+  %552 : bool = prim::GetAttr[name="training"](%551)
+  %x.38 : Tensor = aten::dropout(%x.37, %6, %552) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.39 : Tensor = aten::add_(%x.38, %q.131, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %555 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%541)
+  %556 : Tensor = prim::GetAttr[name="weight"](%555)
+  %557 : Tensor = prim::GetAttr[name="bias"](%555)
+  %enc_output.3 : Tensor = aten::layer_norm(%x.39, %1474, %556, %557, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %565 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Models.Decoder = prim::GetAttr[name="decoder"](%self)
+  %566 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%565)
+  %567 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Models.PositionalEncoding = prim::GetAttr[name="position_enc"](%565)
+  %568 : __torch__.torch.nn.modules.sparse.Embedding = prim::GetAttr[name="trg_word_emb"](%565)
+  %569 : Tensor = prim::GetAttr[name="weight"](%568)
+  %570 : int = aten::size(%569, %4) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:33
+  %571 : bool = aten::lt(%15, %570) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:19
+   = prim::If(%571) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:12
+    block0():
+      -> ()
+    block1():
+       = prim::RaiseException(%3) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897:12
+      -> ()
+  %572 : Tensor = aten::embedding(%569, %trg_seq.1, %15, %12, %12) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1913:11
+  %573 : Tensor = prim::GetAttr[name="pos_table"](%567)
+  %574 : Tensor = aten::slice(%573, %4, %4, %5, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %575 : int = aten::size(%572, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:38
+  %576 : Tensor = aten::slice(%574, %15, %4, %575, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %577 : Tensor = aten::clone(%576, %14) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %578 : Tensor = aten::detach(%577) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:19
+  %579 : Tensor = aten::add(%572, %578, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:45:15
+  %580 : bool = prim::GetAttr[name="training"](%566)
+  %dec_output.2 : Tensor = aten::dropout(%579, %6, %580) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %582 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%565)
+  %583 : Tensor = prim::GetAttr[name="weight"](%582)
+  %584 : Tensor = prim::GetAttr[name="bias"](%582)
+  %dec_output.4 : Tensor = aten::layer_norm(%dec_output.2, %1474, %583, %584, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %587 : __torch__.torch.nn.modules.container.___torch_mangle_59.ModuleList = prim::GetAttr[name="layer_stack"](%565)
+  %588 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.DecoderLayer = prim::GetAttr[name="0"](%587)
+  %589 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.DecoderLayer = prim::GetAttr[name="1"](%587)
+  %590 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.DecoderLayer = prim::GetAttr[name="2"](%587)
+  %591 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.DecoderLayer = prim::GetAttr[name="3"](%587)
+  %592 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.DecoderLayer = prim::GetAttr[name="4"](%587)
+  %593 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Layers.DecoderLayer = prim::GetAttr[name="5"](%587)
+  %594 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%588)
+  %d_k.3 : int = prim::GetAttr[name="d_k"](%594)
+  %d_v.3 : int = prim::GetAttr[name="d_v"](%594)
+  %n_head.3 : int = prim::GetAttr[name="n_head"](%594)
+  %sz_b.3 : int = aten::size(%dec_output.4, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.3 : int = aten::size(%dec_output.4, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %602 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%594)
+  %603 : Tensor = prim::GetAttr[name="weight"](%602)
+  %604 : Tensor = aten::linear(%dec_output.4, %603, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %605 : int[] = prim::ListConstruct(%sz_b.3, %len_q.3, %n_head.3, %d_k.3)
+  %q.20 : Tensor = aten::view(%604, %605) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %607 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%594)
+  %608 : Tensor = prim::GetAttr[name="weight"](%607)
+  %609 : Tensor = aten::linear(%dec_output.4, %608, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.8 : Tensor = aten::view(%609, %605) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %612 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%594)
+  %613 : Tensor = prim::GetAttr[name="weight"](%612)
+  %614 : Tensor = aten::linear(%dec_output.4, %613, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %615 : int[] = prim::ListConstruct(%sz_b.3, %len_q.3, %n_head.3, %d_v.3)
+  %v.8 : Tensor = aten::view(%614, %615) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.21 : Tensor = aten::transpose(%q.20, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.9 : Tensor = aten::transpose(%k.8, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.9 : Tensor = aten::transpose(%v.8, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %mask.11 : Tensor = aten::unsqueeze(%trg_mask.1, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:49:19
+  %621 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%594)
+  %622 : float = prim::GetAttr[name="temperature"](%621)
+  %623 : Tensor = aten::div(%q.21, %622) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %624 : Tensor = aten::transpose(%k.9, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.8 : Tensor = aten::matmul(%623, %624) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %626 : Tensor = aten::eq(%mask.11, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:36
+  %attn.12 : Tensor = aten::masked_fill(%attn.8, %626, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %628 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%621)
+  %ret.3 : Tensor = aten::softmax(%attn.12, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %630 : bool = prim::GetAttr[name="training"](%628)
+  %attn.13 : Tensor = aten::dropout(%ret.3, %6, %630) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.3 : Tensor = aten::matmul(%attn.13, %v.9) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %636 : Tensor = aten::transpose(%output.3, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %637 : Tensor = aten::contiguous(%636, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %638 : int[] = prim::ListConstruct(%sz_b.3, %len_q.3, %18)
+  %q.23 : Tensor = aten::view(%637, %638) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %640 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%594)
+  %641 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%594)
+  %642 : Tensor = prim::GetAttr[name="weight"](%641)
+  %643 : Tensor = aten::linear(%q.23, %642, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %644 : bool = prim::GetAttr[name="training"](%640)
+  %q.24 : Tensor = aten::dropout(%643, %6, %644) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.25 : Tensor = aten::add_(%q.24, %dec_output.4, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %647 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%594)
+  %648 : Tensor = prim::GetAttr[name="weight"](%647)
+  %649 : Tensor = prim::GetAttr[name="bias"](%647)
+  %q.26 : Tensor = aten::layer_norm(%q.25, %1474, %648, %649, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %655 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="enc_attn"](%588)
+  %d_k.4 : int = prim::GetAttr[name="d_k"](%655)
+  %d_v.4 : int = prim::GetAttr[name="d_v"](%655)
+  %n_head.4 : int = prim::GetAttr[name="n_head"](%655)
+  %sz_b.4 : int = aten::size(%q.26, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.4 : int = aten::size(%q.26, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %len_k.4 : int = aten::size(%enc_output.3, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:58
+  %663 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%655)
+  %664 : Tensor = prim::GetAttr[name="weight"](%663)
+  %665 : Tensor = aten::linear(%q.26, %664, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %666 : int[] = prim::ListConstruct(%sz_b.4, %len_q.4, %n_head.4, %d_k.4)
+  %q.27 : Tensor = aten::view(%665, %666) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %668 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%655)
+  %669 : Tensor = prim::GetAttr[name="weight"](%668)
+  %670 : Tensor = aten::linear(%enc_output.3, %669, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %671 : int[] = prim::ListConstruct(%sz_b.4, %len_k.4, %n_head.4, %d_k.4)
+  %k.10 : Tensor = aten::view(%670, %671) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %673 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%655)
+  %674 : Tensor = prim::GetAttr[name="weight"](%673)
+  %675 : Tensor = aten::linear(%enc_output.3, %674, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %676 : int[] = prim::ListConstruct(%sz_b.4, %len_k.4, %n_head.4, %d_v.4)
+  %v.10 : Tensor = aten::view(%675, %676) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.28 : Tensor = aten::transpose(%q.27, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.11 : Tensor = aten::transpose(%k.10, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.11 : Tensor = aten::transpose(%v.10, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %682 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%655)
+  %683 : float = prim::GetAttr[name="temperature"](%682)
+  %684 : Tensor = aten::div(%q.28, %683) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %685 : Tensor = aten::transpose(%k.11, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.15 : Tensor = aten::matmul(%684, %685) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.17 : Tensor = aten::masked_fill(%attn.15, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %689 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%682)
+  %ret.4 : Tensor = aten::softmax(%attn.17, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %691 : bool = prim::GetAttr[name="training"](%689)
+  %attn.18 : Tensor = aten::dropout(%ret.4, %6, %691) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.4 : Tensor = aten::matmul(%attn.18, %v.11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %697 : Tensor = aten::transpose(%output.4, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %698 : Tensor = aten::contiguous(%697, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %699 : int[] = prim::ListConstruct(%sz_b.4, %len_q.4, %18)
+  %q.30 : Tensor = aten::view(%698, %699) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %701 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%655)
+  %702 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%655)
+  %703 : Tensor = prim::GetAttr[name="weight"](%702)
+  %704 : Tensor = aten::linear(%q.30, %703, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %705 : bool = prim::GetAttr[name="training"](%701)
+  %q.31 : Tensor = aten::dropout(%704, %6, %705) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.32 : Tensor = aten::add_(%q.31, %q.26, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %708 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%655)
+  %709 : Tensor = prim::GetAttr[name="weight"](%708)
+  %710 : Tensor = prim::GetAttr[name="bias"](%708)
+  %q.33 : Tensor = aten::layer_norm(%q.32, %1474, %709, %710, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %716 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%588)
+  %717 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%716)
+  %718 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%716)
+  %719 : Tensor = prim::GetAttr[name="weight"](%718)
+  %720 : Tensor = prim::GetAttr[name="bias"](%718)
+  %721 : Tensor = aten::linear(%q.33, %719, %720) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.3 : Tensor = aten::relu(%721) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %723 : Tensor = prim::GetAttr[name="weight"](%717)
+  %724 : Tensor = prim::GetAttr[name="bias"](%717)
+  %x.5 : Tensor = aten::linear(%result.3, %723, %724) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %726 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%716)
+  %727 : bool = prim::GetAttr[name="training"](%726)
+  %x.7 : Tensor = aten::dropout(%x.5, %6, %727) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.9 : Tensor = aten::add_(%x.7, %q.33, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %730 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%716)
+  %731 : Tensor = prim::GetAttr[name="weight"](%730)
+  %732 : Tensor = prim::GetAttr[name="bias"](%730)
+  %dec_output.12 : Tensor = aten::layer_norm(%x.9, %1474, %731, %732, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %739 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%589)
+  %d_k.5 : int = prim::GetAttr[name="d_k"](%739)
+  %d_v.5 : int = prim::GetAttr[name="d_v"](%739)
+  %n_head.5 : int = prim::GetAttr[name="n_head"](%739)
+  %sz_b.5 : int = aten::size(%dec_output.12, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.5 : int = aten::size(%dec_output.12, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %747 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%739)
+  %748 : Tensor = prim::GetAttr[name="weight"](%747)
+  %749 : Tensor = aten::linear(%dec_output.12, %748, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %750 : int[] = prim::ListConstruct(%sz_b.5, %len_q.5, %n_head.5, %d_k.5)
+  %q.34 : Tensor = aten::view(%749, %750) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %752 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%739)
+  %753 : Tensor = prim::GetAttr[name="weight"](%752)
+  %754 : Tensor = aten::linear(%dec_output.12, %753, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.12 : Tensor = aten::view(%754, %750) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %757 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%739)
+  %758 : Tensor = prim::GetAttr[name="weight"](%757)
+  %759 : Tensor = aten::linear(%dec_output.12, %758, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %760 : int[] = prim::ListConstruct(%sz_b.5, %len_q.5, %n_head.5, %d_v.5)
+  %v.12 : Tensor = aten::view(%759, %760) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.35 : Tensor = aten::transpose(%q.34, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.13 : Tensor = aten::transpose(%k.12, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.13 : Tensor = aten::transpose(%v.12, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %766 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%739)
+  %767 : float = prim::GetAttr[name="temperature"](%766)
+  %768 : Tensor = aten::div(%q.35, %767) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %769 : Tensor = aten::transpose(%k.13, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.20 : Tensor = aten::matmul(%768, %769) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.22 : Tensor = aten::masked_fill(%attn.20, %626, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %773 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%766)
+  %ret.5 : Tensor = aten::softmax(%attn.22, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %775 : bool = prim::GetAttr[name="training"](%773)
+  %attn.23 : Tensor = aten::dropout(%ret.5, %6, %775) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.5 : Tensor = aten::matmul(%attn.23, %v.13) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %781 : Tensor = aten::transpose(%output.5, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %782 : Tensor = aten::contiguous(%781, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %783 : int[] = prim::ListConstruct(%sz_b.5, %len_q.5, %18)
+  %q.37 : Tensor = aten::view(%782, %783) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %785 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%739)
+  %786 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%739)
+  %787 : Tensor = prim::GetAttr[name="weight"](%786)
+  %788 : Tensor = aten::linear(%q.37, %787, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %789 : bool = prim::GetAttr[name="training"](%785)
+  %q.38 : Tensor = aten::dropout(%788, %6, %789) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.39 : Tensor = aten::add_(%q.38, %dec_output.12, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %792 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%739)
+  %793 : Tensor = prim::GetAttr[name="weight"](%792)
+  %794 : Tensor = prim::GetAttr[name="bias"](%792)
+  %q.40 : Tensor = aten::layer_norm(%q.39, %1474, %793, %794, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %800 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="enc_attn"](%589)
+  %d_k.6 : int = prim::GetAttr[name="d_k"](%800)
+  %d_v.6 : int = prim::GetAttr[name="d_v"](%800)
+  %n_head.6 : int = prim::GetAttr[name="n_head"](%800)
+  %sz_b.6 : int = aten::size(%q.40, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.6 : int = aten::size(%q.40, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %808 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%800)
+  %809 : Tensor = prim::GetAttr[name="weight"](%808)
+  %810 : Tensor = aten::linear(%q.40, %809, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %811 : int[] = prim::ListConstruct(%sz_b.6, %len_q.6, %n_head.6, %d_k.6)
+  %q.41 : Tensor = aten::view(%810, %811) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %813 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%800)
+  %814 : Tensor = prim::GetAttr[name="weight"](%813)
+  %815 : Tensor = aten::linear(%enc_output.3, %814, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %816 : int[] = prim::ListConstruct(%sz_b.6, %len_k.4, %n_head.6, %d_k.6)
+  %k.14 : Tensor = aten::view(%815, %816) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %818 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%800)
+  %819 : Tensor = prim::GetAttr[name="weight"](%818)
+  %820 : Tensor = aten::linear(%enc_output.3, %819, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %821 : int[] = prim::ListConstruct(%sz_b.6, %len_k.4, %n_head.6, %d_v.6)
+  %v.14 : Tensor = aten::view(%820, %821) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.42 : Tensor = aten::transpose(%q.41, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.15 : Tensor = aten::transpose(%k.14, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.15 : Tensor = aten::transpose(%v.14, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %827 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%800)
+  %828 : float = prim::GetAttr[name="temperature"](%827)
+  %829 : Tensor = aten::div(%q.42, %828) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %830 : Tensor = aten::transpose(%k.15, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.25 : Tensor = aten::matmul(%829, %830) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.27 : Tensor = aten::masked_fill(%attn.25, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %834 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%827)
+  %ret.6 : Tensor = aten::softmax(%attn.27, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %836 : bool = prim::GetAttr[name="training"](%834)
+  %attn.28 : Tensor = aten::dropout(%ret.6, %6, %836) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.6 : Tensor = aten::matmul(%attn.28, %v.15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %842 : Tensor = aten::transpose(%output.6, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %843 : Tensor = aten::contiguous(%842, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %844 : int[] = prim::ListConstruct(%sz_b.6, %len_q.6, %18)
+  %q.44 : Tensor = aten::view(%843, %844) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %846 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%800)
+  %847 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%800)
+  %848 : Tensor = prim::GetAttr[name="weight"](%847)
+  %849 : Tensor = aten::linear(%q.44, %848, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %850 : bool = prim::GetAttr[name="training"](%846)
+  %q.45 : Tensor = aten::dropout(%849, %6, %850) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.46 : Tensor = aten::add_(%q.45, %q.40, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %853 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%800)
+  %854 : Tensor = prim::GetAttr[name="weight"](%853)
+  %855 : Tensor = prim::GetAttr[name="bias"](%853)
+  %q.47 : Tensor = aten::layer_norm(%q.46, %1474, %854, %855, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %861 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%589)
+  %862 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%861)
+  %863 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%861)
+  %864 : Tensor = prim::GetAttr[name="weight"](%863)
+  %865 : Tensor = prim::GetAttr[name="bias"](%863)
+  %866 : Tensor = aten::linear(%q.47, %864, %865) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.4 : Tensor = aten::relu(%866) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %868 : Tensor = prim::GetAttr[name="weight"](%862)
+  %869 : Tensor = prim::GetAttr[name="bias"](%862)
+  %x.10 : Tensor = aten::linear(%result.4, %868, %869) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %871 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%861)
+  %872 : bool = prim::GetAttr[name="training"](%871)
+  %x.11 : Tensor = aten::dropout(%x.10, %6, %872) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.12 : Tensor = aten::add_(%x.11, %q.47, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %875 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%861)
+  %876 : Tensor = prim::GetAttr[name="weight"](%875)
+  %877 : Tensor = prim::GetAttr[name="bias"](%875)
+  %dec_output.17 : Tensor = aten::layer_norm(%x.12, %1474, %876, %877, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %884 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%590)
+  %d_k.7 : int = prim::GetAttr[name="d_k"](%884)
+  %d_v.7 : int = prim::GetAttr[name="d_v"](%884)
+  %n_head.7 : int = prim::GetAttr[name="n_head"](%884)
+  %sz_b.7 : int = aten::size(%dec_output.17, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.7 : int = aten::size(%dec_output.17, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %892 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%884)
+  %893 : Tensor = prim::GetAttr[name="weight"](%892)
+  %894 : Tensor = aten::linear(%dec_output.17, %893, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %895 : int[] = prim::ListConstruct(%sz_b.7, %len_q.7, %n_head.7, %d_k.7)
+  %q.48 : Tensor = aten::view(%894, %895) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %897 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%884)
+  %898 : Tensor = prim::GetAttr[name="weight"](%897)
+  %899 : Tensor = aten::linear(%dec_output.17, %898, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.16 : Tensor = aten::view(%899, %895) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %902 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%884)
+  %903 : Tensor = prim::GetAttr[name="weight"](%902)
+  %904 : Tensor = aten::linear(%dec_output.17, %903, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %905 : int[] = prim::ListConstruct(%sz_b.7, %len_q.7, %n_head.7, %d_v.7)
+  %v.16 : Tensor = aten::view(%904, %905) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.49 : Tensor = aten::transpose(%q.48, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.17 : Tensor = aten::transpose(%k.16, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.17 : Tensor = aten::transpose(%v.16, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %911 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%884)
+  %912 : float = prim::GetAttr[name="temperature"](%911)
+  %913 : Tensor = aten::div(%q.49, %912) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %914 : Tensor = aten::transpose(%k.17, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.30 : Tensor = aten::matmul(%913, %914) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.32 : Tensor = aten::masked_fill(%attn.30, %626, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %918 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%911)
+  %ret.7 : Tensor = aten::softmax(%attn.32, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %920 : bool = prim::GetAttr[name="training"](%918)
+  %attn.33 : Tensor = aten::dropout(%ret.7, %6, %920) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.7 : Tensor = aten::matmul(%attn.33, %v.17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %926 : Tensor = aten::transpose(%output.7, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %927 : Tensor = aten::contiguous(%926, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %928 : int[] = prim::ListConstruct(%sz_b.7, %len_q.7, %18)
+  %q.51 : Tensor = aten::view(%927, %928) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %930 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%884)
+  %931 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%884)
+  %932 : Tensor = prim::GetAttr[name="weight"](%931)
+  %933 : Tensor = aten::linear(%q.51, %932, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %934 : bool = prim::GetAttr[name="training"](%930)
+  %q.52 : Tensor = aten::dropout(%933, %6, %934) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.53 : Tensor = aten::add_(%q.52, %dec_output.17, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %937 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%884)
+  %938 : Tensor = prim::GetAttr[name="weight"](%937)
+  %939 : Tensor = prim::GetAttr[name="bias"](%937)
+  %q.54 : Tensor = aten::layer_norm(%q.53, %1474, %938, %939, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %945 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="enc_attn"](%590)
+  %d_k.8 : int = prim::GetAttr[name="d_k"](%945)
+  %d_v.8 : int = prim::GetAttr[name="d_v"](%945)
+  %n_head.8 : int = prim::GetAttr[name="n_head"](%945)
+  %sz_b.8 : int = aten::size(%q.54, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.8 : int = aten::size(%q.54, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %953 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%945)
+  %954 : Tensor = prim::GetAttr[name="weight"](%953)
+  %955 : Tensor = aten::linear(%q.54, %954, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %956 : int[] = prim::ListConstruct(%sz_b.8, %len_q.8, %n_head.8, %d_k.8)
+  %q.55 : Tensor = aten::view(%955, %956) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %958 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%945)
+  %959 : Tensor = prim::GetAttr[name="weight"](%958)
+  %960 : Tensor = aten::linear(%enc_output.3, %959, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %961 : int[] = prim::ListConstruct(%sz_b.8, %len_k.4, %n_head.8, %d_k.8)
+  %k.18 : Tensor = aten::view(%960, %961) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %963 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%945)
+  %964 : Tensor = prim::GetAttr[name="weight"](%963)
+  %965 : Tensor = aten::linear(%enc_output.3, %964, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %966 : int[] = prim::ListConstruct(%sz_b.8, %len_k.4, %n_head.8, %d_v.8)
+  %v.18 : Tensor = aten::view(%965, %966) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.56 : Tensor = aten::transpose(%q.55, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.19 : Tensor = aten::transpose(%k.18, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.19 : Tensor = aten::transpose(%v.18, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %972 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%945)
+  %973 : float = prim::GetAttr[name="temperature"](%972)
+  %974 : Tensor = aten::div(%q.56, %973) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %975 : Tensor = aten::transpose(%k.19, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.35 : Tensor = aten::matmul(%974, %975) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.37 : Tensor = aten::masked_fill(%attn.35, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %979 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%972)
+  %ret.8 : Tensor = aten::softmax(%attn.37, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %981 : bool = prim::GetAttr[name="training"](%979)
+  %attn.38 : Tensor = aten::dropout(%ret.8, %6, %981) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.8 : Tensor = aten::matmul(%attn.38, %v.19) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %987 : Tensor = aten::transpose(%output.8, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %988 : Tensor = aten::contiguous(%987, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %989 : int[] = prim::ListConstruct(%sz_b.8, %len_q.8, %18)
+  %q.58 : Tensor = aten::view(%988, %989) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %991 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%945)
+  %992 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%945)
+  %993 : Tensor = prim::GetAttr[name="weight"](%992)
+  %994 : Tensor = aten::linear(%q.58, %993, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %995 : bool = prim::GetAttr[name="training"](%991)
+  %q.59 : Tensor = aten::dropout(%994, %6, %995) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.60 : Tensor = aten::add_(%q.59, %q.54, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %998 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%945)
+  %999 : Tensor = prim::GetAttr[name="weight"](%998)
+  %1000 : Tensor = prim::GetAttr[name="bias"](%998)
+  %q.61 : Tensor = aten::layer_norm(%q.60, %1474, %999, %1000, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1006 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%590)
+  %1007 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%1006)
+  %1008 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%1006)
+  %1009 : Tensor = prim::GetAttr[name="weight"](%1008)
+  %1010 : Tensor = prim::GetAttr[name="bias"](%1008)
+  %1011 : Tensor = aten::linear(%q.61, %1009, %1010) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.5 : Tensor = aten::relu(%1011) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %1013 : Tensor = prim::GetAttr[name="weight"](%1007)
+  %1014 : Tensor = prim::GetAttr[name="bias"](%1007)
+  %x.13 : Tensor = aten::linear(%result.5, %1013, %1014) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1016 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1006)
+  %1017 : bool = prim::GetAttr[name="training"](%1016)
+  %x.14 : Tensor = aten::dropout(%x.13, %6, %1017) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.15 : Tensor = aten::add_(%x.14, %q.61, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %1020 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1006)
+  %1021 : Tensor = prim::GetAttr[name="weight"](%1020)
+  %1022 : Tensor = prim::GetAttr[name="bias"](%1020)
+  %dec_output.20 : Tensor = aten::layer_norm(%x.15, %1474, %1021, %1022, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1029 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%591)
+  %d_k.9 : int = prim::GetAttr[name="d_k"](%1029)
+  %d_v.9 : int = prim::GetAttr[name="d_v"](%1029)
+  %n_head.9 : int = prim::GetAttr[name="n_head"](%1029)
+  %sz_b.9 : int = aten::size(%dec_output.20, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.9 : int = aten::size(%dec_output.20, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %1037 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%1029)
+  %1038 : Tensor = prim::GetAttr[name="weight"](%1037)
+  %1039 : Tensor = aten::linear(%dec_output.20, %1038, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1040 : int[] = prim::ListConstruct(%sz_b.9, %len_q.9, %n_head.9, %d_k.9)
+  %q.62 : Tensor = aten::view(%1039, %1040) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %1042 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%1029)
+  %1043 : Tensor = prim::GetAttr[name="weight"](%1042)
+  %1044 : Tensor = aten::linear(%dec_output.20, %1043, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.20 : Tensor = aten::view(%1044, %1040) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %1047 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%1029)
+  %1048 : Tensor = prim::GetAttr[name="weight"](%1047)
+  %1049 : Tensor = aten::linear(%dec_output.20, %1048, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1050 : int[] = prim::ListConstruct(%sz_b.9, %len_q.9, %n_head.9, %d_v.9)
+  %v.20 : Tensor = aten::view(%1049, %1050) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.63 : Tensor = aten::transpose(%q.62, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.21 : Tensor = aten::transpose(%k.20, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.21 : Tensor = aten::transpose(%v.20, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %1056 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%1029)
+  %1057 : float = prim::GetAttr[name="temperature"](%1056)
+  %1058 : Tensor = aten::div(%q.63, %1057) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %1059 : Tensor = aten::transpose(%k.21, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.40 : Tensor = aten::matmul(%1058, %1059) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.42 : Tensor = aten::masked_fill(%attn.40, %626, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %1063 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1056)
+  %ret.9 : Tensor = aten::softmax(%attn.42, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %1065 : bool = prim::GetAttr[name="training"](%1063)
+  %attn.43 : Tensor = aten::dropout(%ret.9, %6, %1065) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.9 : Tensor = aten::matmul(%attn.43, %v.21) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %1071 : Tensor = aten::transpose(%output.9, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1072 : Tensor = aten::contiguous(%1071, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1073 : int[] = prim::ListConstruct(%sz_b.9, %len_q.9, %18)
+  %q.65 : Tensor = aten::view(%1072, %1073) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1075 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1029)
+  %1076 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%1029)
+  %1077 : Tensor = prim::GetAttr[name="weight"](%1076)
+  %1078 : Tensor = aten::linear(%q.65, %1077, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1079 : bool = prim::GetAttr[name="training"](%1075)
+  %q.66 : Tensor = aten::dropout(%1078, %6, %1079) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.67 : Tensor = aten::add_(%q.66, %dec_output.20, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %1082 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1029)
+  %1083 : Tensor = prim::GetAttr[name="weight"](%1082)
+  %1084 : Tensor = prim::GetAttr[name="bias"](%1082)
+  %q.68 : Tensor = aten::layer_norm(%q.67, %1474, %1083, %1084, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1090 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="enc_attn"](%591)
+  %d_k.10 : int = prim::GetAttr[name="d_k"](%1090)
+  %d_v.10 : int = prim::GetAttr[name="d_v"](%1090)
+  %n_head.10 : int = prim::GetAttr[name="n_head"](%1090)
+  %sz_b.10 : int = aten::size(%q.68, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.10 : int = aten::size(%q.68, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %1098 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%1090)
+  %1099 : Tensor = prim::GetAttr[name="weight"](%1098)
+  %1100 : Tensor = aten::linear(%q.68, %1099, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1101 : int[] = prim::ListConstruct(%sz_b.10, %len_q.10, %n_head.10, %d_k.10)
+  %q.69 : Tensor = aten::view(%1100, %1101) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %1103 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%1090)
+  %1104 : Tensor = prim::GetAttr[name="weight"](%1103)
+  %1105 : Tensor = aten::linear(%enc_output.3, %1104, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1106 : int[] = prim::ListConstruct(%sz_b.10, %len_k.4, %n_head.10, %d_k.10)
+  %k.22 : Tensor = aten::view(%1105, %1106) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %1108 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%1090)
+  %1109 : Tensor = prim::GetAttr[name="weight"](%1108)
+  %1110 : Tensor = aten::linear(%enc_output.3, %1109, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1111 : int[] = prim::ListConstruct(%sz_b.10, %len_k.4, %n_head.10, %d_v.10)
+  %v.22 : Tensor = aten::view(%1110, %1111) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.70 : Tensor = aten::transpose(%q.69, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.23 : Tensor = aten::transpose(%k.22, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.23 : Tensor = aten::transpose(%v.22, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %1117 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%1090)
+  %1118 : float = prim::GetAttr[name="temperature"](%1117)
+  %1119 : Tensor = aten::div(%q.70, %1118) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %1120 : Tensor = aten::transpose(%k.23, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.45 : Tensor = aten::matmul(%1119, %1120) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.47 : Tensor = aten::masked_fill(%attn.45, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %1124 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1117)
+  %ret.10 : Tensor = aten::softmax(%attn.47, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %1126 : bool = prim::GetAttr[name="training"](%1124)
+  %attn.48 : Tensor = aten::dropout(%ret.10, %6, %1126) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.10 : Tensor = aten::matmul(%attn.48, %v.23) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %1132 : Tensor = aten::transpose(%output.10, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1133 : Tensor = aten::contiguous(%1132, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1134 : int[] = prim::ListConstruct(%sz_b.10, %len_q.10, %18)
+  %q.72 : Tensor = aten::view(%1133, %1134) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1136 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1090)
+  %1137 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%1090)
+  %1138 : Tensor = prim::GetAttr[name="weight"](%1137)
+  %1139 : Tensor = aten::linear(%q.72, %1138, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1140 : bool = prim::GetAttr[name="training"](%1136)
+  %q.73 : Tensor = aten::dropout(%1139, %6, %1140) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.74 : Tensor = aten::add_(%q.73, %q.68, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %1143 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1090)
+  %1144 : Tensor = prim::GetAttr[name="weight"](%1143)
+  %1145 : Tensor = prim::GetAttr[name="bias"](%1143)
+  %q.75 : Tensor = aten::layer_norm(%q.74, %1474, %1144, %1145, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1151 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%591)
+  %1152 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%1151)
+  %1153 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%1151)
+  %1154 : Tensor = prim::GetAttr[name="weight"](%1153)
+  %1155 : Tensor = prim::GetAttr[name="bias"](%1153)
+  %1156 : Tensor = aten::linear(%q.75, %1154, %1155) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.6 : Tensor = aten::relu(%1156) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %1158 : Tensor = prim::GetAttr[name="weight"](%1152)
+  %1159 : Tensor = prim::GetAttr[name="bias"](%1152)
+  %x.16 : Tensor = aten::linear(%result.6, %1158, %1159) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1161 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1151)
+  %1162 : bool = prim::GetAttr[name="training"](%1161)
+  %x.17 : Tensor = aten::dropout(%x.16, %6, %1162) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.18 : Tensor = aten::add_(%x.17, %q.75, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %1165 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1151)
+  %1166 : Tensor = prim::GetAttr[name="weight"](%1165)
+  %1167 : Tensor = prim::GetAttr[name="bias"](%1165)
+  %dec_output.23 : Tensor = aten::layer_norm(%x.18, %1474, %1166, %1167, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1174 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%592)
+  %d_k.11 : int = prim::GetAttr[name="d_k"](%1174)
+  %d_v.11 : int = prim::GetAttr[name="d_v"](%1174)
+  %n_head.11 : int = prim::GetAttr[name="n_head"](%1174)
+  %sz_b.11 : int = aten::size(%dec_output.23, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.11 : int = aten::size(%dec_output.23, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %1182 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%1174)
+  %1183 : Tensor = prim::GetAttr[name="weight"](%1182)
+  %1184 : Tensor = aten::linear(%dec_output.23, %1183, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1185 : int[] = prim::ListConstruct(%sz_b.11, %len_q.11, %n_head.11, %d_k.11)
+  %q.76 : Tensor = aten::view(%1184, %1185) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %1187 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%1174)
+  %1188 : Tensor = prim::GetAttr[name="weight"](%1187)
+  %1189 : Tensor = aten::linear(%dec_output.23, %1188, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.24 : Tensor = aten::view(%1189, %1185) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %1192 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%1174)
+  %1193 : Tensor = prim::GetAttr[name="weight"](%1192)
+  %1194 : Tensor = aten::linear(%dec_output.23, %1193, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1195 : int[] = prim::ListConstruct(%sz_b.11, %len_q.11, %n_head.11, %d_v.11)
+  %v.24 : Tensor = aten::view(%1194, %1195) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.77 : Tensor = aten::transpose(%q.76, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.25 : Tensor = aten::transpose(%k.24, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.25 : Tensor = aten::transpose(%v.24, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %1201 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%1174)
+  %1202 : float = prim::GetAttr[name="temperature"](%1201)
+  %1203 : Tensor = aten::div(%q.77, %1202) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %1204 : Tensor = aten::transpose(%k.25, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.50 : Tensor = aten::matmul(%1203, %1204) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.52 : Tensor = aten::masked_fill(%attn.50, %626, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %1208 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1201)
+  %ret.11 : Tensor = aten::softmax(%attn.52, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %1210 : bool = prim::GetAttr[name="training"](%1208)
+  %attn.53 : Tensor = aten::dropout(%ret.11, %6, %1210) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.11 : Tensor = aten::matmul(%attn.53, %v.25) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %1216 : Tensor = aten::transpose(%output.11, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1217 : Tensor = aten::contiguous(%1216, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1218 : int[] = prim::ListConstruct(%sz_b.11, %len_q.11, %18)
+  %q.79 : Tensor = aten::view(%1217, %1218) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1220 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1174)
+  %1221 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%1174)
+  %1222 : Tensor = prim::GetAttr[name="weight"](%1221)
+  %1223 : Tensor = aten::linear(%q.79, %1222, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1224 : bool = prim::GetAttr[name="training"](%1220)
+  %q.80 : Tensor = aten::dropout(%1223, %6, %1224) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.81 : Tensor = aten::add_(%q.80, %dec_output.23, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %1227 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1174)
+  %1228 : Tensor = prim::GetAttr[name="weight"](%1227)
+  %1229 : Tensor = prim::GetAttr[name="bias"](%1227)
+  %q.82 : Tensor = aten::layer_norm(%q.81, %1474, %1228, %1229, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1235 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="enc_attn"](%592)
+  %d_k.12 : int = prim::GetAttr[name="d_k"](%1235)
+  %d_v.12 : int = prim::GetAttr[name="d_v"](%1235)
+  %n_head.12 : int = prim::GetAttr[name="n_head"](%1235)
+  %sz_b.12 : int = aten::size(%q.82, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.12 : int = aten::size(%q.82, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %1243 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%1235)
+  %1244 : Tensor = prim::GetAttr[name="weight"](%1243)
+  %1245 : Tensor = aten::linear(%q.82, %1244, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1246 : int[] = prim::ListConstruct(%sz_b.12, %len_q.12, %n_head.12, %d_k.12)
+  %q.83 : Tensor = aten::view(%1245, %1246) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %1248 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%1235)
+  %1249 : Tensor = prim::GetAttr[name="weight"](%1248)
+  %1250 : Tensor = aten::linear(%enc_output.3, %1249, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1251 : int[] = prim::ListConstruct(%sz_b.12, %len_k.4, %n_head.12, %d_k.12)
+  %k.26 : Tensor = aten::view(%1250, %1251) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %1253 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%1235)
+  %1254 : Tensor = prim::GetAttr[name="weight"](%1253)
+  %1255 : Tensor = aten::linear(%enc_output.3, %1254, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1256 : int[] = prim::ListConstruct(%sz_b.12, %len_k.4, %n_head.12, %d_v.12)
+  %v.26 : Tensor = aten::view(%1255, %1256) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.84 : Tensor = aten::transpose(%q.83, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.27 : Tensor = aten::transpose(%k.26, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.27 : Tensor = aten::transpose(%v.26, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %1262 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%1235)
+  %1263 : float = prim::GetAttr[name="temperature"](%1262)
+  %1264 : Tensor = aten::div(%q.84, %1263) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %1265 : Tensor = aten::transpose(%k.27, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.55 : Tensor = aten::matmul(%1264, %1265) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.57 : Tensor = aten::masked_fill(%attn.55, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %1269 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1262)
+  %ret.12 : Tensor = aten::softmax(%attn.57, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %1271 : bool = prim::GetAttr[name="training"](%1269)
+  %attn.58 : Tensor = aten::dropout(%ret.12, %6, %1271) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.12 : Tensor = aten::matmul(%attn.58, %v.27) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %1277 : Tensor = aten::transpose(%output.12, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1278 : Tensor = aten::contiguous(%1277, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1279 : int[] = prim::ListConstruct(%sz_b.12, %len_q.12, %18)
+  %q.86 : Tensor = aten::view(%1278, %1279) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1281 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1235)
+  %1282 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%1235)
+  %1283 : Tensor = prim::GetAttr[name="weight"](%1282)
+  %1284 : Tensor = aten::linear(%q.86, %1283, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1285 : bool = prim::GetAttr[name="training"](%1281)
+  %q.87 : Tensor = aten::dropout(%1284, %6, %1285) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.88 : Tensor = aten::add_(%q.87, %q.82, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %1288 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1235)
+  %1289 : Tensor = prim::GetAttr[name="weight"](%1288)
+  %1290 : Tensor = prim::GetAttr[name="bias"](%1288)
+  %q.89 : Tensor = aten::layer_norm(%q.88, %1474, %1289, %1290, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1296 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%592)
+  %1297 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%1296)
+  %1298 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%1296)
+  %1299 : Tensor = prim::GetAttr[name="weight"](%1298)
+  %1300 : Tensor = prim::GetAttr[name="bias"](%1298)
+  %1301 : Tensor = aten::linear(%q.89, %1299, %1300) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.7 : Tensor = aten::relu(%1301) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %1303 : Tensor = prim::GetAttr[name="weight"](%1297)
+  %1304 : Tensor = prim::GetAttr[name="bias"](%1297)
+  %x.19 : Tensor = aten::linear(%result.7, %1303, %1304) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1306 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1296)
+  %1307 : bool = prim::GetAttr[name="training"](%1306)
+  %x.20 : Tensor = aten::dropout(%x.19, %6, %1307) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.21 : Tensor = aten::add_(%x.20, %q.89, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %1310 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1296)
+  %1311 : Tensor = prim::GetAttr[name="weight"](%1310)
+  %1312 : Tensor = prim::GetAttr[name="bias"](%1310)
+  %dec_output.26 : Tensor = aten::layer_norm(%x.21, %1474, %1311, %1312, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1319 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="slf_attn"](%593)
+  %d_k.2 : int = prim::GetAttr[name="d_k"](%1319)
+  %d_v.2 : int = prim::GetAttr[name="d_v"](%1319)
+  %n_head.2 : int = prim::GetAttr[name="n_head"](%1319)
+  %sz_b.2 : int = aten::size(%dec_output.26, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.2 : int = aten::size(%dec_output.26, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %1327 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%1319)
+  %1328 : Tensor = prim::GetAttr[name="weight"](%1327)
+  %1329 : Tensor = aten::linear(%dec_output.26, %1328, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1330 : int[] = prim::ListConstruct(%sz_b.2, %len_q.2, %n_head.2, %d_k.2)
+  %q.7 : Tensor = aten::view(%1329, %1330) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %1332 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%1319)
+  %1333 : Tensor = prim::GetAttr[name="weight"](%1332)
+  %1334 : Tensor = aten::linear(%dec_output.26, %1333, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %k.5 : Tensor = aten::view(%1334, %1330) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %1337 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%1319)
+  %1338 : Tensor = prim::GetAttr[name="weight"](%1337)
+  %1339 : Tensor = aten::linear(%dec_output.26, %1338, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1340 : int[] = prim::ListConstruct(%sz_b.2, %len_q.2, %n_head.2, %d_v.2)
+  %v.5 : Tensor = aten::view(%1339, %1340) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.9 : Tensor = aten::transpose(%q.7, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.7 : Tensor = aten::transpose(%k.5, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.7 : Tensor = aten::transpose(%v.5, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %1346 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%1319)
+  %1347 : float = prim::GetAttr[name="temperature"](%1346)
+  %1348 : Tensor = aten::div(%q.9, %1347) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %1349 : Tensor = aten::transpose(%k.7, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.4 : Tensor = aten::matmul(%1348, %1349) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.6 : Tensor = aten::masked_fill(%attn.4, %626, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %1353 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1346)
+  %ret.2 : Tensor = aten::softmax(%attn.6, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %1355 : bool = prim::GetAttr[name="training"](%1353)
+  %attn.10 : Tensor = aten::dropout(%ret.2, %6, %1355) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.2 : Tensor = aten::matmul(%attn.10, %v.7) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %1361 : Tensor = aten::transpose(%output.2, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1362 : Tensor = aten::contiguous(%1361, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1363 : int[] = prim::ListConstruct(%sz_b.2, %len_q.2, %18)
+  %q.13 : Tensor = aten::view(%1362, %1363) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1365 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1319)
+  %1366 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%1319)
+  %1367 : Tensor = prim::GetAttr[name="weight"](%1366)
+  %1368 : Tensor = aten::linear(%q.13, %1367, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1369 : bool = prim::GetAttr[name="training"](%1365)
+  %q.15 : Tensor = aten::dropout(%1368, %6, %1369) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.17 : Tensor = aten::add_(%q.15, %dec_output.26, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %1372 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1319)
+  %1373 : Tensor = prim::GetAttr[name="weight"](%1372)
+  %1374 : Tensor = prim::GetAttr[name="bias"](%1372)
+  %q.19 : Tensor = aten::layer_norm(%q.17, %1474, %1373, %1374, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1380 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.MultiHeadAttention = prim::GetAttr[name="enc_attn"](%593)
+  %d_k.1 : int = prim::GetAttr[name="d_k"](%1380)
+  %d_v.1 : int = prim::GetAttr[name="d_v"](%1380)
+  %n_head.1 : int = prim::GetAttr[name="n_head"](%1380)
+  %sz_b.1 : int = aten::size(%q.19, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:36
+  %len_q.1 : int = aten::size(%q.19, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:35:47
+  %1388 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_qs"](%1380)
+  %1389 : Tensor = prim::GetAttr[name="weight"](%1388)
+  %1390 : Tensor = aten::linear(%q.19, %1389, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1391 : int[] = prim::ListConstruct(%sz_b.1, %len_q.1, %n_head.1, %d_k.1)
+  %q.6 : Tensor = aten::view(%1390, %1391) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:41:12
+  %1393 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_ks"](%1380)
+  %1394 : Tensor = prim::GetAttr[name="weight"](%1393)
+  %1395 : Tensor = aten::linear(%enc_output.3, %1394, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1396 : int[] = prim::ListConstruct(%sz_b.1, %len_k.4, %n_head.1, %d_k.1)
+  %k.4 : Tensor = aten::view(%1395, %1396) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:42:12
+  %1398 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="w_vs"](%1380)
+  %1399 : Tensor = prim::GetAttr[name="weight"](%1398)
+  %1400 : Tensor = aten::linear(%enc_output.3, %1399, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1401 : int[] = prim::ListConstruct(%sz_b.1, %len_k.4, %n_head.1, %d_v.1)
+  %v.4 : Tensor = aten::view(%1400, %1401) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:43:12
+  %q.8 : Tensor = aten::transpose(%q.6, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:18
+  %k.6 : Tensor = aten::transpose(%k.4, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:37
+  %v.6 : Tensor = aten::transpose(%v.4, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:46:56
+  %1407 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.Modules.ScaledDotProductAttention = prim::GetAttr[name="attention"](%1380)
+  %1408 : float = prim::GetAttr[name="temperature"](%1407)
+  %1409 : Tensor = aten::div(%q.8, %1408) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:28
+  %1410 : Tensor = aten::transpose(%k.6, %17, %10) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:50
+  %attn.1 : Tensor = aten::matmul(%1409, %1410) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:18:15
+  %attn.3 : Tensor = aten::masked_fill(%attn.1, %97, %11) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:21:19
+  %1414 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1407)
+  %ret.1 : Tensor = aten::softmax(%attn.3, %18, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1583:14
+  %1416 : bool = prim::GetAttr[name="training"](%1414)
+  %attn.9 : Tensor = aten::dropout(%ret.1, %6, %1416) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %output.1 : Tensor = aten::matmul(%attn.9, %v.6) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Modules.py:24:17
+  %1422 : Tensor = aten::transpose(%output.1, %15, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1423 : Tensor = aten::contiguous(%1422, %4) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1424 : int[] = prim::ListConstruct(%sz_b.1, %len_q.1, %18)
+  %q.12 : Tensor = aten::view(%1423, %1424) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:55:12
+  %1426 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1380)
+  %1427 : __torch__.torch.nn.modules.linear.___torch_mangle_55.Linear = prim::GetAttr[name="fc"](%1380)
+  %1428 : Tensor = prim::GetAttr[name="weight"](%1427)
+  %1429 : Tensor = aten::linear(%q.12, %1428, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1430 : bool = prim::GetAttr[name="training"](%1426)
+  %q.14 : Tensor = aten::dropout(%1429, %6, %1430) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %q.16 : Tensor = aten::add_(%q.14, %q.19, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:57:8
+  %1433 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1380)
+  %1434 : Tensor = prim::GetAttr[name="weight"](%1433)
+  %1435 : Tensor = prim::GetAttr[name="bias"](%1433)
+  %q.18 : Tensor = aten::layer_norm(%q.16, %1474, %1434, %1435, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1441 : __torch__.torchbenchmark.models.attention_is_all_you_need_pytorch.transformer.SubLayers.PositionwiseFeedForward = prim::GetAttr[name="pos_ffn"](%593)
+  %1442 : __torch__.torch.nn.modules.linear.___torch_mangle_57.Linear = prim::GetAttr[name="w_2"](%1441)
+  %1443 : __torch__.torch.nn.modules.linear.___torch_mangle_56.Linear = prim::GetAttr[name="w_1"](%1441)
+  %1444 : Tensor = prim::GetAttr[name="weight"](%1443)
+  %1445 : Tensor = prim::GetAttr[name="bias"](%1443)
+  %1446 : Tensor = aten::linear(%q.18, %1444, %1445) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %result.2 : Tensor = aten::relu(%1446) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1206:17
+  %1448 : Tensor = prim::GetAttr[name="weight"](%1442)
+  %1449 : Tensor = prim::GetAttr[name="bias"](%1442)
+  %x.4 : Tensor = aten::linear(%result.2, %1448, %1449) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1451 : __torch__.torch.nn.modules.dropout.Dropout = prim::GetAttr[name="dropout"](%1441)
+  %1452 : bool = prim::GetAttr[name="training"](%1451)
+  %x.6 : Tensor = aten::dropout(%x.4, %6, %1452) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1076:60
+  %x.8 : Tensor = aten::add_(%x.6, %q.18, %15) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/SubLayers.py:80:8
+  %1455 : __torch__.torch.nn.modules.normalization.LayerNorm = prim::GetAttr[name="layer_norm"](%1441)
+  %1456 : Tensor = prim::GetAttr[name="weight"](%1455)
+  %1457 : Tensor = prim::GetAttr[name="bias"](%1455)
+  %dec_output.5 : Tensor = aten::layer_norm(%x.8, %1474, %1456, %1457, %9, %7) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2202:11
+  %1466 : __torch__.torch.nn.modules.linear.___torch_mangle_60.Linear = prim::GetAttr[name="trg_word_prj"](%self)
+  %1467 : Tensor = prim::GetAttr[name="weight"](%1466)
+  %1468 : Tensor = aten::linear(%dec_output.5, %1467, %14) # /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1753:11
+  %1469 : float = prim::GetAttr[name="x_logit_scale"](%self)
+  %seq_logit.1 : Tensor = aten::mul(%1468, %1469) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:173:20
+  %1471 : int = aten::size(%seq_logit.1, %17) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:175:34
+  %1472 : int[] = prim::ListConstruct(%18, %1471)
+  %1473 : Tensor = aten::view(%seq_logit.1, %1472) # /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/attention_is_all_you_need_pytorch/transformer/Models.py:175:15
+  return (%1473)
+
