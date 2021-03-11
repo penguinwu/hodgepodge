@@ -9,6 +9,7 @@ pytorch_mobilenet_v3.cpu.last_executed_graph_dump.log  1293 (31%)  1610 (38%)  -
 Detailed op stats for [pytorch_mobilenet_v3.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 1 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [68]
+    - "prim::CallMethod": 0 found
     - "prim::If": 6 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1254 [53]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [68]
@@ -16,9 +17,19 @@ Detailed op stats for [pytorch_mobilenet_v3.cpu.last_executed_graph_dump.log]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py:110 [68]
         + /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/pytorch_mobilenet_v3/mobilenetv3.py:112 [11]
         + <string>:5 [19]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 8 distinct names (name [count])
+        + prim::Constant (28)
+        + prim::GetAttr (1018)
+        + prim::If (287)
+        + prim::ListConstruct (36)
+        + prim::ListUnpack (18)
+        + prim::Loop (68)
+        + prim::RaiseException (87)
+        + prim::SetAttr (68)
+    - "internal::*": not found
     - "aten::*": 21 distinct names (name [count])
         + aten::__getitem__ (136)
         + aten::adaptive_avg_pool2d (19)
@@ -41,17 +52,6 @@ Detailed op stats for [pytorch_mobilenet_v3.cpu.last_executed_graph_dump.log]
         + aten::size (87)
         + aten::sub (68)
         + aten::view (36)
-    - "caffe2::*": not found
-    - "prim::*": 8 distinct names (name [count])
-        + prim::Constant (28)
-        + prim::GetAttr (1018)
-        + prim::If (287)
-        + prim::ListConstruct (36)
-        + prim::ListUnpack (18)
-        + prim::Loop (68)
-        + prim::RaiseException (87)
-        + prim::SetAttr (68)
-    - "fb::*": not found
     - "prim::GetAttr": 27 distinct attr names (attr [count])
         + "0" (44)
         + "1" (26)

@@ -9,12 +9,21 @@ pytorch_stargan.cpu.last_executed_graph_dump.log  219 (38%)  241 (42%)  -       
 Detailed op stats for [pytorch_stargan.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 1 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [17]
+    - "prim::CallMethod": 0 found
     - "prim::If": 2 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [17]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/instancenorm.py:212 [2]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 6 distinct names (name [count])
+        + prim::Constant (14)
+        + prim::GetAttr (169)
+        + prim::If (19)
+        + prim::ListConstruct (3)
+        + prim::Loop (17)
+        + prim::RaiseException (19)
+    - "internal::*": not found
     - "aten::*": 18 distinct names (name [count])
         + aten::__getitem__ (34)
         + aten::add (23)
@@ -34,15 +43,6 @@ Detailed op stats for [pytorch_stargan.cpu.last_executed_graph_dump.log]
         + aten::sub (17)
         + aten::tanh (1)
         + aten::view (1)
-    - "caffe2::*": not found
-    - "prim::*": 6 distinct names (name [count])
-        + prim::Constant (14)
-        + prim::GetAttr (169)
-        + prim::If (19)
-        + prim::ListConstruct (3)
-        + prim::Loop (17)
-        + prim::RaiseException (19)
-    - "fb::*": not found
     - "prim::GetAttr": 23 distinct attr names (attr [count])
         + "0" (7)
         + "1" (7)

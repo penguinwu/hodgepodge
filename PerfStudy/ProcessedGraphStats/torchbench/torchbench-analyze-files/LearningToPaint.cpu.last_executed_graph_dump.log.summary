@@ -8,10 +8,15 @@ LearningToPaint.cpu.last_executed_graph_dump.log  25 (39%)   35 (55%)   -       
 
 Detailed op stats for [LearningToPaint.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 0 found
-    - "prim::If": 0 found
     - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "prim::If": 0 found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 2 distinct names (name [count])
+        + prim::Constant (5)
+        + prim::GetAttr (30)
+    - "internal::*": not found
     - "aten::*": 8 distinct names (name [count])
         + aten::add (1)
         + aten::conv2d (6)
@@ -21,11 +26,6 @@ Detailed op stats for [LearningToPaint.cpu.last_executed_graph_dump.log]
         + aten::relu (7)
         + aten::sigmoid (1)
         + aten::view (2)
-    - "caffe2::*": not found
-    - "prim::*": 2 distinct names (name [count])
-        + prim::Constant (5)
-        + prim::GetAttr (30)
-    - "fb::*": not found
     - "prim::GetAttr": 12 distinct attr names (attr [count])
         + "bias" (10)
         + "conv1" (1)

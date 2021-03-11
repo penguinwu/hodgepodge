@@ -8,11 +8,20 @@ BERT_pytorch.cpu.last_executed_graph_dump.log  697 (52%)  651 (48%)  -        - 
 
 Detailed op stats for [BERT_pytorch.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 0 found
-    - "prim::If": 0 found
     - "prim::CallMethod": 1 distinct sources (source:line [count])
         + /mnt/ssd1/pengwu/projects/torchbenchmark/torchbenchmark/models/BERT_pytorch/bert_pytorch/model/attention/single.py:23 [12]
-    - "internal::*": not found
+    - "prim::If": 0 found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 6 distinct names (name [count])
+        + prim::CallMethod (12)
+        + prim::Constant (16)
+        + prim::GetAttr (562)
+        + prim::ListConstruct (37)
+        + prim::ListUnpack (12)
+        + prim::SetAttr (12)
+    - "internal::*": not found
     - "aten::*": 25 distinct names (name [count])
         + aten::add (98)
         + aten::append (36)
@@ -39,15 +48,6 @@ Detailed op stats for [BERT_pytorch.cpu.last_executed_graph_dump.log]
         + aten::transpose (60)
         + aten::unsqueeze (2)
         + aten::view (48)
-    - "caffe2::*": not found
-    - "prim::*": 6 distinct names (name [count])
-        + prim::CallMethod (12)
-        + prim::Constant (16)
-        + prim::GetAttr (562)
-        + prim::ListConstruct (37)
-        + prim::ListUnpack (12)
-        + prim::SetAttr (12)
-    - "fb::*": not found
     - "prim::GetAttr": 38 distinct attr names (attr [count])
         + "0" (13)
         + "1" (13)

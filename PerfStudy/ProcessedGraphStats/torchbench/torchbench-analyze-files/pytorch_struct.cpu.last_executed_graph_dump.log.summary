@@ -8,10 +8,18 @@ pytorch_struct.cpu.last_executed_graph_dump.log  45 (40%)   63 (56%)   -        
 
 Detailed op stats for [pytorch_struct.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 0 found
-    - "prim::If": 0 found
     - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "prim::If": 0 found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 5 distinct names (name [count])
+        + prim::Constant (10)
+        + prim::GetAttr (41)
+        + prim::ListConstruct (10)
+        + prim::ListUnpack (1)
+        + prim::TupleConstruct (1)
+    - "internal::*": not found
     - "aten::*": 13 distinct names (name [count])
         + aten::__getitem__ (1)
         + aten::add (5)
@@ -26,14 +34,6 @@ Detailed op stats for [pytorch_struct.cpu.last_executed_graph_dump.log]
         + aten::squeeze (1)
         + aten::unsqueeze (4)
         + aten::view (3)
-    - "caffe2::*": not found
-    - "prim::*": 5 distinct names (name [count])
-        + prim::Constant (10)
-        + prim::GetAttr (41)
-        + prim::ListConstruct (10)
-        + prim::ListUnpack (1)
-        + prim::TupleConstruct (1)
-    - "fb::*": not found
     - "prim::GetAttr": 18 distinct attr names (attr [count])
         + "NT" (1)
         + "T" (1)

@@ -8,11 +8,18 @@ alexnet.cpu.last_executed_graph_dump.log  25 (32%)   44 (57%)   -        -      
 
 Detailed op stats for [alexnet.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
     - "prim::If": 1 distinct sources (source:line [count])
         + <string>:5 [1]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 4 distinct names (name [count])
+        + prim::Constant (12)
+        + prim::GetAttr (30)
+        + prim::If (1)
+        + prim::RaiseException (1)
+    - "internal::*": not found
     - "aten::*": 10 distinct names (name [count])
         + aten::adaptive_avg_pool2d (1)
         + aten::conv2d (5)
@@ -24,13 +31,6 @@ Detailed op stats for [alexnet.cpu.last_executed_graph_dump.log]
         + aten::max_pool2d (3)
         + aten::relu_ (7)
         + aten::size (1)
-    - "caffe2::*": not found
-    - "prim::*": 4 distinct names (name [count])
-        + prim::Constant (12)
-        + prim::GetAttr (30)
-        + prim::If (1)
-        + prim::RaiseException (1)
-    - "fb::*": not found
     - "prim::GetAttr": 12 distinct attr names (attr [count])
         + "0" (2)
         + "1" (1)

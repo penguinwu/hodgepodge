@@ -10,6 +10,7 @@ Detailed op stats for [densenet121.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 2 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [121]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/densenet.py:58 [58]
+    - "prim::CallMethod": 0 found
     - "prim::If": 10 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1074 [116]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [121]
@@ -21,9 +22,20 @@ Detailed op stats for [densenet121.cpu.last_executed_graph_dump.log]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/densenet.py:95 [58]
         + <string>:5 [1]
         + <missing-source> [58]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 9 distinct names (name [count])
+        + prim::Constant (22)
+        + prim::GetAttr (1571)
+        + prim::If (890)
+        + prim::ListConstruct (4)
+        + prim::Loop (179)
+        + prim::RaiseException (358)
+        + prim::SetAttr (121)
+        + prim::Uninitialized (59)
+        + prim::requires_grad (58)
+    - "internal::*": not found
     - "aten::*": 24 distinct names (name [count])
         + aten::__and__ (58)
         + aten::__getitem__ (300)
@@ -49,18 +61,6 @@ Detailed op stats for [densenet121.cpu.last_executed_graph_dump.log]
         + aten::relu_ (121)
         + aten::size (122)
         + aten::sub (121)
-    - "caffe2::*": not found
-    - "prim::*": 9 distinct names (name [count])
-        + prim::Constant (22)
-        + prim::GetAttr (1571)
-        + prim::If (890)
-        + prim::ListConstruct (4)
-        + prim::Loop (179)
-        + prim::RaiseException (358)
-        + prim::SetAttr (121)
-        + prim::Uninitialized (59)
-        + prim::requires_grad (58)
-    - "fb::*": not found
     - "prim::GetAttr": 50 distinct attr names (attr [count])
         + "bias" (242)
         + "classifier" (1)

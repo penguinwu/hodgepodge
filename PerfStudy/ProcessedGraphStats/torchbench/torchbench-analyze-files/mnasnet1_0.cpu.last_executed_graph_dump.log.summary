@@ -9,14 +9,23 @@ mnasnet1_0.cpu.last_executed_graph_dump.log  1286 (28%)  1815 (40%)  -        - 
 Detailed op stats for [mnasnet1_0.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 1 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [100]
+    - "prim::CallMethod": 0 found
     - "prim::If": 4 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [100]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2143 [100]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py:110 [100]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torchvision-0.9.0a0+767b23e-py3.8-linux-x86_64.egg/torchvision/models/mnasnet.py:56 [16]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 6 distinct names (name [count])
+        + prim::Constant (22)
+        + prim::GetAttr (1177)
+        + prim::If (316)
+        + prim::Loop (100)
+        + prim::RaiseException (100)
+        + prim::SetAttr (100)
+    - "internal::*": not found
     - "aten::*": 14 distinct names (name [count])
         + aten::__getitem__ (200)
         + aten::add (216)
@@ -32,15 +41,6 @@ Detailed op stats for [mnasnet1_0.cpu.last_executed_graph_dump.log]
         + aten::relu_ (67)
         + aten::size (100)
         + aten::sub (100)
-    - "caffe2::*": not found
-    - "prim::*": 6 distinct names (name [count])
-        + prim::Constant (22)
-        + prim::GetAttr (1177)
-        + prim::If (316)
-        + prim::Loop (100)
-        + prim::RaiseException (100)
-        + prim::SetAttr (100)
-    - "fb::*": not found
     - "prim::GetAttr": 24 distinct attr names (attr [count])
         + "0" (40)
         + "1" (39)

@@ -10,14 +10,26 @@ Detailed op stats for [Super_SloMo.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 2 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3489 [10]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3497 [10]
+    - "prim::CallMethod": 0 found
     - "prim::If": 4 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3498 [10]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3549 [10]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3559 [10]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:3569 [10]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 9 distinct names (name [count])
+        + prim::Constant (33)
+        + prim::GetAttr (252)
+        + prim::If (40)
+        + prim::ListConstruct (36)
+        + prim::Loop (20)
+        + prim::RaiseException (30)
+        + prim::TupleConstruct (1)
+        + prim::Uninitialized (1)
+        + prim::device (1)
+    - "internal::*": not found
     - "aten::*": 36 distinct names (name [count])
         + aten::__and__ (10)
         + aten::__getitem__ (10)
@@ -55,18 +67,6 @@ Detailed op stats for [Super_SloMo.cpu.last_executed_graph_dump.log]
         + aten::unsqueeze (30)
         + aten::upsample_bilinear2d (10)
         + aten::warn (27)
-    - "caffe2::*": not found
-    - "prim::*": 9 distinct names (name [count])
-        + prim::Constant (33)
-        + prim::GetAttr (252)
-        + prim::If (40)
-        + prim::ListConstruct (36)
-        + prim::Loop (20)
-        + prim::RaiseException (30)
-        + prim::TupleConstruct (1)
-        + prim::Uninitialized (1)
-        + prim::device (1)
-    - "fb::*": not found
     - "prim::GetAttr": 33 distinct attr names (attr [count])
         + "0" (2)
         + "10" (2)

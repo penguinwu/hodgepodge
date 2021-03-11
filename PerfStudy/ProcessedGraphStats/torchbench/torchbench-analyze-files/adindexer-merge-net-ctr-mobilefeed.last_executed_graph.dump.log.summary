@@ -1,0 +1,42 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                                              aten::*    prim::*    fb::*     quantized::*    internal::*    caffe2::*    if    loop    call    setattr    getattr    all [others]
+---------------------------------------------------------------  ---------  ---------  --------  --------------  -------------  -----------  ----  ------  ------  ---------  ---------  --------------
+adindexer-merge-net-ctr-mobilefeed.last_executed_graph.dump.log  20 (42%)   9 (19%)    15 (31%)  4 ( 8%)         -              -            -     -       -       -          -          48 [0]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [adindexer-merge-net-ctr-mobilefeed.last_executed_graph.dump.log]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 0 found
+    - "fb::*": 8 distinct names (name [count])
+        + fb::batch_box_cox (1)
+        + fb::casted_batch_one_hot_lengths (1)
+        + fb::clip_ranges_gather_lengths_to_offsets (3)
+        + fb::clip_ranges_gather_sigrid_hash_offsets (1)
+        + fb::concat_add_mul_replacenan_clip (1)
+        + fb::concat_batch_matmul_batch_gather (1)
+        + fb::fb_fc_packed (6)
+        + fb::sigrid_transforms (1)
+    - "caffe2::*": not found
+    - "quantized::*": 1 distinct names (name [count])
+        + quantized::embedding_bag_byte_rowwise_offsets (4)
+    - "prim::*": 3 distinct names (name [count])
+        + prim::ListConstruct (7)
+        + prim::ListUnpack (1)
+        + prim::TupleConstruct (1)
+    - "internal::*": not found
+    - "aten::*": 12 distinct names (name [count])
+        + aten::add (1)
+        + aten::bmm (1)
+        + aten::cat (3)
+        + aten::flatten (1)
+        + aten::logit (1)
+        + aten::narrow (4)
+        + aten::permute (1)
+        + aten::relu (2)
+        + aten::reshape (2)
+        + aten::sigmoid (1)
+        + aten::stack (1)
+        + aten::tanh (2)

@@ -9,14 +9,23 @@ resnet50.cpu.last_executed_graph_dump.log  708 (29%)  944 (39%)  -        -     
 Detailed op stats for [resnet50.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 1 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2108 [53]
+    - "prim::CallMethod": 0 found
     - "prim::If": 4 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2110 [53]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:2143 [53]
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py:110 [53]
         + <string>:5 [1]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 6 distinct names (name [count])
+        + prim::Constant (14)
+        + prim::GetAttr (610)
+        + prim::If (160)
+        + prim::Loop (53)
+        + prim::RaiseException (54)
+        + prim::SetAttr (53)
+    - "internal::*": not found
     - "aten::*": 17 distinct names (name [count])
         + aten::__getitem__ (106)
         + aten::adaptive_avg_pool2d (1)
@@ -35,15 +44,6 @@ Detailed op stats for [resnet50.cpu.last_executed_graph_dump.log]
         + aten::relu_ (49)
         + aten::size (54)
         + aten::sub (53)
-    - "caffe2::*": not found
-    - "prim::*": 6 distinct names (name [count])
-        + prim::Constant (14)
-        + prim::GetAttr (610)
-        + prim::If (160)
-        + prim::Loop (53)
-        + prim::RaiseException (54)
-        + prim::SetAttr (53)
-    - "fb::*": not found
     - "prim::GetAttr": 24 distinct attr names (attr [count])
         + "0" (8)
         + "1" (8)

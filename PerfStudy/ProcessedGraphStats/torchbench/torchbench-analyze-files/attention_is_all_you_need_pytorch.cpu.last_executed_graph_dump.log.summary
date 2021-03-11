@@ -8,11 +8,21 @@ attention_is_all_you_need_pytorch.cpu.last_executed_graph_dump.log  564 (46%)  6
 
 Detailed op stats for [attention_is_all_you_need_pytorch.cpu.last_executed_graph_dump.log]
     - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
     - "prim::If": 1 distinct sources (source:line [count])
         + /home/pengwu/local/miniconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/functional.py:1897 [2]
-    - "prim::CallMethod": 0 found
-    - "internal::*": not found
+    - "fb::*": not found
+    - "caffe2::*": not found
     - "quantized::*": not found
+    - "prim::*": 7 distinct names (name [count])
+        + prim::Constant (16)
+        + prim::GetAttr (561)
+        + prim::If (2)
+        + prim::ListConstruct (62)
+        + prim::ListUnpack (1)
+        + prim::RaiseException (2)
+        + prim::device (1)
+    - "internal::*": not found
     - "aten::*": 28 distinct names (name [count])
         + aten::__and__ (1)
         + aten::add (3)
@@ -42,16 +52,6 @@ Detailed op stats for [attention_is_all_you_need_pytorch.cpu.last_executed_graph
         + aten::triu (1)
         + aten::unsqueeze (4)
         + aten::view (73)
-    - "caffe2::*": not found
-    - "prim::*": 7 distinct names (name [count])
-        + prim::Constant (16)
-        + prim::GetAttr (561)
-        + prim::If (2)
-        + prim::ListConstruct (62)
-        + prim::ListUnpack (1)
-        + prim::RaiseException (2)
-        + prim::device (1)
-    - "fb::*": not found
     - "prim::GetAttr": 36 distinct attr names (attr [count])
         + "0" (2)
         + "1" (2)

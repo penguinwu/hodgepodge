@@ -1,0 +1,36 @@
+=======================================================================================================
+Note: "others" is the sum of unreported ops (block*() block-ret return graph graph-others )
+=======================================================================================================
+Logfile (ir counts)                         aten::*    prim::*    fb::*    quantized::*    internal::*    caffe2::*    if    loop    call    setattr    getattr    all [others]
+------------------------------------------  ---------  ---------  -------  --------------  -------------  -----------  ----  ------  ------  ---------  ---------  --------------
+deep-and-wide.last_executed_graph.dump.log  10 (38%)   10 (38%)   -        -               -              -            -     -       -       -          4 (15%)    26 [3]
+-------------------------------------------------------------------------------------------------------
+
+Detailed op stats for [deep-and-wide.last_executed_graph.dump.log]
+    - "prim::Loop": 0 found
+    - "prim::CallMethod": 0 found
+    - "prim::If": 0 found
+    - "fb::*": not found
+    - "caffe2::*": not found
+    - "quantized::*": not found
+    - "prim::*": 3 distinct names (name [count])
+        + prim::Constant (5)
+        + prim::GetAttr (4)
+        + prim::ListConstruct (1)
+    - "internal::*": not found
+    - "aten::*": 10 distinct names (name [count])
+        + aten::add (1)
+        + aten::addmm (1)
+        + aten::bmm (1)
+        + aten::cat (1)
+        + aten::clamp (1)
+        + aten::flatten (1)
+        + aten::mul (1)
+        + aten::sigmoid (1)
+        + aten::t (1)
+        + aten::transpose (1)
+    - "prim::GetAttr": 4 distinct attr names (attr [count])
+        + "fc_b" (1)
+        + "fc_w" (1)
+        + "mu" (1)
+        + "sigma" (1)
